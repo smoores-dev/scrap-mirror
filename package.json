@@ -8,12 +8,13 @@
     "express": "2.5.2",
     "jade": "0.20.0",
     "mongoose": "2.4.8",
+    "pg": "^3.3.0",
     "socket.io": "0.8.7"
   },
   "devDependencies": {
     "vows": "0.5.x",
-	"mocha": "*",
-	"should": "*"
+    "mocha": "*",
+    "should": "*"
   },
   "engine": "node >= 0.6.6"
 }
