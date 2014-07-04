@@ -1,1 +1,9 @@
 node_modules
+*.zip
+*.tar
+*.rdb
+*.env
+*.log
+*.DS_Store
+*.swp
+*.tar
