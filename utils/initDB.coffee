@@ -1,12 +1,7 @@
 db = require '../server/adapters/db.js'
 async = require 'async'
-
-copyCols = "COPY columns(space_id, element_sorting) FROM '/Users/joelsimon/Projects/Scrap/utils/fakeData/columns.csv' DELIMITER ',' CSV;"
-copyElems = "COPY elements(column_id, content_type, content) FROM '/Users/joelsimon/Projects/Scrap/utils/fakeData/elements.csv' DELIMITER ',' CSV;"
-createUser = "INSERT INTO users (name) VALUES ('Testr')"
-createSpace = "INSERT INTO spaces (creator_id, name) VALUES (1, 'Test')"
-addSpaceToUser = "INSERT INTO user_spaces (user_id, space_id) VALUES (1, 1)"
-initDB = """
+initDB = 
+"""
 drop schema public cascade;create schema public;
 create type data_type as enum ('text', 'image', 'website');
 create table users (
@@ -46,18 +41,11 @@ create table elements (
  content text NOT NULL
 );
 """
-async.series [
-	(cb) -> db.query initDB, cb
-	(cb) -> db.query createUser, cb
-	(cb) -> db.query createSpace, cb
-	(cb) -> db.query addSpaceToUser, cb
-	(cb) -> db.query copyCols, cb
-	(cb) -> db.query copyElems, cb
-	], (err, result) ->
-		if err?
-			console.log "Error:", err
-			process.exit(1)
-		else
-			console.log "Success"
-			process.exit(0)
+db.query initDB, (err, res) ->
+	if err?
+		console.log "Error:", err
+		process.exit(1)
+	else
+		console.log "Success"
+		process.exit(0)
 
