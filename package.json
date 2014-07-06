@@ -15,7 +15,16 @@
   "devDependencies": {
     "vows": "0.5.x",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "coffee-script": "latest"
+  },
+  "devDependencies": {
+    "vows": "0.5.x",
+    "chai": "~1.8.1",
+  	"mocha": "*",
+    "sinon": "1.8.2",
+    "sinon-chai": "~2.4.0",
+  	"should": "*"
   },
   "engine": "node >= 0.6.6"
 }
