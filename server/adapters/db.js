@@ -16,7 +16,7 @@ exports.query = function(text, values, cb) {
   pg.connect(dbstring, function(err, client, done) {
     client.query(text, values, function(err, result) {
       done();
-      if (err) {
+      if (err && err.text) {
         err.text = (text.insert(err.position-1, '->'))
       }
       if(cb) {
