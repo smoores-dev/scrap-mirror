@@ -1,21 +1,16 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Space', {
-    name: DataTypes.TEXT
+  sequelize.define 'Column', {
     creation_time:
       type: DataTypes.DATE
       allowNull: false
       defaultValue: DataTypes.NOW
-    last_change:
-      type: DataTypes.DATE
-      allowNull: false
-      defaultValue: DataTypes.NOW
-    column_sorting:
+    element_sorting:
       type: DataTypes.ARRAY(DataTypes.INTEGER)
       allowNull: false
       defaultValue: []
   }, {
     classMethods:
       associate: (models) ->
-        Space.hasMany models.User, through: models.UserSpace
-        Space.hasMany models.Column
+        Column.hasOne models.Space
+        Column.hasMany models.Element
   }
