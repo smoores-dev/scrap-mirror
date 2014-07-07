@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) ->
     element_sorting:
       type: DataTypes.ARRAY(DataTypes.INTEGER)
       allowNull: false
-      defaultValue: []
+      defaultValue: '{}'
   }, {
     classMethods:
       associate: (models) ->
