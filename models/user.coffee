@@ -1,11 +1,13 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'User', {
-    fb_id:
+  User = sequelize.define 'User', {
+    fbId:
       type: DataTypes.INTEGER
       unique: true
     email:
       type: DataTypes.TEXT
       unique: true
+      validate:
+        isEmail: true
     name: DataTypes.TEXT
   }, {
     classMethods:

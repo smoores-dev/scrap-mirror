@@ -1,15 +1,11 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Comment', {
-    creation_time:
-      type: DataTypes.DATE
-      allowNull: false
-      defaultValue: DataTypes.NOW
+  Comment = sequelize.define 'Comment', {
     content:
       type: DataTypes.TEXT
       allowNull: false
   }, {
     classMethods:
       associate: (models) ->
-        Comment.hasMany models.User, as: 'Creator'
-        Comment.hasMany models.Element
+        Comment.belongsTo models.User, as: 'Creator', foreignKey: 'creator_id'
+        Comment.belongsTo models.Element
   }

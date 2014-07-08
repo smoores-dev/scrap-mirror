@@ -1,16 +1,12 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Column', {
-    creation_time:
-      type: DataTypes.DATE
-      allowNull: false
-      defaultValue: DataTypes.NOW
-    element_sorting:
+  Column = sequelize.define 'Column', {
+    elementSorting:
       type: DataTypes.ARRAY(DataTypes.INTEGER)
       allowNull: false
       defaultValue: '{}'
   }, {
     classMethods:
       associate: (models) ->
-        Column.hasOne models.Space
+        Column.belongsTo models.Space
         Column.hasMany models.Element
   }

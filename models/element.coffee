@@ -1,10 +1,6 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Element', {
-    creation_time:
-      type: DataTypes.DATE
-      allowNull: false
-      defaultValue: DataTypes.NOW
-    content_type:
+  Element = sequelize.define 'Element', {
+    contentType:
       type: DataTypes.ENUM 'text', 'image', 'website', 'data'
       allowNull: false
     content:
@@ -13,6 +9,6 @@ module.exports = (sequelize, DataTypes) ->
   }, {
     classMethods:
       associate: (models) ->
-        Element.hasOne models.User, foreignKey: 'creator_id'
-        Element.hasMany models.Column
+        Element.belongsTo models.User, foreignKey: 'creatorId', as: 'Creator'
+        Element.belongsTo models.Column
   }

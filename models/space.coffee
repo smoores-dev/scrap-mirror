@@ -1,15 +1,16 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Space', {
-    name: DataTypes.TEXT
-    creation_time:
+  Space = sequelize.define 'Space', {
+    name:
+      type: DataTypes.TEXT
+      validate:
+        isAlphaNumeric: true
+    spaceKey:
+      type: DataTypes.TEXT
+    lastChange:
       type: DataTypes.DATE
       allowNull: false
       defaultValue: DataTypes.NOW
-    last_change:
-      type: DataTypes.DATE
-      allowNull: false
-      defaultValue: DataTypes.NOW
-    column_sorting:
+    columnSorting:
       type: DataTypes.ARRAY(DataTypes.INTEGER)
       allowNull: false
       defaultValue: '{}'

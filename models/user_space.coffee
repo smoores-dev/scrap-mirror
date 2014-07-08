@@ -1,3 +1,9 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define 'Comment',
-    is_active: DataTypes.BOOLEAN
+  UserSpace = sequelize.define 'UserSpace', {
+    isActive: DataTypes.BOOLEAN
+  }, {
+    classMethods:
+      associate: (models) ->
+        UserSpace.belongsTo models.User
+        UserSpace.belongsTo models.Space
+  }
