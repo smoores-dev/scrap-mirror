@@ -1,3 +1,5 @@
+db = require '../../models'
+
 module.exports = 
   newElement : (socket, data) ->
     spaceId = data.spaceId
