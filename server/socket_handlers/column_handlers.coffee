@@ -9,17 +9,17 @@ module.exports =
     content = data.content
 
     # find the associated space first
-    db.Space.find(where: { columnId } ).success((space) ->
+    db.Space.find(where: { spaceId } ).success((space) ->
 
       # once we have it, create the column
-      db.Column.create(contentType, content).success((column) ->
+      db.Column.create(spaceId).success((column) ->
         element.setSpace(space)
 
         # now create the first element in it
-        db.Element.create(contentType, content).success((element) ->
-          element.setColumn column
-        ).error (err) ->
-          callback err if err?
+        db.Element.create( { contentType, content } ).success((element) ->
+          element.setColumn(column)
+        ).error((callback) ->
+          callback err if err?)
 
       ).error (err) -> # from column.create
         callback err if err?

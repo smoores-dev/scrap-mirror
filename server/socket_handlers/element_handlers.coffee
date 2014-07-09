@@ -37,9 +37,22 @@ module.exports =
 
 
   # moves an element from one column to another
-  moveElement : (socket, data) ->
-    oldColumn = data.oldColumn
-    newColumn = data.newColumn
+  moveElement : (socket, data, callback) ->
+    oldColumnId = data.oldColumnId
+    newColumnId = data.newColumnId
     newIndex = data.newIndex
     elementId = data.elementId
-    # TODO
+   
+    # find the old column first
+    db.Column.find(where: { columnId: oldColumnId } ).success((column) ->
+
+      # now find the new column
+      db.Column.find(where: { columnId: newColumnId } ).success((column) ->
+
+        # the fuck do we do now???? TODO TODO TODO
+
+      ).error (err) -> # from column.find inner
+        callback err if err?
+
+    ).error (err) -> # from column.find
+      callback err if err?
