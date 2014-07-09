@@ -12,9 +12,7 @@ fs.readdirSync(__dirname).filter((file) ->
     db[model.name] = model
 
 Object.keys(db).forEach (modelName) ->
-  console.log modelName
   if 'associate' of db[modelName]
-    console.log 'in if block'
     db[modelName].associate db
 
 module.exports = lodash.extend {
