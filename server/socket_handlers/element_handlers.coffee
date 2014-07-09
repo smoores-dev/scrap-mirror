@@ -5,7 +5,7 @@ errorHandler = require '../errorHandler'
 module.exports =
 
   # create a new element and save it to db
-  newElement : (socket, data) ->
+  newElement : (sio, socket, data) ->
     columnId = data.columnId
     contentType = data.contentType
     content = data.content
@@ -21,7 +21,7 @@ module.exports =
 
 
   # delete the element
-  removeElement : (socket, data, callback) ->
+  removeElement : (sio, socket, data) ->
     elementId = data.elementId
     # find the element to be deleted
     db.Element.find(where: { elementId } ).complete (err, element) ->
@@ -31,7 +31,7 @@ module.exports =
         return errorHandler err if err?
 
   # moves an element from one column to another
-  moveElement : (socket, data, callback) ->
+  moveElement : (sio, socket, data) ->
     oldColumnId = data.oldColumnId
     newColumnId = data.newColumnId
     newIndex = data.newIndex

@@ -1,12 +1,12 @@
 db = require '../../models'
 
 module.exports =
-  addUserToSpace : (socket, data) ->
+  addUserToSpace : (sio, socket, data) ->
     spaceId = data.spaceId
     userId = data.userId
     # doesn't exist yet
 
-  removeUserFromSpace : (socket, data) ->
+  removeUserFromSpace : (sio, socket, data) ->
     spaceId = data.spaceId
     userId = data.userId
     # doesn't exist yet

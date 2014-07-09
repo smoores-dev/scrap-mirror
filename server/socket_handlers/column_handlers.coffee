@@ -4,11 +4,11 @@ async = require 'async'
 
 module.exports =
 	# create a new column and save it to db
-  newColumn : (socket, data, callback) ->
+  newColumn : (sio, socket, data) ->
     spaceId = data.spaceId
     contentType = data.contentType
     content = data.content
-    
+
     db.Column.create(spaceId).complete (err, column) ->
       return errorHandler err if err?
       column.setSpace(space).complete (err) ->
@@ -18,7 +18,7 @@ module.exports =
 
 
   # reorder the elements in the column
-  reorderColumn : (socket, data, callback) ->
+  reorderColumn : (sio, socket, data) ->
     columnId = data.columnId
     elementSorting = data.elementSorting
 
