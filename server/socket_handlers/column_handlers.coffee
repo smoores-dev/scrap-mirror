@@ -1,4 +1,5 @@
 db = require '../../models'
+errorHandler = require '../errorHandler'
 
 module.exports =
 
@@ -9,24 +10,18 @@ module.exports =
     content = data.content
 
     # find the associated space first
-    db.Space.find(where: { spaceId } ).success((space) ->
-
+    db.Space.find(where: { spaceId } ).complete (err, space) ->
+      return errorHandler err if err?
       # once we have it, create the column
-      db.Column.create(spaceId).success((column) ->
-        element.setSpace(space)
-
-        # now create the first element in it
-        db.Element.create( { contentType, content } ).success((element) ->
-          element.setColumn(column)
-        ).error((callback) ->
-          callback err if err?)
-
-      ).error (err) -> # from column.create
-        callback err if err?
-
-    ).error (err) -> # from space.find
-      callback err if err?
-
+      db.Column.create(spaceId).complete (err, column) ->
+        return errorHandler err if err?
+        column.setSpace(space).complete (err) ->
+          return errorHandler err if err?
+          # now create the first element in it
+          db.Element.create( { contentType, content } ).complete (err, element) ->
+            return errorHandler err if err?
+            element.setColumn(column).complete (err) ->
+              return errorHandler err if err?
 
   # reorder the elements in the column
   reorderColumn : (socket, data, callback) ->
@@ -34,11 +29,8 @@ module.exports =
     elementSorting = data.elementSorting
 
     # first find the column
-    db.Column.find(where: { columnId } ).success((column) ->
-
+    db.Column.find(where: { columnId } ).complete (err, column) ->
+      return errorHandler err if err?
       # update the columns
       column.updateAttributes( { elementSorting } ).error (err) ->
-        callback err if err?
-
-    ).error (err) -> # from column.find
-      callback err if err?
+        return errorHandler err if err?

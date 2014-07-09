@@ -16,8 +16,8 @@ exports.query = function(text, values, cb) {
   pg.connect(dbstring, function(err, client, done) {
     client.query(text, values, function(err, result) {
       done();
-      if (err && err.text) {
-        err.text = (text.insert(err.position-1, '->'))
+      if (err && err.position) {
+        err.text = (text.insert(err.position-1, '{error->}'))
       }
       if(cb) {
         cb(err, result);
@@ -32,3 +32,10 @@ exports.query = function(text, values, cb) {
 exports.getConnection = function(callback) {
   pg.connect(dbstring, callback);
 }
+
+String.prototype.insert = function (index, string) {
+  if (index > 0)
+    return this.substring(0, index) + string + this.substring(index, this.length);
+  else
+    return string + this;
+};
