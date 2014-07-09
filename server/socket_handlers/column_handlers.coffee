@@ -5,18 +5,18 @@ module.exports =
 	# create a new column and save it to db
   newColumn : (socket, data) ->
     spaceId = data.spaceId
-    contentType = data.contentType
-    content = data.content
+    elementContentType = data.elementContentType
+    elementContent = data.elementContent
 
     # find the associated space first
-    db.Space.find(where: { columnId } ).success((space) -> 
+    db.Space.find(where: { spaceId } ).success((space) -> 
 
       # once we have it, create the column
-      db.Column.create(contentType, content).success((column) ->
+      db.Column.create(spaceId).success((column) ->
         element.setSpace(space)
 
         # now create the first element in it
-        db.Element.create(contentType, content).success((element) ->
+        db.Element.create(contentType: elementContentType, content: elementContent).success((element) ->
 	        element.setColumn(column)
 	        ).error((callback) -> 
 	          callback err if err?)
