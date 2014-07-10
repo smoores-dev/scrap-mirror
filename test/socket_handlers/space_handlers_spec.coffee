@@ -28,7 +28,8 @@ describe 'SpaceHandlers', ->
         query = 'SELECT * FROM "Spaces" WHERE name=$1'
         pg.query query, [data.name], (err, res) =>
           return done err if err?
-          expect(res.rows[0]).to.be.truthy
+          expect(res.rows[0]).to.be.ok
+          expect(res.rows[0].id).to.be.a "number"
           expect(res.rows[0].name).to.eql data.name
           expect(@socket.emit).to.have.been.calledOnce
           done()
@@ -62,7 +63,7 @@ describe 'SpaceHandlers', ->
         return done err if err?
         query = 'SELECT * FROM "Spaces" WHERE id=$1'
         pg.query query, [@space.id], (err, res) =>
-          expect(res.rows[0]).to.be.truthy
+          expect(res.rows[0]).to.be.ok
           expect(res.rows[0].columnSorting).to.eql data.columnSorting
           expect(@emit).to.have.been.calledOnce
           done()

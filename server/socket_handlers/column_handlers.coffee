@@ -8,25 +8,25 @@ module.exports =
     contentType = data.contentType
     content = data.content
 
-    db.Column.create(spaceId).complete (err, column) ->
+    db.Column.create(SpaceId : spaceId).complete (err, column) ->
       return callback err if err?
-      column.setSpace(space).complete (err) ->
+      db.Element.create( { contentType, content , ColumnId : column.id } ).complete (err, element) ->
         return callback err if err?
-        db.Element.create( { contentType, content , ColumnId : column.id } ).complete (err, element) ->
-          return callback err if err?
-          sio.to("#{spaceId}").emit 'newColumn', { column }
+        sio.to("#{spaceId}").emit 'newColumn', { column }
+        callback()
 
 
   # reorder the elements in the column
   reorderColumn : (sio, socket, data, callback) ->
     spaceId = data.spaceId
-    columnId = data.columnId
+    id = data.columnId
     elementSorting = data.elementSorting
 
     # first find the column
-    db.Column.find(where: { columnId } ).complete (err, column) ->
+    db.Column.find(where: { id } ).complete (err, column) ->
       return callback err if err?
       # update the columns
-      column.updateAttributes( { elementSorting } ).error (err) ->
+      column.updateAttributes( { elementSorting } ).complete (err) ->
         return callback err if err?
         sio.to("#{spaceId}").emit 'reorderColumn', { elementSorting }
+        callback()
