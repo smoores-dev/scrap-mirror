@@ -98,7 +98,7 @@ describe 'ElementHandlers', ->
 
     context 'there were multiple elements in the column', =>
 
-      it 'should remove the column', (done) =>
+      it 'should not remove the column, just modify its sorting', (done) =>
         data =
           spaceId: 1
           elementId: @element.id
@@ -119,12 +119,13 @@ describe 'ElementHandlers', ->
             return done err if err?
             column = res.rows[0]
             expect(column).to.be.ok
+            expect(column.elementSorting).to.eql [@element2.id]
 
             expect(@emit).to.have.been.calledOnce
             done()
 
 
-  describe.skip '#moveElement', ->
+  describe '#moveElement', ->
 
     before (done) =>
       @emit = sinon.stub()
