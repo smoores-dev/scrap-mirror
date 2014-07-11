@@ -2,8 +2,6 @@ module.exports = (sequelize, DataTypes) ->
   Space = sequelize.define 'Space', {
     name:
       type: DataTypes.TEXT
-      validate:
-        isAlphaNumeric: true
     spaceKey:
       type: DataTypes.TEXT
     lastChange:
