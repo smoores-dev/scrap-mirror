@@ -1,6 +1,18 @@
 extends layout
 
 block content
-	div
-		a(id='sender')='Send a Message'
-		ul(id='receiver')
+  - var users = ["http://images.wikia.com/nintendo/en/images/archive/4/44/20120820000627!Luigi-Icon.png","http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png"]
+  - var columns = [{"id":1,"elements":[1,2,3]},{"id":2,"elements":[3,4]}]
+
+  section.space
+    header
+      ul
+        each user in users
+          li
+            img(src= user, width="35")
+    each column in columns
+      section.column
+        p= "Column " + column.id
+        each element in column.elements
+          article.element
+            p= element
