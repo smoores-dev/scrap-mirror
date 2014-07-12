@@ -16,7 +16,7 @@ describe 'SpaceHandlers', ->
     before (done) =>
       @socket =
         emit: sinon.stub()
-      db.sequelize.sync({ force: true }).complete (err) ->
+      db.sequelize.sync({ force: true }).complete (err) =>
         return done err if err?
         done()
 

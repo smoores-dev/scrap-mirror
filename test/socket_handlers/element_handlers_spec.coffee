@@ -20,13 +20,15 @@ describe 'ElementHandlers', ->
           emit: @emit
       db.sequelize.sync({ force: true }).complete (err) =>
         return done err if err?
-        db.Column.create(SpaceId: 1).complete (err, @column) =>
+        db.Space.create(name: 'Test').complete (err, @space) =>
           return done err if err?
-          done()
+          db.Column.create(SpaceId: @space.id).complete (err, @column) =>
+            return done err if err?
+            done()
 
     it 'should create a new Element in the db with the given name', (done) =>
       data =
-        spaceId: 1
+        spaceId: @space.id
         columnId: @column.id
         contentType: "text"
         content: "content"

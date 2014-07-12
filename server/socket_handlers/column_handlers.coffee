@@ -12,8 +12,13 @@ module.exports =
       return callback err if err?
       db.Element.create( { contentType, content , ColumnId : column.id } ).complete (err, element) ->
         return callback err if err?
-        sio.to("#{spaceId}").emit 'newColumn', { column }
-        callback()
+        db.Space.find(where: { id: spaceId } ).complete (err, space) ->
+          return callback err if err?
+          space.columnSorting.push column.id
+          space.updateAttributes( { columnSorting: space.columnSorting } ).complete (err) ->
+            return callback err if err?
+            sio.to("#{spaceId}").emit 'newColumn', { column }
+            callback null
 
 
   # reorder the elements in the column
@@ -29,4 +34,4 @@ module.exports =
       column.updateAttributes( { elementSorting } ).complete (err) ->
         return callback err if err?
         sio.to("#{spaceId}").emit 'reorderColumn', { elementSorting }
-        callback()
+        callback null

@@ -18,13 +18,15 @@ describe 'ColumnHandlers', ->
       @sio =
         to: (id) =>
           emit: @emit
-      db.sequelize.sync({ force: true }).complete (err) ->
+      db.sequelize.sync({ force: true }).complete (err) =>
         return done err if err?
-        done()
+        db.Space.create(name: 'Test').complete (err, @space) =>
+          return done err if err?
+          done()
 
     it 'should create a new Column in the db with the given name', (done) =>
       data =
-        spaceId: 1
+        spaceId: @space.id
         contentType: "text"
         content: "content"
       ColumnHandlers.newColumn @sio, null, data, (err, res) =>
