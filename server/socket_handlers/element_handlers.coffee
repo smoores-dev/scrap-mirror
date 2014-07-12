@@ -9,14 +9,15 @@ module.exports =
     columnId = data.columnId
     contentType = data.contentType
     content = data.content
+    index = data.index
 
       # find the associated column first
     db.Column.find(where: { id: columnId } ).complete (err, column) =>
       return callback err if err?
       # once we have it, create the element
-      db.Element.create({ contentType, content }).complete (err, element) =>
+      db.Element.create({ contentType, content, ColumnId: column.id}).complete (err, element) =>
         return callback err if err?
-        element.setColumn(column).complete (err) => 
+        module.exports.insertIntoSorting column, element.id, index, (err) ->
           return callback err if err?
           sio.to("#{spaceId}").emit 'newElement', { columnId, element }
           callback()
