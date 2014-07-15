@@ -43,6 +43,7 @@ section.container {
 				display: inline-block;
 				vertical-align: top;
 				padding-top: $headerHeight;
+				margin-left: $gutter;
 			
 				article {
 					max-width: 100%;
@@ -82,26 +83,29 @@ section.container {
 					}
 					
 					&.text {
-						padding-bottom: $baseline/2;
+						padding-top: $baseline;
 						position: relative;
+						padding-left: .5em;
 
 						.background {
 							height: 100%;
 							width:  100%;
-							bottom: -.5em;
-							left: -2em;
-							z-index: -10;
+							top: -.333em;
+							left: 0em;
+							// z-index: -10;
 							position: absolute;
-							background-color: $colorWashLight;
+							// background-color: $colorWashLight;
+							border-left: .5pt black solid;
+							padding-left: 1em;
+
 						}
 						
-						// &:hover {
-						// 	
-						// 	.background {
-						// 		top: 0;
-						// 		left: 0;	
-						// 	}
-						// }
+						&:hover {
+							
+							.background {
+								border-left-width: 2pt;
+							}
+						}
 					}
 				}
 			}

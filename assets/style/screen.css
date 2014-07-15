@@ -85,7 +85,7 @@ html figure h1 {
 
 /* line 1, ../sass/layout/_body.scss */
 body {
-  background-color: #f3f3f3;
+  background-color: white;
 }
 
 /* line 1, ../sass/layout/_header.scss */
@@ -138,45 +138,51 @@ section.container section.space section.content section.column {
   display: inline-block;
   vertical-align: top;
   padding-top: 25vh;
+  margin-left: 1rem;
 }
-/* line 47, ../sass/layout/_container.scss */
+/* line 48, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: #333333;
   margin-bottom: 1rem;
 }
-/* line 53, ../sass/layout/_container.scss */
+/* line 54, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 56, ../sass/layout/_container.scss */
+/* line 57, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 60, ../sass/layout/_container.scss */
+/* line 61, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 71, ../sass/layout/_container.scss */
+/* line 72, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 84, ../sass/layout/_container.scss */
+/* line 85, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
-  padding-bottom: 0.75rem;
+  padding-top: 1.5rem;
   position: relative;
+  padding-left: .5em;
 }
-/* line 88, ../sass/layout/_container.scss */
+/* line 90, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
-  bottom: -.5em;
-  left: -2em;
-  z-index: -10;
+  top: -.333em;
+  left: 0em;
   position: absolute;
-  background-color: white;
+  border-left: .5pt black solid;
+  padding-left: 1em;
+}
+/* line 105, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article.text:hover .background {
+  border-left-width: 2pt;
 }
