@@ -1,0 +1,82 @@
+section.container {
+
+	section.space {
+		width: 100%;
+	
+		header {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: $headerHeight;
+		
+			ul.users {
+				float: right;
+			
+				li.user {
+					display: inline-block;
+					height: 3rem;
+					width: 3rem;
+					border-radius: 1.5rem;
+				
+					img {
+						height: 100%;
+						width: 100%;					
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		section.content {
+			width: 100%;
+			height: 100%;
+			padding-top: $headerHeight;
+			background: blue;
+		
+			section.column {
+				width: ($col * 4) + ($gutter + 5);
+				max-height: 100%;
+				overflow: auto;
+				display: inline-block;
+			
+				article {
+					width: 100%;
+					background-color: red;
+				
+					figure {
+						width: 100%;
+					
+						img {
+							width: 100%;
+						}
+						
+						figcaption {
+							background: $colorWashLight;												padding-top: $baseline;
+							position: relative;
+							top: -$baseline;
+						}
+						
+					}
+					
+					p {
+					
+					}
+					
+					&.link {
+						
+						a {
+						
+						}
+						
+					}
+					
+					&.text {
+					
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,158 @@
+/* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 4, ../sass/globals/_boilerplate.scss */
+html {
+  text-rendering: optimizeLegibility;
+}
+
+/* line 6, ../sass/globals/_type.scss */
+html {
+  font-family: "BemboStd", serif;
+  font-size: 9pt;
+  line-height: 1.5em;
+}
+/* line 11, ../sass/globals/_type.scss */
+html h1 {
+  font-size: 2rem;
+}
+/* line 17, ../sass/globals/_type.scss */
+html figure h1 {
+  font-family: "BemboStd-Italic";
+}
+
+/* line 1, ../sass/layout/_body.scss */
+body {
+  background-color: #fafafa;
+}
+
+/* line 1, ../sass/layout/_header.scss */
+header {
+  position: float;
+  top: 0;
+  height: 18rem;
+}
+
+/* line 3, ../sass/layout/_container.scss */
+section.container section.space {
+  width: 100%;
+}
+/* line 6, ../sass/layout/_container.scss */
+section.container section.space header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 18rem;
+}
+/* line 12, ../sass/layout/_container.scss */
+section.container section.space header ul.users {
+  float: right;
+}
+/* line 15, ../sass/layout/_container.scss */
+section.container section.space header ul.users li.user {
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+}
+/* line 21, ../sass/layout/_container.scss */
+section.container section.space header ul.users li.user img {
+  height: 100%;
+  width: 100%;
+}
+/* line 32, ../sass/layout/_container.scss */
+section.container section.space section.content {
+  width: 100%;
+  height: 100%;
+  padding-top: 18rem;
+  background: blue;
+}
+/* line 38, ../sass/layout/_container.scss */
+section.container section.space section.content section.column {
+  width: 50.3125%;
+  max-height: 100%;
+  overflow: auto;
+  display: inline-block;
+}
+/* line 44, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article {
+  width: 100%;
+  background-color: red;
+}
+/* line 48, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article figure {
+  width: 100%;
+}
+/* line 51, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article figure img {
+  width: 100%;
+}
+/* line 55, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article figure figcaption {
+  background: white;
+  padding-top: 1.5rem;
+  position: relative;
+  top: -1.5rem;
+}
