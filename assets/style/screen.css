@@ -144,45 +144,43 @@ section.container section.space section.content section.column {
 section.container section.space section.content section.column article {
   width: 100%;
   margin-bottom: 0;
+  margin: 1px;
   overflow: hidden;
   color: white;
 }
-/* line 54, ../sass/layout/_container.scss */
+/* line 55, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 57, ../sass/layout/_container.scss */
+/* line 58, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 61, ../sass/layout/_container.scss */
+/* line 62, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 72, ../sass/layout/_container.scss */
+/* line 73, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 85, ../sass/layout/_container.scss */
+/* line 86, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
-  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  padding-right: 2rem;
+  width: 100%;
   position: relative;
+  background-color: #444444;
 }
-/* line 89, ../sass/layout/_container.scss */
+/* line 93, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
-  top: -1em;
-  left: -2em;
-  z-index: -10;
-  position: absolute;
-  background-color: #444444;
-}
-/* line 101, ../sass/layout/_container.scss */
-section.container section.space section.content section.column article.text:hover .background {
   top: 0;
   left: 0;
+  z-index: -10;
+  position: absolute;
 }
