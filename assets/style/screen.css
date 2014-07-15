@@ -85,7 +85,7 @@ html figure h1 {
 
 /* line 1, ../sass/layout/_body.scss */
 body {
-  background-color: white;
+  background-color: #f3f3f3;
 }
 
 /* line 1, ../sass/layout/_header.scss */
@@ -145,7 +145,6 @@ section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: #333333;
-  margin-bottom: 1rem;
 }
 /* line 54, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
@@ -168,7 +167,7 @@ section.container section.space section.content section.column article p + p {
 }
 /* line 85, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
-  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   position: relative;
   padding-left: .5em;
 }
@@ -176,13 +175,14 @@ section.container section.space section.content section.column article.text {
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
-  top: -.333em;
+  bottom: -.333em;
   left: 0em;
+  z-index: -10;
   position: absolute;
   border-left: .5pt black solid;
   padding-left: 1em;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 103, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text:hover .background {
   border-left-width: 2pt;
 }
