@@ -21,7 +21,8 @@ section.container {
 				
 					img {
 						height: 100%;
-						width:  100%;					
+						width:  100%;		
+						background-color: red;			
 					}
 					
 				}
@@ -96,12 +97,14 @@ section.container {
 							position: absolute;
 							border-left: .5pt black solid;
 							padding-left: 1em;
+							@include transition(background-color .5s ease-out)
 						}
 						
 						&:hover {
 							
 							.background {
 								border-left-width: 2pt;
+								background-color: $colorWashLight;
 							}
 						}
 					}
