@@ -85,7 +85,7 @@ html figure h1 {
 
 /* line 1, ../sass/layout/_body.scss */
 body {
-  background-color: white;
+  background-color: #f3f3f3;
 }
 
 /* line 1, ../sass/layout/_header.scss */
@@ -137,50 +137,46 @@ section.container section.space section.content section.column {
   overflow-y: auto;
   display: inline-block;
   vertical-align: top;
-  margin-right: 0;
   padding-top: 25vh;
 }
-/* line 48, ../sass/layout/_container.scss */
+/* line 47, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
-  width: 100%;
-  margin-bottom: 0;
-  margin: 1px;
+  max-width: 100%;
   overflow: hidden;
-  color: white;
+  color: #333333;
+  margin-bottom: 1rem;
 }
-/* line 55, ../sass/layout/_container.scss */
+/* line 53, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 58, ../sass/layout/_container.scss */
+/* line 56, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 62, ../sass/layout/_container.scss */
+/* line 60, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 71, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 86, ../sass/layout/_container.scss */
+/* line 84, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
-  padding-bottom: 3rem;
-  padding-right: 2rem;
-  width: 100%;
+  padding-bottom: 0.75rem;
   position: relative;
-  background-color: #444444;
 }
-/* line 93, ../sass/layout/_container.scss */
+/* line 88, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
+  bottom: -.5em;
+  left: -2em;
   z-index: -10;
   position: absolute;
+  background-color: white;
 }

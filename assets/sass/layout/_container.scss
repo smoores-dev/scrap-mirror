@@ -42,15 +42,13 @@ section.container {
 				overflow-y: auto;
 				display: inline-block;
 				vertical-align: top;
-				margin-right: 0;
 				padding-top: $headerHeight;
 			
 				article {
-					width: 100%;
-					margin-bottom: 0;
-					margin: 1px;
+					max-width: 100%;
 					overflow: hidden;
-					color: $colorWashLight;
+					color: $colorTypeDark;
+					margin-bottom: $gutter;
 					
 					figure {
 						width: 100%;
@@ -84,19 +82,17 @@ section.container {
 					}
 					
 					&.text {
-						padding-bottom: $baseline * 2;
-						padding-right: $gutter * 2;
-						width: 100%;
+						padding-bottom: $baseline/2;
 						position: relative;
-						background-color: $colorWashDark;
 
 						.background {
 							height: 100%;
 							width:  100%;
-							top: 0;
-							left: 0;
+							bottom: -.5em;
+							left: -2em;
 							z-index: -10;
 							position: absolute;
+							background-color: $colorWashLight;
 						}
 						
 						// &:hover {
