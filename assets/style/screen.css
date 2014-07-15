@@ -111,27 +111,27 @@ section.container section.space header ul.users {
   float: right;
 }
 /* line 15, ../sass/layout/_container.scss */
-section.container section.space header ul.users li.user {
+section.container section.space header ul.users li {
   display: inline-block;
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
 }
 /* line 21, ../sass/layout/_container.scss */
-section.container section.space header ul.users li.user img {
+section.container section.space header ul.users li img {
   height: 100%;
   width: 100%;
 }
 /* line 32, ../sass/layout/_container.scss */
 section.container section.space section.content {
-  width: 100%;
+  width: 200vw;
   height: 100%;
   padding-top: 18rem;
   background: blue;
 }
 /* line 38, ../sass/layout/_container.scss */
 section.container section.space section.content section.column {
-  width: 50.3125%;
+  width: 34em;
   max-height: 100%;
   overflow: auto;
   display: inline-block;
