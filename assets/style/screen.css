@@ -80,12 +80,12 @@ html h1 {
 }
 /* line 17, ../sass/globals/_type.scss */
 html figure h1 {
-  font-family: "FuturaStd-Italic";
+  font-family: "Futura-MediumItalic";
 }
 
 /* line 1, ../sass/layout/_body.scss */
 body {
-  background-color: #f3f3f3;
+  background-color: #444444;
 }
 
 /* line 1, ../sass/layout/_header.scss */
@@ -142,18 +142,37 @@ section.container section.space section.content section.column {
   margin-left: 1rem;
 }
 /* line 49, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.new {
+  width: 16rem;
+}
+/* line 52, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.new article {
+  width: 100%;
+}
+/* line 55, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.new article input {
+  width: 100%;
+  padding: .25em;
+  margin: 0;
+  font-family: "Futura-MediumItalic";
+  font-size: 1em;
+  background: white;
+  border: 0;
+  outline-style: none;
+}
+/* line 70, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack {
   position: relative;
 }
-/* line 52, ../sass/layout/_container.scss */
+/* line 73, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article {
   position: absolute !important;
 }
-/* line 55, ../sass/layout/_container.scss */
+/* line 76, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:first-child {
   position: relative !important;
 }
-/* line 59, ../sass/layout/_container.scss */
+/* line 80, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(2) {
   opacity: .5;
   -webkit-transform: scale(0.875);
@@ -163,7 +182,7 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.875);
   bottom: 0;
 }
-/* line 66, ../sass/layout/_container.scss */
+/* line 87, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(3) {
   opacity: .5;
   -webkit-transform: scale(0.75);
@@ -178,7 +197,7 @@ section.container section.space section.content section.column.stack > article:n
   transform-origin: 0% 0% 50%;
   bottom: -1em;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 94, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(4) {
   opacity: .5;
   -webkit-transform: scale(0.5);
@@ -188,38 +207,37 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.5);
   bottom: -2em;
 }
-/* line 83, ../sass/layout/_container.scss */
+/* line 104, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: #333333;
 }
-/* line 89, ../sass/layout/_container.scss */
+/* line 110, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 92, ../sass/layout/_container.scss */
+/* line 113, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 96, ../sass/layout/_container.scss */
+/* line 117, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 107, ../sass/layout/_container.scss */
+/* line 128, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 120, ../sass/layout/_container.scss */
+/* line 141, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
-  padding-bottom: 1.5rem;
   position: relative;
-  padding-left: .5em;
+  padding: 0.25rem 2rem 2rem 0.25rem;
 }
-/* line 125, ../sass/layout/_container.scss */
+/* line 146, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
@@ -227,15 +245,10 @@ section.container section.space section.content section.column article.text .bac
   left: 0em;
   z-index: -10;
   position: absolute;
-  border-left: .5pt black solid;
   padding-left: 1em;
   -webkit-transition: background-color 0.5s ease-out;
   -moz-transition: background-color 0.5s ease-out;
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s ease-out;
-}
-/* line 139, ../sass/layout/_container.scss */
-section.container section.space section.content section.column article.text:hover .background {
-  border-left-width: 2pt;
   background-color: white;
 }

@@ -46,6 +46,27 @@ section.container {
 				padding-top: $headerHeight;
 				margin-left: $gutter;
 				
+				&.new {
+					width: $col*2;
+					
+					article {
+						width: 100%;
+						
+						input {
+							width: 100%;
+							padding: .25em;
+							margin: 0;
+							font-family: $fontItalic;
+							font-size: 1em;
+							background: $colorWashLight;
+							border: 0;
+							outline-style: none;
+						}
+						
+					}
+					
+				}
+				
 				&.stack {
 					position: relative;
 					
@@ -118,9 +139,9 @@ section.container {
 					}
 					
 					&.text {
-						padding-bottom: $baseline;
+						// padding-bottom: $baseline;
 						position: relative;
-						padding-left: .5em;
+						padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
 
 						.background {
 							height: 100%;
@@ -129,18 +150,19 @@ section.container {
 							left: 0em;
 							z-index: -10;
 							position: absolute;
-							border-left: .5pt black solid;
+							// border-left: .5pt black solid;
 							padding-left: 1em;
-							@include transition(background-color .5s ease-out)
+							@include transition(background-color .5s ease-out);
+							background-color: $colorWashLight;	
 						}
 						
-						&:hover {
-							
-							.background {
-								border-left-width: 2pt;
-								background-color: $colorWashLight;
-							}
-						}
+						// &:hover {
+						// 	
+						// 	.background {
+						// 		border-left-width: 2pt;
+						// 		background-color: $colorWashLight;
+						// 	}
+						// }
 					}
 				}
 			}
