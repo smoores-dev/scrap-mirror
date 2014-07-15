@@ -24,14 +24,14 @@ module.exports =
   # reorder the elements in the column
   reorderColumn : (sio, socket, data, callback) ->
     spaceId = data.spaceId
-    id = data.columnId
+    columnId = data.columnId
     elementSorting = data.elementSorting
 
     # first find the column
-    db.Column.find(where: { id } ).complete (err, column) ->
+    db.Column.find(where: { ColumnId: columnId } ).complete (err, column) ->
       return callback err if err?
       # update the columns
       column.updateAttributes( { elementSorting } ).complete (err) ->
         return callback err if err?
-        sio.to("#{spaceId}").emit 'reorderColumn', { elementSorting }
+        sio.to("#{spaceId}").emit 'reorderColumn', { elementSorting, columnId }
         callback null
