@@ -8,19 +8,20 @@ section.container {
 			top: 0;
 			width: 100%;
 			height: $headerHeight;
-		
+
 			ul.users {
-				float: right;
+				position: absolute;
+				bottom: 0;
+				right: 0;
 			
 				li {
-					display: inline-block;
-					height: 3rem;
-					width: 3rem;
-					border-radius: 1.5rem;
+					display: block;
+					height: 4rem;
+					width:  4rem;
 				
 					img {
 						height: 100%;
-						width: 100%;					
+						width:  100%;					
 					}
 					
 				}
@@ -32,19 +33,23 @@ section.container {
 		section.content {
 			width: 200vw;
 			height: 100%;
-			padding-top: $headerHeight;
-			background: blue;
+			margin-left: $col * 2;
 		
 			section.column {
-				width: ($col * 4) + ($gutter + 5);
-				max-height: 100%;
-				overflow: auto;
+				width: $col * 3;
+				max-height: 75vh;
+				overflow-x: hidden;
+				overflow-y: auto;
 				display: inline-block;
+				vertical-align: top;
+				margin-right: $gutter;
+				padding-top: $headerHeight;
 			
 				article {
 					width: 100%;
-					background-color: red;
-				
+					margin-bottom: $baseline;
+					overflow: hidden;
+					
 					figure {
 						width: 100%;
 					
@@ -53,7 +58,8 @@ section.container {
 						}
 						
 						figcaption {
-							background: $colorWashLight;												padding-top: $baseline;
+							background: $colorWashLight;
+							padding-top: $baseline;
 							position: relative;
 							top: -$baseline;
 						}
@@ -61,7 +67,10 @@ section.container {
 					}
 					
 					p {
-					
+
+						& + p {
+							text-indent: 2em;
+						}
 					}
 					
 					&.link {
@@ -73,7 +82,18 @@ section.container {
 					}
 					
 					&.text {
-					
+						padding-top: $baseline;
+						position: relative;
+
+						.background {
+							height: 100%;
+							width:  100%;
+							top: -.5em;
+							left: -1em;
+							z-index: -10;
+							position: absolute;
+							background-color: $colorWashLight;
+						}
 					}
 				}
 			}

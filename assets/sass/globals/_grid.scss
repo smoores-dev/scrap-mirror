@@ -1,7 +1,5 @@
-$colCount:          8;
-$colWidthFull:      64em/$colCount;
-$gutterCount:       $colCount + 1;
-$gutter:            $colWidthFull/8;
-$col:               $colWidthFull - $gutter;
+$cell:				1rem;
+$gutter:            $cell;
+$col:               $cell * 8;
 
 $baseline:          1.5rem;
