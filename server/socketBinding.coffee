@@ -1,4 +1,5 @@
 sio = require('socket.io')
+url = require('url')
 spaceHandlers = require './socket_handlers/space_handlers'
 columnHandlers = require './socket_handlers/column_handlers'
 elementHandlers = require './socket_handlers/element_handlers'
@@ -9,10 +10,9 @@ module.exports = (server)->
   io = sio.listen server
   io.sockets.on 'connection', (socket) ->
 
-    console.log url.parse(socket.handshake.headers.referer, true).query.id
-
+    id = url.parse(socket.handshake.headers.referer, true).query.id
     socket.join(''+id)
-
+    console.log 'joined', id
     socket.on 'newSpace',     (data) -> spaceHandlers.newSpace sio, socket, data, errorHandler
     socket.on 'reorderSpace', (data) -> spaceHandlers.reorderSpace sio, socket, data, errorHandler
 

@@ -13,7 +13,7 @@ server.configure(function(){
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
     server.use(express.session({ secret: "club_sexdungeon"}));
-    server.use(connect.static(__dirname + '/static'));
+    server.use(connect.static(__dirname + '/assets'));
     server.use(server.router);
 });
 
