@@ -58,8 +58,7 @@ section.container {
 							margin: 0;
 							font-family: $fontItalic;
 							font-size: 1em;
-							background: none;
-							border: .5pt $colorWashLight solid;
+							background: $colorWashLight;
 							border: 0;
 							outline-style: none;
 						}
@@ -107,8 +106,6 @@ section.container {
 					overflow: hidden;
 					color: $colorWashLight;
 					// margin-bottom: $gutter;
-					border: .5pt $colorWashLight solid;
-
 					
 					figure {
 						width: 100%;
@@ -142,30 +139,38 @@ section.container {
 					}
 					
 					&.text {
-						// padding-bottom: $baseline;
+						margin-bottom: .25rem;
+						padding-bottom: $baseline - .25rem;
+						padding-left: .5em - .05em;
+						border-left: .05em $colorWashLight solid;
 						position: relative;
-						padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
+						@include transition(.125s ease-out);
+						@include transition-property(background-color, margin-bottom);
+						// padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
 
 						.background {
 							height: 100%;
 							width:  100%;
 							bottom: 0;
-							left: -.1em;
+							left: 0;
 							z-index: -10;
 							position: absolute;
 							// border: .5pt $colorWashLight solid;
+							// border-left: .5pt $colorWashLight solid;
 							padding-left: 1em;
-							@include transition(background-color .5s ease-out);
+							// @include transition(background-color .5s ease-out);
 							// background-color: $colorWashLight;	
 						}
 						
-						// &:hover {
-						// 	
-						// 	.background {
-						// 		border-left-width: 2pt;
-						// 		background-color: $colorWashLight;
-						// 	}
-						// }
+						&:hover {
+							
+							// .background {
+								border-left-width: .2em;
+								padding-left: .5em - .2em;
+								background-color: rgba(255,255,255,.1);
+								margin-bottom: 2*$baseline;
+							// }
+						}
 					}
 				}
 			}
