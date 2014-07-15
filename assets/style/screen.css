@@ -115,8 +115,8 @@ section.container section.space header ul.users {
 /* line 17, ../sass/layout/_container.scss */
 section.container section.space header ul.users li {
   display: block;
-  height: 4rem;
-  width: 4rem;
+  height: 2rem;
+  width: 2rem;
 }
 /* line 22, ../sass/layout/_container.scss */
 section.container section.space header ul.users li img {
