@@ -133,7 +133,7 @@ section.container section.space section.content {
 /* line 39, ../sass/layout/_container.scss */
 section.container section.space section.content section.column {
   width: 24rem;
-  max-height: 75vh;
+  height: 75vh;
   overflow-x: hidden;
   overflow-y: auto;
   display: inline-block;
@@ -142,37 +142,84 @@ section.container section.space section.content section.column {
   margin-left: 1rem;
 }
 /* line 49, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack {
+  position: relative;
+}
+/* line 52, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article {
+  position: absolute !important;
+}
+/* line 55, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:first-child {
+  position: relative !important;
+}
+/* line 59, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:nth-child(2) {
+  opacity: .5;
+  -webkit-transform: scale(0.875);
+  -moz-transform: scale(0.875);
+  -ms-transform: scale(0.875);
+  -o-transform: scale(0.875);
+  transform: scale(0.875);
+  bottom: 0;
+}
+/* line 66, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:nth-child(3) {
+  opacity: .5;
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  -o-transform: scale(0.75);
+  transform: scale(0.75);
+  -webkit-transform-origin: 0% 0% 50%;
+  -moz-transform-origin: 0% 0% 50%;
+  -ms-transform-origin: 0% 0% 50%;
+  -o-transform-origin: 0% 0% 50%;
+  transform-origin: 0% 0% 50%;
+  bottom: -1em;
+}
+/* line 73, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:nth-child(4) {
+  opacity: .5;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  bottom: -2em;
+}
+/* line 83, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: #333333;
 }
-/* line 55, ../sass/layout/_container.scss */
+/* line 89, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 58, ../sass/layout/_container.scss */
+/* line 92, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 62, ../sass/layout/_container.scss */
+/* line 96, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 107, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 86, ../sass/layout/_container.scss */
+/* line 120, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
   padding-bottom: 1.5rem;
   position: relative;
   padding-left: .5em;
 }
-/* line 91, ../sass/layout/_container.scss */
+/* line 125, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
@@ -187,7 +234,7 @@ section.container section.space section.content section.column article.text .bac
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s ease-out;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 139, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text:hover .background {
   border-left-width: 2pt;
   background-color: white;

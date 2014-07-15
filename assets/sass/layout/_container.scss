@@ -38,13 +38,47 @@ section.container {
 		
 			section.column {
 				width: $col * 3;
-				max-height: 75vh;
+				height: 75vh;
 				overflow-x: hidden;
 				overflow-y: auto;
 				display: inline-block;
 				vertical-align: top;
 				padding-top: $headerHeight;
 				margin-left: $gutter;
+				
+				&.stack {
+					position: relative;
+					
+					> article {
+						position: absolute !important;
+						
+						&:first-child {
+							position: relative !important;
+						}
+					
+						&:nth-child(2) {
+							opacity: .5;
+							@include transform(scale(.875));
+							bottom: 0;
+						}
+						
+						
+						&:nth-child(3) {
+							opacity: .5;
+							@include transform(scale(.75));
+							@include transform-origin(0% 0%);
+							bottom: -1em;
+						}
+
+						&:nth-child(4) {
+							opacity: .5;
+							@include transform(scale(.5));
+							bottom: -2em;
+						}
+
+					}
+					
+				}
 			
 				article {
 					max-width: 100%;
