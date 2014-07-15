@@ -70,7 +70,7 @@ html {
 
 /* line 6, ../sass/globals/_type.scss */
 html {
-  font-family: "BemboStd", serif;
+  font-family: "Futura", serif;
   font-size: 12pt;
   line-height: 1.5em;
 }
@@ -80,7 +80,7 @@ html h1 {
 }
 /* line 17, ../sass/globals/_type.scss */
 html figure h1 {
-  font-family: "BemboStd-Italic";
+  font-family: "FuturaStd-Italic";
 }
 
 /* line 1, ../sass/layout/_body.scss */
