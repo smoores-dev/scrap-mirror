@@ -58,7 +58,8 @@ section.container {
 							margin: 0;
 							font-family: $fontItalic;
 							font-size: 1em;
-							background: $colorWashLight;
+							background: none;
+							border: .5pt $colorWashLight solid;
 							border: 0;
 							outline-style: none;
 						}
@@ -104,8 +105,10 @@ section.container {
 				article {
 					max-width: 100%;
 					overflow: hidden;
-					color: $colorTypeDark;
+					color: $colorWashLight;
 					// margin-bottom: $gutter;
+					border: .5pt $colorWashLight solid;
+
 					
 					figure {
 						width: 100%;
@@ -146,14 +149,14 @@ section.container {
 						.background {
 							height: 100%;
 							width:  100%;
-							bottom: -.333em;
-							left: 0em;
+							bottom: 0;
+							left: -.1em;
 							z-index: -10;
 							position: absolute;
-							// border-left: .5pt black solid;
+							// border: .5pt $colorWashLight solid;
 							padding-left: 1em;
 							@include transition(background-color .5s ease-out);
-							background-color: $colorWashLight;	
+							// background-color: $colorWashLight;	
 						}
 						
 						// &:hover {

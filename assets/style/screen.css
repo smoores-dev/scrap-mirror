@@ -156,23 +156,24 @@ section.container section.space section.content section.column.new article input
   margin: 0;
   font-family: "Futura-MediumItalic";
   font-size: 1em;
-  background: white;
+  background: none;
+  border: 0.5pt white solid;
   border: 0;
   outline-style: none;
 }
-/* line 70, ../sass/layout/_container.scss */
+/* line 71, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack {
   position: relative;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 74, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article {
   position: absolute !important;
 }
-/* line 76, ../sass/layout/_container.scss */
+/* line 77, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:first-child {
   position: relative !important;
 }
-/* line 80, ../sass/layout/_container.scss */
+/* line 81, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(2) {
   opacity: .5;
   -webkit-transform: scale(0.875);
@@ -182,7 +183,7 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.875);
   bottom: 0;
 }
-/* line 87, ../sass/layout/_container.scss */
+/* line 88, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(3) {
   opacity: .5;
   -webkit-transform: scale(0.75);
@@ -197,7 +198,7 @@ section.container section.space section.content section.column.stack > article:n
   transform-origin: 0% 0% 50%;
   bottom: -1em;
 }
-/* line 94, ../sass/layout/_container.scss */
+/* line 95, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(4) {
   opacity: .5;
   -webkit-transform: scale(0.5);
@@ -207,42 +208,43 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.5);
   bottom: -2em;
 }
-/* line 104, ../sass/layout/_container.scss */
+/* line 105, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
-  color: #333333;
+  color: white;
+  border: 0.5pt white solid;
 }
-/* line 110, ../sass/layout/_container.scss */
+/* line 113, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 113, ../sass/layout/_container.scss */
+/* line 116, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 117, ../sass/layout/_container.scss */
+/* line 120, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 128, ../sass/layout/_container.scss */
+/* line 131, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 141, ../sass/layout/_container.scss */
+/* line 144, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
   position: relative;
   padding: 0.25rem 2rem 2rem 0.25rem;
 }
-/* line 146, ../sass/layout/_container.scss */
+/* line 149, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
-  bottom: -.333em;
-  left: 0em;
+  bottom: 0;
+  left: -.1em;
   z-index: -10;
   position: absolute;
   padding-left: 1em;
@@ -250,5 +252,4 @@ section.container section.space section.content section.column article.text .bac
   -moz-transition: background-color 0.5s ease-out;
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s ease-out;
-  background-color: white;
 }
