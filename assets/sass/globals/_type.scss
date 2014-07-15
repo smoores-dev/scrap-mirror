@@ -20,3 +20,10 @@ html {
         
     }
 }
+
+@mixin smallCaps {
+    font-size: .75em;
+    font-weight: bold;
+    letter-spacing: .25em;
+    text-transform: uppercase !important;
+}

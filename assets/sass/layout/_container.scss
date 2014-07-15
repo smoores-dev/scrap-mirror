@@ -11,17 +11,19 @@ section.container {
 
 			ul.users {
 				position: absolute;
-				bottom: 0;
+				top: 0;
 				right: 0;
 			
 				li {
 					display: block;
-					height: 2rem;
-					width:  2rem;
+					height: 3rem;
+					width:  3rem;
+					margin: .5em;
 				
 					img {
 						height: 100%;
 						width:  100%;		
+						border-radius: 100%;
 						background-color: red;			
 					}
 					
@@ -83,7 +85,6 @@ section.container {
 							bottom: 0;
 						}
 						
-						
 						&:nth-child(3) {
 							opacity: .5;
 							@include transform(scale(.75));
@@ -142,12 +143,12 @@ section.container {
 						margin-bottom: .25rem;
 						padding-bottom: $baseline - .25rem;
 						padding-left: .5em - .05em;
-						border-left: .05em $colorWashLight solid;
+						border-left: .05em $colorWashMedium solid;
 						position: relative;
 						@include transition(.125s ease-out);
 						@include transition-property(background-color, margin-bottom);
 						// padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
-
+						
 						.background {
 							height: 100%;
 							width:  100%;
@@ -161,11 +162,12 @@ section.container {
 							// @include transition(background-color .5s ease-out);
 							// background-color: $colorWashLight;	
 						}
-						
+
 						&:hover {
 							
 							// .background {
 								border-left-width: .2em;
+								border-left-color: $colorWashLight;
 								padding-left: .5em - .2em;
 								background-color: rgba(255,255,255,.1);
 								margin-bottom: 2*$baseline;

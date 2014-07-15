@@ -109,28 +109,30 @@ section.container section.space header {
 /* line 12, ../sass/layout/_container.scss */
 section.container section.space header ul.users {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
 }
 /* line 17, ../sass/layout/_container.scss */
 section.container section.space header ul.users li {
   display: block;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
+  margin: .5em;
 }
-/* line 22, ../sass/layout/_container.scss */
+/* line 23, ../sass/layout/_container.scss */
 section.container section.space header ul.users li img {
   height: 100%;
   width: 100%;
+  border-radius: 100%;
   background-color: red;
 }
-/* line 34, ../sass/layout/_container.scss */
+/* line 36, ../sass/layout/_container.scss */
 section.container section.space section.content {
   width: 200vw;
   height: 100%;
   margin-left: 16rem;
 }
-/* line 39, ../sass/layout/_container.scss */
+/* line 41, ../sass/layout/_container.scss */
 section.container section.space section.content section.column {
   width: 24rem;
   height: 75vh;
@@ -141,15 +143,15 @@ section.container section.space section.content section.column {
   padding-top: 25vh;
   margin-left: 1rem;
 }
-/* line 49, ../sass/layout/_container.scss */
+/* line 51, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.new {
   width: 16rem;
 }
-/* line 52, ../sass/layout/_container.scss */
+/* line 54, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.new article {
   width: 100%;
 }
-/* line 55, ../sass/layout/_container.scss */
+/* line 57, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.new article input {
   width: 100%;
   padding: .25em;
@@ -160,19 +162,19 @@ section.container section.space section.content section.column.new article input
   border: 0;
   outline-style: none;
 }
-/* line 70, ../sass/layout/_container.scss */
+/* line 72, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack {
   position: relative;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 75, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article {
   position: absolute !important;
 }
-/* line 76, ../sass/layout/_container.scss */
+/* line 78, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:first-child {
   position: relative !important;
 }
-/* line 80, ../sass/layout/_container.scss */
+/* line 82, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(2) {
   opacity: .5;
   -webkit-transform: scale(0.875);
@@ -182,7 +184,7 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.875);
   bottom: 0;
 }
-/* line 87, ../sass/layout/_container.scss */
+/* line 88, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(3) {
   opacity: .5;
   -webkit-transform: scale(0.75);
@@ -197,7 +199,7 @@ section.container section.space section.content section.column.stack > article:n
   transform-origin: 0% 0% 50%;
   bottom: -1em;
 }
-/* line 94, ../sass/layout/_container.scss */
+/* line 95, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(4) {
   opacity: .5;
   -webkit-transform: scale(0.5);
@@ -207,37 +209,37 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.5);
   bottom: -2em;
 }
-/* line 104, ../sass/layout/_container.scss */
+/* line 105, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: white;
 }
-/* line 110, ../sass/layout/_container.scss */
+/* line 111, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 113, ../sass/layout/_container.scss */
+/* line 114, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 117, ../sass/layout/_container.scss */
+/* line 118, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 128, ../sass/layout/_container.scss */
+/* line 129, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 141, ../sass/layout/_container.scss */
+/* line 142, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
   margin-bottom: .25rem;
   padding-bottom: 1.25rem;
   padding-left: 0.45em;
-  border-left: 0.05em white solid;
+  border-left: 0.05em #aaaaaa solid;
   position: relative;
   -webkit-transition: 0.125s ease-out;
   -moz-transition: 0.125s ease-out;
@@ -248,7 +250,7 @@ section.container section.space section.content section.column article.text {
   -o-transition-property: background-color, margin-bottom;
   transition-property: background-color, margin-bottom;
 }
-/* line 151, ../sass/layout/_container.scss */
+/* line 152, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
@@ -258,9 +260,10 @@ section.container section.space section.content section.column article.text .bac
   position: absolute;
   padding-left: 1em;
 }
-/* line 165, ../sass/layout/_container.scss */
+/* line 166, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text:hover {
   border-left-width: .2em;
+  border-left-color: white;
   padding-left: 0.3em;
   background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 3rem;
