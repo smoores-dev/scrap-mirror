@@ -15,9 +15,13 @@ randomImages = [
   "http://images.nitrosell.com/product_images/8/1806/DomoSkateboardPatch.jpg"
 ]
 
+randomVimeo = [
+  '43108521'
+  '44388232'
+]
 exports.populate = (callback) ->
   #MODIFY THIS
-  elemsPerColumn = [2,5,2,6,7,10]
+  elemsPerColumn = [4,5,4,6,7,10]
 
   models.sequelize.sync({ force: true }).complete (err) ->
     return callback err if err?
@@ -45,12 +49,17 @@ populateColumn = (ColumnId, n, callback) ->
   elements = []
 
   createElement = (cb) ->
-    if Math.random() > .5
+    derp = Math.random()
+    if derp < .2
       contentType = 'image'
       content = randomImages[Math.floor(Math.random() * randomImages.length)]
-    else
+    else if derp < .8 
       contentType = 'text'
       content = randomLatin[Math.floor(Math.random() * randomLatin.length)]
+    else
+      contentType = 'video'
+      content = randomVimeo[Math.floor(Math.random() * randomVimeo.length)]
+
     models.Element.create({ contentType, content, ColumnId }).complete (err, element) ->
       return cb err if err?
       elements.push element.id

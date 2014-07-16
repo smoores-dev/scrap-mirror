@@ -25,4 +25,6 @@ block content
           if element.contentType == 'image'
             article(class=element.contentType)
               img(src= element.content)
-          
+          if element.contentType == 'video'
+            article(class=element.contentType)
+              iframe(src='//player.vimeo.com/video/'+element.content,width = '400', height='300', frameborder='0')
