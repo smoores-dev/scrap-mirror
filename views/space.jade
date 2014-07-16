@@ -22,3 +22,7 @@ block content
               div.background
             article.add
               input(class="add", type="text", placeholder="Add something new")
+          if element.contentType == 'image'
+            article(class=element.contentType)
+              img(src= element.content)
+          

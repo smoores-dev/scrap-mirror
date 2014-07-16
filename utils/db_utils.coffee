@@ -9,13 +9,19 @@ randomLatin = [
   "Quisque accumsan lacus eu est pretium ullamcorper. Cras et odio lectus. Vivamus hendrerit pharetra mauris, id pharetra leo tincidunt et. Phasellus massa purus, venenatis at porttitor dignissim, sollicitudin eu nunc. Praesent vel quam nulla. Aenean ornare erat erat, eget rhoncus mauris posuere sed. Vestibulum posuere convallis risus. Nulla sit amet rutrum nisi, eu eleifend sapien. Sed sit amet condimentum risus, et venenatis lorem. Proin pulvinar metus massa, accumsan bibendum lacus convallis eu."
 ]
 
+randomImages = [
+  "http://1.bp.blogspot.com/-E_SfhrchPS4/UZr6ATgFo2I/AAAAAAAAAQU/tyYLrJgwoYo/s1600/domo030.jpg"
+  "http://www.ruethedayblog.com/wp-content/uploads/2009/12/domo.jpg"
+  "http://images.nitrosell.com/product_images/8/1806/DomoSkateboardPatch.jpg"
+]
+
 exports.populate = (callback) ->
   #MODIFY THIS
-  elemsPerColumn = [2,5,2]
+  elemsPerColumn = [2,5,2,6,7,10]
 
   models.sequelize.sync({ force: true }).complete (err) ->
     return callback err if err?
-    models.Space.create({ 'Test Space' }).complete (err, space) ->
+    models.Space.create({ name: 'Test Space' }).complete (err, space) ->
       return callback err if err?
       createColumns elemsPerColumn.length, (err) ->
         return callback err if err?
@@ -35,11 +41,16 @@ createColumns = (n, callback) ->
    ((cb) -> models.Column.create({SpaceId:1}).complete cb), callback
 
 populateColumn = (ColumnId, n, callback) ->
-  contentType = 'text'
-  content = randomLatin[Math.floor(Math.random() * randomLatin.length)]
+  contentType = 'image'
   elements = []
 
   createElement = (cb) ->
+    if Math.random() > .5
+      contentType = 'image'
+      content = randomImages[Math.floor(Math.random() * randomImages.length)]
+    else
+      contentType = 'text'
+      content = randomLatin[Math.floor(Math.random() * randomLatin.length)]
     models.Element.create({ contentType, content, ColumnId }).complete (err, element) ->
       return cb err if err?
       elements.push element.id
