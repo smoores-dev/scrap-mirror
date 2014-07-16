@@ -1,19 +1,24 @@
 extends layout
 
-block header
-  - var users = ["http://images.wikia.com/nintendo/en/images/archive/4/44/20120820000627!Luigi-Icon.png","http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png"]
+block content
+  - var users = ["https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c1.95.477.477/p480x480/1920336_10152275444250993_2135489901_n.jpg?oh=bbaa145748095d6331cba2e63d34351e&oe=544B7BC0&__gda__=1412714693_09ab5f6cad5ec3a6e1b1a5cfbdf15e02","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c0.0.480.480/p480x480/10176080_2520381682312_4890391499590307710_n.jpg?oh=9b62cd1a1e536d8baeb80f5b63b12aee&oe=544C61A6&__gda__=1414538666_07bda3f9b428206ce7dab047fcd01710"]
 
   header
-    ul
+    ul.users
       each user in users
         li
-          img(src= user, width="35")
+          img(src= user)
 
-block content
-  section.space
+  section.content
+    section.column.add
+      article.add
+        input(class="add", type="text", placeholder="Add something new")
     each column in space.columns
-      section.column
+      section.column.normal
         each element in column.elements
           if element.contentType == 'text'
-            article.element
+            article(class=element.contentType)
               p= element.content
+              div.background
+            article.add
+              input(class="add", type="text", placeholder="Add something new")

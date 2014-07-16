@@ -1,0 +1,29 @@
+$fontRegular:   "Futura";
+$fontBold:      "FuturaStd-Bold";
+$fontItalic:    "Futura-MediumItalic";
+$fontBoldItalic:"FuturaStd-BoldItalic";
+
+html {
+    font-family: $fontRegular, serif;
+    font-size: 12pt;
+    line-height: 1.5em;
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    figure {
+        
+        h1 {
+            font-family: $fontItalic;
+        }
+        
+    }
+}
+
+@mixin smallCaps {
+    font-size: .75em;
+    font-weight: bold;
+    letter-spacing: .25em;
+    text-transform: uppercase !important;
+}

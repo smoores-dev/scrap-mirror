@@ -1,0 +1,219 @@
+section.container {
+
+	section.space {
+		width: 100%;
+	
+		header {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: $headerHeight;
+
+			ul.users {
+				position: absolute;
+				top: 0;
+				right: 0;
+			
+				li {
+					display: block;
+					height: 3rem;
+					width:  3rem;
+					margin: .5em;
+				
+					img {
+						height: 100%;
+						width:  100%;		
+						border-radius: 100%;
+						background-color: red;			
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		section.content {
+			width: 200vw;
+			height: 100%;
+			margin-left: $col * 2;
+		
+			section.column {
+				width: $col * 3;
+				height: 75vh;
+				overflow-x: hidden;
+				overflow-y: auto;
+				display: inline-block;
+				vertical-align: top;
+				padding-top: $headerHeight;
+				margin-left: $gutter;
+				
+				&.add {
+					width: $col*2;
+				}
+				
+				
+				&.normal {
+				
+					article {
+					
+						input.add:focus {
+						
+							article.add & {
+								height: $baseline*2;
+								background: red;
+							}
+							
+						} 
+						
+						&.add {
+							padding: $baseline 0 $baseline*1.5 0;
+							margin: -$baseline*1.25 0;
+							height: 1pt;
+							@include transition(height .125s ease-out);
+						
+							input.add {
+								opacity: 0;
+								@include transition(opacity .125s linear);
+							}
+							
+							
+							&:hover {
+								height: $baseline*2;
+								
+								input.add {
+									opacity: 1;
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				&.stack {
+					position: relative;
+					
+					> article {
+						position: absolute !important;
+						
+						&:first-child {
+							position: relative !important;
+						}
+					
+						&:nth-child(2) {
+							opacity: .5;
+							@include transform(scale(.875));
+							bottom: 0;
+						}
+						
+						&:nth-child(3) {
+							opacity: .5;
+							@include transform(scale(.75));
+							@include transform-origin(0% 0%);
+							bottom: -1em;
+						}
+
+						&:nth-child(4) {
+							opacity: .5;
+							@include transform(scale(.5));
+							bottom: -2em;
+						}
+
+					}
+					
+				}
+			
+				article {
+					max-width: 100%;
+					overflow: hidden;
+					color: $colorWashLight;
+					position: relative;
+					// margin-bottom: $gutter;
+					
+					&.add {
+						z-index: 20;
+						
+						input.add {
+							width: 100%;
+							padding: .25em;
+							margin: 0;
+							font-family: $fontItalic;
+							font-size: 1em;
+							background: $colorWashLight;
+							border: 0;
+							outline-style: none;
+						}
+																		
+					}
+					
+					figure {
+						width: 100%;
+					
+						img {
+							width: 100%;
+						}
+						
+						figcaption {
+							background: $colorWashDark;
+							padding-top: $baseline;
+							position: relative;
+							top: -$baseline;
+						}
+						
+					}
+					
+					p {
+
+						& + p {
+							text-indent: 2em;
+						}
+					}
+					
+					&.link {
+						
+						a {
+						
+						}
+						
+					}
+					
+					&.text {
+						margin-bottom: .25rem;
+						padding-bottom: $baseline - .25rem;
+						padding-left: .5em - .05em;
+						border-left: .05em $colorWashMedium solid;
+						position: relative;
+						@include transition(.125s ease-out);
+						@include transition-property(background-color, margin-bottom);
+						// padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
+						
+						.background {
+							height: 100%;
+							width:  100%;
+							bottom: 0;
+							left: 0;
+							z-index: -10;
+							position: absolute;
+							// border: .5pt $colorWashLight solid;
+							// border-left: .5pt $colorWashLight solid;
+							padding-left: 1em;
+							// @include transition(background-color .5s ease-out);
+							// background-color: $colorWashLight;	
+						}
+
+						&:hover {
+							border-left-width: .2em;
+							border-left-color: $colorWashLight;
+							padding-left: .5em - .2em;
+							background-color: rgba(255,255,255,.1);
+							// margin-bottom: 2*$baseline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
