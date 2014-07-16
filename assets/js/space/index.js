@@ -14,7 +14,6 @@ $(document).ready(function() {
    $('#receiver').append('<li>' + data + '</li>');
   });
 
-
   socket.on('newSpace', function(data){
   	var space = data.space;
   });
@@ -31,11 +30,9 @@ $(document).ready(function() {
 	socket.on('newElement', function(data){
 		var element = element;
 	});
-
 	socket.on('removeElement', function(data){
 		var element = element;
 	});
-
 	socket.on('moveElement', function(data){
 		var oldColumn = data.oldColumn; 
 		var newColumn = data.newColumn;
