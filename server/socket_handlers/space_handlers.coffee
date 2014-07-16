@@ -1,4 +1,4 @@
-db = require '../../models'
+models = require '../../models'
 
 module.exports =
   
@@ -6,7 +6,7 @@ module.exports =
   newSpace : (sio, socket, data, callback) ->
     name = data.name
     spaceId = data.spaceId
-    db.Space.create( { name } ).complete (err, space) ->
+    models.Space.create( { name } ).complete (err, space) ->
       return callback err if err?
       socket.emit 'newSpace', { space }
       callback()
@@ -18,7 +18,7 @@ module.exports =
     columnSorting = data.columnSorting
 
     # first find the space
-    db.Space.find(where: { id: spaceId } ).complete (err, space) ->
+    models.Space.find(where: { id: spaceId } ).complete (err, space) ->
       return callback err if err?
       # update the columns
       space.updateAttributes( { columnSorting } ).complete (err) ->
