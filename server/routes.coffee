@@ -1,3 +1,5 @@
+db = require '../models'
+
 module.exports = (server) ->
   server.error (err, req, res, next) ->
     if err instanceof NotFound
@@ -13,7 +15,7 @@ module.exports = (server) ->
             description: ''
             author: ''
             analyticssiteid: 'XXXXXXX'
-            error: err 
+            error: err
           },status: 500 }
 
   server.get '/', (req,res) ->
@@ -24,8 +26,23 @@ module.exports = (server) ->
         author: 'Your Name'
         analyticssiteid: 'XXXXXXX' 
 
+  server.get '/:id', (req, res) ->
+    space = db.Space.find( {
+      where: { id: +req.params.id },
+      include: [ {
+        model: db.Column,
+        include: [ db.Element ]
+      } ]
+    } ).complete (err, space) ->
+      return callback err if err?
+      res.render 'index.jade',
+        locals:
+          title : space.name
+          space : space
+
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'
+
 
   server.get '/*', (req, res) ->
     throw new NotFound;

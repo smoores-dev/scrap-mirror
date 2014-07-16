@@ -17,7 +17,7 @@ server.configure(function(){
     server.use(server.router);
 });
 
-db.sequelize.sync({ force: true }).complete(function(err) {
+db.sequelize.sync({ force: false }).complete(function(err) {
     if (err) {
         throw err[0];
     } else {
