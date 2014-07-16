@@ -11,13 +11,15 @@ block content
           img(src= user)
 
   section.content
-    section.column.new
-      article.new
-        input(type="text", placeholder="Add something new")
+    section.column.add
+      article.add
+        input(class="add", type="text", placeholder="Add something new")
     each column in space.columns
-      section.column
+      section.column.normal
         each element in column.elements
           if element.contentType == 'text'
             article(class=element.contentType)
               p= element.content
               div.background
+            article.add
+              input(class="add", type="text", placeholder="Add something new")

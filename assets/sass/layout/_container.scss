@@ -48,21 +48,45 @@ section.container {
 				padding-top: $headerHeight;
 				margin-left: $gutter;
 				
-				&.new {
+				&.add {
 					width: $col*2;
-					
+				}
+				
+				
+				&.normal {
+				
 					article {
-						width: 100%;
+					
+						input.add:focus {
 						
-						input {
-							width: 100%;
-							padding: .25em;
-							margin: 0;
-							font-family: $fontItalic;
-							font-size: 1em;
-							background: $colorWashLight;
-							border: 0;
-							outline-style: none;
+							article.add & {
+								height: $baseline*2;
+								background: red;
+							}
+							
+						} 
+						
+						&.add {
+							padding: $baseline 0 $baseline*1.5 0;
+							margin: -$baseline*1.25 0;
+							height: 1pt;
+							@include transition(height .125s ease-out);
+						
+							input.add {
+								opacity: 0;
+								@include transition(opacity .125s linear);
+							}
+							
+							
+							&:hover {
+								height: $baseline*2;
+								
+								input.add {
+									opacity: 1;
+								}
+								
+							}
+							
 						}
 						
 					}
@@ -106,7 +130,24 @@ section.container {
 					max-width: 100%;
 					overflow: hidden;
 					color: $colorWashLight;
+					position: relative;
 					// margin-bottom: $gutter;
+					
+					&.add {
+						z-index: 20;
+						
+						input.add {
+							width: 100%;
+							padding: .25em;
+							margin: 0;
+							font-family: $fontItalic;
+							font-size: 1em;
+							background: $colorWashLight;
+							border: 0;
+							outline-style: none;
+						}
+																		
+					}
 					
 					figure {
 						width: 100%;
@@ -164,14 +205,11 @@ section.container {
 						}
 
 						&:hover {
-							
-							// .background {
-								border-left-width: .2em;
-								border-left-color: $colorWashLight;
-								padding-left: .5em - .2em;
-								background-color: rgba(255,255,255,.1);
-								margin-bottom: 2*$baseline;
-							// }
+							border-left-width: .2em;
+							border-left-color: $colorWashLight;
+							padding-left: .5em - .2em;
+							background-color: rgba(255,255,255,.1);
+							// margin-bottom: 2*$baseline;
 						}
 					}
 				}

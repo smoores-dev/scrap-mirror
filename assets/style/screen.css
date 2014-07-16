@@ -144,37 +144,53 @@ section.container section.space section.content section.column {
   margin-left: 1rem;
 }
 /* line 51, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.new {
+section.container section.space section.content section.column.add {
   width: 16rem;
 }
-/* line 54, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.new article {
-  width: 100%;
+/* line 62, ../sass/layout/_container.scss */
+article.add section.container section.space section.content section.column.normal article input.add:focus {
+  height: 3rem;
+  background: red;
 }
-/* line 57, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.new article input {
-  width: 100%;
-  padding: .25em;
-  margin: 0;
-  font-family: "Futura-MediumItalic";
-  font-size: 1em;
-  background: white;
-  border: 0;
-  outline-style: none;
+/* line 69, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add {
+  padding: 1.5rem 0 2.25rem 0;
+  margin: -1.875rem 0;
+  height: 1pt;
+  -webkit-transition: height 0.125s ease-out;
+  -moz-transition: height 0.125s ease-out;
+  -o-transition: height 0.125s ease-out;
+  transition: height 0.125s ease-out;
 }
-/* line 72, ../sass/layout/_container.scss */
+/* line 75, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add input.add {
+  opacity: 0;
+  -webkit-transition: opacity 0.125s linear;
+  -moz-transition: opacity 0.125s linear;
+  -o-transition: opacity 0.125s linear;
+  transition: opacity 0.125s linear;
+}
+/* line 81, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add:hover {
+  height: 3rem;
+}
+/* line 84, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add:hover input.add {
+  opacity: 1;
+}
+/* line 96, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack {
   position: relative;
 }
-/* line 75, ../sass/layout/_container.scss */
+/* line 99, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article {
   position: absolute !important;
 }
-/* line 78, ../sass/layout/_container.scss */
+/* line 102, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:first-child {
   position: relative !important;
 }
-/* line 82, ../sass/layout/_container.scss */
+/* line 106, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(2) {
   opacity: .5;
   -webkit-transform: scale(0.875);
@@ -184,7 +200,7 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.875);
   bottom: 0;
 }
-/* line 88, ../sass/layout/_container.scss */
+/* line 112, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(3) {
   opacity: .5;
   -webkit-transform: scale(0.75);
@@ -199,7 +215,7 @@ section.container section.space section.content section.column.stack > article:n
   transform-origin: 0% 0% 50%;
   bottom: -1em;
 }
-/* line 95, ../sass/layout/_container.scss */
+/* line 119, ../sass/layout/_container.scss */
 section.container section.space section.content section.column.stack > article:nth-child(4) {
   opacity: .5;
   -webkit-transform: scale(0.5);
@@ -209,32 +225,48 @@ section.container section.space section.content section.column.stack > article:n
   transform: scale(0.5);
   bottom: -2em;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 129, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article {
   max-width: 100%;
   overflow: hidden;
   color: white;
+  position: relative;
 }
-/* line 111, ../sass/layout/_container.scss */
+/* line 136, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article.add {
+  z-index: 20;
+}
+/* line 139, ../sass/layout/_container.scss */
+section.container section.space section.content section.column article.add input.add {
+  width: 100%;
+  padding: .25em;
+  margin: 0;
+  font-family: "Futura-MediumItalic";
+  font-size: 1em;
+  background: white;
+  border: 0;
+  outline-style: none;
+}
+/* line 152, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure {
   width: 100%;
 }
-/* line 114, ../sass/layout/_container.scss */
+/* line 155, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure img {
   width: 100%;
 }
-/* line 118, ../sass/layout/_container.scss */
+/* line 159, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 129, ../sass/layout/_container.scss */
+/* line 170, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article p + p {
   text-indent: 2em;
 }
-/* line 142, ../sass/layout/_container.scss */
+/* line 183, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text {
   margin-bottom: .25rem;
   padding-bottom: 1.25rem;
@@ -250,7 +282,7 @@ section.container section.space section.content section.column article.text {
   -o-transition-property: background-color, margin-bottom;
   transition-property: background-color, margin-bottom;
 }
-/* line 152, ../sass/layout/_container.scss */
+/* line 193, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text .background {
   height: 100%;
   width: 100%;
@@ -260,11 +292,10 @@ section.container section.space section.content section.column article.text .bac
   position: absolute;
   padding-left: 1em;
 }
-/* line 166, ../sass/layout/_container.scss */
+/* line 207, ../sass/layout/_container.scss */
 section.container section.space section.content section.column article.text:hover {
   border-left-width: .2em;
   border-left-color: white;
   padding-left: 0.3em;
   background-color: rgba(255, 255, 255, 0.1);
-  margin-bottom: 3rem;
 }
