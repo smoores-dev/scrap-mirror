@@ -1,20 +1,4 @@
 extends layout
 
-block header
-  - var users = ["http://images.wikia.com/nintendo/en/images/archive/4/44/20120820000627!Luigi-Icon.png","http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png"]
-
-  header
-    ul
-      each user in users
-        li
-          img(src= user, width="35")
-
 block content
-
-  section.space
-    each column in space.columns
-      section.column
-        each element in column.elements
-          if element.contentType == 'text'
-            article.element
-              p= element.content
+  h1 Welcome to Scrap!
