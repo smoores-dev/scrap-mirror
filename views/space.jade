@@ -25,6 +25,10 @@ block content
           if element.contentType == 'image'
             article(class=element.contentType)
               img(src= element.content)
+            article.add
+              input(class="add", type="text", placeholder="Add something new")
           if element.contentType == 'video'
             article(class=element.contentType)
               iframe(src='//player.vimeo.com/video/'+element.content,width = '400', height='300', frameborder='0')
+            article.add
+              input(class="add", type="text", placeholder="Add something new")
