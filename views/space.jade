@@ -29,6 +29,6 @@ block content
               input(class="add", type="text", placeholder="Add something new")
           if element.contentType == 'video'
             article(class=element.contentType)
-              iframe(src='//player.vimeo.com/video/'+element.content,width = '400', height='300', frameborder='0')
+              iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
             article.add
               input(class="add", type="text", placeholder="Add something new")

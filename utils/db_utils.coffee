@@ -10,7 +10,7 @@ randomLatin = [
 ]
 
 randomImages = [
-  "http://1.bp.blogspot.com/-E_SfhrchPS4/UZr6ATgFo2I/AAAAAAAAAQU/tyYLrJgwoYo/s1600/domo030.jpg"
+  # "http://1.bp.blogspot.com/-E_SfhrchPS4/UZr6ATgFo2I/AAAAAAAAAQU/tyYLrJgwoYo/s1600/domo030.jpg"
   "http://www.ruethedayblog.com/wp-content/uploads/2009/12/domo.jpg"
   "http://images.nitrosell.com/product_images/8/1806/DomoSkateboardPatch.jpg"
 ]
