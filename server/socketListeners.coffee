@@ -13,16 +13,16 @@ module.exports = (server)->
     socket.join spaceId
     console.log 'joined', spaceId
 
-    socket.on 'newSpace',     (data) -> spaceHandlers.newSpace sio, socket, data, spaceId, errorHandler
-    socket.on 'reorderSpace', (data) -> spaceHandlers.reorderSpace sio, socket, data, spaceId, errorHandler
+    socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, data, spaceId, errorHandler
+    socket.on 'reorderSpace', (data) -> spaceController.reorderSpace io, socket, data, spaceId, errorHandler
 
-    socket.on 'newColumn',     (data) -> columnHandlers.newColumn sio, socket, data, spaceId, errorHandler
-    socket.on 'reorderColumn', (data) -> columnHandlers.reorderColumn sio, socket, data, spaceId, errorHandler
+    socket.on 'newColumn',     (data) -> columnController.newColumn io, socket, data, spaceId, errorHandler
+    socket.on 'reorderColumn', (data) -> columnController.reorderColumn io, socket, data, spaceId, errorHandler
 
-    socket.on 'newElement',    (data) -> elementHandlers.newElement sio, socket, data, spaceId, errorHandler
-    socket.on 'removeElement', (data) -> elementHandlers.removeElement sio, socket, data, spaceId, errorHandler
-    socket.on 'moveElement',   (data) -> elementHandlers.moveElement sio, socket, data, spaceId, errorHandler
+    socket.on 'newElement',    (data) -> elementController.newElement io, socket, data, spaceId, errorHandler
+    socket.on 'removeElement', (data) -> elementController.removeElement io, socket, data, spaceId, errorHandler
+    socket.on 'moveElement',   (data) -> elementController.moveElement io, socket, data, spaceId, errorHandler
 
     socket.on 'disconnect', ->
-      socket.leave(''+id)
+      socket.leave(''+spaceId)
       console.log 'Client Disconnected.'
