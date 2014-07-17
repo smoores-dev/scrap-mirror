@@ -5,7 +5,6 @@ module.exports =
 
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceId, callback) =>
-    spaceId = data.spaceId
     columnId = data.columnId
     contentType = data.contentType
     content = data.content
@@ -24,7 +23,6 @@ module.exports =
 
   # delete the element
   removeElement : (sio, socket, data, spaceId, callback) =>
-    spaceId = data.spaceId
     id = data.elementId
 
     # find/delete the element
@@ -53,7 +51,6 @@ module.exports =
 
   # moves an element from one column to another
   moveElement : (sio, socket, data, spaceId, callback) =>
-    spaceId = data.spaceId
     oldColumnId = data.oldColumnId
     newColumnId = data.newColumnId
     newIndex = data.newIndex
