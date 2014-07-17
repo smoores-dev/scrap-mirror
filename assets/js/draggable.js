@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
-  // $('.text').draggable
+  $('.column.normal').sortable({
+    revert: true,
+    connectWith: '.column.normal',
+    cursor: 'move',
+    items: '> :not(.add)'
+  });
 
 })
