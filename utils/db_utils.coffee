@@ -50,15 +50,15 @@ populateColumn = (ColumnId, n, callback) ->
 
   createElement = (cb) ->
     derp = Math.random()
-    if derp < .2
-      contentType = 'image'
-      content = randomImages[Math.floor(Math.random() * randomImages.length)]
-    else if derp < .8 
-      contentType = 'text'
-      content = randomLatin[Math.floor(Math.random() * randomLatin.length)]
-    else
-      contentType = 'video'
-      content = randomVimeo[Math.floor(Math.random() * randomVimeo.length)]
+    # if derp < .2
+    #   contentType = 'image'
+    #   content = randomImages[Math.floor(Math.random() * randomImages.length)]
+    # else if derp < .8 
+    contentType = 'text'
+    content = randomLatin[Math.floor(Math.random() * randomLatin.length)]
+    # else
+    #   contentType = 'video'
+    #   content = randomVimeo[Math.floor(Math.random() * randomVimeo.length)]
 
     models.Element.create({ contentType, content, ColumnId }).complete (err, element) ->
       return cb err if err?
