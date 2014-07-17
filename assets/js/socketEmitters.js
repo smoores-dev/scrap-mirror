@@ -3,10 +3,10 @@ $(document).ready(function() {
   
   $('form').submit(function(event) {
     event.preventDefault();
-    columnId = $('input[name=columnId]', this).val();
-    content = $('input[name=content]', this).val();
-    if columnId {
-      index = $('input[name=index]', this).val();
+    var columnId = $('input[name=columnId]', this).val();
+    var content = $('input[name=content]', this).val();
+    if (columnId) {
+      var index = $('input[name=index]', this).val();
       socket.emit('newElement', { columnId: +columnId, contentType: 'text', content: content });
     }
     else {

@@ -17,12 +17,11 @@ block content
       article.add
         form
           input(type='hidden', name="columnId", value=null)
-          input(type='hidden', name="index", value=i+1)
           input(class="add", type="text", name="content", placeholder="Add something new")
           input(type="submit", style="visibility: hidden;")
     each column in space.columns
       section.column.normal
-        each element, i in column.elements
+        each element in column.elements
           if element.contentType == 'text'
             article(class=element.contentType)
               p= element.content
@@ -30,7 +29,7 @@ block content
             article.add
               form
                 input(type='hidden', name="columnId", value=column.id)
-                input(type='hidden', name="index", value=i+1)
+                input(type='hidden', name="index", value='1')
                 input(class="add", type="text", name="content", placeholder="Add something new")
                 input(type="submit", style="visibility: hidden;")
           if element.contentType == 'image'
