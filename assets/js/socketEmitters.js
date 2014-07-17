@@ -8,9 +8,9 @@ $(document).ready(function() {
     if (columnId) {
       var index = $('input[name=index]', this).val();
       socket.emit('newElement', { columnId: +columnId, contentType: 'text', content: content });
-    }
-    else {
-      socket.emit('newColumn', { contentType: 'text'}, content: content });
+
+    } else { // make a new column with a new element
+      socket.emit('newColumn', { contentType: 'text', content: content });
     }
   });
 });
