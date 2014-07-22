@@ -34,7 +34,5 @@ block content
               iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
           article.add
             form
-              input(type='hidden', name="columnId", value=column.id)
-              input(type='hidden', name="index", value='1')
               input(class="add", type="text", name="content", placeholder="Add something new")
               input(type="submit", style="visibility: hidden;")

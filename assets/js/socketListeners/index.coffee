@@ -45,10 +45,7 @@ $ ->
   getAddBox = (columnId) ->
     return '<article class="add">'+
         '<form>'+
-        '<input type="hidden" name="columnId" value='+columnId+'></input>'+
-        '<input type="hidden" name="index" value="1"></input>'+
         '<input class="add" type="text" name="content" placeholder="Add something new"></input>'+
         '<input type="submit" style="visibility:hidden;"></input>'+
         '</form>'+
         '</article>'
-  }
