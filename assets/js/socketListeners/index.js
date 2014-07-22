@@ -24,10 +24,16 @@ $(document).ready(function() {
     var index = data.index;
     var columnId = element.ColumnId;
 
-    var article = '<article class="text"><p>' + content +'</p><div class="background"></div></article>';
+    var newArticle = '<article class="text"><p>' + content + '</p><div class="background"></div></article>';
     var column = $('section.column.normal[data-columnid=' + columnId + ']');
     var articles = $('article:not(.add)', column);
-    $(articles[index - 1]).after(article).after(getAddBox(columnId));
+
+    // clear the textbox
+    var textboxForm = $(articles[index - 1]).next();
+    $('input[name=content]', textboxForm).val('');
+
+    // add the new article and textbox
+    $(articles[index - 1]).after(newArticle).after(getAddBox(columnId));
   });
 
   socket.on('removeElement', function(data){
