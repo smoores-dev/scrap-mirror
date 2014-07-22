@@ -21,7 +21,7 @@ block content
           input(class="add", type="text", name="content", placeholder="Add something new")
           input(type="submit", style="visibility: hidden;")
     each column in space.columns
-      section.column.normal
+      section.column.normal(data-columnid=column.id)
         each element in column.elements
           if element.contentType == 'text'
             article(class=element.contentType)

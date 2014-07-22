@@ -34,7 +34,7 @@ module.exports = (server) ->
         include: [ db.Element ]
       } ]
     } ).complete (err, space) ->
-      return callback err if err?
+      return console.error err if err?
       res.render 'space.jade',
         locals:
           title : space.name
