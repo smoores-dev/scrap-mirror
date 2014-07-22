@@ -3,9 +3,8 @@ models = require '../../models'
 module.exports =
   
   # create a new space and save it to the db
-  newSpace : (sio, socket, data, callback) ->
+  newSpace : (sio, socket, data, spaceId, callback) ->
     name = data.name
-    spaceId = data.spaceId
     models.Space.create( { name } ).complete (err, space) ->
       return callback err if err?
       socket.emit 'newSpace', { space }
@@ -13,8 +12,7 @@ module.exports =
     
 
   # reorder the columns in a space
-  reorderSpace : (sio, socket, data, callback) ->
-    spaceId = data.spaceId
+  reorderSpace : (sio, socket, data, spaceId, callback) ->
     columnSorting = data.columnSorting
 
     # first find the space

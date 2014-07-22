@@ -4,8 +4,7 @@ async = require 'async'
 module.exports =
 
   # create a new element and save it to db
-  newElement : (sio, socket, data, callback) =>
-    spaceId = data.spaceId
+  newElement : (sio, socket, data, spaceId, callback) =>
     columnId = data.columnId
     contentType = data.contentType
     content = data.content
@@ -23,8 +22,7 @@ module.exports =
           callback()
 
   # delete the element
-  removeElement : (sio, socket, data, callback) =>
-    spaceId = data.spaceId
+  removeElement : (sio, socket, data, spaceId, callback) =>
     id = data.elementId
 
     # find/delete the element
@@ -52,8 +50,7 @@ module.exports =
               callback()
 
   # moves an element from one column to another
-  moveElement : (sio, socket, data, callback) =>
-    spaceId = data.spaceId
+  moveElement : (sio, socket, data, spaceId, callback) =>
     oldColumnId = data.oldColumnId
     newColumnId = data.newColumnId
     newIndex = data.newIndex

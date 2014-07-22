@@ -3,8 +3,7 @@ async = require 'async'
 
 module.exports =
 	# create a new column and save it to db
-  newColumn : (sio, socket, data, callback) ->
-    spaceId = data.spaceId
+  newColumn : (sio, socket, data, spaceId, callback) ->
     contentType = data.contentType
     content = data.content
 
@@ -22,8 +21,7 @@ module.exports =
 
 
   # reorder the elements in the column
-  reorderColumn : (sio, socket, data, callback) ->
-    spaceId = data.spaceId
+  reorderColumn : (sio, socket, data, spaceId, callback) ->
     columnId = data.columnId
     elementSorting = data.elementSorting
 

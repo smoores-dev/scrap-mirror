@@ -22,7 +22,7 @@ db.sequelize.sync({ force: false }).complete(function(err) {
         throw err[0];
     } else {
         server.listen(port);
-        require('./server/socketBinding')(server);
+        require('./server/socketListeners')(server);
         require('./server/routes')(server);
         console.log('Listening on port:' + port );
     }
