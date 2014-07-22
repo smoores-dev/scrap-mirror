@@ -1,4 +1,5 @@
-$ -> 
+$ ->  
+
   socket = io.connect()
   
   socket.on 'newSpace', (data) ->
