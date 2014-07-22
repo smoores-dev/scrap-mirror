@@ -20,11 +20,10 @@ module.exports = (server) ->
 
   server.get '/', (req,res) ->
     res.render 'index.jade', 
-    locals :
-        title : 'Your Page Title'
-        description: 'Your Page Description'
-        author: 'Your Name'
-        analyticssiteid: 'XXXXXXX' 
+      title : 'Your Page Title'
+      description: 'Your Page Description'
+      author: 'Your Name'
+      analyticssiteid: 'XXXXXXX' 
 
   server.get '/:id', (req, res) ->
     space = db.Space.find( {
