@@ -24,7 +24,8 @@ app.configure(function(){
         compress: true,
         encodeSrc: false,
         force: true,
-        bare: true
+        bare: true,
+        debug: true
     }));
 });
 

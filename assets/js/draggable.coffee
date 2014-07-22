@@ -19,7 +19,7 @@ $ ->
       if ui.item.next().hasClass 'add'
         $(ui.item).before(newElement)
       else
-        $(ui.item).after(newElement
+        $(ui.item).after(newElement)
   )
 
   $('.column.normal > article:not(.add)').on 'mousedown', ->
