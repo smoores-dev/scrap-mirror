@@ -24,23 +24,17 @@ block content
     each column in space.columns
       section.column.normal(data-columnid=column.id)
         each element in column.elements
-          if element.contentType == 'text'
-            article(class=element.contentType)
+          article(class=element.contentType)
+            if element.contentType == 'text'
               p= element.content
               div.background
-            article.add
-              form
-                input(type='hidden', name="columnId", value=column.id)
-                input(type='hidden', name="index", value='1')
-                input(class="add", type="text", name="content", placeholder="Add something new")
-                input(type="submit", style="visibility: hidden;")
-          if element.contentType == 'image'
-            article(class=element.contentType)
+            if element.contentType == 'image'
               img(src= element.content)
-            article.add
-              input(class="add", type="text", placeholder="Add something new")
-          if element.contentType == 'video'
-            article(class=element.contentType)
+            if element.contentType == 'video'
               iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
-            article.add
-              input(class="add", type="text", placeholder="Add something new")
+          article.add
+            form
+              input(type='hidden', name="columnId", value=column.id)
+              input(type='hidden', name="index", value='1')
+              input(class="add", type="text", name="content", placeholder="Add something new")
+              input(type="submit", style="visibility: hidden;")
