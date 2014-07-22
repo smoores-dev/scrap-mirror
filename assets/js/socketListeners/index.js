@@ -1,14 +1,6 @@
 $(document).ready(function() {   
-  console.log('hello scrap');
   var socket = io.connect();
   
-  // $('#sender').bind('click', function() {
-  //  socket.emit('message', 'Message Sent on ' + new Date());     
-  // });
-  // socket.on('server_message', function(data){
-
-  //  $('#receiver').append('<li>' + data + '</li>');
-  // });
   socket.on('newSpace', function(data){
     var space = data.space;
   });
@@ -23,7 +15,19 @@ $(document).ready(function() {
     var elementSorting = data.elementSorting;
   });
   socket.on('newElement', function(data){
+    console.log('Got newElement', data);
     var element = element;
+
+    // var content = $('<article></article>');
+    // var content = $('<p></p>');
+    // var div = $('<div></div>');
+
+    // content.text(element.content);
+    // div.addClass('background');
+
+    // article.append(content);
+    // article.append(div);
+
   });
   socket.on('removeElement', function(data){
     var element = element;
