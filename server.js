@@ -1,29 +1,32 @@
 require('coffee-script/register');
-var connect = require('connect')
-    , express = require('express')
-    , io = require('socket.io')
+
+var express = require('express')
+    , app = express()
+    , server = require('http').createServer(app)
+    , io = require('socket.io')(server)
     , port = (process.env.PORT || 9001)
     , db = require('./models');
 
 //Setup Express
-var server = express.createServer();
-server.configure(function(){
-    server.set('views', __dirname + '/views');
-    server.set('view options', { layout: false });
-    server.use(connect.bodyParser());
-    server.use(express.cookieParser());
-    server.use(express.session({ secret: "club_sexdungeon"}));
-    server.use(connect.static(__dirname + '/assets'));
-    server.use(server.router);
+server.listen(port);
+
+app.configure(function(){
+    app.set('views', __dirname + '/views');
+    app.set("view engine", "jade");
+    app.set('view options', { layout: false });
+    app.use(express.bodyParser());
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: "club_sexdungeon"}));
+    app.use(express.static(__dirname + '/assets'));
+    app.use(app.router);
 });
 
 db.sequelize.sync({ force: false }).complete(function(err) {
     if (err) {
         throw err[0];
     } else {
-        server.listen(port);
-        require('./server/socketListeners')(server);
-        require('./server/routes')(server);
+        require('./server/socketListeners')(io);
+        require('./server/routes')(app);
         console.log('Listening on port:' + port );
     }
 });
