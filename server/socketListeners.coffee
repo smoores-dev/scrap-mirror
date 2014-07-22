@@ -5,8 +5,7 @@ columnController = require './socketControllers/columnController'
 elementController = require './socketControllers/elementController'
 errorHandler = require './errorHandler'
 
-module.exports = (server)->
-  io = sio.listen server
+module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
 
     spaceId = url.parse(socket.handshake.headers.referer, true).path.split('/')[1]
