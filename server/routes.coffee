@@ -36,9 +36,8 @@ module.exports = (server) ->
     } ).complete (err, space) ->
       return console.error err if err?
       res.render 'space.jade',
-        locals:
-          title : space.name
-          space : space
+        title : space.name
+        space : space
 
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'
