@@ -1,11 +1,12 @@
 emitNewElement = (socket) ->
   (event) ->
     event.preventDefault()
-    columnId = $('input[name=columnId]', this).val()
+    columnId = $(this).parent().parent().data('columnid')
     content = $('input[name=content]', this).val()
 
     if columnId?
-      index = $('input[name=index]', this).val()
+      index = ($(this).parent().index() + 1) / 2
+      console.log index
       socket.emit('newElement', { columnId: +columnId, contentType: 'text', content: content, index: +index })
 
     else # make a new column with a new element
