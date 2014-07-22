@@ -36,6 +36,8 @@ $(document).ready(function() {
     $(articles[index - 1]).after(newArticle).after(getAddBox(columnId));
     var newTextboxForm = $(articles[index - 1]).next();
     $('form', newTextboxForm).submit(emitNewElement(socket));
+
+    column.sortable('refresh');
   });
 
   socket.on('removeElement', function(data){
