@@ -34,6 +34,8 @@ $(document).ready(function() {
 
     // add the new article and textbox
     $(articles[index - 1]).after(newArticle).after(getAddBox(columnId));
+    var newTextboxForm = $(articles[index - 1]).next();
+    $('form', newTextboxForm).submit(emitNewElement(socket));
   });
 
   socket.on('removeElement', function(data){
@@ -50,11 +52,11 @@ $(document).ready(function() {
   var getAddBox = function(columnId) {
     return '<article class="add">'+
         '<form>'+
-        '<input type="hidden" name="columnid" value='+columnId+'></input>'+
+        '<input type="hidden" name="columnId" value='+columnId+'></input>'+
         '<input type="hidden" name="index" value="1"></input>'+
         '<input class="add" type="text" name="content" placeholder="Add something new"></input>'+
         '<input type="submit" style="visibility:hidden;"></input>'+
         '</form>'+
         '</article>'
-  }
+  };
 });
