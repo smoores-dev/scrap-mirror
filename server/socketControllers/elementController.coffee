@@ -18,7 +18,7 @@ module.exports =
         return callback err if err?
         module.exports.insertIntoSorting column, element.id, index, (err) ->
           return callback err if err?
-          sio.to("#{spaceId}").emit 'newElement', { columnId, element }
+          sio.to("#{spaceId}").emit 'newElement', { element, index }
           callback()
 
   # delete the element
