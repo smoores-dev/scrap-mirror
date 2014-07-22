@@ -44,7 +44,8 @@ module.exports = (server) ->
 
 
   server.get '/*', (req, res) ->
-    throw new NotFound;
+    console.log 'Failed to get', req.url
+    # throw new NotFound;
 
   NotFound = (msg) ->
     this.name = 'NotFound'
