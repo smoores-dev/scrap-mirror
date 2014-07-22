@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  var socket = io.connect();
+
   $('.column.normal').sortable({
     revert: true,
     connectWith: '.column.normal',
@@ -9,7 +11,7 @@ $(document).ready(function() {
       var columnId = ui.item.data('columnid');
       var newElement = '<article class="add">'+
           '<form>'+
-          '<input type="hidden" name="columnid" value='+columnId+'></input>'+
+          '<input type="hidden" name="columnId" value='+columnId+'></input>'+
           '<input type="hidden" name="index" value="1"></input>'+
           '<input class="add" type="text" name="content" placeholder="Add something new"></input>'+
           '<input type="submit" style="visibility:hidden;"></input>'+
@@ -17,9 +19,13 @@ $(document).ready(function() {
           '</article>'
       if(ui.item.next().hasClass('add')) {
         $(ui.item).before(newElement);
+        var form = $('form', $(ui.item).prev())
+        form.submit(emitNewElement(socket));
       }
       else {
-        $(ui.item).after(newElement);
+        $(ui.item).after();
+        var form = $('form', $(ui.item).next())
+        form.submit(emitNewElement(socket));
       }
     }
   });
