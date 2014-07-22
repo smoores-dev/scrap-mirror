@@ -24,13 +24,8 @@ app.configure(function(){
         compress: true,
         encodeSrc: false,
         force: true,
-<<<<<<< HEAD
         debug: true,
         bare: true
-=======
-        bare: true,
-        debug: true
->>>>>>> Fix dumb open paren
     }));
 });
 
