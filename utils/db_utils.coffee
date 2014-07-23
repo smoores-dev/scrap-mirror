@@ -27,8 +27,6 @@ exports.populate = (callback) ->
         return callback err if err?
         callback null
 
-
-
 createElement = (cb) ->
   console.log 'here'
   options =
@@ -38,6 +36,7 @@ createElement = (cb) ->
     y : randInt(maxY)
     z : (z++)
     scale : (Math.random() * (maxS - minS)) + minS
+    SpaceId : 1
 
   models.Element.create(options).complete (err, element) ->
     return cb err if err?
