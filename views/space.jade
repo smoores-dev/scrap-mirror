@@ -23,7 +23,10 @@ block content
       //-     input(type="submit", style="visibility: hidden;")
     //- each column in space.columns
     //-   section.column.normal(data-columnid=column.id)
+    - var max = 0
     each element in space.elements
+      if element.z > max
+        - max = element.z
       article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+"px;")
         if element.contentType == 'text'
           p= element.content
@@ -32,6 +35,7 @@ block content
           img(src= element.content)
         if element.contentType == 'video'
           iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
+    script= "var highestZ = "+max
       //- article.add
       //-   form
       //-     input(type='hidden', name="columnId", value=column.id)
