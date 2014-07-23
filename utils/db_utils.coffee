@@ -10,9 +10,9 @@ randomLatin = [
 ]
 
 n = 20
-maxX = 100
-maxY = 100
-maxS = 2.0
+maxX = 3000
+maxY = 1000
+maxS = 5.0
 minS = 0.2
 z = 0;
 
