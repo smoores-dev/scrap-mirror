@@ -1,7 +1,6 @@
 sio = require('socket.io')
 url = require('url')
 spaceController = require './socketControllers/spaceController'
-columnController = require './socketControllers/columnController'
 elementController = require './socketControllers/elementController'
 errorHandler = require './errorHandler'
 
@@ -13,14 +12,9 @@ module.exports = (io)->
     console.log 'joined', spaceId
 
     socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, data, spaceId, errorHandler
-    socket.on 'reorderSpace', (data) -> spaceController.reorderSpace io, socket, data, spaceId, errorHandler
-
-    socket.on 'newColumn',     (data) -> columnController.newColumn io, socket, data, spaceId, errorHandler
-    socket.on 'reorderColumn', (data) -> columnController.reorderColumn io, socket, data, spaceId, errorHandler
-
-    socket.on 'newElement',    (data) -> elementController.newElement io, socket, data, spaceId, errorHandler
-    socket.on 'removeElement', (data) -> elementController.removeElement io, socket, data, spaceId, errorHandler
-    socket.on 'moveElement',   (data) -> elementController.moveElement io, socket, data, spaceId, errorHandler
+    socket.on 'newElement',   (data) -> elementController.newElement io, socket, data, spaceId, errorHandler
+    socket.on 'removeElement',(data) -> elementController.removeElement io, socket, data, spaceId, errorHandler
+    socket.on 'updateElement',(data) -> elementController.updateElement io, socket, data, spaceId, errorHandler
 
     socket.on 'disconnect', ->
       socket.leave(''+spaceId)

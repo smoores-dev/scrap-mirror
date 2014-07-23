@@ -8,13 +8,9 @@ module.exports = (sequelize, DataTypes) ->
       type: DataTypes.DATE
       allowNull: false
       defaultValue: DataTypes.NOW
-    columnSorting:
-      type: DataTypes.ARRAY(DataTypes.INTEGER)
-      allowNull: false
-      defaultValue: '{}'
   }, {
     classMethods:
       associate: (models) ->
         Space.hasMany models.User, through: models.UserSpace
-        Space.hasMany models.Column
+        Space.hasMany models.Element
   }

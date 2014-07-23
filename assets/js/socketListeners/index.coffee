@@ -1,26 +1,24 @@
 $ ->  
+
   socket = io.connect()
   
   socket.on 'newSpace', (data) ->
     space = data.space
 
-  socket.on 'reorderSpace', (data) ->
-    columnSorting = data.columnSorting
-
-  socket.on 'newColumn', (data) ->
-    column = data.column
-
-  socket.on 'reorderColumn', (data) ->
-    columnId = data.columnId
-    elementSorting = data.elementSorting
-
   socket.on 'newElement', (data) ->
     element = data.element
     content = element.content
-    index = data.index
-    columnId = element.ColumnId
+    contentType = element.contentType
+    id = element.id
+    x = element.x
+    y = element.y
+    z = element.z
 
-    newArticle = '<article class="text"><p>' + content + '</p><div class="background"></div></article>'
+    newArticle =
+      "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
+          <p>#{content}</p>
+          <div class='background'></div>
+        </article>"
     column = $('section.column.normal[data-columnid=' + columnId + ']')
     articles = $('article:not(.add)', column)
 
@@ -33,19 +31,15 @@ $ ->
     newTextboxForm = $(articles[index - 1]).next()
     $('form', newTextboxForm).submit(emitNewElement(socket))
 
+    column.draggable('refresh')
+
   socket.on 'removeElement', (data) ->
-    element = data.element
+    element = element
 
-  socket.on 'moveElement', (data) ->
-    oldColumn = data.oldColumn 
-    newColumn = data.newColumn
-    newIndex = data.newIndex
-    elementId = data.elementId
+  socket.on 'updateElement', (data) ->
+    id = data.element.id
+    x = data.element.x
+    y = data.element.y
+    z = data.element.z
 
-  getAddBox = (columnId) ->
-    return '<article class="add">'+
-        '<form>'+
-        '<input class="add" type="text" name="content" placeholder="Add something new"></input>'+
-        '<input type="submit" style="visibility:hidden;"></input>'+
-        '</form>'+
-        '</article>'
+    $("\##{id}").animate( top: y, left: x, 'z-index': z )
