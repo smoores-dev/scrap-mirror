@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) ->
       type: DataTypes.INTEGER
       allowNull: false
     scale:
-      type: DataTypes.INTEGER
+      type: DataTypes.FLOAT
       allowNull: false
   }, {
     classMethods:

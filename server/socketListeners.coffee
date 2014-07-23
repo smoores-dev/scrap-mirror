@@ -1,7 +1,7 @@
 sio = require('socket.io')
 url = require('url')
 spaceController = require './socketControllers/spaceController'
-elementController = require './socketControllers/elementController'
+selementController = require './socketControllers/elementController'
 errorHandler = require './errorHandler'
 
 module.exports = (io)->
