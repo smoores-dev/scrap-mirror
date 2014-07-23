@@ -24,7 +24,7 @@ block content
     //- each column in space.columns
     //-   section.column.normal(data-columnid=column.id)
     each element in space.elements
-      article(class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+"px;")
+      article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+"px;")
         if element.contentType == 'text'
           p= element.content
           div.background

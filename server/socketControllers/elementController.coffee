@@ -41,11 +41,11 @@ module.exports =
     toUpdate.z = data.z if data.z?
     toUpdate.scale = data.scale if data.scale?
 
-    # find the old column first
+    # find the element first
     db.Element.find(where: { id } ).complete (err, element) =>
       return callback err if err?
-      element.updateAttributes(toUpdate).complete (err) =>   
+      element.updateAttributes(toUpdate).complete (err, element) =>   
         return callback err if err?
         # remove from the old column and add to new one    
-        sio.to("#{spaceId}").emit 'updateElement', { data }
+        sio.to("#{spaceId}").emit 'updateElement', { element }
         callback()

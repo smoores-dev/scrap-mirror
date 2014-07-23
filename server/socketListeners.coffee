@@ -1,7 +1,7 @@
 sio = require('socket.io')
 url = require('url')
 spaceController = require './socketControllers/spaceController'
-selementController = require './socketControllers/elementController'
+elementController = require './socketControllers/elementController'
 errorHandler = require './errorHandler'
 
 module.exports = (io)->
@@ -14,7 +14,7 @@ module.exports = (io)->
     socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, data, spaceId, errorHandler
     socket.on 'newElement',   (data) -> elementController.newElement io, socket, data, spaceId, errorHandler
     socket.on 'removeElement',(data) -> elementController.removeElement io, socket, data, spaceId, errorHandler
-    socket.on 'updateElement',(data) -> elementController.moveElement io, socket, data, spaceId, errorHandler
+    socket.on 'updateElement',(data) -> elementController.updateElement io, socket, data, spaceId, errorHandler
 
     socket.on 'disconnect', ->
       socket.leave(''+spaceId)
