@@ -16,5 +16,5 @@ module.exports = (sequelize, DataTypes) ->
     classMethods:
       associate: (models) ->
         Space.hasMany models.User, through: models.UserSpace
-        Space.hasMany models.Column
+        Space.hasMany models.Element
   }

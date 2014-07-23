@@ -6,9 +6,21 @@ module.exports = (sequelize, DataTypes) ->
     content:
       type: DataTypes.TEXT
       allowNull: false
+    x:
+      type: DataTypes.INTEGER
+      allowNull: false
+    y:
+      type: DataTypes.INTEGER
+      allowNull: false
+    z:
+      type: DataTypes.INTEGER
+      allowNull: false
+    scale:
+      type: DataTypes.INTEGER
+      allowNull: false
   }, {
     classMethods:
       associate: (models) ->
         Element.belongsTo models.User, foreignKey: 'creatorId', as: 'Creator'
-        Element.belongsTo models.Column
+        Element.belongsTo models.Space
   }
