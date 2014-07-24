@@ -41,7 +41,7 @@ section.container {
 				article {
 					width: $col*2;
 					overflow: hidden;
-					color: $colorWashLight;
+					color: $colorTypeDark;
 					position: relative;
 					// margin-bottom: $gutter;
 					
@@ -94,9 +94,9 @@ section.container {
 					
 					&.text {
 						margin-bottom: .25rem;
-						padding-bottom: $baseline - .25rem;
-						padding-left: .5em - .05em;
-						border-left: .05em $colorWashMedium solid;
+						// padding-bottom: $baseline - .25rem;
+						// padding-left: .5em - .05em;
+						// border-left: .05em $colorWashMedium solid;
 						position: relative;
 						@include transition(.125s ease-out);
 						@include transition-property(background-color, margin-bottom);
@@ -109,6 +109,7 @@ section.container {
 							left: 0;
 							z-index: -10;
 							position: absolute;
+							background-color: $colorWashLightTrans;
 							// border: .5pt $colorWashLight solid;
 							// border-left: .5pt $colorWashLight solid;
 							padding-left: 1em;
@@ -117,10 +118,10 @@ section.container {
 						}
 
 						&:hover {
-							border-left-width: .2em;
-							border-left-color: $colorWashLight;
-							padding-left: .5em - .2em;
-							background-color: rgba(255,255,255,.1);
+							// border-left-width: .2em;
+							// border-left-color: $colorWashLight;
+							// padding-left: .5em - .2em;
+							background-color: $colorWashLight;
 							// margin-bottom: 2*$baseline;
 						}
 					}
