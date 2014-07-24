@@ -19,16 +19,9 @@ $ ->
           <p>#{content}</p>
           <div class='background'></div>
         </article>"
-    # clear the textbox
-    textboxForm = $(articles[index - 1]).next()
-    $('input[name=content]', textboxForm).val('')
 
-    # add the new article and textbox
-    $(articles[index - 1]).after(newArticle).after(getAddBox(columnId))
-    newTextboxForm = $(articles[index - 1]).next()
-    $('form', newTextboxForm).submit(emitNewElement(socket))
-
-    column.draggable('refresh')
+    $('.content').append(newArticle)
+    $("\##{id}").draggable(draggableOptions socket)
 
   socket.on 'removeElement', (data) ->
     element = element
