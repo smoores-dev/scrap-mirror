@@ -118,11 +118,20 @@ section.container {
 						}
 
 						&:hover {
+						
+							.background {
+								background-color: $colorWashLight;
+							}
 							// border-left-width: .2em;
 							// border-left-color: $colorWashLight;
 							// padding-left: .5em - .2em;
-							background-color: $colorWashLight;
 							// margin-bottom: 2*$baseline;
+						}
+						
+						&:active {
+							.background {
+								@include transform(scale(1.21));
+							}
 						}
 					}
 			}

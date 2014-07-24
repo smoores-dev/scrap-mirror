@@ -197,7 +197,15 @@ section.container section.space section.content article.text .background {
   background-color: rgba(255, 255, 255, 0.95);
   padding-left: 1em;
 }
-/* line 120, ../sass/layout/_container.scss */
-section.container section.space section.content article.text:hover {
+/* line 122, ../sass/layout/_container.scss */
+section.container section.space section.content article.text:hover .background {
   background-color: white;
+}
+/* line 132, ../sass/layout/_container.scss */
+section.container section.space section.content article.text:active .background {
+  -webkit-transform: scale(1.21);
+  -moz-transform: scale(1.21);
+  -ms-transform: scale(1.21);
+  -o-transform: scale(1.21);
+  transform: scale(1.21);
 }
