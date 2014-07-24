@@ -21,9 +21,8 @@ time, mark, audio, video {
 }
 
 /* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body {
+html {
   line-height: 1;
-  height:100%;
 }
 
 /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
@@ -97,141 +96,56 @@ header {
   height: 25vh;
 }
 
-section.container {
-  width: 100%;
-  height:100%;
-}
-
 /* line 3, ../sass/layout/_container.scss */
 section.container section.space {
   width: 100%;
-<<<<<<< HEAD
   height: 100%;
-=======
-  height:100%;
->>>>>>> master
 }
 /* line 7, ../sass/layout/_container.scss */
 section.container section.space header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 25vh;
 }
-/* line 13, ../sass/layout/_container.scss */
+/* line 12, ../sass/layout/_container.scss */
 section.container section.space header ul.users {
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 18, ../sass/layout/_container.scss */
+/* line 17, ../sass/layout/_container.scss */
 section.container section.space header ul.users li {
   display: block;
   height: 3rem;
   width: 3rem;
   margin: .5em;
 }
-/* line 24, ../sass/layout/_container.scss */
+/* line 23, ../sass/layout/_container.scss */
 section.container section.space header ul.users li img {
   height: 100%;
   width: 100%;
   border-radius: 100%;
   background-color: red;
 }
-/* line 37, ../sass/layout/_container.scss */
+/* line 36, ../sass/layout/_container.scss */
 section.container section.space section.content {
-<<<<<<< HEAD
   width: 100%;
   height: 100%;
   -webkit-transform: scale(1);
   position: fixed;
-=======
-  position: fixed;
-  width:100%;
-  height:100%;
-  -webkit-transform: scale(1);
 }
-/* line 41, ../sass/layout/_container.scss */
-section.container section.space section.content section.column {
-  width: 24rem;
-  height: 75vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 25vh;
-  margin-left: 1rem;
-}
-/* line 51, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.add {
-  width: 16rem;
-}
-/* line 62, ../sass/layout/_container.scss */
-article.add section.container section.space section.content section.column.normal article input.add:focus {
-  height: 3rem;
-  background: red;
-}
-/* line 69, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.normal article.add {
-  padding: 1.5rem 0 2.25rem 0;
-  margin: -1.875rem 0;
-  height: 1pt;
-  -webkit-transition: height 0.125s ease-out;
-  -moz-transition: height 0.125s ease-out;
-  -o-transition: height 0.125s ease-out;
-  transition: height 0.125s ease-out;
-}
-/* line 75, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.normal article.add input.add {
-  opacity: 0;
-  -webkit-transition: opacity 0.125s linear;
-  -moz-transition: opacity 0.125s linear;
-  -o-transition: opacity 0.125s linear;
-  transition: opacity 0.125s linear;
-}
-/* line 81, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.normal article.add:hover {
-  height: 3rem;
-}
-/* line 84, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.normal article.add:hover input.add {
-  opacity: 1;
-}
-/* line 96, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.stack {
-  position: relative;
-}
-/* line 99, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.stack > article {
-  position: absolute !important;
-}
-/* line 102, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.stack > article:first-child {
-  position: relative !important;
-}
-/* line 106, ../sass/layout/_container.scss */
-section.container section.space section.content section.column.stack > article:nth-child(2) {
-  opacity: .5;
-  -webkit-transform: scale(0.875);
-  -moz-transform: scale(0.875);
-  -ms-transform: scale(0.875);
-  -o-transform: scale(0.875);
-  transform: scale(0.875);
-  bottom: 0;
->>>>>>> master
-}
-/* line 43, ../sass/layout/_container.scss */
+/* line 42, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   overflow: hidden;
   color: #333333;
   position: relative;
 }
-/* line 50, ../sass/layout/_container.scss */
+/* line 49, ../sass/layout/_container.scss */
 section.container section.space section.content article.add {
   z-index: 20;
 }
-/* line 53, ../sass/layout/_container.scss */
+/* line 52, ../sass/layout/_container.scss */
 section.container section.space section.content article.add input.add {
   width: 100%;
   padding: .25em;
@@ -242,26 +156,26 @@ section.container section.space section.content article.add input.add {
   border: 0;
   outline-style: none;
 }
-/* line 66, ../sass/layout/_container.scss */
+/* line 65, ../sass/layout/_container.scss */
 section.container section.space section.content article figure {
   width: 100%;
 }
-/* line 69, ../sass/layout/_container.scss */
+/* line 68, ../sass/layout/_container.scss */
 section.container section.space section.content article figure img {
   width: 100%;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 72, ../sass/layout/_container.scss */
 section.container section.space section.content article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 84, ../sass/layout/_container.scss */
+/* line 83, ../sass/layout/_container.scss */
 section.container section.space section.content article p + p {
   text-indent: 2em;
 }
-/* line 97, ../sass/layout/_container.scss */
+/* line 96, ../sass/layout/_container.scss */
 section.container section.space section.content article.text {
   margin-bottom: .25rem;
   position: relative;
@@ -274,7 +188,7 @@ section.container section.space section.content article.text {
   -o-transition-property: background-color, margin-bottom;
   transition-property: background-color, margin-bottom;
 }
-/* line 107, ../sass/layout/_container.scss */
+/* line 106, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .background {
   height: 100%;
   width: 100%;
@@ -285,11 +199,11 @@ section.container section.space section.content article.text .background {
   background-color: rgba(255, 255, 255, 0.95);
   padding-left: 1em;
 }
-/* line 124, ../sass/layout/_container.scss */
+/* line 123, ../sass/layout/_container.scss */
 section.container section.space section.content article.text:hover .background {
   background-color: white;
 }
-/* line 134, ../sass/layout/_container.scss */
+/* line 133, ../sass/layout/_container.scss */
 section.container section.space section.content article.text:active .background {
   -webkit-transform: scale(1.1);
 }
