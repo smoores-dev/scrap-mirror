@@ -19,9 +19,6 @@ $ ->
           <p>#{content}</p>
           <div class='background'></div>
         </article>"
-    column = $('section.column.normal[data-columnid=' + columnId + ']')
-    articles = $('article:not(.add)', column)
-
     # clear the textbox
     textboxForm = $(articles[index - 1]).next()
     $('input[name=content]', textboxForm).val('')

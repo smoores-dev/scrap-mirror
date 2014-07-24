@@ -95,6 +95,11 @@ header {
   height: 25vh;
 }
 
+section.container {
+  -webkit-transform: scale(1);
+  -webkit-transform-origin: left top;
+}
+
 /* line 3, ../sass/layout/_container.scss */
 section.container section.space {
   width: 100%;
