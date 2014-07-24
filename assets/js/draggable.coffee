@@ -10,6 +10,7 @@ $ ->
 
   $('article.text').draggable(
     start: (event, ui) ->
+      $(window).off 'mousemove'
       click.x = event.clientX
       click.y = event.clientY
 
