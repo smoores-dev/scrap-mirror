@@ -19,9 +19,6 @@ $ ->
           <p>#{content}</p>
           <div class='background'></div>
         </article>"
-    column = $('section.column.normal[data-columnid=' + columnId + ']')
-    articles = $('article:not(.add)', column)
-
     # clear the textbox
     textboxForm = $(articles[index - 1]).next()
     $('input[name=content]', textboxForm).val('')
@@ -38,8 +35,8 @@ $ ->
 
   socket.on 'updateElement', (data) ->
     id = data.element.id
-    x = data.element.x
-    y = data.element.y
+    x = data.element.x + totalDelta.x
+    y = data.element.y + totalDelta.y
     z = data.element.z
 
     $("\##{id}").animate( top: y, left: x, 'z-index': z )

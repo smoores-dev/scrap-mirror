@@ -21,8 +21,9 @@ time, mark, audio, video {
 }
 
 /* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html {
+html, body {
   line-height: 1;
+  height:100%;
 }
 
 /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
@@ -96,10 +97,19 @@ header {
   height: 25vh;
 }
 
+section.container {
+  width: 100%;
+  height:100%;
+}
+
 /* line 3, ../sass/layout/_container.scss */
 section.container section.space {
   width: 100%;
+<<<<<<< HEAD
   height: 100%;
+=======
+  height:100%;
+>>>>>>> master
 }
 /* line 7, ../sass/layout/_container.scss */
 section.container section.space header {
@@ -130,10 +140,85 @@ section.container section.space header ul.users li img {
 }
 /* line 37, ../sass/layout/_container.scss */
 section.container section.space section.content {
+<<<<<<< HEAD
   width: 100%;
   height: 100%;
   -webkit-transform: scale(1);
   position: fixed;
+=======
+  position: fixed;
+  width:100%;
+  height:100%;
+  -webkit-transform: scale(1);
+}
+/* line 41, ../sass/layout/_container.scss */
+section.container section.space section.content section.column {
+  width: 24rem;
+  height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 25vh;
+  margin-left: 1rem;
+}
+/* line 51, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.add {
+  width: 16rem;
+}
+/* line 62, ../sass/layout/_container.scss */
+article.add section.container section.space section.content section.column.normal article input.add:focus {
+  height: 3rem;
+  background: red;
+}
+/* line 69, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add {
+  padding: 1.5rem 0 2.25rem 0;
+  margin: -1.875rem 0;
+  height: 1pt;
+  -webkit-transition: height 0.125s ease-out;
+  -moz-transition: height 0.125s ease-out;
+  -o-transition: height 0.125s ease-out;
+  transition: height 0.125s ease-out;
+}
+/* line 75, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add input.add {
+  opacity: 0;
+  -webkit-transition: opacity 0.125s linear;
+  -moz-transition: opacity 0.125s linear;
+  -o-transition: opacity 0.125s linear;
+  transition: opacity 0.125s linear;
+}
+/* line 81, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add:hover {
+  height: 3rem;
+}
+/* line 84, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.normal article.add:hover input.add {
+  opacity: 1;
+}
+/* line 96, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack {
+  position: relative;
+}
+/* line 99, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article {
+  position: absolute !important;
+}
+/* line 102, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:first-child {
+  position: relative !important;
+}
+/* line 106, ../sass/layout/_container.scss */
+section.container section.space section.content section.column.stack > article:nth-child(2) {
+  opacity: .5;
+  -webkit-transform: scale(0.875);
+  -moz-transform: scale(0.875);
+  -ms-transform: scale(0.875);
+  -o-transform: scale(0.875);
+  transform: scale(0.875);
+  bottom: 0;
+>>>>>>> master
 }
 /* line 43, ../sass/layout/_container.scss */
 section.container section.space section.content article {
