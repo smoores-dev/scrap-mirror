@@ -2,9 +2,6 @@ $ ->
 
   socket = io.connect()
 
-  matrixToArray = (str) ->
-    str.match(/(-?[0-9\.]+)/g)
-
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
     oldScale = matrixToArray($('section.content').css('-webkit-transform'))[0]
