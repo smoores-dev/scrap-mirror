@@ -28,10 +28,7 @@ module.exports = (server) ->
   server.get '/:id', (req, res) ->
     space = db.Space.find( {
       where: { id: +req.params.id },
-      include: [ {
-        model: db.Column,
-        include: [ db.Element ]
-      } ]
+      include: [ db.Element ]
     } ).complete (err, space) ->
       return console.error err if err?
       res.render 'space.jade',
