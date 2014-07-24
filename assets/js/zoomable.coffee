@@ -7,8 +7,8 @@ $ ->
 
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
-    oldScale = matrixToArray($('section.container').css('-webkit-transform'))[0]
+    oldScale = matrixToArray($('section.content').css('-webkit-transform'))[0]
     newScale = parseFloat(oldScale) * (event.deltaY / 100)
-    $('section.container').css(
+    $('section.content').css(
       '-webkit-transform': "scale(#{oldScale - newScale})"
     )
