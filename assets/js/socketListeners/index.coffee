@@ -35,8 +35,8 @@ $ ->
 
   socket.on 'updateElement', (data) ->
     id = data.element.id
-    x = data.element.x
-    y = data.element.y
+    x = data.element.x + totalDelta.x
+    y = data.element.y + totalDelta.y
     z = data.element.z
 
     $("\##{id}").animate( top: y, left: x, 'z-index': z )

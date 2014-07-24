@@ -1,3 +1,7 @@
+totalDelta =
+  x: 0
+  y: 0
+
 $ ->
 
   matrixToArray = (str) ->
@@ -9,13 +13,16 @@ $ ->
       x: event.clientX
       y: event.clientY
     $(this).on 'mousemove', (event) ->
-      deltaX = event.clientX - prev.x
-      deltaY = event.clientY - prev.y
+      deltaX = (event.clientX - prev.x) / scale
+      deltaY = (event.clientY - prev.y) / scale
+
+      totalDelta.x += deltaX
+      totalDelta.y += deltaY
 
       prev.x = event.clientX
       prev.y = event.clientY
 
-      $('article.text').animate( { top: "+=#{deltaY / scale}", left: "+=#{deltaX / scale}" }, 0, 'linear' )
+      $('article.text').animate( { top: "+=#{deltaY}", left: "+=#{deltaX}" }, 0, 'linear' )
 
       $(this).on 'mouseup', ->
         $(this).off 'mousemove'

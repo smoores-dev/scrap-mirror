@@ -30,9 +30,10 @@ $ ->
 
     stop: (event, ui) ->
       xString = $(this).css('left')
-      x = Math.floor(xString.slice(0,xString.length - 2))
+      #remove the 'px' from the end of the string
+      x = Math.floor(xString.slice(0,xString.length - 2) - totalDelta.x)
       yString = $(this).css('top')
-      y = Math.floor(yString.slice(0,yString.length - 2))
+      y = Math.floor(yString.slice(0,yString.length - 2) - totalDelta.y)
       z = highestZ
       elementId = this.id
       
