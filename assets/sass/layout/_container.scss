@@ -1,5 +1,7 @@
 section.container {
-
+	width: 100%;
+	height: 100%;
+	
 	section.space {
 		width: 100%;
 		height: 100%;
@@ -43,7 +45,7 @@ section.container {
 					width: $col*2;
 					overflow: hidden;
 					color: $colorTypeDark;
-					position: relative;
+					position: absolute;
 					// margin-bottom: $gutter;
 					
 					&.add {
@@ -94,15 +96,9 @@ section.container {
 					}
 					
 					&.text {
-						margin-bottom: .25rem;
-						// padding-bottom: $baseline - .25rem;
-						// padding-left: .5em - .05em;
-						// border-left: .05em $colorWashMedium solid;
-						position: relative;
 						@include transition(.125s ease-out);
 						@include transition-property(background-color, margin-bottom);
-						// padding: $gutter/4 $gutter*2 $gutter*2 $gutter/4;
-						
+
 						.background {
 							height: 100%;
 							width:  100%;
