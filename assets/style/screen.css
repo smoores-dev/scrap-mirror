@@ -85,6 +85,7 @@ html figure h1 {
 
 /* line 1, ../sass/layout/_body.scss */
 body {
+  height: 100%;
   background-color: #ed3f00;
 }
 
@@ -95,55 +96,63 @@ header {
   height: 25vh;
 }
 
-/* line 3, ../sass/layout/_container.scss */
-section.container section.space {
+/* line 1, ../sass/layout/_container.scss */
+section.container {
   width: 100%;
+  height: 100%;
+  -webkit-transform: scale(1);
 }
 /* line 6, ../sass/layout/_container.scss */
+section.container section.space {
+  width: 100%;
+  height: 100%;
+}
+/* line 10, ../sass/layout/_container.scss */
 section.container section.space header {
   position: fixed;
   top: 0;
   width: 100%;
   height: 25vh;
 }
-/* line 12, ../sass/layout/_container.scss */
+/* line 16, ../sass/layout/_container.scss */
 section.container section.space header ul.users {
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 17, ../sass/layout/_container.scss */
+/* line 21, ../sass/layout/_container.scss */
 section.container section.space header ul.users li {
   display: block;
   height: 3rem;
   width: 3rem;
   margin: .5em;
 }
-/* line 23, ../sass/layout/_container.scss */
+/* line 27, ../sass/layout/_container.scss */
 section.container section.space header ul.users li img {
   height: 100%;
   width: 100%;
   border-radius: 100%;
   background-color: red;
 }
-/* line 36, ../sass/layout/_container.scss */
+/* line 40, ../sass/layout/_container.scss */
 section.container section.space section.content {
-  width: 200vw;
+  width: 100%;
   height: 100%;
-  margin-left: 16rem;
+  -webkit-transform: scale(1);
+  position: fixed;
 }
-/* line 41, ../sass/layout/_container.scss */
+/* line 46, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   overflow: hidden;
   color: #333333;
   position: relative;
 }
-/* line 48, ../sass/layout/_container.scss */
+/* line 53, ../sass/layout/_container.scss */
 section.container section.space section.content article.add {
   z-index: 20;
 }
-/* line 51, ../sass/layout/_container.scss */
+/* line 56, ../sass/layout/_container.scss */
 section.container section.space section.content article.add input.add {
   width: 100%;
   padding: .25em;
@@ -154,26 +163,26 @@ section.container section.space section.content article.add input.add {
   border: 0;
   outline-style: none;
 }
-/* line 64, ../sass/layout/_container.scss */
+/* line 69, ../sass/layout/_container.scss */
 section.container section.space section.content article figure {
   width: 100%;
 }
-/* line 67, ../sass/layout/_container.scss */
+/* line 72, ../sass/layout/_container.scss */
 section.container section.space section.content article figure img {
   width: 100%;
 }
-/* line 71, ../sass/layout/_container.scss */
+/* line 76, ../sass/layout/_container.scss */
 section.container section.space section.content article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 82, ../sass/layout/_container.scss */
+/* line 87, ../sass/layout/_container.scss */
 section.container section.space section.content article p + p {
   text-indent: 2em;
 }
-/* line 95, ../sass/layout/_container.scss */
+/* line 100, ../sass/layout/_container.scss */
 section.container section.space section.content article.text {
   margin-bottom: .25rem;
   position: relative;
@@ -186,7 +195,7 @@ section.container section.space section.content article.text {
   -o-transition-property: background-color, margin-bottom;
   transition-property: background-color, margin-bottom;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 110, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .background {
   height: 100%;
   width: 100%;
@@ -197,15 +206,11 @@ section.container section.space section.content article.text .background {
   background-color: rgba(255, 255, 255, 0.95);
   padding-left: 1em;
 }
-/* line 122, ../sass/layout/_container.scss */
+/* line 127, ../sass/layout/_container.scss */
 section.container section.space section.content article.text:hover .background {
   background-color: white;
 }
-/* line 132, ../sass/layout/_container.scss */
+/* line 137, ../sass/layout/_container.scss */
 section.container section.space section.content article.text:active .background {
-  -webkit-transform: scale(1.21);
-  -moz-transform: scale(1.21);
-  -ms-transform: scale(1.21);
-  -o-transform: scale(1.21);
-  transform: scale(1.21);
+  -webkit-transform: scale(1.1);
 }
