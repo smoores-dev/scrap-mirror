@@ -21,7 +21,7 @@ $ ->
       $(this).zIndex z
 
     drag: (event, ui) ->
-      scale = matrixToArray($('section.container').css('-webkit-transform'))[0]
+      scale = matrixToArray($('section.content').css('-webkit-transform'))[0]
 
       ui.position =
         left: (event.clientX - click.x + startPosition.left) / scale
