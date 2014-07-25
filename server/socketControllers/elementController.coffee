@@ -13,6 +13,7 @@ module.exports =
       y: data.y
       z: data.z
       scale: data.scale
+      SpaceId: spaceId
 
     db.Element.create(options).complete (err, element) =>
       return callback err if err?
