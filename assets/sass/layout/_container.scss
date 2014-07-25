@@ -12,6 +12,7 @@ section.container {
 	
 		header {
 			position: fixed;
+			z-index: 2;
 			top: 0;
 			width: 100%;
 
@@ -44,6 +45,7 @@ section.container {
 			height: 100%;
 			-webkit-transform: scale(1);
 			position: fixed;
+			z-index: 1;
 									
 				article {
 					width: $col*2;
