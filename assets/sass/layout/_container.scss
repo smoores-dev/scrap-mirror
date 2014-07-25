@@ -59,7 +59,8 @@ section.container {
 											   -moz-box-shadow);
 										
 					&:hover {
-					
+						cursor: move;
+						
 						.background {
 							background-color: $colorWashLight;
 						}
@@ -79,7 +80,7 @@ section.container {
 
 					&:active {
 						cursor: move;
-						-webkit-transform: scale(1.0625) rotate(-2deg);
+						@include transform(scale(1.0625) rotate(-2deg));
 						@include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
 						
 						.background {

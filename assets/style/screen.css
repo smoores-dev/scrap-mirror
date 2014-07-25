@@ -66,6 +66,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 4, ../sass/globals/_boilerplate.scss */
 html {
   text-rendering: optimizeLegibility;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* line 6, ../sass/globals/_type.scss */
@@ -158,11 +164,15 @@ section.container section.space section.content article {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow;
 }
-/* line 63, ../sass/layout/_container.scss */
+/* line 61, ../sass/layout/_container.scss */
+section.container section.space section.content article:hover {
+  cursor: move;
+}
+/* line 64, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .background {
   background-color: white;
 }
-/* line 69, ../sass/layout/_container.scss */
+/* line 70, ../sass/layout/_container.scss */
 section.container section.space section.content article .background {
   height: 100%;
   width: 100%;
@@ -176,23 +186,27 @@ section.container section.space section.content article .background {
   -o-transition: background-color 0.25s ease-out;
   transition: background-color 0.25s ease-out;
 }
-/* line 80, ../sass/layout/_container.scss */
+/* line 81, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   -webkit-transform: scale(1.0625) rotate(-2deg);
+  -moz-transform: scale(1.0625) rotate(-2deg);
+  -ms-transform: scale(1.0625) rotate(-2deg);
+  -o-transform: scale(1.0625) rotate(-2deg);
+  transform: scale(1.0625) rotate(-2deg);
   -webkit-box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
 }
-/* line 85, ../sass/layout/_container.scss */
+/* line 86, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .background {
   background-color: white;
 }
-/* line 91, ../sass/layout/_container.scss */
+/* line 92, ../sass/layout/_container.scss */
 section.container section.space section.content article.add {
   z-index: 20;
 }
-/* line 94, ../sass/layout/_container.scss */
+/* line 95, ../sass/layout/_container.scss */
 section.container section.space section.content article.add input.add {
   width: 100%;
   padding: .25em;
@@ -203,26 +217,26 @@ section.container section.space section.content article.add input.add {
   border: 0;
   outline-style: none;
 }
-/* line 107, ../sass/layout/_container.scss */
+/* line 108, ../sass/layout/_container.scss */
 section.container section.space section.content article figure {
   width: 100%;
 }
-/* line 110, ../sass/layout/_container.scss */
+/* line 111, ../sass/layout/_container.scss */
 section.container section.space section.content article figure img {
   width: 100%;
 }
-/* line 114, ../sass/layout/_container.scss */
+/* line 115, ../sass/layout/_container.scss */
 section.container section.space section.content article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 125, ../sass/layout/_container.scss */
+/* line 126, ../sass/layout/_container.scss */
 section.container section.space section.content article p + p {
   text-indent: 2em;
 }
-/* line 138, ../sass/layout/_container.scss */
+/* line 139, ../sass/layout/_container.scss */
 section.container section.space section.content article.text {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
