@@ -18,18 +18,22 @@ draggableOptions = (socket) ->
     click.x = event.clientX
     click.y = event.clientY
 
-    startPosition.left = ui.position.left
-    startPosition.top = ui.position.top
-
     highestZ += 1
     z = highestZ
     $(this).zIndex z
 
+    ui.position =
+      left: ui.position.left / elementScale(ui.helper)
+      top: ui.position.top / elementScale(ui.helper)
+
+    startPosition.left = ui.position.left
+    startPosition.top = ui.position.top
+
   drag: (event, ui) ->
 
     ui.position =
-      left: ((event.clientX - click.x + startPosition.left) / currScale()) - ((event.clientX - click.x + startPosition.left) / elementScale(ui.helper))
-      top: ((event.clientY - click.y + startPosition.top) / currScale()) - ((event.clientY - click.y + startPosition.top) / elementScale(ui.helper))
+      left: (event.clientX - click.x + startPosition.left) / currScale()
+      top: (event.clientY - click.y + startPosition.top) / currScale()
 
   stop: (event, ui) ->
     xString = $(this).css('left')
