@@ -13,6 +13,7 @@ $ ->
     x = element.x
     y = element.y
     z = element.z
+    scale = element.scale
 
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
@@ -21,7 +22,7 @@ $ ->
         </article>"
 
     $('.content').append(newArticle)
-    $("\##{id}").draggable(draggableOptions socket)
+    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})" )
 
   socket.on 'removeElement', (data) ->
     element = element

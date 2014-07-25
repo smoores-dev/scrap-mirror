@@ -5,6 +5,10 @@ totalDelta =
 matrixToArray = (str) ->
   str.match(/(-?[0-9\.]+)/g)
 
+currScale = -> matrixToArray($('section.content').css('-webkit-transform'))[0]
+
+elementScale = (element) -> matrixToArray(element.css('-webkit-transform'))[0]
+
 click = {}
 startPosition = {}
 
@@ -22,11 +26,10 @@ draggableOptions = (socket) ->
     $(this).zIndex z
 
   drag: (event, ui) ->
-    scale = matrixToArray($('section.content').css('-webkit-transform'))[0]
 
     ui.position =
-      left: (event.clientX - click.x + startPosition.left) / scale
-      top: (event.clientY - click.y + startPosition.top) / scale
+      left: ((event.clientX - click.x + startPosition.left) / currScale()) - ((event.clientX - click.x + startPosition.left) / elementScale(ui.helper))
+      top: ((event.clientY - click.y + startPosition.top) / currScale()) - ((event.clientY - click.y + startPosition.top) / elementScale(ui.helper))
 
   stop: (event, ui) ->
     xString = $(this).css('left')

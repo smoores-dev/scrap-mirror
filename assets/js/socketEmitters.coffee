@@ -7,7 +7,7 @@ $ ->
     x = 20
     y = 20
     z = 1
-    scale = 1
+    scale = 1/currScale()
 
     socket.emit 'newElement', { contentType: 'text', content, x, y, z, scale }
 
