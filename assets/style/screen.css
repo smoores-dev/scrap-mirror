@@ -196,9 +196,6 @@ section.container section.space section.content article:active {
   -ms-transform: scale(1.0625) rotate(-2deg);
   -o-transform: scale(1.0625) rotate(-2deg);
   transform: scale(1.0625) rotate(-2deg);
-  -webkit-box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
-  -moz-box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
-  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.125);
 }
 /* line 88, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .background {

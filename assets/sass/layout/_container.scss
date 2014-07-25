@@ -83,7 +83,7 @@ section.container {
 					&:active {
 						cursor: move;
 						@include transform(scale(1.0625) rotate(-2deg));
-						@include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
+						// @include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
 						
 						.background {
 							background-color: $colorWashLight;
