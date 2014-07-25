@@ -26,7 +26,7 @@ block content
     each element in space.elements
       if element.z > max
         - max = element.z
-      article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");")
+      article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
         if element.contentType == 'text'
           p= element.content
           div.background
