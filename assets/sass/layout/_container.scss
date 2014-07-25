@@ -5,6 +5,10 @@ section.container {
 	section.space {
 		width: 100%;
 		height: 100%;
+		
+		&:active {
+			cursor: move;
+		}
 	
 		header {
 			position: fixed;
@@ -46,7 +50,43 @@ section.container {
 					overflow: hidden;
 					color: $colorTypeDark;
 					position: absolute;
-					// margin-bottom: $gutter;
+					@include transition(.125s cubic-bezier(0.19, 1, 0.22, 1));
+					@include transition-property(   transform,
+										    -webkit-transform,
+											   -moz-transform,
+													box-shadow,
+											-webkit-box-shadow,
+											   -moz-box-shadow);
+										
+					&:hover {
+					
+						.background {
+							background-color: $colorWashLight;
+						}
+					
+					}
+					
+					.background {
+						height: 100%;
+						width:  100%;
+						top: 0;
+						left: 0;
+						z-index: -10;
+						position: absolute;
+						background-color: $colorWashLightTrans;
+						@include transition(background-color .25s ease-out);
+					}
+
+					&:active {
+						cursor: move;
+						-webkit-transform: scale(1.0625) rotate(-2deg);
+						@include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
+						
+						.background {
+							background-color: $colorWashLight;
+						}
+					
+					}
 					
 					&.add {
 						z-index: 20;
@@ -96,40 +136,7 @@ section.container {
 					}
 					
 					&.text {
-						@include transition(.125s ease-out);
-						@include transition-property(background-color, margin-bottom);
-
-						.background {
-							height: 100%;
-							width:  100%;
-							bottom: 0;
-							left: 0;
-							z-index: -10;
-							position: absolute;
-							background-color: $colorWashLightTrans;
-							// border: .5pt $colorWashLight solid;
-							// border-left: .5pt $colorWashLight solid;
-							padding-left: 1em;
-							// @include transition(background-color .5s ease-out);
-							// background-color: $colorWashLight;	
-						}
-
-						&:hover {
-						
-							.background {
-								background-color: $colorWashLight;
-							}
-							// border-left-width: .2em;
-							// border-left-color: $colorWashLight;
-							// padding-left: .5em - .2em;
-							// margin-bottom: 2*$baseline;
-						}
-						
-						&:active {
-							.background {
-								-webkit-transform: scale(1.1);
-							}
-						}
+						padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
 					}
 			}
 		}
