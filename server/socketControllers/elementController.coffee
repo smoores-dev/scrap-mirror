@@ -13,6 +13,7 @@ module.exports =
       y: data.y
       z: data.z
       scale: data.scale
+      SpaceId: spaceId
 
     db.Element.create(options).complete (err, element) =>
       return callback err if err?
@@ -33,19 +34,21 @@ module.exports =
 
   # moves an element from one column to another
   updateElement : (sio, socket, data, spaceId, callback) =>
-    id = data.elementId
-    
-    toUpdate = {}
-    toUpdate.x = data.x if data.x?
-    toUpdate.y = data.y if data.y?
-    toUpdate.z = data.z if data.z?
-    toUpdate.scale = data.scale if data.scale?
+    data.id = +data.elementId
 
-    # find the element first
-    db.Element.find(where: { id } ).complete (err, element) =>
+    query = "UPDATE \"Elements\" SET"
+    query += " \"x\"=:x," if data.x?
+    query += " \"y\"=:y," if data.y?
+    query += " \"z\"=:z," if data.z?
+    query += " \"scale\"=:scale" if data.scale?
+    # remove the trailing comma if necessary
+    query = query.slice(0,query.length - 1) if query[query.length - 1] is ","
+    query += " WHERE \"id\"=:id RETURNING *"
+
+    # new element to be filled in by update
+    element = db.Element.build()
+
+    db.sequelize.query(query, element, null, data).complete (err, result) ->
       return callback err if err?
-      element.updateAttributes(toUpdate).complete (err, element) =>   
-        return callback err if err?
-        # remove from the old column and add to new one    
-        sio.to("#{spaceId}").emit 'updateElement', { element }
-        callback()
+      sio.to("#{spaceId}").emit 'updateElement', { element: result }
+      callback()
