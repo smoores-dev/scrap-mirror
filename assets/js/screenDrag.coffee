@@ -18,3 +18,6 @@ $ ->
 
       $(this).on 'mouseup', ->
         $(this).off 'mousemove'
+
+  $('article').on 'click', (event) ->
+    $(window).off 'mousemove'
