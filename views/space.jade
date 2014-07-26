@@ -27,11 +27,12 @@ block content
       if element.z > max
         - max = element.z
       article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
-        if element.contentType == 'text'
-          p= element.content
-          div.background
-        if element.contentType == 'image'
-          img(src= element.content)
-        if element.contentType == 'video'
-          iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
-    script= "var highestZ = "+max
+       div.zoomBox
+          if element.contentType == 'text'
+            p= element.content
+            div.background
+          if element.contentType == 'image'
+            img(src= element.content)
+          if element.contentType == 'video'
+            iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
+      script= "var highestZ = "+max

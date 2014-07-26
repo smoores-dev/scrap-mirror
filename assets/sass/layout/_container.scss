@@ -43,7 +43,7 @@ section.container {
 		section.content {
 			width: 100%;
 			height: 100%;
-			-webkit-transform: scale(1);
+			@include transform(scale(1));
 			position: fixed;
 			z-index: 1;
 									
@@ -52,41 +52,51 @@ section.container {
 					overflow: hidden;
 					color: $colorTypeDark;
 					position: absolute;
-					@include transition(.125s cubic-bezier(0.19, 1, 0.22, 1));
-					@include transition-property(   transform,
-										    -webkit-transform,
-											   -moz-transform,
-													box-shadow,
-											-webkit-box-shadow,
-											   -moz-box-shadow);
+					
+					.zoomBox {
+						background-color: $colorWashLightTrans;
+						// @include transition(background-color .25s ease-out);
+						@include transition(.125s cubic-bezier(0.19, 1, 0.22, 1));
+						@include transition-property(   transform,
+												-webkit-transform,
+												   -moz-transform,
+														box-shadow,
+												-webkit-box-shadow,
+												   -moz-box-shadow,
+												   background-color);
+					}
+
 										
 					&:hover {
-						cursor: move;
+						// cursor: move;
 						
-						.background {
+						.zoomBox {
 							background-color: $colorWashLight;
 						}
 					
 					}
 					
 					.background {
-						height: 100%;
-						width:  100%;
-						top: 0;
-						left: 0;
-						z-index: -10;
-						position: absolute;
-						background-color: $colorWashLightTrans;
-						@include transition(background-color .25s ease-out);
+						// height: 100%;
+						// width:  100%;
+						// top: 0;
+						// left: 0;
+						// z-index: -10;
+						// position: absolute;
 					}
 
 					&:active {
 						cursor: move;
-						@include transform(scale(1.0625) rotate(-2deg));
-						// @include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
+						overflow: visible;
+						
+						.zoomBox {
+							@include transform(scale(1.0625) rotate(-2deg));
+							@include box-shadow(0 0 $gutter*4 rgba(0,0,0,.125));
+							background-color: $colorWashLight;
+						
+						}
 						
 						.background {
-							background-color: $colorWashLight;
 						}
 					
 					}
@@ -139,7 +149,10 @@ section.container {
 					}
 					
 					&.text {
-						padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
+						.zoomBox {
+							padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
+
+						}
 					}
 			}
 		}
