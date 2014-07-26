@@ -13,22 +13,16 @@ $ ->
     x = element.x
     y = element.y
     z = element.z
+    scale = element.scale
 
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
           <p>#{content}</p>
           <div class='background'></div>
         </article>"
-    # clear the textbox
-    textboxForm = $(articles[index - 1]).next()
-    $('input[name=content]', textboxForm).val('')
 
-    # add the new article and textbox
-    $(articles[index - 1]).after(newArticle).after(getAddBox(columnId))
-    newTextboxForm = $(articles[index - 1]).next()
-    $('form', newTextboxForm).submit(emitNewElement(socket))
-
-    column.draggable('refresh')
+    $('.content').append(newArticle)
+    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})" )
 
   socket.on 'removeElement', (data) ->
     element = element

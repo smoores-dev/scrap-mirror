@@ -1,20 +1,12 @@
-totalDelta =
-  x: 0
-  y: 0
-
 $ ->
 
-  matrixToArray = (str) ->
-    str.match(/(-?[0-9\.]+)/g)
-
   $(window).on 'mousedown', (event) ->
-    scale = matrixToArray($('section.content').css('-webkit-transform'))[0]
     prev =
       x: event.clientX
       y: event.clientY
     $(this).on 'mousemove', (event) ->
-      deltaX = (event.clientX - prev.x) / scale
-      deltaY = (event.clientY - prev.y) / scale
+      deltaX = (event.clientX - prev.x) / currScale()
+      deltaY = (event.clientY - prev.y) / currScale()
 
       totalDelta.x += deltaX
       totalDelta.y += deltaY
