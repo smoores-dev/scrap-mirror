@@ -13,6 +13,7 @@ module.exports =
       y: data.y
       z: data.z
       scale: data.scale
+      SpaceId: spaceId
 
     db.Element.create(options).complete (err, element) =>
       return callback err if err?
@@ -33,19 +34,15 @@ module.exports =
 
   # moves an element from one column to another
   updateElement : (sio, socket, data, spaceId, callback) =>
-    id = data.elementId
+    id = +data.elementId
     
-    toUpdate = {}
+    toUpdate = {id}
     toUpdate.x = data.x if data.x?
     toUpdate.y = data.y if data.y?
     toUpdate.z = data.z if data.z?
     toUpdate.scale = data.scale if data.scale?
 
-    # find the element first
-    db.Element.find(where: { id } ).complete (err, element) =>
+    db.Element.update(toUpdate, {id}).complete (err, element) =>
       return callback err if err?
-      element.updateAttributes(toUpdate).complete (err, element) =>   
-        return callback err if err?
-        # remove from the old column and add to new one    
-        sio.to("#{spaceId}").emit 'updateElement', { element }
-        callback()
+      sio.to("#{spaceId}").emit 'updateElement', { element }
+      callback()

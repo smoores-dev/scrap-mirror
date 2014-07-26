@@ -21,8 +21,9 @@ time, mark, audio, video {
 }
 
 /* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html {
+html, body {
   line-height: 1;
+  height:100%;
 }
 
 /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
@@ -95,9 +96,15 @@ header {
   height: 25vh;
 }
 
+section.container {
+  width: 100%;
+  height:100%;
+}
+
 /* line 3, ../sass/layout/_container.scss */
 section.container section.space {
   width: 100%;
+  height:100%;
 }
 /* line 6, ../sass/layout/_container.scss */
 section.container section.space header {
@@ -128,9 +135,10 @@ section.container section.space header ul.users li img {
 }
 /* line 36, ../sass/layout/_container.scss */
 section.container section.space section.content {
-  width: 200vw;
-  height: 100%;
-  margin-left: 16rem;
+  position: fixed;
+  width:100%;
+  height:100%;
+  -webkit-transform: scale(1);
 }
 /* line 41, ../sass/layout/_container.scss */
 section.container section.space section.content section.column {
