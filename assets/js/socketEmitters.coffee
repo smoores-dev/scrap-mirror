@@ -1,7 +1,7 @@
 $ ->
 
   socket = io.connect()
-  $('form').submit (event) ->
+  $('.add').submit (event) ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
     x = 20
@@ -13,3 +13,13 @@ $ ->
 
     # clear the textbox
     $('input[name=content]', 'form').val('')
+
+  $('.space').submit (event) ->
+    event.preventDefault()
+    name = $('input[name=name]', this).val()
+
+    socket.emit 'newSpace', { name }
+    spaceId = 1
+
+    # redirect to new page
+    window.location.href = "/s/" + spaceId

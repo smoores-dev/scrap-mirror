@@ -1,4 +1,10 @@
 extends layout
 
+block scripts
+  script(src="/js/socketEmitters.js")
+
 block content
   h1 Welcome to Scrap!
+  form
+      input(class="space", type="text", name="name", placeholder="Add new space!")
+      input(type="submit", style="visibility: hidden;")
