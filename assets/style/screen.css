@@ -260,7 +260,7 @@ section.container section.space section.content section.column article figure {
   width: 100%;
 }
 /* line 155, ../sass/layout/_container.scss */
-section.container section.space section.content section.column article figure img {
+article img {
   width: 100%;
 }
 /* line 159, ../sass/layout/_container.scss */
@@ -275,7 +275,7 @@ article p + p {
   text-indent: 2em;
 }
 /* line 183, ../sass/layout/_container.scss */
-article.text {
+article {
   background: rgb(100,100,100);
   width: 300px;
   margin-bottom: .25rem;
@@ -293,7 +293,7 @@ article.text {
   transition-property: background-color, margin-bottom;
 }
 /* line 193, ../sass/layout/_container.scss */
-article.text .background {
+article .background {
   height: 100%;
   width: 100%;
   bottom: 0;
@@ -303,7 +303,7 @@ article.text .background {
   padding-left: 1em;
 }
 /* line 207, ../sass/layout/_container.scss */
-article.text:hover {
+article:hover {
   border-left-width: .2em;
   border-left-color: white;
   padding-left: 0.3em;
