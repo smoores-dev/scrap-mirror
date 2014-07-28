@@ -28,7 +28,7 @@ $ ->
         </article>"
 
     $('.content').append(newArticle)
-    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})", "-webkit-transform-origin": "top left" )
+    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
 
   socket.on 'removeElement', (data) ->
     element = element

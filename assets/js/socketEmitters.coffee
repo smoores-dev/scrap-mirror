@@ -5,8 +5,6 @@ $ ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
 
-   
-
     x = 20
     y = 20
     z = 1
