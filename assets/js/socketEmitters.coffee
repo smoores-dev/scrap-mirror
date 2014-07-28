@@ -7,7 +7,7 @@ $ ->
 
     x = 20
     y = 20
-    z = 1
+    z = highestZ
     scale = 1/currScale()
 
     if isImage(content)
