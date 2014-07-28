@@ -20,6 +20,9 @@ $ ->
     # clear the textbox
     $('input[name=content]', 'form').val('')
 
+  $('.delete').on 'click', (event) ->
+    elementId = $(this).parent().attr('id')
+    socket.emit 'removeElement', { elementId }
 
 isImage = (url) ->
     return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)

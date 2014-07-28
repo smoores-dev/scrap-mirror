@@ -31,7 +31,8 @@ $ ->
     $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
 
   socket.on 'removeElement', (data) ->
-    element = element
+    id = data.element.id
+    $("\##{id}").remove()
 
   socket.on 'updateElement', (data) ->
     id = data.element.id
