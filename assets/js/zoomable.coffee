@@ -8,7 +8,10 @@ $ ->
     scaleDelta = (parseFloat(oldScale) * (event.deltaY / 100))
     newScale = oldScale - scaleDelta
     if newScale > 0.01 && newScale < 6
-      $('section.content').css(
-        '-webkit-transform': "scale(#{newScale})"
-      )
-      cluster()
+      $('section.content').css('-webkit-transform': "scale(#{newScale})")
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout((() ->
+        cluster()
+        console.log("Haven't scrolled in 250ms!")
+      ), 100)
+      
