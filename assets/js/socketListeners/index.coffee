@@ -15,14 +15,20 @@ $ ->
     z = element.z
     scale = element.scale
 
+
+    if contentType == "image"
+      body = "<img src=#{content}>"
+    else
+      body = "<p>#{content}</p>"
+    
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-          <p>#{content}</p>
+          #{body}
           <div class='background'></div>
         </article>"
 
     $('.content').append(newArticle)
-    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})" )
+    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
 
   socket.on 'removeElement', (data) ->
     element = element
