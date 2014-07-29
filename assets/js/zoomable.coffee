@@ -1,7 +1,7 @@
 $ ->
 
   socket = io.connect()
-
+  scrollTimer = null
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
     oldScale = currScale()
@@ -13,5 +13,5 @@ $ ->
       scrollTimer = setTimeout((() ->
         cluster()
         # console.log("Haven't scrolled in 250ms!")
-      ), 500)
+      ), 200)
       

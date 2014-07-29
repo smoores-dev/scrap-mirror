@@ -88,6 +88,7 @@ dimension = (elem) ->
   {w, h}
 
 cluster = () ->
+  # console.log 'clsuer'
   coords = $('.content').children().get().map((elem)->
     try
       elem = $(elem)
@@ -114,6 +115,8 @@ cluster = () ->
     # console.log 'message', clusters
     try
       colorClusters clusters
+      
+      
 
   colorClusters = (clusters) ->
     for clust in clusters
@@ -126,6 +129,8 @@ cluster = () ->
 
 
       avg = { x: avg.x // l, y: avg.y // l }
+      foo = "<div style='width:10px;height:10px;top:#{avg.y}px;left:#{avg.x}px;background-color:red;position:relative'></div>"
+      $('content').append(foo)
       # console.log 'avg:',avg
       
       for elem in clust
@@ -160,7 +165,8 @@ cluster = () ->
     clusters = clusterfck.hcluster(colors, compare, linkage.link,
       linkage.thresh, frameRate, (clusters) ->
         # postMessage({clusters: clusters}))
-        worker.onmessage({data:{clusters: clusters}}))
+        # worker.onmessage({data:{clusters: clusters}})
+        )
     clusters
 
   onmessage({data : {
