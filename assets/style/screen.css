@@ -162,8 +162,9 @@ section.container section.space section.content article {
   overflow: hidden;
   color: #333333;
   position: absolute;
+  backface-visibility: hidden;
 }
-/* line 56, ../sass/layout/_container.scss */
+/* line 57, ../sass/layout/_container.scss */
 section.container section.space section.content article .zoomBox {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -175,16 +176,16 @@ section.container section.space section.content article .zoomBox {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 72, ../sass/layout/_container.scss */
+/* line 73, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 87, ../sass/layout/_container.scss */
+/* line 88, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 91, ../sass/layout/_container.scss */
+/* line 92, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .zoomBox {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -196,11 +197,11 @@ section.container section.space section.content article:active .zoomBox {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 103, ../sass/layout/_container.scss */
+/* line 104, ../sass/layout/_container.scss */
 section.container section.space section.content article.add {
   z-index: 20;
 }
-/* line 106, ../sass/layout/_container.scss */
+/* line 107, ../sass/layout/_container.scss */
 section.container section.space section.content article.add input.add {
   width: 100%;
   padding: .25em;
@@ -211,30 +212,30 @@ section.container section.space section.content article.add input.add {
   border: 0;
   outline-style: none;
 }
-/* line 119, ../sass/layout/_container.scss */
+/* line 120, ../sass/layout/_container.scss */
 section.container section.space section.content article figure {
   width: 100%;
 }
-/* line 122, ../sass/layout/_container.scss */
+/* line 123, ../sass/layout/_container.scss */
 section.container section.space section.content article figure img {
   width: 100%;
 }
-/* line 126, ../sass/layout/_container.scss */
+/* line 127, ../sass/layout/_container.scss */
 section.container section.space section.content article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 137, ../sass/layout/_container.scss */
+/* line 138, ../sass/layout/_container.scss */
 section.container section.space section.content article p + p {
   text-indent: 2em;
 }
-/* line 151, ../sass/layout/_container.scss */
+/* line 152, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 159, ../sass/layout/_container.scss */
+/* line 160, ../sass/layout/_container.scss */
 section.container section.space footer {
   position: fixed;
   bottom: 0;
@@ -243,7 +244,7 @@ section.container section.space footer {
   height: 8rem;
   text-align: center;
 }
-/* line 167, ../sass/layout/_container.scss */
+/* line 168, ../sass/layout/_container.scss */
 section.container section.space footer .delete {
   height: 100%;
   bottom: 0;
@@ -265,7 +266,7 @@ section.container section.space footer .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 181, ../sass/layout/_container.scss */
+/* line 182, ../sass/layout/_container.scss */
 section.container section.space footer .delete:after {
   text-align: center;
   content: "×";
@@ -280,7 +281,7 @@ section.container section.space footer .delete:after {
   font-weight: 100;
   color: red;
 }
-/* line 196, ../sass/layout/_container.scss */
+/* line 197, ../sass/layout/_container.scss */
 section.container section.space footer .delete.hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);

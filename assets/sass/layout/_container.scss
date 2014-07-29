@@ -52,6 +52,7 @@ section.container {
 					overflow: hidden;
 					color: $colorTypeDark;
 					position: absolute;
+					backface-visibility: hidden;
 					
 					.zoomBox {
 						background-color: $colorWashLightTrans;
