@@ -29,16 +29,14 @@ $ ->
 #       ui.size.height = ui.size.height
 #   )
 
-  $('.ui-resizable-handle').on 'mouseup', ->
-    $(this).off 'mousemove'
-
   $('.ui-resizable-handle').on 'mousedown', (event) ->
     event.stopPropagation()
+    element = $(this).parent()
     click.x = event.clientX
     click.y = event.clientY
-    oldElementScale = elementScale($(this).parent())
 
-    $(this).on 'mousemove', (event) ->
+    $(window).on 'mousemove', (event) ->
+      oldElementScale = elementScale(element)
       screenScale = currScale()
 
       deltaX = (event.clientX - click.x) / screenScale
@@ -47,7 +45,13 @@ $ ->
       click.x = event.clientX
       click.y = event.clientY
 
-      scaleX = deltaX / ($(this).parent().width() * oldElementScale)
-      scaleY = deltaY / ($(this).parent().height() * oldElementScale)
-      
-      $(this).parent().css("-webkit-transform": "scale(#{+oldElementScale + scaleX + scaleY})")
+      scaleX = deltaX / (element.width() * oldElementScale)
+      scaleY = deltaY / (element.height() * oldElementScale)
+
+      element.css("-webkit-transform": "scale(#{+oldElementScale + scaleX + scaleY})")
+
+
+
+
+
+
