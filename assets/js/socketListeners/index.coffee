@@ -25,10 +25,14 @@ $ ->
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
           #{body}
           <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se'>
+          </div>
         </article>"
 
     $('.content').append(newArticle)
-    $("\##{id}").draggable(draggableOptions socket).css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
+    $("\##{id}").draggable(draggableOptions socket)
+      .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
+    $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
 
   socket.on 'removeElement', (data) ->
     element = element
@@ -38,5 +42,8 @@ $ ->
     x = data.element.x + totalDelta.x
     y = data.element.y + totalDelta.y
     z = data.element.z
+    scale = data.element.scale
 
     $("\##{id}").animate( top: y, left: x, 'z-index': z )
+    $("\##{id}").css '-webkit-transform': "scale(#{scale})"
+
