@@ -5,6 +5,7 @@ block scripts
   script(src="/js/draggable.js")
   script(src="/js/jquery-mousewheel.min.js")
   script(src="/js/zoomable.js")
+  script(src="/js/resizable.js")
   script(src="/js/socketListeners/index.js")
   script(src="/js/screenDrag.js")
   script(src='/js/lib/clusterfck.js')
@@ -34,4 +35,5 @@ block content
           img(src= element.content)
         if element.contentType == 'video'
           iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
+        .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-gripsmall-diagonal-se
     script= "var highestZ = "+max
