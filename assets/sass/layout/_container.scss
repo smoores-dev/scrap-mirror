@@ -55,8 +55,7 @@ section.container {
 					
 					.zoomBox {
 						background-color: $colorWashLightTrans;
-						// @include transition(background-color .25s ease-out);
-						@include transition(.125s cubic-bezier(0.19, 1, 0.22, 1));
+						@include transition(.125s $defaultCurve);
 						@include transition-property(   transform,
 												-webkit-transform,
 												   -moz-transform,
@@ -154,6 +153,63 @@ section.container {
 
 						}
 					}
+			}
+		}
+		
+		footer {
+			position: fixed;
+			bottom: 0;
+			z-index: 3;
+			width: 100%;
+			height: $col;
+			text-align: center;
+		
+			.delete {
+				height: 100%;
+				bottom: 0;
+				width: $col;
+				z-index: 10;
+				position: relative;
+				bottom: 0;
+				left: 50%;
+				margin-left: -$col/2;
+				opacity: 0;
+				padding-top: $col/2;
+				@include transition(all .25s $defaultCurve);
+				@include transform(scale(.5));
+		
+				&:after {
+					text-align: center;
+					content: "×";
+					font-size: 6em;
+					position: relative;
+					top: 33.333%;
+					height: 100%;
+					margin-top: -75%;
+					color: white;
+					font-family: "Helvetica Neue", "Helvetica", sans-serif;
+					margin-top: 2em;
+					font-weight: 100;
+					color: $colorAlert;
+				}
+		
+				&.hover {
+					@include transform(scale(1.25));
+					opacity: 1;
+					padding-top: 0;
+				}
+		
+			}
+		
+		
+			ul {
+		
+				li {
+		
+					a {
+		
+					}
+				}
 			}
 		}
 	}

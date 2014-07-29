@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -165,25 +166,25 @@ section.container section.space section.content article {
 /* line 56, ../sass/layout/_container.scss */
 section.container section.space section.content article .zoomBox {
   background-color: rgba(255, 255, 255, 0.925);
-  -webkit-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  -moz-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
   -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 72, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 88, ../sass/layout/_container.scss */
+/* line 87, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 92, ../sass/layout/_container.scss */
+/* line 91, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .zoomBox {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -195,11 +196,11 @@ section.container section.space section.content article:active .zoomBox {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 104, ../sass/layout/_container.scss */
+/* line 103, ../sass/layout/_container.scss */
 section.container section.space section.content article.add {
   z-index: 20;
 }
-/* line 107, ../sass/layout/_container.scss */
+/* line 106, ../sass/layout/_container.scss */
 section.container section.space section.content article.add input.add {
   width: 100%;
   padding: .25em;
@@ -210,26 +211,82 @@ section.container section.space section.content article.add input.add {
   border: 0;
   outline-style: none;
 }
-/* line 120, ../sass/layout/_container.scss */
+/* line 119, ../sass/layout/_container.scss */
 section.container section.space section.content article figure {
   width: 100%;
 }
-/* line 123, ../sass/layout/_container.scss */
+/* line 122, ../sass/layout/_container.scss */
 section.container section.space section.content article figure img {
   width: 100%;
 }
-/* line 127, ../sass/layout/_container.scss */
+/* line 126, ../sass/layout/_container.scss */
 section.container section.space section.content article figure figcaption {
   background: #444444;
   padding-top: 1.5rem;
   position: relative;
   top: -1.5rem;
 }
-/* line 138, ../sass/layout/_container.scss */
+/* line 137, ../sass/layout/_container.scss */
 section.container section.space section.content article p + p {
   text-indent: 2em;
 }
-/* line 152, ../sass/layout/_container.scss */
+/* line 151, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
+}
+/* line 159, ../sass/layout/_container.scss */
+section.container section.space footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 8rem;
+  text-align: center;
+}
+/* line 167, ../sass/layout/_container.scss */
+section.container section.space footer .delete {
+  height: 100%;
+  bottom: 0;
+  width: 8rem;
+  z-index: 10;
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  margin-left: -4rem;
+  opacity: 0;
+  padding-top: 4rem;
+  -webkit-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+}
+/* line 181, ../sass/layout/_container.scss */
+section.container section.space footer .delete:after {
+  text-align: center;
+  content: "×";
+  font-size: 6em;
+  position: relative;
+  top: 33.333%;
+  height: 100%;
+  margin-top: -75%;
+  color: white;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  margin-top: 2em;
+  font-weight: 100;
+  color: red;
+}
+/* line 196, ../sass/layout/_container.scss */
+section.container section.space footer .delete.hover {
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  transform: scale(1.25);
+  opacity: 1;
+  padding-top: 0;
 }
