@@ -70,7 +70,7 @@ draggableOptions = (socket) ->
     elementId = this.id
     
     socket.emit('updateElement', { x, y, z, elementId })
-    cluster()
+    # cluster()
 
 
 leaves = (hcluster) ->
@@ -87,8 +87,6 @@ dimension = (elem) ->
   h = parseInt(elem.css('height')) * scale * elemScale
   {w, h}
 
-
-
 cluster = () ->
   coords = $('.content').children().get().map((elem)->
     try
@@ -103,8 +101,7 @@ cluster = () ->
       {x, id, y}
     catch
       null).filter((elem) -> !!elem)
-  # console.log coords
-  coords.pop()
+
   worker = {} #new Worker("./hcluster-worker.js");
   
   compare = (e1, e2) ->
@@ -121,9 +118,25 @@ cluster = () ->
   colorClusters = (clusters) ->
     for clust in clusters
       color = "#" + Math.random().toString(16).slice(2, 8)
+      avg = { x: 0, y: 0 }
+      l = clust.length
       for elem in clust
-        # console.log $('#'+elem.id)
+        avg.x += elem.x
+        avg.y += elem.y
+
+
+      avg = { x: avg.x // l, y: avg.y // l }
+      # console.log 'avg:',avg
+      
+      for elem in clust
+        left = elem.x + (elem.x - avg.x)/4
+        top  = elem.y + (elem.y - avg.y)/4
+        # console.log diffX,diffY
+        # $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
+        # $('#'+elem.id).animate({ top, left })
         $('#'+elem.id).css('background-color', color);
+        # console.log $('#'+elem.id)
+        
 
     
 
