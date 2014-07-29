@@ -7,7 +7,7 @@ errorHandler = require './errorHandler'
 module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
 
-    spaceId = url.parse(socket.handshake.headers.referer, true).path.split('/')[2]
+    spaceId = url.parse(socket.handshake.headers.referer, true).path.split('/')[1]
     socket.join spaceId
     console.log 'joined', spaceId
 

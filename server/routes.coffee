@@ -25,7 +25,7 @@ module.exports = (server) ->
       author: 'Your Name'
       analyticssiteid: 'XXXXXXX' 
 
-  server.get '/s/:id', (req, res) ->
+  server.get '/:id', (req, res) ->
     space = db.Space.find( {
       where: { id: +req.params.id },
       include: [ db.Element ]
@@ -40,7 +40,8 @@ module.exports = (server) ->
 
 
   server.get '/*', (req, res) ->
-    res.redirect('/');
+    console.log 'Failed to get', req.url
+    # throw new NotFound;
 
   NotFound = (msg) ->
     this.name = 'NotFound'

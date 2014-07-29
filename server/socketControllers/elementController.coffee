@@ -35,21 +35,15 @@ module.exports =
 
   # moves an element from one column to another
   updateElement : (sio, socket, data, spaceId, callback) =>
-    data.id = +data.elementId
+    id = +data.elementId
+    
+    toUpdate = {id}
+    toUpdate.x = data.x if data.x?
+    toUpdate.y = data.y if data.y?
+    toUpdate.z = data.z if data.z?
+    toUpdate.scale = data.scale if data.scale?
 
-    query = "UPDATE \"Elements\" SET"
-    query += " \"x\"=:x," if data.x?
-    query += " \"y\"=:y," if data.y?
-    query += " \"z\"=:z," if data.z?
-    query += " \"scale\"=:scale" if data.scale?
-    # remove the trailing comma if necessary
-    query = query.slice(0,query.length - 1) if query[query.length - 1] is ","
-    query += " WHERE \"id\"=:id RETURNING *"
-
-    # new element to be filled in by update
-    element = db.Element.build()
-
-    db.sequelize.query(query, element, null, data).complete (err, result) ->
+    db.Element.update(toUpdate, {id}).complete (err, element) =>
       return callback err if err?
-      sio.to("#{spaceId}").emit 'updateElement', { element: result }
+      sio.to("#{spaceId}").emit 'updateElement', { element }
       callback()

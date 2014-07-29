@@ -14,10 +14,7 @@ $ ->
       prev.x = event.clientX
       prev.y = event.clientY
 
-      $('article').animate( { top: "+=#{deltaY}", left: "+=#{deltaX}" }, 0, 'linear' )
+      $('article.text').animate( { top: "+=#{deltaY}", left: "+=#{deltaX}" }, 0, 'linear' )
 
       $(this).on 'mouseup', ->
         $(this).off 'mousemove'
-
-  $('article').on 'click', (event) ->
-    $(window).off 'mousemove'
