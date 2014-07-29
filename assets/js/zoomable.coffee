@@ -11,3 +11,4 @@ $ ->
       $('section.content').css(
         '-webkit-transform': "scale(#{newScale})"
       )
+      cluster()
