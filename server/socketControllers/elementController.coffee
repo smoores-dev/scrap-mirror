@@ -27,6 +27,7 @@ module.exports =
     # find/delete the element
     db.Element.find(where: { id } ).complete (err, element) =>
       return callback err if err?
+      return callback() if not element? 
       element.destroy().complete (err) =>
         return callback err if err?
         sio.to("#{spaceId}").emit 'removeElement', { element }

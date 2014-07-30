@@ -36,7 +36,8 @@ $ ->
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
 
   socket.on 'removeElement', (data) ->
-    element = element
+    id = data.element.id
+    $("\##{id}").remove()
 
   socket.on 'updateElement', (data) ->
     id = data.element.id
