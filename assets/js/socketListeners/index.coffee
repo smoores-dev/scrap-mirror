@@ -26,9 +26,13 @@ $ ->
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-          #{body}
+          <div class='zoomBox'>
+          <p>#{content}</p>
           <div class='background'></div>
-        </article>"
+        </div>
+        <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+        </div>
+      </article>"
 
     $('.content').append(newArticle)
     $("\##{id}").draggable(draggableOptions socket)

@@ -43,8 +43,8 @@ cluster = () ->
       for elem in clust
         diffX = -(elem.x - avg.x)/1.5
         diffY = -(elem.y - avg.y)/1.5
-        $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
-        $('#'+elem.id).css('background-color', color);
+        # $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
+        # $('#'+elem.id).css('background-color', color);
         
   # worker.onerror = (event) ->
   #   console.log("Worker thread error: " + event.message + " " + event.filename + " " + event.lineno)

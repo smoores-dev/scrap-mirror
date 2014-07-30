@@ -64,6 +64,23 @@ section.container {
 												-webkit-box-shadow,
 												   -moz-box-shadow,
 												   background-color);
+						img {
+								width: 100%;
+							}
+							p {
+
+								& + p {
+									text-indent: 2em;
+								}
+							}
+							
+							&.link {
+								
+								a {
+								
+								}
+								
+							}
 					}
 
 										
@@ -93,7 +110,6 @@ section.container {
 							@include transform(scale(1.0625) rotate(-2deg));
 							@include box-shadow(0 0 $gutter*6 rgba(0,0,0,.0625));
 							background-color: $colorWashLight;
-						
 						}
 						
 						.background {
@@ -101,57 +117,9 @@ section.container {
 					
 					}
 					
-					&.add {
-						z-index: 20;
-						
-						input.add {
-							width: 100%;
-							padding: .25em;
-							margin: 0;
-							font-family: $fontItalic;
-							font-size: 1em;
-							background: $colorWashLight;
-							border: 0;
-							outline-style: none;
-						}
-																		
-					}
-					
-					figure {
-						width: 100%;
-					
-						img {
-							width: 100%;
-						}
-						
-						figcaption {
-							background: $colorWashDark;
-							padding-top: $baseline;
-							position: relative;
-							top: -$baseline;
-						}
-						
-					}
-					
-					p {
-
-						& + p {
-							text-indent: 2em;
-						}
-					}
-					
-					&.link {
-						
-						a {
-						
-						}
-						
-					}
-					
 					&.text {
 						.zoomBox {
 							padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
-
 						}
 					}
 			}

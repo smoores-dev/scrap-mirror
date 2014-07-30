@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +21,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -176,16 +176,24 @@ section.container section.space section.content article .zoomBox {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 73, ../sass/layout/_container.scss */
+/* line 67, ../sass/layout/_container.scss */
+section.container section.space section.content article .zoomBox img {
+  width: 100%;
+}
+/* line 72, ../sass/layout/_container.scss */
+section.container section.space section.content article .zoomBox p + p {
+  text-indent: 2em;
+}
+/* line 90, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 88, ../sass/layout/_container.scss */
+/* line 105, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 92, ../sass/layout/_container.scss */
+/* line 109, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .zoomBox {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -197,45 +205,11 @@ section.container section.space section.content article:active .zoomBox {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 104, ../sass/layout/_container.scss */
-section.container section.space section.content article.add {
-  z-index: 20;
-}
-/* line 107, ../sass/layout/_container.scss */
-section.container section.space section.content article.add input.add {
-  width: 100%;
-  padding: .25em;
-  margin: 0;
-  font-family: "Futura-MediumItalic";
-  font-size: 1em;
-  background: white;
-  border: 0;
-  outline-style: none;
-}
-/* line 120, ../sass/layout/_container.scss */
-section.container section.space section.content article figure {
-  width: 100%;
-}
-/* line 123, ../sass/layout/_container.scss */
-section.container section.space section.content article figure img {
-  width: 100%;
-}
-/* line 127, ../sass/layout/_container.scss */
-section.container section.space section.content article figure figcaption {
-  background: #444444;
-  padding-top: 1.5rem;
-  position: relative;
-  top: -1.5rem;
-}
-/* line 138, ../sass/layout/_container.scss */
-section.container section.space section.content article p + p {
-  text-indent: 2em;
-}
-/* line 152, ../sass/layout/_container.scss */
+/* line 121, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 160, ../sass/layout/_container.scss */
+/* line 128, ../sass/layout/_container.scss */
 section.container section.space footer {
   position: fixed;
   bottom: 0;
@@ -244,7 +218,7 @@ section.container section.space footer {
   height: 8rem;
   text-align: center;
 }
-/* line 168, ../sass/layout/_container.scss */
+/* line 136, ../sass/layout/_container.scss */
 section.container section.space footer .delete {
   height: 100%;
   bottom: 0;
@@ -266,7 +240,7 @@ section.container section.space footer .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 182, ../sass/layout/_container.scss */
+/* line 150, ../sass/layout/_container.scss */
 section.container section.space footer .delete:after {
   text-align: center;
   content: "×";
@@ -281,7 +255,7 @@ section.container section.space footer .delete:after {
   font-weight: 100;
   color: red;
 }
-/* line 197, ../sass/layout/_container.scss */
+/* line 165, ../sass/layout/_container.scss */
 section.container section.space footer .delete.hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
