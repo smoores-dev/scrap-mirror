@@ -9,6 +9,13 @@ currScale = -> matrixToArray($('section.content').css('-webkit-transform'))[0]
 
 elementScale = (element) -> matrixToArray(element.css('-webkit-transform'))[0]
 
+dimension = (elem) ->
+  scale = currScale()
+  elemScale = elementScale elem
+  w = parseInt(elem.css('width')) * elemScale
+  h = parseInt(elem.css('height')) * elemScale
+  {w, h}
+
 click = {}
 startPosition = {}
 
@@ -68,110 +75,4 @@ draggableOptions = (socket) ->
     y = Math.floor(yString.slice(0,yString.length - 2) - totalDelta.y)
     z = highestZ
     elementId = this.id
-    
     socket.emit('updateElement', { x, y, z, elementId })
-    # cluster()
-
-
-leaves = (hcluster) ->
-   # flatten cluster hierarchy
-   if(!hcluster.left)
-     [hcluster];
-   else
-     this.leaves(hcluster.left).concat(this.leaves(hcluster.right));
-
-dimension = (elem) ->
-  scale = currScale()
-  elemScale = elementScale elem
-  w = parseInt(elem.css('width')) * elemScale
-  h = parseInt(elem.css('height')) * elemScale
-  {w, h}
-
-cluster = () ->
-  # console.log 'clsuer'
-  coords = $('.content').children().get().map((elem)->
-    try
-      elem = $(elem)
-      offset = elem.offset()
-      dimens = dimension elem
-      # console.log offset, dimens
-      x = Math.floor(parseInt(elem.css('left')) + dimens.w/2)
-      y = Math.floor(parseInt(elem.css('top')) + dimens.h/2)
-      id = parseInt(elem.attr('id'))
-      # console.log(x,y, id)
-      {x, id, y}
-    catch
-      null).filter((elem) -> !!elem)
-
-  worker = {} #new Worker("./hcluster-worker.js");
-  
-  compare = (e1, e2) ->
-    Math.sqrt(Math.pow(e1.x * currScale() - e2.x * currScale(), 2) + Math.pow(e1.y * currScale() - e2.y * currScale(), 2))
-
-  worker.onmessage = (event) ->
-    # console.log 'hello from worker'
-    clusters = event.data.clusters.map((hcluster) ->
-      leaves(hcluster).map((leaf) -> leaf.value))
-    # console.log 'message', clusters
-    try
-      colorClusters clusters
-      
-      
-
-  colorClusters = (clusters) ->
-    $('div').remove()
-    for clust in clusters
-      color = "#" + Math.random().toString(16).slice(2, 8)
-      avg = { x: 0, y: 0 }
-      l = clust.length
-      for elem in clust
-        avg.x += elem.x
-        avg.y += elem.y
-
-
-      avg = { x: avg.x / l, y: avg.y / l }
-      # console.log 'avg:',avg
-      
-      for elem in clust
-        diffX = -(elem.x - avg.x)/1.5
-        diffY = -(elem.y - avg.y)/1.5
-        # left = elem.x + (elem.x - avg.x)
-        # top  = elem.y + (elem.y - avg.y)
-        # console.log diffX,diffY
-        $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
-        # $('#'+elem.id).animate({ top, left })
-        $('#'+elem.id).css('background-color', color);
-        # console.log $('#'+elem.id)
-        
-
-    
-
-  # worker.onerror = (event) ->
-  #   console.log("Worker thread error: " + event.message + " " + event.filename + " " + event.lineno)
-  onmessage = (event) ->
-    data = event.data
-    t1 = Date.now()
-    clusters = clusterElems(data.colors, data.frameRate, data.linkage)
-    t2 = Date.now()
-    worker.onmessage(data: {clusters: clusters, time: t2 - t1})
-   # this.postMessage({clusters: clusters, time: t2 - t1})
-
-
-  clusterElems = (colors, frameRate, linkage) ->
-    linkage = {
-      "single" : {link: 'single', thresh: 7},
-      "complete": {link: 'complete', thresh: 125},
-      "average": {link: 'average', thresh: 120}
-    }['average']
-    clusters = clusterfck.hcluster(colors, compare, linkage.link,
-      linkage.thresh, frameRate, (clusters) ->
-        # postMessage({clusters: clusters}))
-        # worker.onmessage({data:{clusters: clusters}})
-        )
-    clusters
-
-  onmessage({data : {
-    colors: coords,
-    frameRate: 1000
-  }})
-  # worker.postMessage('hello world')
