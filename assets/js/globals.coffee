@@ -83,8 +83,8 @@ leaves = (hcluster) ->
 dimension = (elem) ->
   scale = currScale()
   elemScale = elementScale elem
-  w = parseInt(elem.css('width')) * scale * elemScale
-  h = parseInt(elem.css('height')) * scale * elemScale
+  w = parseInt(elem.css('width')) * elemScale
+  h = parseInt(elem.css('height')) * elemScale
   {w, h}
 
 cluster = () ->
@@ -95,8 +95,8 @@ cluster = () ->
       offset = elem.offset()
       dimens = dimension elem
       # console.log offset, dimens
-      x = Math.floor(offset.left + dimens.w/2)
-      y = Math.floor(offset.top + dimens.h/2)
+      x = Math.floor(parseInt(elem.css('left')) + dimens.w/2)
+      y = Math.floor(parseInt(elem.css('top')) + dimens.h/2)
       id = parseInt(elem.attr('id'))
       # console.log(x,y, id)
       {x, id, y}
@@ -106,7 +106,7 @@ cluster = () ->
   worker = {} #new Worker("./hcluster-worker.js");
   
   compare = (e1, e2) ->
-    Math.sqrt(Math.pow(e1.x - e2.x, 2) + Math.pow(e1.y - e2.y, 2))
+    Math.sqrt(Math.pow(e1.x * currScale() - e2.x * currScale(), 2) + Math.pow(e1.y * currScale() - e2.y * currScale(), 2))
 
   worker.onmessage = (event) ->
     # console.log 'hello from worker'
@@ -119,6 +119,7 @@ cluster = () ->
       
 
   colorClusters = (clusters) ->
+    $('div').remove()
     for clust in clusters
       color = "#" + Math.random().toString(16).slice(2, 8)
       avg = { x: 0, y: 0 }
@@ -128,16 +129,16 @@ cluster = () ->
         avg.y += elem.y
 
 
-      avg = { x: avg.x // l, y: avg.y // l }
-      foo = "<div style='width:10px;height:10px;top:#{avg.y}px;left:#{avg.x}px;background-color:red;position:relative'></div>"
-      $('content').append(foo)
+      avg = { x: avg.x / l, y: avg.y / l }
       # console.log 'avg:',avg
       
       for elem in clust
-        left = elem.x + (elem.x - avg.x)/4
-        top  = elem.y + (elem.y - avg.y)/4
+        diffX = -(elem.x - avg.x)/1.5
+        diffY = -(elem.y - avg.y)/1.5
+        # left = elem.x + (elem.x - avg.x)
+        # top  = elem.y + (elem.y - avg.y)
         # console.log diffX,diffY
-        # $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
+        $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
         # $('#'+elem.id).animate({ top, left })
         $('#'+elem.id).css('background-color', color);
         # console.log $('#'+elem.id)
