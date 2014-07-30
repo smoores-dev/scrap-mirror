@@ -10,6 +10,7 @@ $ ->
     z = highestZ
     scale = 1/currScale()
 
+    # dfodhs
     if isImage(content)
         contentType = 'image'
     else
