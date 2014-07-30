@@ -4,6 +4,10 @@ $ ->
   
   socket.on 'newSpace', (data) ->
     space = data.space
+    spaceId = space.id
+
+    # redirect to new page
+    window.location.href = "/s/" + spaceId
 
   socket.on 'newElement', (data) ->
     element = data.element
