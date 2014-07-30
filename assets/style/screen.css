@@ -66,6 +66,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 4, ../sass/globals/_boilerplate.scss */
 html {
+  height: 100%;
   text-rendering: optimizeLegibility;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -118,27 +119,28 @@ section.container section.space:active {
   cursor: move;
 }
 /* line 13, ../sass/layout/_container.scss */
-section.container section.space header {
+section.container section.space form.add-element {
   position: fixed;
   z-index: 2;
   top: 0;
-  width: 100%;
+  left: 0;
 }
-/* line 19, ../sass/layout/_container.scss */
-section.container section.space header ul.users {
-  position: absolute;
+/* line 20, ../sass/layout/_container.scss */
+section.container section.space ul.users {
+  position: fixed;
+  z-index: 2;
   top: 0;
   right: 0;
 }
-/* line 24, ../sass/layout/_container.scss */
-section.container section.space header ul.users li {
+/* line 26, ../sass/layout/_container.scss */
+section.container section.space ul.users li {
   display: block;
   height: 3rem;
   width: 3rem;
   margin: .5em;
 }
-/* line 30, ../sass/layout/_container.scss */
-section.container section.space header ul.users li img {
+/* line 32, ../sass/layout/_container.scss */
+section.container section.space ul.users li img {
   height: 100%;
   width: 100%;
   border-radius: 100%;
@@ -210,21 +212,11 @@ section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
 /* line 128, ../sass/layout/_container.scss */
-section.container section.space footer {
-  position: fixed;
-  bottom: 0;
-  z-index: 3;
-  width: 100%;
-  height: 8rem;
+section.container section.space .delete {
   text-align: center;
-}
-/* line 136, ../sass/layout/_container.scss */
-section.container section.space footer .delete {
-  height: 100%;
-  bottom: 0;
+  position: fixed;
+  z-index: 2;
   width: 8rem;
-  z-index: 10;
-  position: relative;
   bottom: 0;
   left: 50%;
   margin-left: -4rem;
@@ -240,8 +232,8 @@ section.container section.space footer .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 150, ../sass/layout/_container.scss */
-section.container section.space footer .delete:after {
+/* line 141, ../sass/layout/_container.scss */
+section.container section.space .delete:after {
   text-align: center;
   content: "×";
   font-size: 6em;
@@ -255,8 +247,8 @@ section.container section.space footer .delete:after {
   font-weight: 100;
   color: red;
 }
-/* line 165, ../sass/layout/_container.scss */
-section.container section.space footer .delete.hover {
+/* line 156, ../sass/layout/_container.scss */
+section.container section.space .delete.hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
   -ms-transform: scale(1.25);
