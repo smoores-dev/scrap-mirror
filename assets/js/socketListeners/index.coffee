@@ -46,6 +46,6 @@ $ ->
     z = data.element.z
     scale = data.element.scale
 
-    $("\##{id}").animate( top: y, left: x, 'z-index': z )
+    $("\##{id}").animate({ top: y, left: x, 'z-index': z }, cluster)
     $("\##{id}").css '-webkit-transform': "scale(#{scale})"
-
+    

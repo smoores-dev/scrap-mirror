@@ -9,6 +9,13 @@ currScale = -> matrixToArray($('section.content').css('-webkit-transform'))[0]
 
 elementScale = (element) -> matrixToArray(element.css('-webkit-transform'))[0]
 
+dimension = (elem) ->
+  scale = currScale()
+  elemScale = elementScale elem
+  w = parseInt(elem.css('width')) * elemScale
+  h = parseInt(elem.css('height')) * elemScale
+  {w, h}
+
 click = {}
 startPosition = {}
 
@@ -71,5 +78,4 @@ draggableOptions = (socket) ->
     y = Math.floor(yString.slice(0,yString.length - 2) - totalDelta.y)
     z = highestZ
     elementId = this.id
-    
     socket.emit('updateElement', { x, y, z, elementId })

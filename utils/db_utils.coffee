@@ -12,8 +12,8 @@ randomLatin = [
 n = 20
 maxX = 3000
 maxY = 1000
-maxS = 5.0
-minS = 0.2
+maxS = 1
+minS = 1
 z = 0;
 
 randInt = (n) -> Math.floor(Math.random()*n)
