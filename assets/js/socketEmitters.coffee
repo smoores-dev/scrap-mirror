@@ -9,8 +9,12 @@ $ ->
     z = 1
     scale = 1/currScale()
 
-    socket.emit 'newElement', { contentType: 'text', content, x, y, z, scale }
+    if isImage(content)
+        contentType = 'image'
+    else
+        contentType = 'text'
 
+    socket.emit 'newElement', { contentType, content, x, y, z, scale }
     # clear the textbox
     $('input[name=content]', 'form').val('')
 

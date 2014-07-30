@@ -19,18 +19,18 @@ $ ->
     z = element.z
     scale = element.scale
 
+    if contentType == "image"
+      body = "<img src=#{content}>"
+    else
+      body = "<p>#{content}</p>"
+    
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-        <div class='zoomBox'>
-          <p>#{content}</p>
+          #{body}
           <div class='background'></div>
-        </div>
-        <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se'>
-        </div>
-      </article>"
+        </article>"
 
     $('.content').append(newArticle)
-
     $("\##{id}").draggable(draggableOptions socket)
       .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
