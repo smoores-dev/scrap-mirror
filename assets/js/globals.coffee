@@ -14,6 +14,7 @@ startPosition = {}
 
 resize = (socket) ->
   (event) ->
+    $(this).off 'mouseup'
     event.stopPropagation()
     element = $(this).parent()
     clickX = event.clientX
