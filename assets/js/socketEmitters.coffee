@@ -1,7 +1,7 @@
 $ ->
 
   socket = io.connect()
-  $('form').submit (event) ->
+  $('.add-element').submit (event) ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
     x = 20
@@ -13,6 +13,13 @@ $ ->
 
     # clear the textbox
     $('input[name=content]', 'form').val('')
+
+  $('.add-space').submit (event) ->
+    event.preventDefault()
+    name = $('input[name=name]', this).val()
+
+    # make new space, wait for response to redirect
+    socket.emit 'newSpace', { name }
 
 isImage = (url) ->
     return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)

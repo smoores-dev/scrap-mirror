@@ -1,10 +1,11 @@
 $ ->
 
   $(window).on 'mousedown', (event) ->
+    $(this).off 'mouseup'
     prev =
       x: event.clientX
       y: event.clientY
-    $(this).on 'mousemove', (event) ->
+    $(window).on 'mousemove', (event) ->
       deltaX = (event.clientX - prev.x) / currScale()
       deltaY = (event.clientY - prev.y) / currScale()
 
@@ -16,5 +17,8 @@ $ ->
 
       $('article.text').animate( { top: "+=#{deltaY}", left: "+=#{deltaX}" }, 0, 'linear' )
 
-      $(this).on 'mouseup', ->
-        $(this).off 'mousemove'
+    $(window).on 'mouseup', ->
+      $(this).off 'mousemove'
+
+  $('article').on 'click', (event) ->
+    $(window).off 'mousemove'

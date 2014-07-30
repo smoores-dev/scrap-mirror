@@ -25,7 +25,7 @@ module.exports = (server) ->
       author: 'Your Name'
       analyticssiteid: 'XXXXXXX' 
 
-  server.get '/:id', (req, res) ->
+  server.get '/s/:id', (req, res) ->
     space = db.Space.find( {
       where: { id: +req.params.id },
       include: [ db.Element ]
