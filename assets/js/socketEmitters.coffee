@@ -4,9 +4,11 @@ $ ->
   $('.add-element').submit (event) ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
+    console.log highestZ
+    highestZ += 1
     x = 20
     y = 20
-    z = 1
+    z = highestZ
     scale = 1/currScale()
 
     if isImage(content)
@@ -15,6 +17,7 @@ $ ->
         contentType = 'text'
 
     socket.emit 'newElement', { contentType, content, x, y, z, scale }
+
     # clear the textbox
     $('input[name=content]', 'form').val('')
 

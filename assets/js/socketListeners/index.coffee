@@ -19,6 +19,7 @@ $ ->
     z = element.z
     scale = element.scale
 
+    console.log 'got', contentType
     if contentType == "image"
       body = "<img src=#{content}>"
     else
@@ -27,7 +28,7 @@ $ ->
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
           <div class='zoomBox'>
-          <p>#{content}</p>
+          #{body}
           <div class='background'></div>
         </div>
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
@@ -48,8 +49,10 @@ $ ->
     x = data.element.x + totalDelta.x
     y = data.element.y + totalDelta.y
     z = data.element.z
+    highestZ +=1
     scale = data.element.scale
 
-    $("\##{id}").animate({ top: y, left: x, 'z-index': z }, cluster)
+    $("\##{id}").zIndex(highestZ)
+    $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").css '-webkit-transform': "scale(#{scale})"
     
