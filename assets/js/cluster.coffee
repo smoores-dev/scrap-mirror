@@ -42,22 +42,26 @@ cluster = () ->
     clusterToIds = {}
     cid = 0
     for clust in clusters
-      color = "#" + Math.random().toString(16).slice(2, 8)
+      if clust.length > 1
+        color = "#" + Math.random().toString(16).slice(2, 8)
+      else 
+        color = "#FFFFFF"
       avg = { x: 0, y: 0 }
       l = clust.length
       clusterToIds[cid] = []
       for elem in clust
         clusterToIds[cid].push(elem.id)
         idToClusters[elem.id] = cid
+        $('#'+elem.id).css('background-color', color);
         avg.x += elem.x
         avg.y += elem.y
 
-      avg = { x: avg.x / l, y: avg.y / l }
-      for elem in clust
-        diffX = -(elem.x - avg.x)/1.5
-        diffY = -(elem.y - avg.y)/1.5
-        # $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
-        $('#'+elem.id).css('background-color', color);
+      # avg = { x: avg.x / l, y: avg.y / l }
+      # for elem in clust
+      #   diffX = -(elem.x - avg.x)/1.5
+      #   diffY = -(elem.y - avg.y)/1.5
+      #   $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
+        
       cid += 1
         
   # worker.onerror = (event) ->
@@ -75,7 +79,7 @@ cluster = () ->
     linkage = {
       "single" : {link: 'single', thresh: 7},
       "complete": {link: 'complete', thresh: 125},
-      "average": {link: 'average', thresh: 120}
+      "average": {link: 'average', thresh: 40}
     }['average']
     clusterfck.hcluster coords, compare, linkage.link, linkage.thresh, frameRate
 
