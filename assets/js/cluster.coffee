@@ -1,3 +1,10 @@
+idToClusters = {}
+
+clusterToIds = {}
+
+getIdsInCluster = (id) ->
+  clusterToIds[idToClusters[id]]
+
 cluster = () ->
   leaves = (hcluster) ->
    # flatten cluster hierarchy
@@ -31,11 +38,17 @@ cluster = () ->
       colorClusters clusters
   
   colorClusters = (clusters) ->
+    idToClusters = {}
+    clusterToIds = {}
+    cid = 0
     for clust in clusters
       color = "#" + Math.random().toString(16).slice(2, 8)
       avg = { x: 0, y: 0 }
       l = clust.length
+      clusterToIds[cid] = []
       for elem in clust
+        clusterToIds[cid].push(elem.id)
+        idToClusters[elem.id] = cid
         avg.x += elem.x
         avg.y += elem.y
 
@@ -44,7 +57,8 @@ cluster = () ->
         diffX = -(elem.x - avg.x)/1.5
         diffY = -(elem.y - avg.y)/1.5
         # $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
-        # $('#'+elem.id).css('background-color', color);
+        $('#'+elem.id).css('background-color', color);
+      cid += 1
         
   # worker.onerror = (event) ->
   #   console.log("Worker thread error: " + event.message + " " + event.filename + " " + event.lineno)

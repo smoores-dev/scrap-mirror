@@ -49,8 +49,13 @@ resize = (socket) ->
 
       element.css("-webkit-transform": "scale(#{+oldElementScale + newScale})")
 
+moveAll = () ->
+
+moveSelected = ( ui, offsetLeft, offsetTop ) ->
+
 draggableOptions = (socket) ->
   start: (event, ui) ->
+    console.log this.id
     $('.delete').animate(opacity: 100)
     $(window).off 'mousemove'
     click.x = event.clientX
@@ -60,22 +65,62 @@ draggableOptions = (socket) ->
     z = highestZ
     $(this).zIndex z
 
+    console.log ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
     startPosition.left = ui.position.left
     startPosition.top = ui.position.top 
 
+    getIdsInCluster( this.id ).forEach (id)->
+      elem = $('#'+id)
+      elem.data 'startPosition', {
+        left: parseFloat(elem.css('left')) * currScale()
+        top: parseFloat(elem.css('top')) * currScale()
+      }
+
+
   drag: (event, ui) ->
-    s = elementScale(ui.helper)
-    ui.position =
+    diffX = event.clientX - click.x
+    diffY = event.clientY - click.y
+    getIdsInCluster( this.id ).forEach (id)->
+      elem = $('#'+id)
+      # console.log id, elem
+      start = elem.data 'startPosition'
+      # ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
+      elem.css('left', (event.clientX - click.x + start.left)*currScale())
+      elem.css('right', (event.clientY - click.y + start.right)*currScale())
+
+      # elem.css('left', (diffX + start.left) / (currScale()))
+      # elem.css('right', (diffY + start.top) / (currScale()))
+    # left: 
+    # top: (event.clientY - click.y + startPosition.top) / (currScale())
+    # if not prevLoc?
+    #   prevLoc = ui.originalPosition
+
+    # console.log $(this).position()
+        # currentLoc = $(this).position()
+    # prevLoc = $(this).data 'prevLoc'
+    # if not prevLoc?
+    #   prevLoc = ui.originalPosition
+
+    # offsetLeft = currentLoc.left-prevLoc.left
+    # offsetTop = currentLoc.top-prevLoc.top
+    # moveSelected(offsetLeft, offsetTop);
+
+  drag2: (event, ui) ->
+    # s = elementScale(ui.helper)
+    # console.log (event.clientX - click.x + startPosition.left), (event.clientX - click.x + startPosition.left) / (currScale())
+    
+    # ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
+    # $('#'+this.id).css('left', (event.clientX - click.x + startPosition.left))
+    # ui.position.x /= currScale()
+
+    ui.position = # $('#'+this.id)
       left: (event.clientX - click.x + startPosition.left) / (currScale())
       top: (event.clientY - click.y + startPosition.top) / (currScale())
 
   stop: (event, ui) ->
     $('.delete').animate(opacity: 0)
-    xString = $(this).css('left')
-    #remove the 'px' from the end of the string
-    x = Math.floor(xString.slice(0,xString.length - 2) - totalDelta.x)
-    yString = $(this).css('top')
-    y = Math.floor(yString.slice(0,yString.length - 2) - totalDelta.y)
+    x = parseInt($(this).css('left')) - parseInt(totalDelta.x)
+    y = parseInt($(this).css('top')) - parseInt(totalDelta.y)
     z = highestZ
     elementId = this.id
     socket.emit('updateElement', { x, y, z, elementId })
