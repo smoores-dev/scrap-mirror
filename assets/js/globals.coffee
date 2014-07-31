@@ -56,7 +56,7 @@ moveSelected = ( ui, offsetLeft, offsetTop ) ->
 draggableOptions = (socket) ->
   start: (event, ui) ->
     console.log 'Moving', getIdsInCluster( this.id )
-    $('.delete').animate(opacity: 100)
+    $('.delete').addClass('visible')
     $(window).off 'mousemove'
     click.x = event.clientX
     click.y = event.clientY
@@ -90,7 +90,7 @@ draggableOptions = (socket) ->
       top: (event.clientY - click.y + startPosition.top) / (currScale())
 
   stop: (event, ui) ->
-    $('.delete').animate(opacity: 0)
+    $('.delete').removeClass('visible')
     getIdsInCluster( this.id ).forEach (id) ->
       elem = $('#'+id)
       x = parseInt(elem.css('left')) - parseInt(totalDelta.x)

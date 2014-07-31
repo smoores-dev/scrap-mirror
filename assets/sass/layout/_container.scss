@@ -130,13 +130,23 @@ section.container {
 			position: fixed;
 			z-index: 2;
 			width: $col;
-			bottom: 0;
+			bottom: -$col;
 			left: 50%;
 			margin-left: -$col/2;
 			opacity: 0;
-			padding-top: $col/2;
 			@include transition(all .25s $defaultCurve);
 			@include transform(scale(.5));
+			
+			&.visible {
+				bottom: 0;
+				opacity: 1;
+			}
+			
+			&.rollover {
+				@include transform(scale(1.25));
+				opacity: 1;
+				padding-top: 0;
+			}
 	
 			&:after {
 				text-align: center;
@@ -152,13 +162,7 @@ section.container {
 				font-weight: 100;
 				color: $colorAlert;
 			}
-	
-			&.hover {
-				@include transform(scale(1.25));
-				opacity: 1;
-				padding-top: 0;
-			}
-	
+				
 		}
 
 		footer {
