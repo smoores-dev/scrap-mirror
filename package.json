@@ -15,7 +15,8 @@
     "coffeelint": "~1.5.2",
     "url": "~0.10.1",
     "express": "~3.4.8",
-    "coffee-middleware": "~0.2.1"
+    "coffee-middleware": "~0.2.1",
+    "validator": "~3.16.1"
   },
   "devDependencies": {
     "vows": "0.5.x",
