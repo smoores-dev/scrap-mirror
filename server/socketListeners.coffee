@@ -3,6 +3,12 @@ url = require('url')
 spaceController = require './socketControllers/spaceController'
 elementController = require './socketControllers/elementController'
 errorHandler = require './errorHandler'
+validator = require 'validator'
+
+clean = (data) ->
+  for k, v of data
+    data[k] = validator.escape v
+  data
 
 module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
@@ -11,10 +17,10 @@ module.exports = (io)->
     socket.join spaceId
     console.log 'joined', spaceId
 
-    socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, data, spaceId, errorHandler
-    socket.on 'newElement',   (data) -> elementController.newElement io, socket, data, spaceId, errorHandler
-    socket.on 'removeElement',(data) -> elementController.removeElement io, socket, data, spaceId, errorHandler
-    socket.on 'updateElement',(data) -> elementController.updateElement io, socket, data, spaceId, errorHandler
+    socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, clean(data), spaceId, errorHandler
+    socket.on 'newElement',   (data) -> elementController.newElement io, socket, clean(data), spaceId, errorHandler
+    socket.on 'removeElement',(data) -> elementController.removeElement io, socket, clean(data), spaceId, errorHandler
+    socket.on 'updateElement',(data) -> elementController.updateElement io, socket, clean(data), spaceId, errorHandler
 
     socket.on 'disconnect', ->
       socket.leave(''+spaceId)

@@ -1,5 +1,4 @@
 models = require '../../models'
-
 module.exports =
   
   # create a new space and save it to the db

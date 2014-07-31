@@ -1,11 +1,9 @@
 db = require '../../models'
 async = require 'async'
-
 module.exports =
 
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceId, callback) =>
-
     options =
       contentType : data.contentType
       content : data.content
