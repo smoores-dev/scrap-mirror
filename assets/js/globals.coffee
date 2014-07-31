@@ -65,7 +65,7 @@ draggableOptions = (socket) ->
     z = highestZ
     $(this).zIndex z
 
-    console.log ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
+    # console.log ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
     startPosition.left = ui.position.left
     startPosition.top = ui.position.top 
 
@@ -85,9 +85,12 @@ draggableOptions = (socket) ->
       # console.log id, elem
       start = elem.data 'startPosition'
       # ui.position.left, (parseFloat($('#'+this.id).css('left')))*currScale()
-      elem.css('left', (event.clientX - click.x + start.left)*currScale())
-      elem.css('right', (event.clientY - click.y + start.right)*currScale())
+      elem.css('left', (event.clientX - click.x + start.left)/currScale())
+      elem.css('top', (event.clientY - click.y + start.top)/currScale())
 
+    ui.position = # $('#'+this.id)
+      left: (event.clientX - click.x + startPosition.left) / (currScale())
+      top: (event.clientY - click.y + startPosition.top) / (currScale())
       # elem.css('left', (diffX + start.left) / (currScale()))
       # elem.css('right', (diffY + start.top) / (currScale()))
     # left: 
@@ -113,9 +116,7 @@ draggableOptions = (socket) ->
     # $('#'+this.id).css('left', (event.clientX - click.x + startPosition.left))
     # ui.position.x /= currScale()
 
-    ui.position = # $('#'+this.id)
-      left: (event.clientX - click.x + startPosition.left) / (currScale())
-      top: (event.clientY - click.y + startPosition.top) / (currScale())
+   
 
   stop: (event, ui) ->
     $('.delete').animate(opacity: 0)
