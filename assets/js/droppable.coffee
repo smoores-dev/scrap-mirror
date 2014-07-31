@@ -2,13 +2,13 @@ $ ->
 
   socket = io.connect()
   $('.delete').droppable(
-    tolerance: "pointer"
+    tolerance: "touch"
     drop: (event, ui) ->
       elementId = ui.draggable.attr('id')
       socket.emit 'removeElement', { elementId }
-      $(this).removeClass('hover')
+      $(this).removeClass('rollover')
     over: (event, ui) ->
-      $(this).addClass('hover')
+      $(this).addClass('rollover')
     out: (event, ui) ->
-      $(this).removeClass('hover')
+      $(this).removeClass('rollover')
   )

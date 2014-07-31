@@ -51,7 +51,7 @@ resize = (socket) ->
 
 draggableOptions = (socket) ->
   start: (event, ui) ->
-    $('.delete').animate(opacity: 100)
+    $('.delete').addClass('visible')
     $(window).off 'mousemove'
     click.x = event.clientX
     click.y = event.clientY
@@ -70,7 +70,7 @@ draggableOptions = (socket) ->
       top: (event.clientY - click.y + startPosition.top) / (currScale())
 
   stop: (event, ui) ->
-    $('.delete').animate(opacity: 0)
+    $('.delete').removeClass('visible')
     xString = $(this).css('left')
     #remove the 'px' from the end of the string
     x = Math.floor(xString.slice(0,xString.length - 2) - totalDelta.x)
