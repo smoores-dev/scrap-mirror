@@ -13,22 +13,28 @@ $ ->
     element = data.element
     content = element.content
     contentType = element.contentType
+    caption = element.caption
     id = element.id
     x = element.x
     y = element.y
     z = element.z
     scale = element.scale
 
-    console.log 'got', contentType
     if contentType == "image"
       body = "<img src=#{content}>"
     else
       body = "<p>#{content}</p>"
+
+    if caption?
+      captionDiv = "<div class='card'>#{caption}</div>"
+    else
+      captionDiv = ""
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-          <div class='zoomBox'>
+          <div class='card'>
           #{body}
+          #{captionDiv}
           <div class='background'></div>
         </div>
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
