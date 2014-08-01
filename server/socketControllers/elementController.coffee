@@ -21,7 +21,6 @@ module.exports =
   # delete the element
   removeElement : (sio, socket, data, spaceId, callback) =>
     id = data.elementId
-
     # find/delete the element
     db.Element.find(where: { id } ).complete (err, element) =>
       return callback err if err?
