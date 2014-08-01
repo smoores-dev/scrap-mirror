@@ -20,6 +20,7 @@ $ ->
     $('.content').append(elementForm)
     $('.add-element').css(
       transform: "scale(#{1/screenScale})"
+      "transform-origin": "top left"
       'z-index': highestZ
       top: "#{clickY / screenScale}px"
       left: "#{clickX / screenScale}px")
