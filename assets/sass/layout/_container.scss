@@ -57,30 +57,36 @@ section.container {
                     .card {
                         background-color: $colorWashLightTrans;
                         @include transition(.125s $defaultCurve);
-                        @include transition-property(   transform,
-                                                -webkit-transform,
-                                                   -moz-transform,
-                                                        box-shadow,
-                                                -webkit-box-shadow,
-                                                   -moz-box-shadow,
-                                                   background-color);
+                        @include transition-property(transform,
+                                             -webkit-transform,
+                                                -moz-transform,
+                                                     box-shadow,
+                                             -webkit-box-shadow,
+                                                -moz-box-shadow,
+                                                     background-color);
                         img {
-                                width: 100%;
-                            }
-                            p {
-
-                                & + p {
-                                    text-indent: 2em;
-                                }
-                            }
+                            width: 100%;
+                        }
                             
-                            &.link {
-                                
-                                a {
-                                
-                                }
-                                
+                        p {
+
+                            & + p {
+                                text-indent: 2em;
                             }
+                        }
+                        
+                        &.link {
+                            
+                            a {
+                            
+                            }
+                        }
+                        
+                        textarea {
+                            outline: none;
+                            padding: 0;
+                            @include typeBody;                            
+                        }
                     }
 
                                         

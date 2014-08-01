@@ -76,17 +76,17 @@ html {
   user-select: none;
 }
 
-/* line 6, ../sass/globals/_type.scss */
+/* line 12, ../sass/globals/_type.scss */
 html {
   font-family: "Futura", serif;
   font-size: 12pt;
   line-height: 1.5em;
 }
-/* line 11, ../sass/globals/_type.scss */
+/* line 15, ../sass/globals/_type.scss */
 html h1 {
   font-size: 2rem;
 }
-/* line 17, ../sass/globals/_type.scss */
+/* line 21, ../sass/globals/_type.scss */
 html figure h1 {
   font-family: "Futura-MediumItalic";
 }
@@ -182,20 +182,28 @@ section.container section.space section.content article .card {
 section.container section.space section.content article .card img {
   width: 100%;
 }
-/* line 72, ../sass/layout/_container.scss */
+/* line 73, ../sass/layout/_container.scss */
 section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
-/* line 90, ../sass/layout/_container.scss */
+/* line 85, ../sass/layout/_container.scss */
+section.container section.space section.content article .card textarea {
+  outline: none;
+  padding: 0;
+  font-family: "Futura", serif;
+  font-size: 12pt;
+  line-height: 1.5em;
+}
+/* line 96, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 111, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 109, ../sass/layout/_container.scss */
+/* line 115, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .zoomBox {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -207,11 +215,11 @@ section.container section.space section.content article:active .zoomBox {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 121, ../sass/layout/_container.scss */
+/* line 127, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 128, ../sass/layout/_container.scss */
+/* line 134, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -231,12 +239,12 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 140, ../sass/layout/_container.scss */
+/* line 146, ../sass/layout/_container.scss */
 section.container section.space .delete.visible {
   bottom: 0;
   opacity: 1;
 }
-/* line 145, ../sass/layout/_container.scss */
+/* line 151, ../sass/layout/_container.scss */
 section.container section.space .delete.rollover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
@@ -246,7 +254,7 @@ section.container section.space .delete.rollover {
   opacity: 1;
   padding-top: 0;
 }
-/* line 151, ../sass/layout/_container.scss */
+/* line 157, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
