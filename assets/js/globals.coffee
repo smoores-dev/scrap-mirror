@@ -100,3 +100,4 @@ draggableOptions = (socket) ->
       elementId = id
       # elementId = this.id
       socket.emit('updateElement', { x, y, z, elementId })
+      
