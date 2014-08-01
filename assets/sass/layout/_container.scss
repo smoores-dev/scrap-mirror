@@ -54,7 +54,7 @@ section.container {
                     position: absolute;
                     backface-visibility: hidden;
                     
-                    .zoomBox {
+                    .card {
                         background-color: $colorWashLightTrans;
                         @include transition(.125s $defaultCurve);
                         @include transition-property(   transform,

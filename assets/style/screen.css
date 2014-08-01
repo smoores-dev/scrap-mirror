@@ -167,7 +167,7 @@ section.container section.space section.content article {
   backface-visibility: hidden;
 }
 /* line 57, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox {
+section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
   -moz-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
@@ -179,11 +179,11 @@ section.container section.space section.content article .zoomBox {
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
 /* line 67, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox img {
+section.container section.space section.content article .card img {
   width: 100%;
 }
 /* line 72, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox p + p {
+section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
 /* line 90, ../sass/layout/_container.scss */
