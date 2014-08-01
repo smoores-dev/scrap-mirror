@@ -30,7 +30,7 @@ cluster = () ->
   
   compare = (e1, e2) ->
     Math.sqrt(Math.pow(e1.x * currScale() - e2.x * currScale(), 2) + Math.pow(e1.y * currScale() - e2.y * currScale(), 2))
-
+  
   worker.onmessage = (event) ->
     clusters = event.data.clusters.map((hcluster) ->
       leaves(hcluster).map((leaf) -> leaf.value))

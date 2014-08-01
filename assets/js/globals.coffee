@@ -53,9 +53,12 @@ moveAll = () ->
 
 moveSelected = ( ui, offsetLeft, offsetTop ) ->
 
+
 draggableOptions = (socket) ->
   start: (event, ui) ->
     console.log 'Moving', getIdsInCluster( this.id )
+    if not getIdsInCluster( this.id )?
+      return
     $('.delete').animate(opacity: 100)
     $(window).off 'mousemove'
     click.x = event.clientX

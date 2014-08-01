@@ -9,8 +9,15 @@ $ ->
       deltaX = (event.clientX - prev.x) / currScale()
       deltaY = (event.clientY - prev.y) / currScale()
 
+      # if minX + totalDelta.x + deltaX > (window.innerWidth /currScale())/2
+      #   return
+
+      # console.log maxX - totalDelta.x - deltaX > -(window.innerWidth /currScale())/2
+
       totalDelta.x += deltaX
       totalDelta.y += deltaY
+
+      
 
       prev.x = event.clientX
       prev.y = event.clientY
