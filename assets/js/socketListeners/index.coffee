@@ -26,7 +26,7 @@ $ ->
       body = "<p>#{content}</p>"
 
     if caption?
-      captionDiv = "<div class='card'>#{caption}</div>"
+      captionDiv = "<div class='card'><p>#{caption}</p><div class='background'></div></div>"
     else
       captionDiv = ""
     
@@ -34,9 +34,9 @@ $ ->
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
         <div class='card'>
           #{body}
+          <div class='background'></div>
         </div>
         #{captionDiv}
-        <div class='background'></div>
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
         </div>
       </article>"
