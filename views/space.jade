@@ -1,23 +1,5 @@
 extends layout
 
-block init
-  - var maxZ = 0
-      
-  - var maxX = -Infinity
-  - var minX = Infinity
-
-  - var maxY = -Infinity
-  - var minY = Infinity
-
-block window
-  script.
-    window.maxZ = #{maxZ};
-    window.maxX = #{maxX};
-    window.maxY = #{maxY};
-    window.minX = #{minX};
-    window.minY = #{minY};
-
-
 block scripts
   script(src="/js/socketEmitters.js")
   script(src="/js/draggable.js")
@@ -59,24 +41,9 @@ block content
           - minY = element.y
 
         article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
-          if element.contentType == 'text'
-            .card
-              p= element.content
-              .background
-          if element.contentType == 'image'
-            .card
-              img(src= element.content)
-              .background
-            .card
-              p=element.caption
-              .background
-          if element.contentType == 'video'
-            .card
-              iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
-              .background
-            .card
-              p=element.caption
-              .background
+
+          include partials/articleBody
+
           .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
 
     .delete
