@@ -49,9 +49,9 @@ $ ->
             "<article class='image add-image'>
               <div class='card'>
                 <img src='#{$(this).val()}'>
-                <textarea name='caption' placeholder='Add a caption'></textarea>
-                <div class='background'></div>
               </div>
+              <textarea name='caption' placeholder='Add a caption'></textarea>
+              <div class='background'></div>
               <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
               </div>
             </article>"

@@ -32,11 +32,11 @@ $ ->
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-          <div class='card'>
-            #{body}
-            #{captionDiv}
-          <div class='background'></div>
+        <div class='card'>
+          #{body}
         </div>
+        #{captionDiv}
+        <div class='background'></div>
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
         </div>
       </article>"
