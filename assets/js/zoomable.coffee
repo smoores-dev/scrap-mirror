@@ -1,7 +1,7 @@
 screenFitScale = () ->
   scaleX = (window.innerWidth / (window.maxX - window.minX)) * .95
   scaleY = (window.innerHeight / (window.maxY - window.minY)) * .95
-  Math.window.min scaleX, scaleY
+  Math.min scaleX, scaleY
 
 $ ->
   fitTocenter = () ->
