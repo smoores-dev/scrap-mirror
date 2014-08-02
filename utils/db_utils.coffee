@@ -21,14 +21,13 @@ randInt = (n) -> Math.floor(Math.random()*n)
 exports.populate = (callback) ->
   models.sequelize.sync({ force: true }).complete (err) ->
     return callback err if err?
-    models.Space.create({ name: 'Test Space' }).complete (err, space) ->
+    models.Space.create({ name: 'Test Space', spaceKey: '12345a' }).complete (err, space) ->
       return callback err if err?
       async.whilst (() -> n > 0), createElement, (err) ->
         return callback err if err?
         callback null
 
 createElement = (cb) ->
-  console.log 'here'
   options =
     contentType : 'text'
     content : randomLatin[randInt(randomLatin.length)]

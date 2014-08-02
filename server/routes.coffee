@@ -25,9 +25,9 @@ module.exports = (server) ->
       author: 'Your Name'
       analyticssiteid: 'XXXXXXX' 
 
-  server.get '/s/:id', (req, res) ->
+  server.get '/s/:spaceKey', (req, res) ->
     space = db.Space.find( {
-      where: { id: +req.params.id },
+      where: { spaceKey: req.params.spaceKey },
       include: [ db.Element ]
     } ).complete (err, space) ->
       return console.error err if err?

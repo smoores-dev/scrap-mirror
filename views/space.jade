@@ -25,6 +25,7 @@ block content
 
   section.content
     - var max = 0
+    script= "var highestZ = 0"
     each element in space.elements
       if element.z > max
         - max = element.z
@@ -38,6 +39,6 @@ block content
           if element.contentType == 'video'
             iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
         .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
-      script= "var highestZ = "+max
+      script= "highestZ = "+max
 
   footer
