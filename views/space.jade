@@ -24,11 +24,31 @@ block content
         img(src= user)
 
   section.content
-    - var max = 0
-    script= "var highestZ = 0"
+
+    - var maxZ = 0
+    
+    - var maxX = -Infinity
+    - var minX = Infinity
+
+    - var maxY = -Infinity
+    - var minY = Infinity
+
     each element in space.elements
-      if element.z > max
-        - max = element.z
+      if element.z > maxZ
+        - maxZ = element.z
+
+      if (element.x + 300 * element.scale) > maxX
+        - maxX = (element.x + 300 * element.scale)
+
+      if element.x < minX
+        - minX = element.x
+
+      if element.y > maxY
+        - maxY = element.y
+
+      if element.y < minY
+        - minY = element.y
+
       article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
         div.zoomBox
           if element.contentType == 'text'
@@ -39,6 +59,12 @@ block content
           if element.contentType == 'video'
             iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
         .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
-      script= "highestZ = "+max
+
+    script.
+      window.maxZ = #{maxZ};
+      window.maxX = #{maxX};
+      window.maxY = #{maxY};
+      window.minX = #{minX};
+      window.minY = #{minY};
 
   footer

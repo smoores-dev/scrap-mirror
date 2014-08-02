@@ -4,10 +4,10 @@ $ ->
   $('.add-element').submit (event) ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
-    highestZ += 1
+    window.maxZ += 1
     x = 20
     y = 20
-    z = highestZ
+    z = window.maxZ
     scale = 1/currScale()
 
     if isImage(content)

@@ -48,10 +48,10 @@ $ ->
     x = data.element.x + totalDelta.x
     y = data.element.y + totalDelta.y
     z = data.element.z
-    highestZ +=1
+    window.maxZ +=1
     scale = data.element.scale
 
-    $("\##{id}").zIndex(highestZ)
+    $("\##{id}").zIndex(window.maxZ)
     $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").css '-webkit-transform': "scale(#{scale})"
     
