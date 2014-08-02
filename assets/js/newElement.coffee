@@ -2,6 +2,26 @@ $ ->
 
   socket = io.connect()
 
+  clickX = 0
+  clickY = 0
+  screenScale = 0
+
+  emitElement = ->
+    text = $('textarea[name=content]').val()
+    [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
+    caption = $('textarea[name=caption]').val()
+    highestZ += 1
+    x = Math.floor(clickX - totalDelta.x)
+    y = Math.floor(clickY - totalDelta.y)
+    z = highestZ
+    scale = 1/screenScale
+
+    socket.emit 'newElement', { contentType, content, x, y, z, scale, caption }
+
+    # clear the textbox
+    $('.add-element').remove()
+    $('.add-image').remove()
+
   isImage = (url) ->
     return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)
     true
@@ -14,7 +34,7 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-      <textarea name='content' placeholder='Add something new'></textarea>
+        <textarea name='content' placeholder='Add something new'></textarea>
       </article>"
 
     $('.content').append(elementForm)
@@ -28,23 +48,31 @@ $ ->
     $('textarea').focus()
       .on 'blur', (event) -> $(this).parent().remove()
       .on 'keydown', (event) ->
-        if event.keyCode is 13
-          content = $('textarea[name=content]').val()
-          highestZ += 1
-          x = Math.floor(clickX - totalDelta.x)
-          y = Math.floor(clickY - totalDelta.y)
-          z = highestZ
-          scale = 1/screenScale
+        if isImage($(this).val())
+          imageEl =
+            "<article class='image add-image'>
+              <div class='card'>
+                <img src='#{$(this).val()}'>
+                <textarea name='caption' placeholder='Add a caption'></textarea>
+                <div class='background'></div>
+              </div>
+              <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+              </div>
+            </article>"
+          $('.content').append(imageEl)
+          $('.add-image').css(
+            transform: "scale(#{1/screenScale})"
+            "transform-origin": "top left"
+            'z-index': highestZ
+            top: "#{clickY / screenScale}px"
+            left: "#{clickX / screenScale}px")
+          $(this).remove()
+          $('textarea').focus()
+            .on 'blur', (event) -> emitElement()
+            .on 'keydown', (event) -> emitElement() if event.keyCode is 13
 
-          if isImage(content)
-              contentType = 'image'
-          else
-              contentType = 'text'
-
-          socket.emit 'newElement', { contentType, content, x, y, z, scale }
-
-          # clear the textbox
-          $('.add-element').remove()
+        else if event.keyCode is 13
+          emitElement()
 
 
 

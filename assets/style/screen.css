@@ -160,7 +160,7 @@ section.container section.space section.content article {
   backface-visibility: hidden;
 }
 /* line 50, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox {
+section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
   -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -172,15 +172,15 @@ section.container section.space section.content article .zoomBox {
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
 /* line 60, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox img {
+section.container section.space section.content article .card img {
   width: 100%;
 }
 /* line 65, ../sass/layout/_container.scss */
-section.container section.space section.content article .zoomBox p + p {
+section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
 /* line 83, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover .zoomBox {
+section.container section.space section.content article:hover .card {
   background-color: white;
 }
 /* line 98, ../sass/layout/_container.scss */
@@ -189,7 +189,7 @@ section.container section.space section.content article:active {
   overflow: visible;
 }
 /* line 102, ../sass/layout/_container.scss */
-section.container section.space section.content article:active .zoomBox {
+section.container section.space section.content article:active .card {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
   -ms-transform: scale(1.0625) rotate(-2deg);
@@ -201,7 +201,7 @@ section.container section.space section.content article:active .zoomBox {
   background-color: white;
 }
 /* line 114, ../sass/layout/_container.scss */
-section.container section.space section.content article.text .zoomBox {
+section.container section.space section.content article.text .card {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
 /* line 121, ../sass/layout/_container.scss */

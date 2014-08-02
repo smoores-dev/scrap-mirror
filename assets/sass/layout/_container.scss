@@ -47,7 +47,7 @@ section.container {
 					position: absolute;
 					backface-visibility: hidden;
 					
-					.zoomBox {
+					.card {
 						background-color: $colorWashLightTrans;
 						@include transition(.125s $defaultCurve);
 						@include transition-property(   transform,
@@ -80,7 +80,7 @@ section.container {
 					&:hover {
 						// cursor: move;
 						
-						.zoomBox {
+						.card {
 							background-color: $colorWashLight;
 						}
 					
@@ -99,7 +99,7 @@ section.container {
 						cursor: move;
 						overflow: visible;
 						
-						.zoomBox {
+						.card {
 							@include transform(scale(1.0625) rotate(-2deg));
 							@include box-shadow(0 0 $gutter*6 rgba(0,0,0,.0625));
 							background-color: $colorWashLight;
@@ -111,7 +111,7 @@ section.container {
 					}
 					
 					&.text {
-						.zoomBox {
+						.card {
 							padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
 						}
 					}

@@ -36,8 +36,10 @@ block content
               .background
             if element.contentType == 'image'
               img(src= element.content)
+              .card=element.caption
             if element.contentType == 'video'
               iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
+              .card=element.caption
           .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
         script= "var highestZ = "+max
 
