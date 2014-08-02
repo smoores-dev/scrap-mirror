@@ -2,17 +2,13 @@ $ ->
 
   socket = io.connect()
 
-  clickX = 0
-  clickY = 0
-  screenScale = 0
-
-  emitElement = ->
+  emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
     highestZ += 1
-    x = Math.floor(clickX - totalDelta.x)
-    y = Math.floor(clickY - totalDelta.y)
+    x = Math.floor(clickX)
+    y = Math.floor(clickY)
     z = highestZ
     scale = 1/screenScale
 
@@ -68,11 +64,11 @@ $ ->
             left: "#{clickX / screenScale}px")
           $(this).remove()
           $('textarea').focus()
-            .on 'blur', (event) -> emitElement()
-            .on 'keydown', (event) -> emitElement() if event.keyCode is 13
+            .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
+            .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
         else if event.keyCode is 13
-          emitElement()
+          emitElement(clickX, clickY, screenScale)
 
 
 
