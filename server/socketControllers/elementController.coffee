@@ -1,27 +1,70 @@
-db = require '../../models'
-async = require 'async'
-module.exports =
+db      = require '../../models'
+async   = require 'async'
+webshot = require 'webshot'
+fs      = require 'fs'
+Uploader = require('s3-streaming-upload').Uploader
 
+randString = () ->
+    text = ""
+    possible = "abcdefghijklmnopqrstuvwxyz0123456789"
+    for i in [0..6]
+      text += possible.charAt(Math.floor(Math.random() * possible.length))
+    text
+
+createThumbNail = (content, contentType, callback) ->
+  if contentType == 'website'
+    url = randString() + '.png'
+    options =
+      screenSize: { width: 240, height: 150 }
+      shotSize: { width: 'all', height: 'window' }
+
+    webshot content, (err, renderStream) ->
+      return callback err if err
+      upload = new Uploader {
+        accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
+        secretKey:  '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'
+        bucket:     'scrap_images'
+        objectName: url
+        stream:     renderStream
+        objectParams:
+          ACL: 'public-read'
+          ContentType: 'image/png'
+      }
+      upload.on 'completed', (err, res) ->
+        console.log('upload completed')
+        callback null, 'https://s3.amazonaws.com/scrap_images/' +url
+
+      upload.on 'failed', (err) ->
+        console.log('upload failed with error', err)
+        callback err
+
+module.exports =
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceKey, callback) =>
+    content     = data.content
+    contentType = data.contentType
+    caption     = data.caption
 
     db.Space.find(where: { spaceKey }).complete (err, space) =>
       return callback err if err?
-      
-      options =
-        contentType : data.contentType
-        content : data.content
-        caption : data.caption
-        x: data.x
-        y: data.y
-        z: data.z
-        scale: data.scale
-        SpaceId: space.id
-
-      db.Element.create(options).complete (err, element) =>
+      createThumbNail content, contentType, (err, thumbnail) =>
+        console.log err, thumbnail
         return callback err if err?
-        sio.to("#{spaceKey}").emit 'newElement', { element }
-        callback()
+        options = {
+          contentType
+          content
+          thumbnail
+          caption : data.caption
+          x: data.x
+          y: data.y
+          z: data.z
+          scale: data.scale
+          SpaceId: space.id
+        }
+        db.Element.create(options).complete (err, element) =>
+          return callback err if err?
+          sio.to("#{spaceKey}").emit 'newElement', { element }
+          callback()
 
   # delete the element
   removeElement : (sio, socket, data, spaceKey, callback) =>

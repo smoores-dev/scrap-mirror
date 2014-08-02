@@ -11,6 +11,7 @@ block scripts
   script(src="/js/screenDrag.js")
   script(src='/js/lib/clusterfck.js')
   script(src='/js/cluster.js')
+  script(src='/js/website.js')
 
 block content
   - var users = ["https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c1.95.477.477/p480x480/1920336_10152275444250993_2135489901_n.jpg?oh=bbaa145748095d6331cba2e63d34351e&oe=544B7BC0&__gda__=1412714693_09ab5f6cad5ec3a6e1b1a5cfbdf15e02","https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c0.0.480.480/p480x480/10176080_2520381682312_4890391499590307710_n.jpg?oh=9b62cd1a1e536d8baeb80f5b63b12aee&oe=544C61A6&__gda__=1414538666_07bda3f9b428206ce7dab047fcd01710"]
@@ -39,7 +40,7 @@ block content
         if element.y < minY
           - minY = element.y
 
-        article(id=element.id, class=element.contentType, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
+        article(id=element.id, class=element.contentType, data-content=element.content, style="top:"+element.y+"px;left:"+element.x+"px;z-index:"+element.z+";"+"-webkit-transform:scale("+element.scale+");-webkit-transform-origin: top left")
 
           include partials/articleBody
 

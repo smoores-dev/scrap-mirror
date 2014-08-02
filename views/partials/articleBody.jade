@@ -9,6 +9,10 @@ if element.contentType == 'image'
   .card
     p=element.caption
     .background
+if element.contentType == 'website'
+  .card
+    img(src= element.thumbnail)
+    .background
 if element.contentType == 'video'
   .card
     iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')

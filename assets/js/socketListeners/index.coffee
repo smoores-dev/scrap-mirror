@@ -14,6 +14,8 @@ $ ->
     content = element.content
     contentType = element.contentType
     caption = element.caption
+    thumbnail = element.thumbnail
+
     id = element.id
     x = element.x
     y = element.y
@@ -22,6 +24,8 @@ $ ->
 
     if contentType == "image"
       body = "<img src=#{content}>"
+    else if contentType == 'website'
+      body = "<img src=#{thumbnail}>"
     else
       body = "<p>#{content}</p>"
 
