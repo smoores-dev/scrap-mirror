@@ -43,6 +43,8 @@ module.exports = (server) ->
     throw new Error 'This is a 500 Error'
 
   server.get '/*', (req, res) ->
+    res.status 404
+    res.render '404', { url: req.url }
     console.log 'Failed to get', req.url
     # throw new NotFound;
 
