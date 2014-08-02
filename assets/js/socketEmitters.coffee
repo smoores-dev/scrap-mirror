@@ -12,14 +12,17 @@ $ ->
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
+    console.log "called emitElement"
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
     window.maxZ += 1
-    x = Math.floor(clickX)
-    y = Math.floor(clickY)
+    x = Math.floor(clickX / screenScale)
+    y = Math.floor(clickY / screenScale)
     z = window.maxZ
     scale = 1/screenScale
+
+    console.log totalDelta.x, totalDelta.y
 
     socket.emit 'newElement', { contentType, content, x, y, z, scale, caption }
 
@@ -52,6 +55,7 @@ $ ->
     $('textarea').focus()
       .on 'blur', (event) -> $(this).parent().remove()
       .on 'keydown', (event) ->
+        console.log "something"
         if isImage($(this).val())
           imageEl =
             "<article class='image add-image'>
@@ -79,4 +83,5 @@ $ ->
             .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
         else if event.keyCode is 13
+          console.log "hey"
           emitElement(clickX, clickY, screenScale)
