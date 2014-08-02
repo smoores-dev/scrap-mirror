@@ -14,7 +14,6 @@ module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
 
     spaceKey = url.parse(socket.handshake.headers.referer, true).path.split('/')[2]
-    console.log spaceKey
     socket.join spaceKey
     console.log 'joined', spaceKey
 
