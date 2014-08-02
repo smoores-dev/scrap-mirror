@@ -31,13 +31,16 @@ module.exports = (server) ->
       include: [ db.Element ]
     } ).complete (err, space) ->
       return console.error err if err?
-      res.render 'space.jade',
-        title : space.name
-        space : space
+      if not space?
+        res.status 404
+        res.render '404', { url: req.url }
+      else
+        res.render 'space.jade',
+          title : space.name
+          space : space
 
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'
-
 
   server.get '/*', (req, res) ->
     console.log 'Failed to get', req.url
