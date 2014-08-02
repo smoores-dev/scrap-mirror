@@ -13,6 +13,7 @@ $ ->
     element = data.element
     content = element.content
     contentType = element.contentType
+    caption = element.caption
     id = element.id
     x = element.x
     y = element.y
@@ -23,13 +24,19 @@ $ ->
       body = "<img src=#{content}>"
     else
       body = "<p>#{content}</p>"
+
+    if caption?
+      captionDiv = "<div class='card'><p>#{caption}</p><div class='background'></div></div>"
+    else
+      captionDiv = ""
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-          <div class='zoomBox'>
+        <div class='card'>
           #{body}
           <div class='background'></div>
         </div>
+        #{captionDiv}
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
         </div>
       </article>"
