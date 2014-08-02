@@ -4,7 +4,6 @@ $ ->
   $('.add-element').submit (event) ->
     event.preventDefault()
     content = $('input[name=content]', this).val()
-    console.log highestZ
     highestZ += 1
     x = 20
     y = 20

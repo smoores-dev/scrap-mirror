@@ -3,23 +3,27 @@ async = require 'async'
 module.exports =
 
   # create a new element and save it to db
-  newElement : (sio, socket, data, spaceId, callback) =>
-    options =
-      contentType : data.contentType
-      content : data.content
-      x: data.x
-      y: data.y
-      z: data.z
-      scale: data.scale
-      SpaceId: spaceId
+  newElement : (sio, socket, data, spaceKey, callback) =>
 
-    db.Element.create(options).complete (err, element) =>
+    db.Space.find(where: { spaceKey }).complete (err, space) =>
       return callback err if err?
-      sio.to("#{spaceId}").emit 'newElement', { element }
-      callback()
+      
+      options =
+        contentType : data.contentType
+        content : data.content
+        x: data.x
+        y: data.y
+        z: data.z
+        scale: data.scale
+        SpaceId: space.id
+
+      db.Element.create(options).complete (err, element) =>
+        return callback err if err?
+        sio.to("#{spaceKey}").emit 'newElement', { element }
+        callback()
 
   # delete the element
-  removeElement : (sio, socket, data, spaceId, callback) =>
+  removeElement : (sio, socket, data, spaceKey, callback) =>
     id = data.elementId
 
     # find/delete the element
@@ -28,11 +32,11 @@ module.exports =
       return callback() if not element? 
       element.destroy().complete (err) =>
         return callback err if err?
-        sio.to("#{spaceId}").emit 'removeElement', { element }
+        sio.to("#{spaceKey}").emit 'removeElement', { element }
         callback()
 
   # moves an element from one column to another
-  updateElement : (sio, socket, data, spaceId, callback) =>
+  updateElement : (sio, socket, data, spaceKey, callback) =>
     data.id = +data.elementId
 
     query = "UPDATE \"Elements\" SET"
@@ -49,5 +53,5 @@ module.exports =
 
     db.sequelize.query(query, element, null, data).complete (err, result) ->
       return callback err if err?
-      sio.to("#{spaceId}").emit 'updateElement', { element: result }
+      sio.to("#{spaceKey}").emit 'updateElement', { element: result }
       callback()

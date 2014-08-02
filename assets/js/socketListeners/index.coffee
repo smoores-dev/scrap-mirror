@@ -4,10 +4,10 @@ $ ->
   
   socket.on 'newSpace', (data) ->
     space = data.space
-    spaceId = space.id
+    spaceKey = space.spaceKey
 
     # redirect to new page
-    window.location.href = "/s/" + spaceId
+    window.location.href = "/s/" + spaceKey
 
   socket.on 'newElement', (data) ->
     element = data.element
@@ -19,7 +19,6 @@ $ ->
     z = element.z
     scale = element.scale
 
-    console.log 'got', contentType
     if contentType == "image"
       body = "<img src=#{content}>"
     else
