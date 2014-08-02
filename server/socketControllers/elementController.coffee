@@ -11,6 +11,7 @@ module.exports =
       options =
         contentType : data.contentType
         content : data.content
+        caption : data.caption
         x: data.x
         y: data.y
         z: data.z
