@@ -12,31 +12,32 @@ randString = () ->
     text
 
 createThumbNail = (content, contentType, callback) ->
-  if contentType == 'website'
-    url = randString() + '.png'
-    options =
-      screenSize: { width: 240, height: 150 }
-      shotSize: { width: 'all', height: 'window' }
+  if contentType != 'website'
+    return callback null, null
+  url = randString() + '.png'
+  options =
+    screenSize: { width: 240, height: 150 }
+    shotSize: { width: 'all', height: 'window' }
 
-    webshot content, (err, renderStream) ->
-      return callback err if err
-      upload = new Uploader {
-        accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
-        secretKey:  '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'
-        bucket:     'scrap_images'
-        objectName: url
-        stream:     renderStream
-        objectParams:
-          ACL: 'public-read'
-          ContentType: 'image/png'
-      }
-      upload.on 'completed', (err, res) ->
-        console.log('upload completed')
-        callback null, 'https://s3.amazonaws.com/scrap_images/' +url
+  webshot content, (err, renderStream) ->
+    return callback err if err
+    upload = new Uploader {
+      accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
+      secretKey:  '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'
+      bucket:     'scrap_images'
+      objectName: url
+      stream:     renderStream
+      objectParams:
+        ACL: 'public-read'
+        ContentType: 'image/png'
+    }
+    upload.on 'completed', (err, res) ->
+      console.log('upload completed')
+      callback null, 'https://s3.amazonaws.com/scrap_images/' +url
 
-      upload.on 'failed', (err) ->
-        console.log('upload failed with error', err)
-        callback err
+    upload.on 'failed', (err) ->
+      console.log('upload failed with error', err)
+      callback err
 
 module.exports =
   # create a new element and save it to db

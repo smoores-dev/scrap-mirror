@@ -19,6 +19,7 @@ $ ->
       contentType = if isWebsite(text) then 'website' else 'text'
     else
       [content, contentType] = [$('img','.add-image').attr('src'), 'image']
+
     caption = $('textarea[name=caption]').val()
     window.maxZ += 1
     x = Math.floor(clickX / screenScale)
