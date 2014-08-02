@@ -6,10 +6,10 @@ $ ->
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
-    highestZ += 1
+    window.maxZ += 1
     x = Math.floor(clickX)
     y = Math.floor(clickY)
-    z = highestZ
+    z = window.maxZ
     scale = 1/screenScale
 
     socket.emit 'newElement', { contentType, content, x, y, z, scale, caption }
@@ -37,7 +37,7 @@ $ ->
     $('.add-element').css(
       transform: "scale(#{1/screenScale})"
       "transform-origin": "top left"
-      'z-index': highestZ
+      'z-index': window.maxZ
       top: "#{clickY / screenScale}px"
       left: "#{clickX / screenScale}px")
 
@@ -62,7 +62,7 @@ $ ->
           $('.add-image').css(
             transform: "scale(#{1/screenScale})"
             "transform-origin": "top left"
-            'z-index': highestZ
+            'z-index': window.maxZ
             top: "#{clickY / screenScale}px"
             left: "#{clickX / screenScale}px")
           $(this).remove()
