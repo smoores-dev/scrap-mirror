@@ -41,9 +41,13 @@ $ ->
         </div>
       </article>"
 
+    console.log newArticle
+
     $('.content').append(newArticle)
+    console.log "append"
     $("\##{id}").draggable(draggableOptions socket)
       .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
+    console.log "", $("\##{id}").css('-webkit-transform')
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
 
   socket.on 'removeElement', (data) ->

@@ -1,5 +1,23 @@
 extends layout
 
+block init
+  - var maxZ = 0
+      
+  - var maxX = -Infinity
+  - var minX = Infinity
+
+  - var maxY = -Infinity
+  - var minY = Infinity
+
+block window
+  script.
+    window.maxZ = #{maxZ};
+    window.maxX = #{maxX};
+    window.maxY = #{maxY};
+    window.minX = #{minX};
+    window.minY = #{minY};
+
+
 block scripts
   script(src="/js/socketEmitters.js")
   script(src="/js/draggable.js")
@@ -23,14 +41,6 @@ block content
           img(src= user)
 
     section.content
-
-      - var maxZ = 0
-      
-      - var maxX = -Infinity
-      - var minX = Infinity
-
-      - var maxY = -Infinity
-      - var minY = Infinity
 
       each element in space.elements
         if element.z > maxZ
@@ -68,12 +78,6 @@ block content
               p=element.caption
               .background
           .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
-        script.
-          window.maxZ = #{maxZ};
-          window.maxX = #{maxX};
-          window.maxY = #{maxY};
-          window.minX = #{minX};
-          window.minY = #{minY};
 
     .delete
 

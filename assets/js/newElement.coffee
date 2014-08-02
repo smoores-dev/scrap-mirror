@@ -26,7 +26,6 @@ $ ->
     screenScale = parseFloat(currScale())
     clickX = event.clientX - $('.content').offset().left
     clickY = event.clientY - $('.content').offset().top
-    console.log clickX, clickY
 
     elementForm =
       "<article class='add-element'>
