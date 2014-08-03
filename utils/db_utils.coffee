@@ -18,8 +18,8 @@ randomImage = [
   "https://disney-animation.s3.amazonaws.com/uploads/production/project_image/frozen/72/image/project_image.jpg"
 ]
 
-n = 10
-m = 10
+n = 15
+m = randomImage.length
 maxX = 5000
 maxY = 2000
 maxS = 5
@@ -57,7 +57,7 @@ createTextElement = (cb) ->
 createImageElement = (cb) ->
   options =
     contentType : 'image'
-    content : randomImage[randInt(randomImage.length)]
+    content : randomImage[m - 1]
     caption : randomLatin[randInt(randomLatin.length)].slice(0, 80)
     x : randInt(maxX)
     y : randInt(maxY)
