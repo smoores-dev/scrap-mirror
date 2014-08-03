@@ -9,11 +9,21 @@ randomLatin = [
   "Quisque accumsan lacus eu est pretium ullamcorper. Cras et odio lectus. Vivamus hendrerit pharetra mauris, id pharetra leo tincidunt et."
 ]
 
-n = 20
-maxX = 3000
-maxY = 1000
-maxS = 1
-minS = 1
+randomImage = [
+  "http://www.menucool.com/slider/prod/image-slider-5.jpg"
+  "http://www.menucool.com/slider/prod/image-slider-4.jpg"
+  "http://cdn1.yourstory.com/wp-content/uploads/2014/04/Image-1.jpg"
+  "http://emarketingblogger.com/wp-content/uploads/2014/04/image-marketing-sites.jpg"
+  "http://wowslider.com/images/demo/box-stack-v/data1/images/train.jpg"
+  "https://disney-animation.s3.amazonaws.com/uploads/production/project_image/frozen/72/image/project_image.jpg"
+]
+
+n = 10
+m = 10
+maxX = 5000
+maxY = 2000
+maxS = 5
+minS = 0.2
 z = 0;
 
 randInt = (n) -> Math.floor(Math.random()*n)
@@ -23,11 +33,13 @@ exports.populate = (callback) ->
     return callback err if err?
     models.Space.create({ name: 'Test Space', spaceKey: '12345a' }).complete (err, space) ->
       return callback err if err?
-      async.whilst (() -> n > 0), createElement, (err) ->
+      async.whilst (() -> n > 0), createTextElement, (err) ->
         return callback err if err?
-        callback null
+        async.whilst (() -> m > 0), createImageElement, (err) ->
+          return callback err if err?
+          callback null
 
-createElement = (cb) ->
+createTextElement = (cb) ->
   options =
     contentType : 'text'
     content : randomLatin[randInt(randomLatin.length)]
@@ -40,4 +52,20 @@ createElement = (cb) ->
   models.Element.create(options).complete (err, element) ->
     return cb err if err?
     n--
+    cb null
+
+createImageElement = (cb) ->
+  options =
+    contentType : 'image'
+    content : randomImage[randInt(randomImage.length)]
+    caption : randomLatin[randInt(randomLatin.length)].slice(0, 80)
+    x : randInt(maxX)
+    y : randInt(maxY)
+    z : (z++)
+    scale : (Math.random() * (maxS - minS)) + minS
+    SpaceId : 1
+
+  models.Element.create(options).complete (err, element) ->
+    return cb err if err?
+    m--
     cb null
