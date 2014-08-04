@@ -18,18 +18,20 @@ $ ->
     $('.content').css(scale: screenFitScale())
 
   socket = io.connect()
-  # fitTocenter()
+  fitTocenter()
   scrollTimer = null
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
-    oldScale = $('.content').css('scale')
+    oldScale = $('.content').css 'scale'
     scaleDelta = (parseFloat(oldScale) * (event.deltaY / 100))
     newScale = oldScale - scaleDelta
     if newScale > screenFitScale()/2 && newScale < screenFitScale() * 12
-      $('.content').css(scale: newScale)
-      $('.content').css('transform-origin': "#{event.clientX}px #{event.clientY}px")
+      originX = (event.clientX - $('.content').offset().left) / ($('.content').width() * oldScale)
+      originY = (event.clientY - $('.content').offset().top) / ($('.content').height() * oldScale)
+      console.log $('.content').css 'transform-origin'
+      $('.content').css 'transform-origin': "#{originX * 100}% #{originY * 100}%"
+      $('.content').css scale: newScale
       clearTimeout(scrollTimer)
       scrollTimer = setTimeout((() ->
         cluster()
       ), 200)
-      
