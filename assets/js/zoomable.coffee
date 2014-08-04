@@ -27,6 +27,8 @@ $ ->
     newScale = oldScale - scaleDelta
     if newScale > screenFitScale()/2 && newScale < screenFitScale() * 12
       $('section.content').css('-webkit-transform': "scale(#{newScale})")
+      $('section.content').css('-webkit-transform-origin': "#{event.clientY}px #{event.clientX}px")
+      console.log "#{event.clientX}px #{event.clientY}px"
       clearTimeout(scrollTimer)
       scrollTimer = setTimeout((() ->
         cluster()
