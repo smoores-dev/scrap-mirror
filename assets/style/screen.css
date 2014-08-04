@@ -148,7 +148,7 @@ section.container section.space section.content {
   -ms-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
-  position: relative;
+  position: fixed;
   z-index: 1;
 }
 /* line 43, ../sass/layout/_container.scss */

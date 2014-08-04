@@ -15,10 +15,10 @@ $ ->
     totalDelta.y += deltaY
     
     $('article').animate( { top: "+=#{deltaY}px", left: "+=#{deltaX}px" }, 0, 'linear' )    
-    $('section.content').css(scale: screenFitScale())
+    $('.content').css(scale: screenFitScale())
 
   socket = io.connect()
-  fitTocenter()
+  # fitTocenter()
   scrollTimer = null
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
@@ -26,7 +26,8 @@ $ ->
     scaleDelta = (parseFloat(oldScale) * (event.deltaY / 100))
     newScale = oldScale - scaleDelta
     if newScale > screenFitScale()/2 && newScale < screenFitScale() * 12
-      $('section.content').css(scale: newScale)
+      $('.content').css(scale: newScale)
+      $('.content').css('transform-origin': "#{event.clientX}px #{event.clientY}px")
       clearTimeout(scrollTimer)
       scrollTimer = setTimeout((() ->
         cluster()
