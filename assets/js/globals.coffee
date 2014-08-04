@@ -5,12 +5,10 @@ totalDelta =
 matrixToArray = (str) ->
   str.match(/(-?[0-9\.]+)/g)
 
-currScale = -> matrixToArray($('section.content').css('-webkit-transform'))[0]
-
 elementScale = (element) -> matrixToArray(element.css('-webkit-transform'))[0]
 
 dimension = (elem) ->
-  scale = currScale()
+  scale = $('.content').css('scale')
   elemScale = elementScale elem
   w = parseInt(elem.css('width')) * elemScale
   h = parseInt(elem.css('height')) * elemScale
@@ -26,14 +24,14 @@ resize = (socket) ->
     element = $(this).parent()
     clickX = event.clientX
     clickY = event.clientY
-    screenScale = currScale()
+    screenScale = $('.content').css('scale')
 
     $(window).on 'mouseup', (event) ->
-      socket.emit 'updateElement', { elementId: element.attr('id'), scale: elementScale(element) }
+      socket.emit 'updateElement', { elementId: element.attr('id'), scale: elementScale element }
 
     $(window).on 'mousemove', (event) ->
       event.preventDefault()
-      oldElementScale = elementScale(element)
+      oldElementScale = elementScale element
 
       deltaX = (event.clientX - clickX) / screenScale
       deltaY = (event.clientY - clickY) / screenScale
