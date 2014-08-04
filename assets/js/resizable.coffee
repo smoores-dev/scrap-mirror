@@ -26,7 +26,7 @@ resize = (socket) ->
 
       newScale *= -1 if deltaX < 0 || deltaY < 0
 
-      element.css("-webkit-transform": "scale(#{+oldElementScale + newScale})")
+      element.css("scale": +oldElementScale + newScale)
 
 $ ->
 
