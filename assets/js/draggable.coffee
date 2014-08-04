@@ -1,5 +1,6 @@
 draggableOptions = (socket) ->
   start: (event, ui) ->
+    screenScale = $('.content').css('scale')
     if not getIdsInCluster( this.id )?
       return
     $('.delete').animate(opacity: 100)
@@ -17,22 +18,23 @@ draggableOptions = (socket) ->
     getIdsInCluster( this.id ).forEach (id)->
       elem = $('#'+id)
       elem.data 'startPosition', {
-        left: parseFloat(elem.css('left')) * currScale()
-        top: parseFloat(elem.css('top')) * currScale()
+        left: parseFloat(elem.css('left')) * screenScale
+        top: parseFloat(elem.css('top')) * screenScale
       }
 
   drag: (event, ui) ->
+    screenScale = $('.content').css('scale')
     diffX = event.clientX - click.x
     diffY = event.clientY - click.y
     getIdsInCluster( this.id ).forEach (id)->
       elem = $('#'+id)
       start = elem.data 'startPosition'
-      elem.css('left', (event.clientX - click.x + start.left)/currScale())
-      elem.css('top', (event.clientY - click.y + start.top)/currScale())
+      elem.css('left', (event.clientX - click.x + start.left)/screenScale)
+      elem.css('top', (event.clientY - click.y + start.top)/screenScale)
 
     ui.position = # $('#'+this.id)
-      left: (event.clientX - click.x + startPosition.left) / (currScale())
-      top: (event.clientY - click.y + startPosition.top) / (currScale())
+      left: (event.clientX - click.x + startPosition.left) / (screenScale)
+      top: (event.clientY - click.y + startPosition.top) / (screenScale)
 
   stop: (event, ui) ->
     $('.delete').animate(opacity: 0)

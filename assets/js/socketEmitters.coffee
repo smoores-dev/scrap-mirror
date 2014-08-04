@@ -33,7 +33,7 @@ $ ->
     true
 
   $(window).on 'dblclick', (event) ->
-    screenScale = parseFloat(currScale())
+    screenScale = $('.content').css('scale')
     clickX = event.clientX - $('.content').offset().left
     clickY = event.clientY - $('.content').offset().top
 
@@ -44,7 +44,7 @@ $ ->
 
     $('.content').append(elementForm)
     $('.add-element').css(
-      transform: "scale(#{1/screenScale})"
+      scale: 1/screenScale
       "transform-origin": "top left"
       'z-index': "#{window.maxZ + 1}"
       top: "#{clickY / screenScale}px"
@@ -69,7 +69,7 @@ $ ->
             </article>"
           $('.content').append(imageEl)
           $('.add-image').css(
-            transform: "scale(#{1/screenScale})"
+            scale: 1/screenScale
             "transform-origin": "top left"
             'z-index': window.maxZ
             top: "#{clickY / screenScale}px"
