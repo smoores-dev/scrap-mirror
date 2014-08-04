@@ -29,7 +29,8 @@ cluster = () ->
   worker = {} #new Worker("./hcluster-worker.js");
   
   compare = (e1, e2) ->
-    Math.sqrt(Math.pow(e1.x * currScale() - e2.x * currScale(), 2) + Math.pow(e1.y * currScale() - e2.y * currScale(), 2))
+    screenScale = $('.content').css('scale')
+    Math.sqrt(Math.pow(e1.x * screenScale - e2.x * screenScale, 2) + Math.pow(e1.y * screenScale - e2.y * screenScale, 2))
   
   worker.onmessage = (event) ->
     clusters = event.data.clusters.map((hcluster) ->

@@ -61,5 +61,5 @@ $ ->
 
     $("\##{id}").zIndex(window.maxZ)
     $("\##{id}").animate({ top: y, left: x }, cluster)
-    $("\##{id}").css '-webkit-transform': "scale(#{scale})"
+    $("\##{id}").transition { scale }
     
