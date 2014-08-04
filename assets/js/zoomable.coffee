@@ -5,6 +5,7 @@ screenFitScale = () ->
 
 $ ->
   fitTocenter = () ->
+    cluster()
     wx = window.innerWidth / 2
     wy = window.innerHeight / 2
 
