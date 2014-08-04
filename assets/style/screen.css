@@ -169,10 +169,10 @@ section.container section.space section.content article {
 /* line 57, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
-  -webkit-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  -moz-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: 0.125s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
   -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;

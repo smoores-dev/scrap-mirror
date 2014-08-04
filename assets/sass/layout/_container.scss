@@ -56,7 +56,7 @@ section.container {
                     
                     .card {
                         background-color: $colorWashLightTrans;
-                        @include transition(.125s $defaultCurve);
+                        @include transition(.125s $bouncyCurve);
                         @include transition-property(transform,
                                              -webkit-transform,
                                                 -moz-transform,
