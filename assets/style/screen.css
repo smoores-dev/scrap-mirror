@@ -141,6 +141,7 @@ section.container section.space ul.users li img {
 }
 /* line 35, ../sass/layout/_container.scss */
 section.container section.space section.content {
+  transform-origin: 0 0;
   width: 100%;
   height: 100%;
   -webkit-transform: scale(1);
@@ -148,10 +149,10 @@ section.container section.space section.content {
   -ms-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
-  position: fixed;
+  position: relative;
   z-index: 1;
 }
-/* line 42, ../sass/layout/_container.scss */
+/* line 43, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   overflow: hidden;
@@ -159,7 +160,7 @@ section.container section.space section.content article {
   position: absolute;
   backface-visibility: hidden;
 }
-/* line 49, ../sass/layout/_container.scss */
+/* line 50, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -171,15 +172,15 @@ section.container section.space section.content article .card {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 59, ../sass/layout/_container.scss */
+/* line 60, ../sass/layout/_container.scss */
 section.container section.space section.content article .card img {
   width: 100%;
 }
-/* line 63, ../sass/layout/_container.scss */
+/* line 64, ../sass/layout/_container.scss */
 section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
-/* line 75, ../sass/layout/_container.scss */
+/* line 76, ../sass/layout/_container.scss */
 section.container section.space section.content article .card textarea {
   outline: none;
   padding: 0;
@@ -187,16 +188,16 @@ section.container section.space section.content article .card textarea {
   font-size: 12pt;
   line-height: 1.5em;
 }
-/* line 86, ../sass/layout/_container.scss */
+/* line 87, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 101, ../sass/layout/_container.scss */
+/* line 102, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 105, ../sass/layout/_container.scss */
+/* line 106, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .card {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -208,11 +209,11 @@ section.container section.space section.content article:active .card {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 117, ../sass/layout/_container.scss */
+/* line 118, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 123, ../sass/layout/_container.scss */
+/* line 124, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -232,12 +233,12 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 135, ../sass/layout/_container.scss */
+/* line 136, ../sass/layout/_container.scss */
 section.container section.space .delete.visible {
   bottom: 0;
   opacity: 1;
 }
-/* line 140, ../sass/layout/_container.scss */
+/* line 141, ../sass/layout/_container.scss */
 section.container section.space .delete.rollover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
@@ -247,7 +248,7 @@ section.container section.space .delete.rollover {
   opacity: 1;
   bottom: 0;
 }
-/* line 146, ../sass/layout/_container.scss */
+/* line 147, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
