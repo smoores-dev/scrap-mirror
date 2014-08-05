@@ -59,6 +59,9 @@ $ ->
     window.maxZ +=1
     scale = data.element.scale
 
+    if scale < window.minScale
+      window.minScale = scale
+
     $("\##{id}").zIndex(window.maxZ)
     $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").transition { scale }
