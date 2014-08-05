@@ -11,6 +11,17 @@ module.exports =
       socket.emit 'newSpace', { space }
       callback()
 
+  # update the space name and save it to the db
+  updateName : (sio, socket, data, spaceKey, callback) ->
+    name = data.name
+    
+    models.Space.find(where: { spaceKey }).complete (err, space) =>
+      return callback err if err?
+      return callback() if not space? 
+      space.updateAttributes({ name }).success () =>
+        sio.to("#{spaceKey}").emit 'updateName', { name }
+        callback()
+
   generateUUID : () ->
     text = ""
     possible = "abcdefghijklmnopqrstuvwxyz0123456789";

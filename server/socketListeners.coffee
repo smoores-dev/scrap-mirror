@@ -21,6 +21,7 @@ module.exports = (io)->
     socket.on 'newElement',   (data) -> elementController.newElement io, socket, clean(data), spaceKey, errorHandler
     socket.on 'removeElement',(data) -> elementController.removeElement io, socket, clean(data), spaceKey, errorHandler
     socket.on 'updateElement',(data) -> elementController.updateElement io, socket, clean(data), spaceKey, errorHandler
+    socket.on 'updateName',(data) -> spaceController.updateName io, socket, clean(data), spaceKey, errorHandler
 
     socket.on 'disconnect', ->
       socket.leave(spaceKey)

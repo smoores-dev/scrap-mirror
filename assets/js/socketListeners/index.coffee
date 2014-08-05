@@ -9,6 +9,10 @@ $ ->
     # redirect to new page
     window.location.href = "/s/" + spaceKey
 
+  socket.on 'updateName', (data) ->
+    name = data.name
+    $('h1').text(name)
+
   socket.on 'newElement', (data) ->
     element = data.element
     content = element.content

@@ -79,5 +79,22 @@ $ ->
             .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
             .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
-        else if event.keyCode is 13
+        else if event.keyCode is 13 # press enter
           emitElement(clickX, clickY, screenScale)
+
+
+  $('h1').on 'dblclick', (event) ->
+    event.stopPropagation()
+    parent = $(this).parent()
+    oldName = $(this).html()
+
+    formEl = "<form><input type='text' name='name' value=#{oldName}><input style='visibility:hidden' type='submit'></form>"
+    parent.append(formEl)
+    $('input[name="name"]').focus()
+      .on 'blur', (event) -> $(this).parent().remove()
+    
+    $('form').submit (event) ->
+      event.preventDefault()
+      newName = $('input[name="name"]').val()
+      $(this).remove()
+      socket.emit 'updateName', { name : newName }
