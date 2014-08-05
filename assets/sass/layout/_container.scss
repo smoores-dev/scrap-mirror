@@ -51,12 +51,17 @@ section.container {
           background-color: $colorWashLightTrans;
           @include transition(.125s $bouncyCurve);
           @include transition-property(transform,
-														 -webkit-transform,
-														    -moz-transform,
-														         box-shadow,
-														 -webkit-box-shadow,
-														    -moz-box-shadow,
-														         background-color);
+                               -webkit-transform,
+                                  -moz-transform,
+                                       box-shadow,
+                               -webkit-box-shadow,
+                                  -moz-box-shadow,
+                                       background-color);
+
+          &.text {
+            padding: $cardPadding;
+          }
+
           img {
             width: 100%;
           }
@@ -71,10 +76,12 @@ section.container {
           textarea {
             outline: none;
             padding: 0;
-            @include typeBody;                            
+            @include typeBody;
+            background: red;                          
           }
+          
         }
-
+        
         &:hover {
           
           .card {
@@ -92,13 +99,6 @@ section.container {
             @include box-shadow(0 0 $gutter*6 rgba(0,0,0,.0625));
             background-color: $colorWashLight;
           }       
-        }
-        
-        &.text {
-        
-          .card {
-            padding: $gutter/3 $gutter $gutter/3 $gutter/2;
-          }
         }
       }
     }
