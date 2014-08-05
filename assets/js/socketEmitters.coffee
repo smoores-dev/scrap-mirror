@@ -39,7 +39,9 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-        <textarea name='content' placeholder='Add something new'></textarea>
+        <div class='card text'>
+          <textarea name='content' placeholder='Add something new'></textarea>
+        </div>
       </article>"
 
     $('.content').append(elementForm)
