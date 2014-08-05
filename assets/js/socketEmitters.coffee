@@ -84,17 +84,25 @@ $ ->
 
 
   $('h1').on 'dblclick', (event) ->
+    screenScale = $('.content').css('scale')
+    clickX = event.clientX - $('.content').offset().left
+    clickY = event.clientY - $('.content').offset().top
     event.stopPropagation()
     parent = $(this).parent()
     oldName = $(this).html()
 
-    formEl = "<form><input type='text' name='name' value=#{oldName}><input style='visibility:hidden' type='submit'></form>"
+    formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
     parent.append(formEl)
     $('input[name="name"]').focus()
       .on 'blur', (event) -> $(this).parent().remove()
+    $('form').css(
+        'z-index':2
+        position: 'fixed'
+        top: "#{$(this).offset().top}px"
+        left: "#{$(this).offset().left}px")
     
     $('form').submit (event) ->
       event.preventDefault()
       newName = $('input[name="name"]').val()
       $(this).remove()
-      socket.emit 'updateName', { name : newName }
+      socket.emit 'updateSpace', { name : newName }

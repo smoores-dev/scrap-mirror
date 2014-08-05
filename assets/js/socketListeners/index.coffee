@@ -9,7 +9,7 @@ $ ->
     # redirect to new page
     window.location.href = "/s/" + spaceKey
 
-  socket.on 'updateName', (data) ->
+  socket.on 'updateSpace', (data) ->
     name = data.name
     $('h1').text(name)
     document.title = name
