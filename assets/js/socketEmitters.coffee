@@ -50,7 +50,7 @@ $ ->
       left: "#{clickX / screenScale}px")
 
     $('textarea').focus()
-      # .on 'blur', (event) -> $(this).parent().remove()
+      .on 'blur', (event) -> $(this).parent().remove()
       .on 'keydown', (event) ->
         if isImage($(this).val())
           imageEl =
