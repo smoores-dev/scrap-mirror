@@ -7,10 +7,11 @@ $ ->
     drop: (event, ui) ->
       getIdsInCluster( ui.draggable.attr('id') ).forEach (elementId)->
         socket.emit 'removeElement', { elementId }
-      $(this).removeClass('hover')
+      $(this).removeClass('rollover')
 
     over: (event, ui) ->
-      $(this).addClass('hover')
+      $(this).addClass('rollover')
+
     out: (event, ui) ->
-      $(this).removeClass('hover')
+      $(this).removeClass('rollover')
   )

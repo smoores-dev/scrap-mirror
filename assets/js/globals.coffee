@@ -15,4 +15,6 @@ dimension = (elem) ->
   {w, h}
 
 click = {}
+
 startPosition = {}
+

@@ -76,17 +76,17 @@ html {
   user-select: none;
 }
 
-/* line 6, ../sass/globals/_type.scss */
+/* line 12, ../sass/globals/_type.scss */
 html {
   font-family: "Futura", serif;
   font-size: 12pt;
   line-height: 1.5em;
 }
-/* line 11, ../sass/globals/_type.scss */
+/* line 15, ../sass/globals/_type.scss */
 html h1 {
   font-size: 2rem;
 }
-/* line 17, ../sass/globals/_type.scss */
+/* line 21, ../sass/globals/_type.scss */
 html figure h1 {
   font-family: "Futura-MediumItalic";
 }
@@ -139,7 +139,7 @@ section.container section.space ul.users li img {
   border-radius: 100%;
   background-color: red;
 }
-/* line 36, ../sass/layout/_container.scss */
+/* line 35, ../sass/layout/_container.scss */
 section.container section.space section.content {
   width: 100%;
   height: 100%;
@@ -151,7 +151,7 @@ section.container section.space section.content {
   position: fixed;
   z-index: 1;
 }
-/* line 43, ../sass/layout/_container.scss */
+/* line 42, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   overflow: hidden;
@@ -159,7 +159,7 @@ section.container section.space section.content article {
   position: absolute;
   backface-visibility: hidden;
 }
-/* line 50, ../sass/layout/_container.scss */
+/* line 49, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -171,24 +171,32 @@ section.container section.space section.content article .card {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 60, ../sass/layout/_container.scss */
+/* line 59, ../sass/layout/_container.scss */
 section.container section.space section.content article .card img {
   width: 100%;
 }
-/* line 65, ../sass/layout/_container.scss */
+/* line 63, ../sass/layout/_container.scss */
 section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
-/* line 83, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover .card {
+/* line 75, ../sass/layout/_container.scss */
+section.container section.space section.content article .card textarea {
+  outline: none;
+  padding: 0;
+  font-family: "Futura", serif;
+  font-size: 12pt;
+  line-height: 1.5em;
+}
+/* line 86, ../sass/layout/_container.scss */
+section.container section.space section.content article:hover .zoomBox {
   background-color: white;
 }
-/* line 98, ../sass/layout/_container.scss */
+/* line 101, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 102, ../sass/layout/_container.scss */
+/* line 105, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .card {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -200,32 +208,46 @@ section.container section.space section.content article:active .card {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 114, ../sass/layout/_container.scss */
-section.container section.space section.content article.text .card {
+/* line 117, ../sass/layout/_container.scss */
+section.container section.space section.content article.text .zoomBox {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 121, ../sass/layout/_container.scss */
+/* line 123, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   width: 8rem;
-  bottom: 0;
+  padding: 2rem;
+  bottom: -8rem;
   left: 50%;
   margin-left: -4rem;
-  opacity: 0;
-  padding-top: 4rem;
-  -webkit-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
-  -moz-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
-  -o-transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
-  transition: all 0.25s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
   -webkit-transform: scale(0.5);
   -moz-transform: scale(0.5);
   -ms-transform: scale(0.5);
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 134, ../sass/layout/_container.scss */
+/* line 135, ../sass/layout/_container.scss */
+section.container section.space .delete.visible {
+  bottom: 0;
+  opacity: 1;
+}
+/* line 140, ../sass/layout/_container.scss */
+section.container section.space .delete.rollover {
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  transform: scale(1.25);
+  opacity: 1;
+  bottom: 0;
+}
+/* line 146, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
@@ -239,14 +261,4 @@ section.container section.space .delete:after {
   margin-top: 2em;
   font-weight: 100;
   color: red;
-}
-/* line 149, ../sass/layout/_container.scss */
-section.container section.space .delete.hover {
-  -webkit-transform: scale(1.25);
-  -moz-transform: scale(1.25);
-  -ms-transform: scale(1.25);
-  -o-transform: scale(1.25);
-  transform: scale(1.25);
-  opacity: 1;
-  padding-top: 0;
 }
