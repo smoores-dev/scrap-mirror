@@ -50,26 +50,21 @@ section.container {
         .card {
           background-color: $colorWashLightTrans;
           @include transition(.125s $bouncyCurve);
-          @include transition-property(   transform,
-              -webkit-transform,
-                 -moz-transform,
-                  box-shadow,
-              -webkit-box-shadow,
-                 -moz-box-shadow,
-                 background-color);
+          @include transition-property(transform,
+														 -webkit-transform,
+														    -moz-transform,
+														         box-shadow,
+														 -webkit-box-shadow,
+														    -moz-box-shadow,
+														         background-color);
           img {
             width: 100%;
           }
+          
           p {
+          
             & + p {
               text-indent: 2em;
-            }
-          }
-          
-          &.link {
-              
-            a {
-              
             }
           }
           
@@ -80,23 +75,12 @@ section.container {
           }
         }
 
-                                      
         &:hover {
-          // cursor: move;
           
-          .zoomBox {
+          .card {
             background-color: $colorWashLight;
           }
         
-        }
-        
-        .background {
-          // height: 100%;
-          // width:  100%;
-          // top: 0;
-          // left: 0;
-          // z-index: -10;
-          // position: absolute;
         }
 
         &:active {
@@ -107,20 +91,18 @@ section.container {
             @include transform(scale(1.0625) rotate(-2deg));
             @include box-shadow(0 0 $gutter*6 rgba(0,0,0,.0625));
             background-color: $colorWashLight;
-          }
-          
-          .background {
-          }
-        
+          }       
         }
         
         &.text {
-          .zoomBox {
-            padding: $gutter/3  $gutter  $gutter/3  $gutter/2;
+        
+          .card {
+            padding: $gutter/3 $gutter $gutter/3 $gutter/2;
           }
         }
       }
     }
+    
     .delete {
       text-align: center;
       position: fixed;
