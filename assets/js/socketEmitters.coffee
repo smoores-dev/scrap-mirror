@@ -12,7 +12,6 @@ $ ->
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
-    console.log "called emitElement"
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
@@ -39,7 +38,7 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-        <textarea name='content' placeholder='Add something new'></textarea>
+        <textarea row='1' name='content' placeholder='Add something new'></textarea>
       </article>"
 
     $('.content').append(elementForm)
@@ -52,7 +51,7 @@ $ ->
 
     $('textarea').focus()
       .on 'blur', (event) -> $(this).parent().remove()
-      .on 'keydown', (event) ->
+      .on 'keyup', (event) ->
         if isImage($(this).val())
           imageEl =
             "<article class='image add-image'>

@@ -72,12 +72,12 @@ section.container {
               
             }
           }
-          
-          textarea {
-            outline: none;
-            padding: 0;
-            @include typeBody;                            
-          }
+        }
+        textarea {
+          width: 300px;
+          outline: none;
+          padding: 0;
+          @include typeBody;                            
         }
 
                                       
