@@ -5,7 +5,8 @@ $ ->
   screenFitScale = () ->
     scaleX = (window.innerWidth / (window.maxX - window.minX)) * .95
     scaleY = (window.innerHeight / (window.maxY - window.minY)) * .95
-    Math.min scaleX, scaleY
+    scale = Math.min scaleX, scaleY
+    if scale isnt 0 then scale else 1
 
   fitTocenter = () ->
     cluster()
@@ -14,7 +15,7 @@ $ ->
 
     viewOffsetX = (-window.minX) - (window.maxX - window.minX)/2 + wx
     viewOffsetY = (-window.minY) - (window.maxY - window.minY)/2 + wy
-  
+
     content.css
         marginLeft: -viewOffsetX * screenFitScale()
         marginTop: -viewOffsetY * screenFitScale()
