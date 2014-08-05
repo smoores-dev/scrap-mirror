@@ -14,17 +14,16 @@ $ ->
     wx = window.innerWidth / 2
     wy = window.innerHeight / 2
 
-    deltaX = (-window.minX) - (window.maxX - window.minX)/2 + wx
-    deltaY = (-window.minY) - (window.maxY - window.minY)/2 + wy
-
-    totalDelta.x += deltaX
-    totalDelta.y += deltaY
-    
-    $('article').animate( { top: "+=#{deltaY}px", left: "+=#{deltaX}px" }, 0, 'linear' )    
+    viewOffsetX = (-window.minX) - (window.maxX - window.minX)/2 + wx
+    viewOffsetY = (-window.minY) - (window.maxY - window.minY)/2 + wy
+  
+    $('.content').css
+        marginLeft: -viewOffsetX * screenFitScale()
+        marginTop: -viewOffsetY * screenFitScale()
     $('.content').css(scale: screenFitScale())
 
   socket = io.connect()
-  # fitTocenter()
+  fitTocenter()
   scrollTimer = null
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
@@ -33,13 +32,8 @@ $ ->
     newScale = oldScale - scaleDelta
     if newScale > screenFitScale()/2 && newScale < screenFitScale() * 12
 
-      transformViewOffset = (viewOffset, mousePos) ->
-        delta = if event.deltaY < 0 then -1 else 1
-        delta = 0 if event.deltaY is 0
-        viewOffset + (mousePos / 100 / newScale) * -event.deltaY
-
-      viewOffsetX = transformViewOffset(viewOffsetX, event.clientX)
-      viewOffsetY = transformViewOffset(viewOffsetY, event.clientY)
+      viewOffsetX += (event.clientX / 100 / newScale) * -event.deltaY
+      viewOffsetY += (event.clientY / 100 / newScale) * -event.deltaY
 
       content.css
         marginLeft: -viewOffsetX * newScale
