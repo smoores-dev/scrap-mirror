@@ -21,12 +21,17 @@ $ ->
   socket = io.connect()
   fitTocenter()
   scrollTimer = null
+
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
     oldScale = $('.content').css('scale')
     scaleDelta = (parseFloat(oldScale) * (event.deltaY / 100))
     newScale = oldScale - scaleDelta
-    if newScale > screenFitScale()/2 && newScale < screenFitScale() * 12
+
+    tooSmall = newScale < screenFitScale()/2 # zoom out
+    tooBig = newScale > 1/window.minScale # zoom in
+
+    if !tooBig && !tooSmall
       $('section.content').css(scale: newScale)
       clearTimeout(scrollTimer)
       scrollTimer = setTimeout((() ->
