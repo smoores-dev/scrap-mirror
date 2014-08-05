@@ -12,6 +12,7 @@ $ ->
   socket.on 'updateName', (data) ->
     name = data.name
     $('h1').text(name)
+    document.title = name
 
   socket.on 'newElement', (data) ->
     element = data.element
