@@ -141,6 +141,7 @@ section.container section.space ul.users li img {
 }
 /* line 36, ../sass/layout/_container.scss */
 section.container section.space section.content {
+  transform-origin: 0 0;
   width: 100%;
   height: 100%;
   -webkit-transform: scale(1);
@@ -151,7 +152,7 @@ section.container section.space section.content {
   position: relative;
   z-index: 1;
 }
-/* line 43, ../sass/layout/_container.scss */
+/* line 44, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   overflow: hidden;
@@ -159,7 +160,7 @@ section.container section.space section.content article {
   position: absolute;
   backface-visibility: hidden;
 }
-/* line 50, ../sass/layout/_container.scss */
+/* line 51, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
   background-color: rgba(255, 255, 255, 0.925);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -171,24 +172,24 @@ section.container section.space section.content article .card {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 60, ../sass/layout/_container.scss */
+/* line 61, ../sass/layout/_container.scss */
 section.container section.space section.content article .card img {
   width: 100%;
 }
-/* line 65, ../sass/layout/_container.scss */
+/* line 66, ../sass/layout/_container.scss */
 section.container section.space section.content article .card p + p {
   text-indent: 2em;
 }
-/* line 83, ../sass/layout/_container.scss */
+/* line 84, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .card {
   background-color: white;
 }
-/* line 98, ../sass/layout/_container.scss */
+/* line 99, ../sass/layout/_container.scss */
 section.container section.space section.content article:active {
   cursor: move;
   overflow: visible;
 }
-/* line 102, ../sass/layout/_container.scss */
+/* line 103, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .card {
   -webkit-transform: scale(1.0625) rotate(-2deg);
   -moz-transform: scale(1.0625) rotate(-2deg);
@@ -200,11 +201,11 @@ section.container section.space section.content article:active .card {
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.0625);
   background-color: white;
 }
-/* line 114, ../sass/layout/_container.scss */
+/* line 115, ../sass/layout/_container.scss */
 section.container section.space section.content article.text .card {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 121, ../sass/layout/_container.scss */
+/* line 122, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -225,7 +226,7 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 134, ../sass/layout/_container.scss */
+/* line 135, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
@@ -240,7 +241,7 @@ section.container section.space .delete:after {
   font-weight: 100;
   color: red;
 }
-/* line 149, ../sass/layout/_container.scss */
+/* line 150, ../sass/layout/_container.scss */
 section.container section.space .delete.hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
