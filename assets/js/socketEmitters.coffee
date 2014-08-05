@@ -1,14 +1,9 @@
-rename = (socket) ->
+renameSpace = (socket) ->
   (event) ->
-    screenScale = $('.content').css('scale')
-    clickX = event.clientX - $('.content').offset().left
-    clickY = event.clientY - $('.content').offset().top
     event.stopPropagation()
     parent = $(this).parent()
     oldName = $(this).html()
-
     $(this).remove()
-
 
     formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
     parent.append(formEl)
@@ -37,6 +32,9 @@ $ ->
 
     # make new space, wait for response to redirect
     socket.emit 'newSpace', { name }
+
+  # update a space
+  $('h1').on 'dblclick', renameSpace socket
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
@@ -110,5 +108,3 @@ $ ->
         else if event.keyCode is 13 # press enter
           emitElement(clickX, clickY, screenScale)
 
-
-  $('h1').on 'dblclick', rename socket
