@@ -67,7 +67,7 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-        <textarea row='1' name='content' placeholder='Add something new'></textarea>
+        <textarea name='content' placeholder='Add something new'></textarea>
       </article>"
 
     $('.content').append(elementForm)
@@ -78,7 +78,7 @@ $ ->
       top: "#{clickY / screenScale}px"
       left: "#{clickX / screenScale}px")
 
-    $('textarea').focus()
+    $('textarea').focus().autoGrow()
       .on 'blur', (event) -> $(this).parent().remove()
       .on 'keyup', (event) ->
         if isImage($(this).val())
@@ -107,6 +107,6 @@ $ ->
             .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
             .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
-        else if event.keyCode is 13 # press enter
+        else if event.keyCode is 13 and not event.shiftKey # press enter (not shift + enter)
           emitElement(clickX, clickY, screenScale)
 
