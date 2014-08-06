@@ -44,7 +44,8 @@ cluster = () ->
   worker = {} #new Worker("./hcluster-worker.js");
   
   intersect = (a, b) ->
-    offset = 100
+    screenScale = $('.content').css('scale')
+    offset = 10 / screenScale
     maxAx = a.x + a.w + offset
     maxAy = a.y + a.h + offset
 
