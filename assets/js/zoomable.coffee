@@ -1,6 +1,6 @@
 $ ->
   content = $ '.content'
-  window.viewOffsetX = viewOffsetY = 0
+  viewOffsetX = viewOffsetY = 0
 
   screenFitScale = () ->
     scaleX = (window.innerWidth / (window.maxX - window.minX)) * .95
@@ -9,7 +9,7 @@ $ ->
     if scale isnt 0 then scale else 1
     # 2
 
-  fitTocenter = () ->
+  fitToCenter = () ->
     cluster()
     scale = screenFitScale()
 
@@ -29,7 +29,7 @@ $ ->
     content.css(scale: screenFitScale())
 
   socket = io.connect()
-  fitTocenter()
+  fitToCenter()
   scrollTimer = null
 
   $(window).on 'mousewheel', (event) ->
@@ -43,6 +43,7 @@ $ ->
 
     # if !tooBig && !tooSmall
     if true
+      console.log viewOffsetX, viewOffsetY
       viewOffsetX += (event.clientX / 100 / newScale) * event.deltaY
       viewOffsetY += (event.clientY / 100 / newScale) * event.deltaY
 

@@ -5,7 +5,7 @@ totalDelta =
 matrixToArray = (str) ->
   str.match(/(-?[0-9\.]+)/g)
 
-elementScale = (element) -> matrixToArray(element.css('-webkit-transform'))[0]
+elementScale = (element) -> matrixToArray(element.css('transform'))[0]
 
 dimension = (elem) ->
   scale = $('.content').css('scale')
