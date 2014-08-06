@@ -3,10 +3,10 @@ renameSpace = (socket) ->
     event.stopPropagation()
     parent = $(this).parent()
     oldName = $(this).html()
-    $(this).remove()
+    $(this).text('')
 
     formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
-    parent.append(formEl)
+    $(this).append(formEl)
     $('input[name="name"]').focus()
       .on 'blur', (event) ->
         $(this).parent().remove()
