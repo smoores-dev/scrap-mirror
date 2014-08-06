@@ -12,7 +12,7 @@ dimension = (elem) ->
   elemScale = elementScale elem
   w = parseInt(elem.css('width')) * elemScale
   h = parseInt(elem.css('height')) * elemScale
-  {w, h}
+  { w, h }
 
 click = {}
 

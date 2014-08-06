@@ -14,24 +14,62 @@ cluster = () ->
       leaves(hcluster.left).concat(leaves(hcluster.right))
 
   getCoords = () ->
+    porportionOFScreen = (e) ->
+      elemWidth = e.w * $('.content').css('scale')
+      screenWidth = window.innerWidth
+      # console.log screenWidth, elemWidth, $('.content').css('scale')
+      elemWidth / screenWidth
     $('.content').children().get().map((elem)->
       try
         elem = $(elem)
         offset = elem.offset()
         dimens = dimension elem
-        x = Math.floor(parseInt(elem.css('left')) + dimens.w/2)
-        y = Math.floor(parseInt(elem.css('top')) + dimens.h/2)
-        id = parseInt(elem.attr('id'))
-        {x, id, y}
+        id = Math.floor(parseInt(elem.attr('id')))
+        x = Math.floor(parseInt(elem.css('left')))
+        y = Math.floor(parseInt(elem.css('top')))
+        w = Math.floor(dimens.w)
+        h = Math.floor(dimens.h)
+
+        elem = { id, x, y, w, h }
+        if porportionOFScreen(elem) > .15
+          $('#'+elem.id).css('background-color', "#FFFFFF");
+          null
+        else
+          { id, x, y, w, h }
+
+
       catch
         null).filter((elem) -> !!elem)
 
   worker = {} #new Worker("./hcluster-worker.js");
   
+  intersect = (a, b) ->
+    offset = 100
+    maxAx = a.x + a.w + offset
+    maxAy = a.y + a.h + offset
+
+    maxBx = b.x + b.w + offset
+    maxBy = b.y + b.h + offset
+
+    minAx = a.x - offset
+    minAy = a.y - offset
+
+    minBx = b.x - offset
+    minBy = b.y - offset
+
+    aLeftOfB  = maxAx < minBx;
+    aRightOfB = minAx > maxBx;
+    aAboveB   = minAy > maxBy;
+    aBelowB   = maxAy < minBy;
+    # console.log !( aLeftOfB || aRightOfB || aAboveB || aBelowB );
+    return !( aLeftOfB || aRightOfB || aAboveB || aBelowB );
+
+
   compare = (e1, e2) ->
     screenScale = $('.content').css('scale')
-    Math.sqrt(Math.pow(e1.x * screenScale - e2.x * screenScale, 2) + Math.pow(e1.y * screenScale - e2.y * screenScale, 2))
-  
+    Math.sqrt(Math.pow( (e1.x - e2.x) * screenScale, 2) + Math.pow(e1.y * screenScale - e2.y * screenScale, 2))
+    if intersect e1, e2 then 0 else Infinity
+
   worker.onmessage = (event) ->
     clusters = event.data.clusters.map((hcluster) ->
       leaves(hcluster).map((leaf) -> leaf.value))
@@ -77,12 +115,12 @@ cluster = () ->
 
 
   clusterElems = (coords, frameRate, linkage) ->
-    linkage = {
-      "single" : {link: 'single', thresh: 7},
-      "complete": {link: 'complete', thresh: 125},
-      "average": {link: 'average', thresh: 40}
-    }['average']
-    clusterfck.hcluster coords, compare, linkage.link, linkage.thresh, frameRate
+    # linkage = {
+    #   "single" : {link: 'single', thresh: 7},
+    #   "complete": {link: 'complete', thresh: 125},
+    #   "average": {link: 'average', thresh: 40}
+    # }['average']
+    clusterfck.hcluster coords, compare, 'single', 60
 
   onmessage({data : {
     coords: getCoords(),
