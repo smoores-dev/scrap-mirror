@@ -154,7 +154,7 @@ section.container section.space section.content {
 }
 /* line 43, ../sass/layout/_container.scss */
 section.container section.space section.content article {
-  width: 16rem;
+  width: 300px;
   overflow: hidden;
   color: #333333;
   position: absolute;
