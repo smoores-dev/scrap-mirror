@@ -10,9 +10,6 @@ $ ->
     # make new space, wait for response to redirect
     socket.emit 'newSpace', { name }
 
-  replaceNewLines = (str) ->
-    if str? then str.replace(/\n/, '\n') else null
-
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
