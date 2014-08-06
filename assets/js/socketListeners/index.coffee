@@ -35,7 +35,7 @@ $ ->
     else
       contentDiv =
         "<div class='card text'>
-          <p>{content}</p>
+          <p>#{content}</p>
           <div class='background'></div>
         </div>"
 
