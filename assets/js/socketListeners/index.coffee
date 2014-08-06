@@ -12,9 +12,7 @@ $ ->
   socket.on 'updateSpace', (data) ->
     name = data.name
 
-    $('h1').remove()
-    $('.space').append("<h1>#{name}</h1>")
-    $('h1').on 'dblclick', renameSpace socket
+    $('h1').text(name)
     document.title = name
 
   socket.on 'newElement', (data) ->

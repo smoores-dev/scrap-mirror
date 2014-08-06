@@ -10,8 +10,7 @@ renameSpace = (socket) ->
     $('input[name="name"]').focus()
       .on 'blur', (event) ->
         $(this).parent().remove()
-        $('.space').append("<h1>#{oldName}</h1>")
-        $('h1').on 'dblclick', renameSpace socket
+        $('h1').text(oldName)
     $('form').css(
         'z-index':2
         position: 'fixed'
