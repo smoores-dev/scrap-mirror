@@ -31,7 +31,7 @@ cluster = () ->
         h = Math.floor(dimens.h)
 
         elem = { id, x, y, w, h }
-        if porportionOFScreen(elem) > .15
+        if porportionOFScreen(elem) > .10
           $('#'+elem.id).css('background-color', "#FFFFFF");
           null
         else
