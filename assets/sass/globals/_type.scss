@@ -18,13 +18,11 @@ $fontBoldItalic:"FuturaStd-BoldItalic";
 
 @mixin typeHeader {
     @include smallCaps;
+    font-family: $fontRegular;
+    font-size: 1rem;
 }
 
 html {
     @include typeBody;
-    
-    h1 {
-        @include typeHeader;
-    }
 }
 
