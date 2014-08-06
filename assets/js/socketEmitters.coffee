@@ -10,6 +10,9 @@ $ ->
     # make new space, wait for response to redirect
     socket.emit 'newSpace', { name }
 
+  replaceNewLines = (str) ->
+    if str? then str.replace(/\n/, '\n') else null
+
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
@@ -38,7 +41,7 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-        <textarea row='1' name='content' placeholder='Add something new'></textarea>
+        <textarea name='content' placeholder='Add something new'></textarea>
       </article>"
 
     $('.content').append(elementForm)
@@ -49,7 +52,7 @@ $ ->
       top: "#{clickY / screenScale}px"
       left: "#{clickX / screenScale}px")
 
-    $('textarea').focus()
+    $('textarea').focus().autoGrow()
       .on 'blur', (event) -> $(this).parent().remove()
       .on 'keyup', (event) ->
         if isImage($(this).val())
@@ -78,5 +81,5 @@ $ ->
             .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
             .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
-        else if event.keyCode is 13
+        else if event.keyCode is 13 and not event.shiftKey
           emitElement(clickX, clickY, screenScale)

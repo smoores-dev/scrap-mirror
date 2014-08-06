@@ -7,8 +7,9 @@ validator = require 'validator'
 
 clean = (data) ->
   for k, v of data
-    data[k] = validator.escape v
+    data[k] = (validator.escape v).replace /\n/, '&#13;&#10;'
   data
+
 
 module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
