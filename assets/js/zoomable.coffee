@@ -1,6 +1,6 @@
 $ ->
   content = $ '.content'
-  viewOffsetX = viewOffsetY = 0
+  window.viewOffsetX = viewOffsetY = 0
 
   screenFitScale = () ->
     scaleX = (window.innerWidth / (window.maxX - window.minX)) * .95
@@ -11,26 +11,21 @@ $ ->
 
   fitTocenter = () ->
     cluster()
-    centerX = window.innerWidth / 2
-    centerY = window.innerHeight / 2
-
     scale = screenFitScale()
 
-    sMinX = window.minX * scale
-    sMaxX = window.maxX * scale
+    centerX = window.innerWidth / 2 / scale
+    centerY = window.innerHeight / 2 / scale
 
-    sMinY = window.minY * scale
-    sMaxY = window.maxY * scale
-
-    clusterCenterX = ((sMinX) + (sMaxX - sMinX)/2)
-    clusterCenterY = ((sMinY) + (sMaxY - sMinY)/2)
+    clusterCenterX = ((window.minX) + (window.maxX - window.minX) / 2)
+    clusterCenterY = ((window.minY) + (window.maxY - window.minY) / 2)
 
     viewOffsetX = centerX - clusterCenterX
     viewOffsetY = centerY - clusterCenterY
 
     content.css
-      marginLeft: viewOffsetX
-      marginTop: viewOffsetY
+      marginLeft: viewOffsetX * scale
+      marginTop: viewOffsetY * scale
+
     content.css(scale: screenFitScale())
 
   socket = io.connect()
