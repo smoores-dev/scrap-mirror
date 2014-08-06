@@ -9,19 +9,24 @@ section.container {
     h1 {
       position: fixed;
       text-align: center;
+      @include resetInput;
       top: $gutter;
       left: 50%;
       width: $col * 2;
+      background: red;
       margin-left: - $col;
       z-index: 2;
-      @include typeHeader;
+      @include typeSpaceName;
       
       form {
         
         input {
-          text-align: center;
           @include resetInput;
-          @include typeHeader;
+          @include typeSpaceName;
+          text-align: center;
+          background: green;
+          width: $col * 2;
+          margin-left: - $col;
         }
       }
     }
