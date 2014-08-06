@@ -29,21 +29,26 @@ $ ->
     scale = element.scale
 
     if contentType == "image"
-      body = "<img src=#{content}>"
+      contentDiv =
+        "<div class='card image'>
+          <img src=#{content}>
+          <div class='background'></div>
+        </div>"
     else
-      body = "<p>#{content}</p>"
+      contentDiv =
+        "<div class='card text'>
+          <p>{content}</p>
+          <div class='background'></div>
+        </div>"
 
-    if caption?
-      captionDiv = "<div class='card'><p>#{caption}</p><div class='background'></div></div>"
+    if caption? and caption isnt ''
+      captionDiv = "<div class='card text caption'><p>#{caption}</p><div class='background'></div></div>"
     else
       captionDiv = ""
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-        <div class='card text'>
-          #{body}
-          <div class='background'></div>
-        </div>
+        #{contentDiv}
         #{captionDiv}
         <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
         </div>
