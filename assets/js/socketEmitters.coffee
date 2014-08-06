@@ -12,7 +12,6 @@ $ ->
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
-    console.log "called emitElement"
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
