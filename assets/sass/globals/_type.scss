@@ -19,7 +19,7 @@ $fontBoldItalic:"FuturaStd-BoldItalic";
 @mixin typeHeader {
     @include smallCaps;
     font-family: $fontRegular;
-    font-size: 1rem;
+    font-size: .75rem;
 }
 
 html {
