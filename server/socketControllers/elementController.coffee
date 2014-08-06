@@ -1,11 +1,11 @@
-db = require '../../models'
+models = require '../../models'
 async = require 'async'
 module.exports =
 
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceKey, callback) =>
 
-    db.Space.find(where: { spaceKey }).complete (err, space) =>
+    models.Space.find(where: { spaceKey }).complete (err, space) =>
       return callback err if err?
       
       options =
@@ -18,7 +18,7 @@ module.exports =
         scale: data.scale
         SpaceId: space.id
 
-      db.Element.create(options).complete (err, element) =>
+      models.Element.create(options).complete (err, element) =>
         return callback err if err?
         sio.to("#{spaceKey}").emit 'newElement', { element }
         callback()
@@ -27,7 +27,7 @@ module.exports =
   removeElement : (sio, socket, data, spaceKey, callback) =>
     id = data.elementId
     # find/delete the element
-    db.Element.find(where: { id } ).complete (err, element) =>
+    models.Element.find(where: { id } ).complete (err, element) =>
       return callback err if err?
       return callback() if not element? 
       element.destroy().complete (err) =>
@@ -49,9 +49,9 @@ module.exports =
     query += " WHERE \"id\"=:id RETURNING *"
 
     # new element to be filled in by update
-    element = db.Element.build()
+    element = models.Element.build()
 
-    db.sequelize.query(query, element, null, data).complete (err, result) ->
+    models.sequelize.query(query, element, null, data).complete (err, result) ->
       return callback err if err?
       sio.to("#{spaceKey}").emit 'updateElement', { element: result }
       callback()

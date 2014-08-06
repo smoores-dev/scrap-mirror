@@ -1,3 +1,29 @@
+renameSpace = (socket) ->
+  (event) ->
+    event.stopPropagation()
+    parent = $(this).parent()
+    oldName = $(this).html()
+    $(this).remove()
+
+    formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
+    parent.append(formEl)
+    $('input[name="name"]').focus()
+      .on 'blur', (event) ->
+        $(this).parent().remove()
+        $('.space').append("<h1>#{oldName}</h1>")
+        $('h1').on 'dblclick', renameSpace socket
+    $('form').css(
+        'z-index':2
+        position: 'fixed'
+        top: "#{$(this).offset().top}px"
+        left: "#{$(this).offset().left}px")
+    
+    $('form').submit (event) ->
+      event.preventDefault()
+      newName = $('input[name="name"]').val()
+      $(this).remove()
+      socket.emit 'updateSpace', { name : newName }
+
 $ ->
 
   socket = io.connect()
@@ -9,6 +35,9 @@ $ ->
 
     # make new space, wait for response to redirect
     socket.emit 'newSpace', { name }
+
+  # update a space
+  $('h1').on 'dblclick', renameSpace socket
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
@@ -78,5 +107,6 @@ $ ->
             .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
             .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
 
-        else if event.keyCode is 13
+        else if event.keyCode is 13 # press enter
           emitElement(clickX, clickY, screenScale)
+

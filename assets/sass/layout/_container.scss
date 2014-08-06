@@ -5,6 +5,13 @@ section.container {
   section.space {
     width: 100%;
     height: 100%;
+
+    h1 {
+      position: fixed;
+      top: 5px;
+      left: 5px;
+      z-index: 2;
+    }
     
     &:active {
       cursor: move;
