@@ -67,7 +67,9 @@ $ ->
 
     elementForm =
       "<article class='add-element'>
-        <textarea name='content' placeholder='Add something new'></textarea>
+        <div class='card text'>
+          <textarea name='content' placeholder='Add something new'></textarea>
+        </div>
       </article>"
 
     $('.content').append(elementForm)
@@ -84,11 +86,11 @@ $ ->
         if isImage($(this).val())
           imageEl =
             "<article class='image add-image'>
-              <div class='card'>
+              <div class='card image'>
                 <img src='#{$(this).val()}'>
                 <div class='background'></div>
               </div>
-              <div class='card'>
+              <div class='card text'>
                 <textarea name='caption' placeholder='Add a caption'></textarea>
                 <div class='background'></div>
               </div>

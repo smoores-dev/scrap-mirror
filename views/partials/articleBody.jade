@@ -1,16 +1,16 @@
 if element.contentType == 'text'
-  .card
+  .card.text
     p= element.content
     .background
 if element.contentType == 'image'
-  .card
+  .card.image
     img(src= element.content)
     .background
-  .card
+  .card.text.caption
     p=element.caption
     .background
 if element.contentType == 'video'
-  .card
+  .card.video
     iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
     .background
   .card

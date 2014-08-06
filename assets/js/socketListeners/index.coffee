@@ -40,7 +40,7 @@ $ ->
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-        <div class='card'>
+        <div class='card text'>
           #{body}
           <div class='background'></div>
         </div>
