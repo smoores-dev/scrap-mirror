@@ -9,25 +9,22 @@ $fontBoldItalic:"FuturaStd-BoldItalic";
     line-height: 1.5em;
 }
 
+@mixin smallCaps {
+    font-size: .75em;
+    font-weight: bold;
+    letter-spacing: .125em;
+    text-transform: uppercase !important;
+}
+
+@mixin typeHeader {
+    @include smallCaps;
+}
+
 html {
     @include typeBody;
     
     h1 {
-        font-size: 2rem;
-    }
-    
-    figure {
-        
-        h1 {
-            font-family: $fontItalic;
-        }
-        
+        @include typeHeader;
     }
 }
 
-@mixin smallCaps {
-    font-size: .75em;
-    font-weight: bold;
-    letter-spacing: .25em;
-    text-transform: uppercase !important;
-}

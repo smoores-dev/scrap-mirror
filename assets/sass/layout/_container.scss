@@ -8,9 +8,16 @@ section.container {
 
     h1 {
       position: fixed;
-      top: 5px;
-      left: 5px;
+      top: $gutter;
+      left: $gutter;
       z-index: 2;
+      
+      form {
+        
+        input {
+          
+        }
+      }
     }
     
     &:active {
