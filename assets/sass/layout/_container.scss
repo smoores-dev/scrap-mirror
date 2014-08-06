@@ -8,14 +8,18 @@ section.container {
 
     h1 {
       position: fixed;
+      text-align: center;
       top: $gutter;
-      left: $gutter;
+      left: 50%;
+      width: $col * 2;
+      margin-left: - $col;
       z-index: 2;
       @include typeHeader;
       
       form {
         
         input {
+          text-align: center;
           @include resetInput;
           @include typeHeader;
         }
