@@ -2,18 +2,26 @@ if element.contentType == 'text'
   .card.text
     p!= element.content
     .background
+    .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
 if element.contentType == 'image'
   .card.image
     img(src= element.content)
     .background
+    if element.caption == ''
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
   if element.caption !== ''
     .card.text.caption
       p!=element.caption
       .background
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
 if element.contentType == 'video'
   .card.video
     iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
     .background
-  .card
-    p!=element.caption
-    .background
+    if element.caption == ''
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
+  if element.caption !== ''
+    .card.text.caption
+      p!=element.caption
+      .background
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se

@@ -2,7 +2,7 @@ resize = (socket) ->
   (event) ->
     $(this).off 'mouseup'
     event.stopPropagation()
-    element = $(this).parent()
+    element = $(this).parent().parent()
     clickX = event.clientX
     clickY = event.clientY
     screenScale = $('.content').css('scale')
