@@ -129,6 +129,6 @@ $ ->
     if element.y < window.minY
       window.minY = element.y
 
-    if scale < window.minScale
-      window.minScale = scale
+    if element.scale < window.minScale
+      window.minScale = element.scale
     
