@@ -7,26 +7,34 @@ if element.contentType == 'image'
   .card.image
     img(src= element.content)
     .background
-    if element.caption == ''
+    if element.caption == '' || element.caption == null
       .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
-  if element.caption !== ''
+  if element.caption !== '' && element.caption !== null
     .card.text.caption
       p!=element.caption
       .background
       .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
 
 if element.contentType == 'website'
-  .card
-    img(src= element.thumbnail)
+  .card.website
+    a(href=element.content, target='_blank')
+      img(src= element.thumbnail)
     .background
+    if element.caption == '' || element.caption == null
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
+  if element.caption !== '' && element.caption !== null
+    .card.text.caption
+      p!=element.caption
+      .background
+      .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
 
 if element.contentType == 'video'
   .card.video
     iframe(src='//player.vimeo.com/video/'+element.content+'?badge=0', width = '350', height='200', frameborder='0', webkitallowfullscreen='webkitallowfullscreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowfullscreen')
     .background
-    if element.caption == ''
+    if element.caption == '' || element.caption == null
       .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
-  if element.caption !== ''
+  if element.caption !== '' && element.caption !== null
     .card.text.caption
       p!=element.caption
       .background

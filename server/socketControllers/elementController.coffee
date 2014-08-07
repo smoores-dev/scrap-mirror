@@ -4,71 +4,79 @@ webshot  = require 'webshot'
 fs       = require 'fs'
 Uploader = require('s3-streaming-upload').Uploader
 
-randString = () ->
-  text = ""
-  possible = "abcdefghijklmnopqrstuvwxyz0123456789"
-  for i in [0..6]
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-  text
-
-createThumbNail = (content, contentType, callback) ->
-  console.log content, contentType
-  content = content.split('<')[0]
-  console.log content
-  if contentType != 'website'
-    return callback null, null
-  url = randString() + '.png'
-  options =
-    screenSize: { width: 240, height: 150 }
-    shotSize: { width: 'all', height: 'window' }
-
-  webshot content, (err, renderStream) ->
-    return callback err if err
-    upload = new Uploader {
-      accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
-      secretKey:  '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'
-      bucket:     'scrap_images'
-      objectName: url
-      stream:     renderStream
-      objectParams:
-        ACL: 'public-read'
-        ContentType: 'image/png'
-    }
-    upload.on 'completed', (err, res) ->
-      console.log('upload completed')
-      callback null, 'https://s3.amazonaws.com/scrap_images/' +url
-
-    upload.on 'failed', (err) ->
-      console.log('upload failed with error', err)
-      callback err
-
 module.exports =
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceKey, callback) =>
-    content     = data.content
-    contentType = data.contentType
-    caption     = data.caption
+
+    attributes = {
+      contentType: data.contentType
+      content: data.content
+      caption: data.caption
+      x: data.x
+      y: data.y
+      z: data.z
+      scale: data.scale
+    }
+
+    randString = () ->
+      text = ""
+      possible = "abcdefghijklmnopqrstuvwxyz0123456789"
+      for i in [0..6]
+        text += possible.charAt(Math.floor(Math.random() * possible.length))
+      text
+
+    createThumbNail = (callback) ->
+      if data.contentType isnt 'website'
+        return callback null, null
+
+      url = randString() + '.png'
+      options =
+        screenSize: { width: 240, height: 150 }
+        shotSize: { width: 'all', height: 'window' }
+
+      webshot data.content, (err, renderStream) ->
+        return callback err if err
+        upload = new Uploader {
+          accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
+          secretKey:  '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'
+          bucket:     'scrap_images'
+          objectName: url
+          stream:     renderStream
+          objectParams:
+            ACL: 'public-read'
+            ContentType: 'image/png'
+        }
+        upload.on 'completed', (err, res) ->
+          console.log('upload completed')
+          callback null, 'https://s3.amazonaws.com/scrap_images/' +url
+
+        upload.on 'failed', (err) ->
+          console.log('upload failed with error', err)
+          callback err
 
     models.Space.find(where: { spaceKey }).complete (err, space) =>
       return callback err if err?
-      createThumbNail content, contentType, (err, thumbnail) =>
-        console.log 'newElem', err, thumbnail
+      attributes.SpaceId = space.id
+      models.Element.create(attributes).complete (err, element) =>
         return callback err if err?
-        options = {
-          contentType
-          content
-          thumbnail
-          caption : data.caption
-          x: data.x
-          y: data.y
-          z: data.z
-          scale: data.scale
-          SpaceId: space.id
-        }
-        models.Element.create(options).complete (err, element) =>
+        # emit element before laboriously generating thumbnail
+        sio.to(spaceKey).emit 'newElement', { element, loaded: false }
+        createThumbNail (err, thumbnail) =>
           return callback err if err?
-          sio.to("#{spaceKey}").emit 'newElement', { element }
-          callback()
+          # if it was a website and we made a thumbnail, then emit the updated
+          # element to the room
+          if thumbnail?
+            query = "UPDATE \"Elements\" SET"
+            query += " \"thumbnail\"=:thumbnail "
+            query += "WHERE \"id\"=:id RETURNING *"
+
+            # new element to be filled in by update
+            elementShell = models.Element.build()
+
+            models.sequelize.query(query, elementShell, null, { thumbnail, id: element.id })
+              .complete (err, result) ->
+                return callback err if err?
+                sio.to(spaceKey).emit 'newElement', { element: result, loaded: true}
 
   # delete the element
   removeElement : (sio, socket, data, spaceKey, callback) =>
@@ -82,7 +90,6 @@ module.exports =
         sio.to("#{spaceKey}").emit 'removeElement', { element }
         callback()
 
-  # moves an element from one column to another
   updateElement : (sio, socket, data, spaceKey, callback) =>
     data.id = +data.elementId
 
