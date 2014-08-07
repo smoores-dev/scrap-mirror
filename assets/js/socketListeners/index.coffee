@@ -53,7 +53,7 @@ $ ->
         $("\##{id}").remove()
         contentDiv =
           "<div class='card website'>
-            <img src=#{thumbnail}>
+            <a href='#{content}'><img src=#{thumbnail}></a>
             <div class='background'></div>
             <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
             </div>

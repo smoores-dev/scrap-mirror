@@ -17,7 +17,8 @@ if element.contentType == 'image'
 
 if element.contentType == 'website'
   .card.website
-    img(src= element.thumbnail)
+    a(href=element.content)
+      img(src= element.thumbnail)
     .background
     if element.caption == '' || element.caption == null
       .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
