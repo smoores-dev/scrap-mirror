@@ -90,11 +90,6 @@ $ ->
       .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
-    if contentType == 'website'
-      $("\##{id}").data 'content', content
-      $("\##{id}").on 'dblclick', websiteOption
-
-
 
   socket.on 'removeElement', (data) ->
     id = data.element.id
