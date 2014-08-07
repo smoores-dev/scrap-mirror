@@ -7,7 +7,7 @@ validator = require 'validator'
 
 clean = (data) ->
   for k, v of data
-    data[k] = (validator.escape v)#.replace /\n/, '<br>'
+    data[k] = (validator.escape v).replace /\n/g, '</p><p>'
   data
 
 

@@ -1,5 +1,15 @@
-renameSpace = (socket) ->
-  (event) ->
+$ ->
+
+  socket = io.connect()
+
+  #adding a new space
+  $('.add-space').submit (event) ->
+    event.preventDefault()
+    name = $('input[name=name]', this).val()
+    socket.emit 'newSpace', { name }
+
+  #updating a space name
+  $('h1').on 'dblclick', (event) ->
     event.stopPropagation()
     parent = $(this).parent()
     oldName = $(this).html()
@@ -23,26 +33,12 @@ renameSpace = (socket) ->
       $(this).remove()
       socket.emit 'updateSpace', { name : newName }
 
-$ ->
-
-  socket = io.connect()
-
-  #adding a new space
-  $('.add-space').submit (event) ->
-    event.preventDefault()
-    name = $('input[name=name]', this).val()
-
-    # make new space, wait for response to redirect
-    socket.emit 'newSpace', { name }
-
-  # update a space
-  $('h1').on 'dblclick', renameSpace socket
-
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
-    [content, contentType] = if text? then [text, 'text'] else [$('img','.add-image').attr('src'), 'image']
+    [content, contentType] = if text? then [text.slice(0, -1), 'text'] else [$('img','.add-image').attr('src'), 'image']
     caption = $('textarea[name=caption]').val()
+    caption = if caption? then caption.slice(0, -1) else caption # remove last newline 
     window.maxZ += 1
     x = Math.floor(clickX / screenScale)
     y = Math.floor(clickY / screenScale)
@@ -51,7 +47,6 @@ $ ->
 
     socket.emit 'newElement', { contentType, content, x, y, z, scale, caption }
 
-    # clear the textbox
     $('.add-element').remove()
     $('.add-image').remove()
 
