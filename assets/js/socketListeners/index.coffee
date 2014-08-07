@@ -20,6 +20,8 @@ $ ->
     content = element.content
     contentType = element.contentType
     caption = element.caption
+    thumbnail = element.thumbnail
+
     id = element.id
     x = element.x
     y = element.y
@@ -51,6 +53,13 @@ $ ->
             <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
             </div>
           <div class='background'></div></div>"
+
+    else if contentType == 'website'
+      body = "<img src=#{thumbnail}>"
+    else
+      body = "<p>#{content}</p>"
+    if caption?
+      captionDiv = "<div class='card'><p>#{caption}</p><div class='background'></div></div>"
     else
       contentDiv =
         "<div class='card text'>
@@ -73,6 +82,11 @@ $ ->
       .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
+    if contentType == 'website'
+      $("\##{id}").data 'content', content
+      $("\##{id}").on 'dblclick', websiteOption
+
+
 
   socket.on 'removeElement', (data) ->
     id = data.element.id

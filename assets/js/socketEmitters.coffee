@@ -36,7 +36,13 @@ $ ->
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
-    [content, contentType] = if text? then [text.slice(0, -1), 'text'] else [$('img','.add-image').attr('src'), 'image']
+
+    if text?
+      content = text
+      contentType = if isWebsite(text) then 'website' else 'text'
+    else
+      [content, contentType] = [$('img','.add-image').attr('src'), 'image']
+
     caption = $('textarea[name=caption]').val()
     caption = if caption? then caption.slice(0, -1) else caption # remove last newline 
     window.maxZ += 1
@@ -53,6 +59,10 @@ $ ->
   isImage = (url) ->
     return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)
     true
+
+  isWebsite = (url) ->
+    expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
+    !!url.match expression
 
   $(window).on 'dblclick', (event) ->
     screenScale = $('.content').css('scale')

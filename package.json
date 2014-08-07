@@ -16,7 +16,10 @@
     "url": "~0.10.1",
     "express": "~3.4.8",
     "coffee-middleware": "~0.2.1",
-    "validator": "~3.16.1"
+    "validator": "~3.16.1",
+    "aws-sdk": "~2.0.11",
+    "s3-streaming-upload": "~0.1.14",
+    "webshot" : "0.15.2"
   },
   "devDependencies": {
     "vows": "0.5.x",
