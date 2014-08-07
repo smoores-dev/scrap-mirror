@@ -240,7 +240,7 @@ section.container section.space section.content article .card p + p {
 }
 /* line 116, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover, section.container section.space section.content article.rollover {
-  z-index: 999999;
+  z-index: 2147483647 !important;
   cursor: move;
 }
 /* line 120, ../sass/layout/_container.scss */
