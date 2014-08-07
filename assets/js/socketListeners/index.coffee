@@ -27,29 +27,37 @@ $ ->
     scale = element.scale
 
     if contentType == "image"
-      contentDiv =
-        "<div class='card image'>
-          <img src=#{content}>
-          <div class='background'></div>
-        </div>"
+      if not caption? or caption is ''
+        contentDiv =
+          "<div class='card image'>
+            <img src=#{content}>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
+        captionDiv = ''
+      else
+        captionDiv =
+          "<div class='card text caption'>
+            <p>#{caption}</p>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          <div class='background'></div></div>"
     else
       contentDiv =
         "<div class='card text'>
           <p>#{content}</p>
           <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+          </div>
         </div>"
-
-    if caption? and caption isnt ''
-      captionDiv = "<div class='card text caption'><p>#{caption}</p><div class='background'></div></div>"
-    else
-      captionDiv = ""
+      captionDiv = ''
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
         #{contentDiv}
         #{captionDiv}
-        <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-        </div>
       </article>"
 
 
