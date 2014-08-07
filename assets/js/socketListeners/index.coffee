@@ -55,11 +55,14 @@ $ ->
           <div class='background'></div></div>"
 
     else if contentType == 'website'
-      body = "<img src=#{thumbnail}>"
-    else
-      body = "<p>#{content}</p>"
-    if caption?
-      captionDiv = "<div class='card'><p>#{caption}</p><div class='background'></div></div>"
+      contentDiv =
+        "<div class='card image'>
+          <img src=#{thumbnail}>
+          <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+          </div>
+        </div>"
+      captionDiv = ''
     else
       contentDiv =
         "<div class='card text'>

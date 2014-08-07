@@ -43,7 +43,6 @@ $ ->
 
     # if !tooBig && !tooSmall
     if true
-      console.log viewOffsetX, viewOffsetY
       viewOffsetX += (event.clientX / 100 / newScale) * event.deltaY
       viewOffsetY += (event.clientY / 100 / newScale) * event.deltaY
 

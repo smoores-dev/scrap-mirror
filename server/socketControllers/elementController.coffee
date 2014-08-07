@@ -1,20 +1,20 @@
-models = require '../../models'
-async = require 'async'
-module.exports =
-db      = require '../../models'
-async   = require 'async'
-webshot = require 'webshot'
-fs      = require 'fs'
+models   = require '../../models'
+async    = require 'async'
+webshot  = require 'webshot'
+fs       = require 'fs'
 Uploader = require('s3-streaming-upload').Uploader
 
 randString = () ->
-    text = ""
-    possible = "abcdefghijklmnopqrstuvwxyz0123456789"
-    for i in [0..6]
-      text += possible.charAt(Math.floor(Math.random() * possible.length))
-    text
+  text = ""
+  possible = "abcdefghijklmnopqrstuvwxyz0123456789"
+  for i in [0..6]
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  text
 
 createThumbNail = (content, contentType, callback) ->
+  console.log content, contentType
+  content = content.split('<')[0]
+  console.log content
   if contentType != 'website'
     return callback null, null
   url = randString() + '.png'
@@ -38,7 +38,6 @@ createThumbNail = (content, contentType, callback) ->
       console.log('upload completed')
       callback null, 'https://s3.amazonaws.com/scrap_images/' +url
 
-
     upload.on 'failed', (err) ->
       console.log('upload failed with error', err)
       callback err
@@ -53,7 +52,7 @@ module.exports =
     models.Space.find(where: { spaceKey }).complete (err, space) =>
       return callback err if err?
       createThumbNail content, contentType, (err, thumbnail) =>
-        console.log err, thumbnail
+        console.log 'newElem', err, thumbnail
         return callback err if err?
         options = {
           contentType
@@ -66,7 +65,7 @@ module.exports =
           scale: data.scale
           SpaceId: space.id
         }
-        db.Element.create(options).complete (err, element) =>
+        models.Element.create(options).complete (err, element) =>
           return callback err if err?
           sio.to("#{spaceKey}").emit 'newElement', { element }
           callback()
