@@ -17,7 +17,7 @@ if element.contentType == 'image'
 
 if element.contentType == 'website'
   .card.website
-    a(href=element.content)
+    a(href=element.content, target='_blank')
       img(src= element.thumbnail)
     .background
     if element.caption == '' || element.caption == null

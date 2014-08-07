@@ -53,7 +53,7 @@ $ ->
         $("\##{id}").remove()
         contentDiv =
           "<div class='card website'>
-            <a href='#{content}'><img src=#{thumbnail}></a>
+            <a href='#{content}' target='_blank'><img src=#{thumbnail}></a>
             <div class='background'></div>
             <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
             </div>
@@ -61,7 +61,7 @@ $ ->
       else
         contentDiv =
           "<div class='card website'>
-            <p><a href=#{content}>#{content}</a></p>
+            <p><a href=#{content} target='_blank'>#{content}</a></p>
             <p><code>Loading thumbnail...</code></p>
             <div class='background'></div>
             <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
