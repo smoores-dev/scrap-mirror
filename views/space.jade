@@ -26,6 +26,9 @@ block content
         if element.y < minY
           - minY = element.y
 
+        if element.scale < minScale
+          - minScale = element.scale
+
         article(id=element.id, class=element.contentType, data-content=element.content, style="top:#{element.y}px;left:#{element.x}px;z-index:#{element.z};"+"transform:scale(#{element.scale},#{element.scale});-webkit-transform-origin: top left")
 
           include partials/articleBody
