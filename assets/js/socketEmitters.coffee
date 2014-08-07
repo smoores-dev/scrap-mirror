@@ -1,5 +1,15 @@
-renameSpace = (socket) ->
-  (event) ->
+$ ->
+
+  socket = io.connect()
+
+  #adding a new space
+  $('.add-space').submit (event) ->
+    event.preventDefault()
+    name = $('input[name=name]', this).val()
+    socket.emit 'newSpace', { name }
+
+  #updating a space name
+  $('h1').on 'dblclick', (event) ->
     event.stopPropagation()
     parent = $(this).parent()
     oldName = $(this).html()
@@ -23,17 +33,7 @@ renameSpace = (socket) ->
       $(this).remove()
       socket.emit 'updateSpace', { name : newName }
 
-$ ->
-
-  socket = io.connect()
-
-  $('.add-space').submit (event) ->
-    event.preventDefault()
-    name = $('input[name=name]', this).val()
-    socket.emit 'newSpace', { name }
-
-  $('h1').on 'dblclick', renameSpace socket
-
+  #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
     text = $('textarea[name=content]').val()
     [content, contentType] = if text? then [text.slice(0, -1), 'text'] else [$('img','.add-image').attr('src'), 'image']
