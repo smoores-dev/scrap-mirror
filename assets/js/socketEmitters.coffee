@@ -41,7 +41,7 @@ $ ->
       content = text.slice(0, -1)
       contentType = 'text'
     else if $('img','.add-image').attr('src')?
-      content = $('img','.add-image').attr('src').slice(0, -1)
+      content = $('img','.add-image').attr('src')
       contentType = 'image'
     else 
       content = $('a','.add-website').attr('href').slice(0, -1)
