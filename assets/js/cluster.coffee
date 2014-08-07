@@ -29,14 +29,10 @@ cluster = () ->
         w = Math.floor(dimens.w)
         h = Math.floor(dimens.h)
 
-        elem = { id, x, y, w, h }
+        elem = { id, x, y, w, h, tooBig: false }
         if porportionOFScreen(elem) > .10
-          $('#'+elem.id).css('background-color', "#FFFFFF");
-          null
-        else
-          { id, x, y, w, h }
-
-
+          elem.tooBig = true
+        elem
       catch
         null).filter((elem) -> !!elem)
 
@@ -65,6 +61,8 @@ cluster = () ->
 
 
   compare = (e1, e2) ->
+    if e2.tooBig || e2.tooBig
+      return Infinity
     screenScale = $('.content').css('scale')
     Math.sqrt(Math.pow( (e1.x - e2.x) * screenScale, 2) + Math.pow(e1.y * screenScale - e2.y * screenScale, 2))
     if intersect e1, e2 then 0 else Infinity
