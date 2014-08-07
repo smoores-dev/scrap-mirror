@@ -96,6 +96,10 @@ section.container {
             padding: $cardPadding;
           }
           
+          &.image {
+            background-color: transparent;
+          }
+          
           &.caption {
             left: $gutter;
             top: -$baseline;
@@ -103,6 +107,8 @@ section.container {
 
           img {
             width: 100%;
+            opacity: .9;
+            margin-bottom: -12pt;
           }
           
           p {
@@ -117,9 +123,16 @@ section.container {
           cursor: move;
           
           .card {
-            background-color: $colorWashLightTransHalf;
             @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
             @include transform(scale(1.0625));
+            
+            &.text {
+              background-color: $colorWashLightTransHalf;
+            }
+            
+            img {
+              opacity: 1;
+            }
           }
         
         }
@@ -128,10 +141,17 @@ section.container {
           cursor: move;
           
           .card {
-            background-color: $colorWashLightTransHalf;
             @include transform(scale(1.0625) rotate(-3deg));
             @include transition-timing-function($defaultCurve);
             @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
+            
+            &.text {
+              background-color: $colorWashLightTransHalf;
+            }
+            
+            img {
+              opacity: 1;
+            }
           }       
         }
       }
