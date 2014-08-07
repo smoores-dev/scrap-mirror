@@ -32,7 +32,7 @@ draggableOptions = (socket) ->
       elem.css('left', (event.clientX - click.x + start.left)/screenScale)
       elem.css('top', (event.clientY - click.y + start.top)/screenScale)
 
-    ui.position = # $('#'+this.id)
+    ui.position =
       left: (event.clientX - click.x + startPosition.left) / (screenScale)
       top: (event.clientY - click.y + startPosition.top) / (screenScale)
 
