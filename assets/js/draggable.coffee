@@ -55,4 +55,10 @@ draggableOptions = (socket) ->
 
 $ ->
   socket = io.connect()
+
   $('article').draggable draggableOptions socket
+    .on 'mouseover', ->
+      $(this).data('oldZ', $(this).css 'z-index')
+      $(this).css 'z-index', window.maxZ + 1
+    .on 'mouseout', ->
+      $(this).css 'z-index', $(this).data 'oldZ'
