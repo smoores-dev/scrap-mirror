@@ -12,10 +12,7 @@ randString = () ->
   text
 
 createThumbNail = (content, contentType, callback) ->
-  console.log content, contentType
-  content = content.split('<')[0]
-  console.log content
-  if contentType != 'website'
+  if contentType isnt 'website'
     return callback null, null
   url = randString() + '.png'
   options =

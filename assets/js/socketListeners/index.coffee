@@ -55,14 +55,30 @@ $ ->
           <div class='background'></div></div>"
 
     else if contentType == 'website'
-      contentDiv =
-        "<div class='card image'>
-          <img src=#{thumbnail}>
-          <div class='background'></div>
-          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-          </div>
-        </div>"
-      captionDiv = ''
+      if not caption? or caption is ''
+        contentDiv =
+          "<div class='card image'>
+            <img src=#{thumbnail}>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
+        captionDiv = ''
+      else
+        contentDiv =
+          "<div class='card image'>
+            <img src=#{thumbnail}>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
+        captionDiv =
+          "<div class='card text caption'>
+            <p>#{caption}</p>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          <div class='background'></div></div>"
     else
       contentDiv =
         "<div class='card text'>

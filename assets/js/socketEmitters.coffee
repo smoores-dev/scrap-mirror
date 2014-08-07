@@ -38,10 +38,14 @@ $ ->
     text = $('textarea[name=content]').val()
 
     if text?
-      content = text
-      contentType = if isWebsite(text) then 'website' else 'text'
-    else
-      [content, contentType] = [$('img','.add-image').attr('src'), 'image']
+      content = text.slice(0, -1)
+      contentType = 'text'
+    else if $('img','.add-image').attr('src')?
+      content = $('img','.add-image').attr('src')
+      contentType = 'image'
+    else 
+      content = $('a','.add-website').attr('href')
+      contentType = 'website'
 
     caption = $('textarea[name=caption]').val()
     caption = if caption? then caption.slice(0, -1) else caption # remove last newline 
@@ -55,6 +59,7 @@ $ ->
 
     $('.add-element').remove()
     $('.add-image').remove()
+    $('.add-website').remove()
 
   isImage = (url) ->
     return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)
@@ -111,8 +116,35 @@ $ ->
           $(this).remove()
           $('textarea').focus()
             .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
-            .on 'keydown', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13
+            .on 'keyup', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13 and not event.shiftKey
 
         else if event.keyCode is 13 and not event.shiftKey # press enter (not shift + enter)
-          emitElement(clickX, clickY, screenScale)
+          if isWebsite($(this).val())
+            siteEl =
+              "<article class='website add-website'>
+                <div class='card website'>
+                  <a href='#{$(this).val()}'>#{$(this).val()}</a>
+                  <code>Loading thumbnail...</code>
+                  <div class='background'></div>
+                </div>
+                <div class='card text'>
+                  <textarea name='caption' placeholder='Add a caption'></textarea>
+                  <div class='background'></div>
+                </div>
+                <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+                </div>
+              </article>"
+            $('.content').append(siteEl)
+            $('.add-website').css(
+              scale: 1/screenScale
+              "transform-origin": "top left"
+              'z-index': window.maxZ
+              top: "#{clickY / screenScale}px"
+              left: "#{clickX / screenScale}px")
+            $(this).remove()
+            $('textarea').focus()
+              .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
+              .on 'keyup', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13 and not event.shiftKey
+          else
+            emitElement(clickX, clickY, screenScale)
 
