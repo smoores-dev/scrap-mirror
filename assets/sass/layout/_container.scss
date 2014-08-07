@@ -108,7 +108,7 @@ section.container {
           p {
           
             & + p {
-              text-indent: 2em;
+              margin-top: $baseline / 2;
             }
           }
         }
