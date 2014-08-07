@@ -37,6 +37,13 @@ $ ->
           </div>"
         captionDiv = ''
       else
+        contentDiv =
+          "<div class='card image'>
+            <img src=#{content}>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
         captionDiv =
           "<div class='card text caption'>
             <p>#{caption}</p>
