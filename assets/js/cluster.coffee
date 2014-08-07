@@ -17,7 +17,6 @@ cluster = () ->
     porportionOFScreen = (e) ->
       elemWidth = e.w * $('.content').css('scale')
       screenWidth = window.innerWidth
-      # console.log screenWidth, elemWidth, $('.content').css('scale')
       elemWidth / screenWidth
     $('.content').children().get().map((elem)->
       try
@@ -41,7 +40,7 @@ cluster = () ->
       catch
         null).filter((elem) -> !!elem)
 
-  worker = {} #new Worker("./hcluster-worker.js");
+  worker = {}
   
   intersect = (a, b) ->
     screenScale = $('.content').css('scale')
@@ -62,7 +61,6 @@ cluster = () ->
     aRightOfB = minAx > maxBx;
     aAboveB   = minAy > maxBy;
     aBelowB   = maxAy < minBy;
-    # console.log !( aLeftOfB || aRightOfB || aAboveB || aBelowB );
     return !( aLeftOfB || aRightOfB || aAboveB || aBelowB );
 
 
@@ -95,36 +93,21 @@ cluster = () ->
         $('#'+elem.id).css('background-color', color);
         avg.x += elem.x
         avg.y += elem.y
-
-      # avg = { x: avg.x / l, y: avg.y / l }
-      # for elem in clust
-      #   diffX = -(elem.x - avg.x)/1.5
-      #   diffY = -(elem.y - avg.y)/1.5
-      #   $('#'+elem.id).css('transform','translate('+diffX+'px,'+diffY+'px)')
         
       cid += 1
-        
-  # worker.onerror = (event) ->
-  #   console.log("Worker thread error: " + event.message + " " + event.filename + " " + event.lineno)
+
   onmessage = (event) ->
     data = event.data
     t1 = Date.now()
     clusters = clusterElems(data.coords, data.frameRate, data.linkage)
     t2 = Date.now()
     worker.onmessage(data: {clusters: clusters, time: t2 - t1})
-   # this.postMessage({clusters: clusters, time: t2 - t1})
 
 
   clusterElems = (coords, frameRate, linkage) ->
-    # linkage = {
-    #   "single" : {link: 'single', thresh: 7},
-    #   "complete": {link: 'complete', thresh: 125},
-    #   "average": {link: 'average', thresh: 40}
-    # }['average']
     clusterfck.hcluster coords, compare, 'single', 60
 
   onmessage({data : {
     coords: getCoords(),
     frameRate: 1000
   }})
-  # worker.postMessage('hello world')
