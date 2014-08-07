@@ -112,6 +112,7 @@ $ ->
     updateGlobals element
 
     $("\##{id}").zIndex(window.maxZ)
+    $("\##{id}").data 'oldZ', window.maxZ
     $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").transition { scale }
 
