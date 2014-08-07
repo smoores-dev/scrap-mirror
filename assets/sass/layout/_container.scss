@@ -114,7 +114,6 @@ section.container {
         }
         
         &:hover, &.rollover {
-          z-index: 2147483647 !important;
           cursor: move;
           
           .card {

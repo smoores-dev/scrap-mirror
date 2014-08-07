@@ -240,10 +240,9 @@ section.container section.space section.content article .card p + p {
 }
 /* line 116, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover, section.container section.space section.content article.rollover {
-  z-index: 2147483647 !important;
   cursor: move;
 }
-/* line 120, ../sass/layout/_container.scss */
+/* line 119, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover .card, section.container section.space section.content article.rollover .card {
   background-color: rgba(255, 255, 255, 0.96);
   -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
@@ -255,11 +254,11 @@ section.container section.space section.content article:hover .card, section.con
   -o-transform: scale(1.0625);
   transform: scale(1.0625);
 }
-/* line 128, ../sass/layout/_container.scss */
+/* line 127, ../sass/layout/_container.scss */
 section.container section.space section.content article:active, section.container section.space section.content article.dragging {
   cursor: move;
 }
-/* line 131, ../sass/layout/_container.scss */
+/* line 130, ../sass/layout/_container.scss */
 section.container section.space section.content article:active .card, section.container section.space section.content article.dragging .card {
   background-color: rgba(255, 255, 255, 0.96);
   -webkit-transform: scale(1.0625) rotate(-3deg);
@@ -275,7 +274,7 @@ section.container section.space section.content article:active .card, section.co
   -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
 }
-/* line 141, ../sass/layout/_container.scss */
+/* line 140, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -295,12 +294,12 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 153, ../sass/layout/_container.scss */
+/* line 152, ../sass/layout/_container.scss */
 section.container section.space .delete.visible {
   bottom: 0;
   opacity: 1;
 }
-/* line 158, ../sass/layout/_container.scss */
+/* line 157, ../sass/layout/_container.scss */
 section.container section.space .delete.rollover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
@@ -310,7 +309,7 @@ section.container section.space .delete.rollover {
   opacity: 1;
   bottom: 0;
 }
-/* line 164, ../sass/layout/_container.scss */
+/* line 163, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
