@@ -19,9 +19,12 @@ $ ->
     clusterCenterX = ((window.minX) + (window.maxX - window.minX) / 2)
     clusterCenterY = ((window.minY) + (window.maxY - window.minY) / 2)
 
+    clusterCenterX = if isNaN clusterCenterX then 0 else clusterCenterX
+    clusterCenterY = if isNaN clusterCenterY then 0 else clusterCenterY
+
     viewOffsetX = centerX - clusterCenterX
     viewOffsetY = centerY - clusterCenterY
-
+    # console.log clusterCenterX, viewOffsetX, scale
     content.css
       marginLeft: viewOffsetX * scale
       marginTop: viewOffsetY * scale
