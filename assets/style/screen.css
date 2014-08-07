@@ -236,7 +236,7 @@ section.container section.space section.content article .card img {
 }
 /* line 110, ../sass/layout/_container.scss */
 section.container section.space section.content article .card p + p {
-  text-indent: 2em;
+  margin-top: 0.75rem;
 }
 /* line 116, ../sass/layout/_container.scss */
 section.container section.space section.content article:hover, section.container section.space section.content article.rollover {
