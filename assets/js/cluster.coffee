@@ -20,16 +20,17 @@ cluster = () ->
       elemWidth / screenWidth
     $('.content').children().get().map((elem)->
       try
-        elem = $(elem)
-        offset = elem.offset()
-        dimens = dimension elem
-        id = Math.floor(parseInt(elem.attr('id')))
-        x = Math.floor(parseInt(elem.css('left')))
-        y = Math.floor(parseInt(elem.css('top')))
-        w = Math.floor(dimens.w)
-        h = Math.floor(dimens.h)
+        $elem = $(elem)
+        offset = $elem.offset()
+        dimens = dimension $elem
+        elem =
+          id: Math.floor(parseInt($elem.attr('id')))
+          x: Math.floor(parseInt($elem.css('left')))
+          y: Math.floor(parseInt($elem.css('top')))
+          w: Math.floor(dimens.w)
+          h: Math.floor(dimens.h)
+          tooBig: false
 
-        elem = { id, x, y, w, h, tooBig: false }
         if porportionOFScreen(elem) > .10
           elem.tooBig = true
         elem
@@ -61,7 +62,7 @@ cluster = () ->
 
 
   compare = (e1, e2) ->
-    if e2.tooBig || e2.tooBig
+    if e1.tooBig || e2.tooBig
       return Infinity
     screenScale = $('.content').css('scale')
     Math.sqrt(Math.pow( (e1.x - e2.x) * screenScale, 2) + Math.pow(e1.y * screenScale - e2.y * screenScale, 2))
