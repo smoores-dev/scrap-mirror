@@ -8,12 +8,12 @@ section.container {
 
     h1 {
       position: fixed;
-      text-align: center;
+      text-align: right;
       @include resetInput;
-      top: $gutter;
-      left: 50%;
+      bottom: $gutter;
+      right: $gutter;
       width: $col * 2;
-      margin-left: - $col;
+      height: 1.5em;
       z-index: 2;
       @include typeSpaceName;
       
@@ -22,8 +22,12 @@ section.container {
         input {
           @include resetInput;
           @include typeSpaceName;
-          text-align: center;
+          text-align: right;
+          position: absolute;
+          left: 0;
           width: $col * 2;
+          height: 1.5em;
+
         }
       }
     }
@@ -110,7 +114,7 @@ section.container {
         }
         
         &:hover, &.rollover {
-          z-index: 999999999;
+          z-index: 999999;
           cursor: move;
           
           .card {
