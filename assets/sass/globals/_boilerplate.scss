@@ -11,3 +11,11 @@ html {
   -ms-user-select: none;
   user-select: none;
 }
+
+@mixin resetInput {
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
