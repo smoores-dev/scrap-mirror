@@ -22,7 +22,6 @@ if element.contentType == 'website'
     if element.caption == '' || element.caption == null
       .ui-resizable-handle.ui-resizable-se.ui-icon.ui-icon-grip-diagonal-se
   if element.caption !== '' && element.caption !== null
-    script console.log("element caption",#{element.caption})
     .card.text.caption
       p!=element.caption
       .background

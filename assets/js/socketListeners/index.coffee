@@ -28,58 +28,47 @@ $ ->
     z = element.z
     scale = element.scale
 
-    if contentType == "image"
-      if not caption? or caption is ''
-        contentDiv =
-          "<div class='card image'>
-            <img src=#{content}>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
-        captionDiv = ''
-      else
-        contentDiv =
-          "<div class='card image'>
-            <img src=#{content}>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
-        captionDiv =
-          "<div class='card text caption'>
-            <p>#{caption}</p>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          <div class='background'></div></div>"
-
-    else if contentType == 'website'
-      if not caption? or caption is ''
-        contentDiv =
-          "<div class='card image'>
-            <img src=#{thumbnail}>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
-        captionDiv = ''
-      else
-        contentDiv =
-          "<div class='card image'>
-            <img src=#{thumbnail}>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
-        captionDiv =
-          "<div class='card text caption'>
-            <p>#{caption}</p>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          <div class='background'></div></div>"
+    if not caption? or caption is ''
+      captionDiv = ''
     else
+      captionDiv =
+        "<div class='card text caption'>
+          <p>#{caption}</p>
+          <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+          </div>
+        <div class='background'></div></div>"
+
+    if contentType is "image"
+      contentDiv =
+        "<div class='card image'>
+          <img src=#{content}>
+          <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+          </div>
+        </div>"
+
+    else if contentType is 'website'
+      if data.loaded
+        $("\##{id}").remove()
+        contentDiv =
+          "<div class='card website'>
+            <img src=#{thumbnail}>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
+      else
+        contentDiv =
+          "<div class='card website'>
+            <p><a href=#{content}>#{content}</a></p>
+            <p><code>Loading thumbnail...</code></p>
+            <div class='background'></div>
+            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+            </div>
+          </div>"
+
+    else #type == text
       contentDiv =
         "<div class='card text'>
           <p>#{content}</p>

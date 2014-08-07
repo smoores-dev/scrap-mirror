@@ -41,10 +41,10 @@ $ ->
       content = text.slice(0, -1)
       contentType = 'text'
     else if $('img','.add-image').attr('src')?
-      content = $('img','.add-image').attr('src')
+      content = $('img','.add-image').attr('src').slice(0, -1)
       contentType = 'image'
     else 
-      content = $('a','.add-website').attr('href')
+      content = $('a','.add-website').attr('href').slice(0, -1)
       contentType = 'website'
 
     caption = $('textarea[name=caption]').val()
@@ -123,8 +123,8 @@ $ ->
             siteEl =
               "<article class='website add-website'>
                 <div class='card website'>
-                  <a href='#{$(this).val()}'>#{$(this).val()}</a>
-                  <code>Loading thumbnail...</code>
+                  <p><a href='#{$(this).val()}'>#{$(this).val()}</a></p>
+                  <p><code>Loading thumbnail...</code></p>
                   <div class='background'></div>
                 </div>
                 <div class='card text'>
