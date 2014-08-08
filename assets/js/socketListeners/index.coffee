@@ -88,14 +88,8 @@ $ ->
       .css( '-webkit-transform': "salec(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
-<<<<<<< HEAD
-=======
-    if contentType == 'website'
-      $("\##{id}").data 'content', content
-      $("\##{id}").on 'dblclick', websiteOption
 
     updateGlobals element
->>>>>>> 0bf34c19d5f416ef1d621ffe942f400495900051
 
   socket.on 'removeElement', (data) ->
     id = data.element.id
