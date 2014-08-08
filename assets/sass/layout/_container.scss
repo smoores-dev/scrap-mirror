@@ -99,6 +99,12 @@ section.container {
           &.image {
             background-color: transparent;
           }
+
+          &.website {
+            p a {
+              word-break: break-all;
+            }
+          }
           
           &.caption {
             left: $gutter;
