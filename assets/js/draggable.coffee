@@ -63,4 +63,4 @@ $ ->
     .on 'mouseout', ->
       $(this).css 'z-index', $(this).data 'oldZ'
     .on 'mousedown', ->
-      socket.emit 'updateElement', { z }
+      socket.emit 'updateElement', { z: $(this).css 'z-index' }
