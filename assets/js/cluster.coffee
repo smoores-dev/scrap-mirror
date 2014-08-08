@@ -82,14 +82,14 @@ cluster = () ->
       if clust.length > 1
         color = "#" + Math.random().toString(16).slice(2, 8)
       else 
-        color = "#FFFFFF"
+        color = "rgba(255,255,255,.925)"
       avg = { x: 0, y: 0 }
       l = clust.length
       clusterToIds[cid] = []
       for elem in clust
         clusterToIds[cid].push(elem.id)
         idToClusters[elem.id] = cid
-        $('#'+elem.id).css('background-color', color);
+        $('.card','#'+elem.id).css('border-color', color);
         avg.x += elem.x
         avg.y += elem.y
         
