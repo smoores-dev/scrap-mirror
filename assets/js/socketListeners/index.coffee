@@ -93,7 +93,12 @@ $ ->
 
   socket.on 'removeElement', (data) ->
     id = data.element.id
-    $("\##{id}").remove()
+    
+    # show X, fade out element, remove X
+    $('.delete').addClass('rollover')
+    $("\##{id}").fadeOut -> 
+      $(this).remove()
+      $('.delete').removeClass('rollover')
 
   socket.on 'updateElement', (data) ->
     element = data.element
