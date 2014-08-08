@@ -7,11 +7,10 @@ $ ->
     scaleY = (window.innerHeight / (window.maxY - window.minY)) * .95
     scale = Math.min scaleX, scaleY
     if scale isnt 0 then scale else 1
-    # 2
 
   fitToCenter = () ->
     cluster()
-    scale = screenFitScale()
+    scale = Math.min(screenFitScale(), 1/window.minScale)
 
     centerX = window.innerWidth / 2 / scale
     centerY = window.innerHeight / 2 / scale
@@ -24,12 +23,12 @@ $ ->
 
     viewOffsetX = centerX - clusterCenterX
     viewOffsetY = centerY - clusterCenterY
-    # console.log clusterCenterX, viewOffsetX, scale
+
     content.css
       marginLeft: viewOffsetX * scale
       marginTop: viewOffsetY * scale
 
-    content.css(scale: screenFitScale())
+    content.css({ scale })
 
   socket = io.connect()
   fitToCenter()
@@ -44,8 +43,9 @@ $ ->
     tooSmall = newScale < screenFitScale()/2 # zoom out
     tooBig = newScale > 1/window.minScale # zoom in
 
-    # if !tooBig && !tooSmall
-    if true
+    console.log tooBig, tooSmall
+
+    if !tooBig && !tooSmall
       viewOffsetX += (event.clientX / 100 / newScale) * event.deltaY
       viewOffsetY += (event.clientY / 100 / newScale) * event.deltaY
 

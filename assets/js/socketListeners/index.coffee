@@ -88,23 +88,49 @@ $ ->
       .css( '-webkit-transform': "salec(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
+<<<<<<< HEAD
+=======
+    if contentType == 'website'
+      $("\##{id}").data 'content', content
+      $("\##{id}").on 'dblclick', websiteOption
+
+    updateGlobals element
+>>>>>>> 0bf34c19d5f416ef1d621ffe942f400495900051
 
   socket.on 'removeElement', (data) ->
     id = data.element.id
     $("\##{id}").remove()
 
   socket.on 'updateElement', (data) ->
-    id = data.element.id
-    x = data.element.x + totalDelta.x
-    y = data.element.y + totalDelta.y
-    z = data.element.z
-    window.maxZ +=1
-    scale = data.element.scale
+    element = data.element
+    id = element.id
+    x = element.x + totalDelta.x
+    y = element.y + totalDelta.y
+    z = element.z
+    scale = element.scale
 
-    if scale < window.minScale
-      window.minScale = scale
+    window.maxZ +=1
+    updateGlobals element
 
     $("\##{id}").zIndex(window.maxZ)
+    $("\##{id}").data 'oldZ', window.maxZ
     $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").transition { scale }
+
+
+  updateGlobals = (element) ->
+    if (element.x + 300 * element.scale) > window.maxX
+      window.maxX = (element.x + 300 * element.scale)
+
+    if element.x < window.minX
+      window.minX = element.x
+
+    if element.y > window.maxY
+      window.maxY = element.y
+
+    if element.y < window.minY
+      window.minY = element.y
+
+    if element.scale < window.minScale
+      window.minScale = element.scale
     
