@@ -85,7 +85,7 @@ $ ->
 
     $('.content').append(newArticle)
     $("\##{id}").draggable(draggableOptions socket)
-      .css( '-webkit-transform': "salec(#{scale})","-webkit-transform-origin": "top left")
+      .css({ "-webkit-transform-origin": "top left", scale })
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
 
