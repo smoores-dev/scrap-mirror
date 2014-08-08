@@ -10,28 +10,30 @@ $ ->
 
   #updating a space name
   $('h1').on 'dblclick', (event) ->
+    editing = !!$('form', this).length
     event.stopPropagation()
-    parent = $(this).parent()
-    oldName = $(this).html()
-    $(this).text('')
+    if not editing
+      parent = $(this).parent()
+      oldName = $(this).html()
+      $(this).text('')
 
-    formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
-    $(this).append(formEl)
-    $('input[name="name"]').focus()
-      .on 'blur', (event) ->
-        $(this).parent().remove()
-        $('h1').text(oldName)
-    $('form').css(
-        'z-index':2
-        position: 'fixed'
-        top: "#{$(this).offset().top}px"
-        left: "#{$(this).offset().left}px")
-    
-    $('form').submit (event) ->
-      event.preventDefault()
-      newName = $('input[name="name"]').val()
-      $(this).remove()
-      socket.emit 'updateSpace', { name : newName }
+      formEl = "<form><input type='text' name='name' value='#{oldName}'><input style='visibility:hidden' type='submit'></form>"
+      $(this).append(formEl)
+      $('input[name="name"]').focus()
+        .on 'blur', (event) ->
+          $(this).parent().remove()
+          $('h1').text(oldName)
+      $('form').css(
+          'z-index':2
+          position: 'fixed'
+          top: "#{$(this).offset().top}px"
+          left: "#{$(this).offset().left}px")
+      
+      $('form').submit (event) ->
+        event.preventDefault()
+        newName = $('input[name="name"]').val()
+        $(this).remove()
+        socket.emit 'updateSpace', { name : newName }
 
   #adding a new element
   emitElement = (clickX, clickY, screenScale) ->
