@@ -5,12 +5,12 @@ $ ->
   screenFitScale = () ->
     scaleX = (window.innerWidth / (window.maxX - window.minX)) * .95
     scaleY = (window.innerHeight / (window.maxY - window.minY)) * .95
-    scale = Math.min scaleX, scaleY
-    if scale isnt 0 then scale else 1
+    Math.min scaleX, scaleY
 
   fitToCenter = () ->
     cluster()
     scale = Math.min(screenFitScale(), 1/window.minScale)
+    scale = if scale isnt 0 then scale else 1
 
     centerX = window.innerWidth / 2 / scale
     centerY = window.innerHeight / 2 / scale
