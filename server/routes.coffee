@@ -20,9 +20,9 @@ module.exports = (server) ->
 
   server.get '/', (req,res) ->
     res.render 'index.jade', 
-      title : 'Your Page Title'
-      description: 'Your Page Description'
-      author: 'Your Name'
+      title : 'Welcome to Scrap!'
+      description: ''
+      author: 'scrap'
       analyticssiteid: 'XXXXXXX' 
 
   server.get '/s/:spaceKey', (req, res) ->
