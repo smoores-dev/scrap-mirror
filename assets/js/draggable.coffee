@@ -62,3 +62,5 @@ $ ->
       $(this).css 'z-index', window.maxZ + 1
     .on 'mouseout', ->
       $(this).css 'z-index', $(this).data 'oldZ'
+    .on 'mousedown', ->
+      socket.emit 'updateElement', { z }
