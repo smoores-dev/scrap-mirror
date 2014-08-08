@@ -81,6 +81,7 @@ section.container {
         
         .card {
           background-color: $colorWashLightTrans;
+          border-top: 8pt solid transparent;
           position: relative;
           @include box-shadow(0 $gutter/4 $gutter rgba(0,0,0,.0625));
           @include transition(.125s $bouncyCurve);
