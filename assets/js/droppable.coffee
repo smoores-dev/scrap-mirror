@@ -5,7 +5,8 @@ $ ->
     tolerance: "pointer"
 
     drop: (event, ui) ->
-      getIdsInCluster( ui.draggable.attr('id') ).forEach (elementId)->
+      getIdsInCluster( ui.draggable.attr('id') ).forEach (elementId) ->
+        $("\##{elementId}").draggable null
         socket.emit 'removeElement', { elementId }
       $(this).removeClass('rollover')
 

@@ -92,7 +92,7 @@ $ ->
     updateGlobals element
 
   socket.on 'removeElement', (data) ->
-    id = data.element.id
+    id = data.id
     
     # show X, fade out element, remove X
     $('.delete').addClass('rollover')

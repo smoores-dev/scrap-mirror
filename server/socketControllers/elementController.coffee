@@ -39,15 +39,6 @@ module.exports =
         windowSize: { width: 900, height: 2400 }
         shotSize:   { width: 'window', height: 'window' }
 
-      # options =
-      #   screenSize:
-      #     width: 320
-      #     height: 480
-      #   shotSize:
-      #     width: 320
-      #     height: 480
-      #   userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
-
       webshot data.content, '', options, (err, renderStream) ->
         return callback err if err
         upload = new Uploader {
@@ -99,13 +90,14 @@ module.exports =
   # delete the element
   removeElement : (sio, socket, data, spaceKey, callback) =>
     id = data.elementId
-    # find/delete the element
-    models.Element.find(where: { id } ).complete (err, element) =>
-      return callback err if err?
-      return callback() if not element? 
-      element.destroy().complete (err) =>
+
+    query = "DELETE FROM \"Elements\" WHERE \"id\"=:id"
+
+    elementShell = models.Element.build()
+    models.sequelize.query(query, null, null, { id })
+      .complete (err, result) ->
         return callback err if err?
-        sio.to("#{spaceKey}").emit 'removeElement', { element }
+        sio.to(spaceKey).emit 'removeElement', { id }
         callback()
 
   updateElement : (sio, socket, data, spaceKey, callback) =>
