@@ -4,6 +4,9 @@ webshot  = require 'webshot'
 fs       = require 'fs'
 Uploader = require('s3-streaming-upload').Uploader
 
+myAwesomeCache =
+  'https://www.google.com/': 'https://s3.amazonaws.com/scrap_images/zf08d73.png'
+
 module.exports =
   # create a new element and save it to db
   newElement : (sio, socket, data, spaceKey, callback) =>
@@ -28,13 +31,24 @@ module.exports =
     createThumbNail = (callback) ->
       if data.contentType isnt 'website'
         return callback null, null
+      if data.content of myAwesomeCache
+        return callback null, myAwesomeCache[data.content]
 
-      url = randString() + '.png'
+      url = randString() + '.jpg'
       options =
-        screenSize: { width: 240, height: 150 }
-        shotSize: { width: 'all', height: 'window' }
+        windowSize: { width: 900, height: 2400 }
+        shotSize:   { width: 'window', height: 'window' }
 
-      webshot data.content, (err, renderStream) ->
+      # options =
+      #   screenSize:
+      #     width: 320
+      #     height: 480
+      #   shotSize:
+      #     width: 320
+      #     height: 480
+      #   userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+
+      webshot data.content, '', options, (err, renderStream) ->
         return callback err if err
         upload = new Uploader {
           accessKey:  'AKIAJQ7VP2SMGLIV5JQA'
@@ -42,6 +56,7 @@ module.exports =
           bucket:     'scrap_images'
           objectName: url
           stream:     renderStream
+          streamType: 'jpg'
           objectParams:
             ACL: 'public-read'
             ContentType: 'image/png'
@@ -61,7 +76,10 @@ module.exports =
         return callback err if err?
         # emit element before laboriously generating thumbnail
         sio.to(spaceKey).emit 'newElement', { element, loaded: false }
+  
         createThumbNail (err, thumbnail) =>
+          console.log 'thumbnail:', thumbnail
+          myAwesomeCache[data.content] = thumbnail
           return callback err if err?
           # if it was a website and we made a thumbnail, then emit the updated
           # element to the room

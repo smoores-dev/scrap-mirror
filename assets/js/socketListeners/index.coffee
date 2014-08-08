@@ -1,5 +1,4 @@
 $ ->  
-
   socket = io.connect()
   
   socket.on 'newSpace', (data) ->
@@ -84,10 +83,9 @@ $ ->
         #{captionDiv}
       </article>"
 
-
     $('.content').append(newArticle)
     $("\##{id}").draggable(draggableOptions socket)
-      .css( '-webkit-transform': "scale(#{scale})","-webkit-transform-origin": "top left")
+      .css( '-webkit-transform': "salec(#{scale})","-webkit-transform-origin": "top left")
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
     cluster()
 
