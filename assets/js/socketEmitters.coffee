@@ -9,7 +9,7 @@ $ ->
     socket.emit 'newSpace', { name }
 
   #updating a space name
-  $('h1').on 'dblclick', (event) ->
+  $('.name').on 'dblclick', (event) ->
     editing = !!$('form', this).length
     event.stopPropagation()
     if not editing
@@ -22,7 +22,7 @@ $ ->
       $('input[name="name"]').focus()
         .on 'blur', (event) ->
           $(this).parent().remove()
-          $('h1').text(oldName)
+          $('.name').text(oldName)
       $('form').css(
           'z-index':2
           position: 'fixed'
