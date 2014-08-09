@@ -5,7 +5,8 @@ block scripts
   script(src="/js/socketListeners/index.js")
 
 block content
-  h1 Welcome to Scrap!
-  form.add-space
+  main
+    h1.welcome Welcome to Scrap
+    form.add-space
       input(type="text", name="name", placeholder="Add new space!")
-      input(type="submit", style="visibility: hidden;")
+        input(type="submit", style="visibility: hidden;")
