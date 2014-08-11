@@ -2,13 +2,13 @@ $ ->
 
   socket = io.connect()
 
-  #adding a new space
+  # adding a new space
   $('.add-space').submit (event) ->
     event.preventDefault()
     name = $('input[name=name]', this).val()
     socket.emit 'newSpace', { name }
 
-  #updating a space name
+  # updating a space name
   $('.name').on 'dblclick', (event) ->
     editing = !!$('form', this).length
     event.stopPropagation()
@@ -35,8 +35,8 @@ $ ->
         $(this).remove()
         socket.emit 'updateSpace', { name : newName }
 
-  #adding a new element
-  emitElement = (clickX, clickY, screenScale) ->
+  # adding a new element
+  emitElement = (clickX, clickY, screenScale, content, contentType) ->
     text = $('textarea[name=content]').val()
 
     if text?
@@ -64,8 +64,7 @@ $ ->
     $('.add-website').remove()
 
   isImage = (url) ->
-    return false if (url.match(/\.(jpeg|jpg|gif|png)$/) == null)
-    true
+    not url.match(/\.(jpeg|jpg|gif|png)$/)?
 
   isWebsite = (url) ->
     expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
@@ -83,7 +82,7 @@ $ ->
         </div>
       </article>"
 
-    $('.content').append(elementForm)
+    $('.content').append elementForm
     $('.add-element').css(
       scale: 1/screenScale
       "transform-origin": "top left"
@@ -94,7 +93,8 @@ $ ->
     $('textarea').focus().autoGrow()
       .on 'blur', (event) -> $(this).parent().remove()
       .on 'keyup', (event) ->
-        if isImage($(this).val())
+        # on paste of image 
+        if isImage $(this).val() 
           imageEl =
             "<article class='image add-image'>
               <div class='card image'>
@@ -108,7 +108,7 @@ $ ->
               <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
               </div>
             </article>"
-          $('.content').append(imageEl)
+          $('.content').append imageEl
           $('.add-image').css(
             scale: 1/screenScale
             "transform-origin": "top left"
@@ -117,11 +117,11 @@ $ ->
             left: "#{clickX / screenScale}px")
           $(this).remove()
           $('textarea').focus()
-            .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
-            .on 'keyup', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13 and not event.shiftKey
+            .on 'blur', (event) -> emitElement clickX, clickY, screenScale
+            .on 'keyup', (event) -> emitElement clickX, clickY, screenScale if event.keyCode is 13 and not event.shiftKey
 
         else if event.keyCode is 13 and not event.shiftKey # press enter (not shift + enter)
-          if isWebsite($(this).val())
+          if isWebsite $(this).val() 
             siteEl =
               "<article class='website add-website'>
                 <div class='card website'>
@@ -136,7 +136,7 @@ $ ->
                 <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
                 </div>
               </article>"
-            $('.content').append(siteEl)
+            $('.content').append siteEl
             $('.add-website').css(
               scale: 1/screenScale
               "transform-origin": "top left"
@@ -145,8 +145,8 @@ $ ->
               left: "#{clickX / screenScale}px")
             $(this).remove()
             $('textarea').focus()
-              .on 'blur', (event) -> emitElement(clickX, clickY, screenScale)
-              .on 'keyup', (event) -> emitElement(clickX, clickY, screenScale) if event.keyCode is 13 and not event.shiftKey
+              .on 'blur', (event) -> emitElement clickX, clickY, screenScale 
+              .on 'keyup', (event) -> emitElement clickX, clickY, screenScale if event.keyCode is 13 and not event.shiftKey
           else
-            emitElement(clickX, clickY, screenScale)
+            emitElement clickX, clickY, screenScale
 
