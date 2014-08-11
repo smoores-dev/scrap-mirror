@@ -1,7 +1,7 @@
 extends layout
 
 block scripts
-  include partials/scripts
+  include partials/spaceScripts
 
 block content
   section.space
@@ -30,8 +30,13 @@ block content
           - minScale = element.scale
 
         article(id=element.id, class=element.contentType, style="top:#{element.y}px;left:#{element.x}px;z-index:#{element.z};"+"transform:scale(#{element.scale},#{element.scale});-webkit-transform-origin: top left")
-
-          include partials/articleBody
+          case element.contentType
+            when 'image'
+              include partials/contentTypes/image
+            when 'website'
+              include partials/contentTypes/website
+            default
+              include partials/contentTypes/text
 
     .delete
 

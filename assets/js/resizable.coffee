@@ -23,7 +23,6 @@ resize = (socket) ->
       clickY = event.clientY
 
       newScale = delta / Math.sqrt(element.width()*element.width() + element.height() * element.height())
-
       newScale *= -1 if deltaX < 0 || deltaY < 0
 
       element.css("scale": Math.max(+oldElementScale + newScale, 0.5))

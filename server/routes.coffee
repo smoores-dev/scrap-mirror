@@ -1,23 +1,6 @@
 db = require '../models'
 
 module.exports = (server) ->
-  # server.error (err, req, res, next) ->
-  #   if err instanceof NotFound
-  #     res.render '404.jade', { locals: { 
-  #           title : '404 - Not Found'
-  #           description: ''
-  #           author: ''
-  #           analyticssiteid: 'XXXXXXX' 
-  #         }, status: 404 }
-  #   else
-  #     res.render '500.jade', { locals: {
-  #           title : 'The Server Encountered an Error'
-  #           description: ''
-  #           author: ''
-  #           analyticssiteid: 'XXXXXXX'
-  #           error: err
-  #         },status: 500 }
-
   server.get '/', (req,res) ->
     res.render 'index.jade', 
       title : 'Welcome to Scrap!'
@@ -46,7 +29,6 @@ module.exports = (server) ->
     res.status 404
     res.render '404', { url: req.url }
     console.log 'Failed to get', req.url
-    # throw new NotFound;
 
   NotFound = (msg) ->
     this.name = 'NotFound'

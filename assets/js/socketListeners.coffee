@@ -38,52 +38,33 @@ $ ->
           </div>
         <div class='background'></div></div>"
 
-    if contentType is "image"
-      contentDiv =
-        "<div class='card image'>
-          <img src=#{content}>
-          <div class='background'></div>
-          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-          </div>
-        </div>"
+    if contentType is 'image'
+      innerHTML = (content) -> "<img src=#{content}>"
 
     else if contentType is 'website'
       if data.loaded
         $("\##{id}").remove()
-        contentDiv =
-          "<div class='card website'>
-            <a href='#{content}' target='_blank'><img src=#{thumbnail}></a>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
+        innerHTML = (content) -> "<a href='#{content}' target='_blank'><img src=#{thumbnail}></a>"
       else
-        contentDiv =
-          "<div class='card website'>
-            <p><a href=#{content} target='_blank'>#{content}</a></p>
-            <p><code>Loading thumbnail...</code></p>
-            <div class='background'></div>
-            <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-            </div>
-          </div>"
+        innerHTML = (content) ->
+          "<p><a href=#{content} target='_blank'>#{content}</a></p>
+            <p><code>Loading thumbnail...</code></p>"
 
-    else #type == text
-      contentDiv =
-        "<div class='card text'>
-          <p>#{content}</p>
-          <div class='background'></div>
-          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
-          </div>
-        </div>"
-      captionDiv = ''
+    else # type == text
+      innerHTML = (content) -> "<p>#{content}</p>"
     
     newArticle =
       "<article class='#{contentType}' id='#{id}' style='top:#{y}px;left:#{x}px;z-index:#{z};'>
-        #{contentDiv}
+        <div class='card #{contentType}'>
+          #{innerHTML content}
+          <div class='background'></div>
+          <div class='ui-resizable-handle ui-resizable-se ui-icon ui-icon-grip-diagonal-se'>
+          </div>
+        </div>
         #{captionDiv}
       </article>"
 
-    $('.content').append(newArticle)
+    $('.content').append newArticle
     $("\##{id}").draggable(draggableOptions socket)
       .css({ "-webkit-transform-origin": "top left", scale })
     $('.ui-resizable-handle', "\##{id}").on 'mousedown', resize socket
@@ -112,7 +93,6 @@ $ ->
     $("\##{id}").data 'oldZ', window.maxZ
     $("\##{id}").animate({ top: y, left: x }, cluster)
     $("\##{id}").transition { scale }
-
 
   updateGlobals = (element) ->
     if (element.x + 300 * element.scale) > window.maxX
