@@ -15,8 +15,8 @@ $ ->
     centerX = window.innerWidth / 2 / scale
     centerY = window.innerHeight / 2 / scale
 
-    clusterCenterX = ((window.minX) + (window.maxX - window.minX) / 2)
-    clusterCenterY = ((window.minY) + (window.maxY - window.minY) / 2)
+    clusterCenterX = window.minX + (window.maxX - window.minX) / 2
+    clusterCenterY = window.minY + (window.maxY - window.minY) / 2
 
     clusterCenterX = if isNaN clusterCenterX then 0 else clusterCenterX
     clusterCenterY = if isNaN clusterCenterY then 0 else clusterCenterY
@@ -28,12 +28,13 @@ $ ->
       marginLeft: viewOffsetX * scale
       marginTop: viewOffsetY * scale
 
-    content.css({ scale })
+    content.css { scale }
 
   socket = io.connect()
   fitToCenter()
   scrollTimer = null
 
+  # scroll unless too far in or too far out
   $(window).on 'mousewheel', (event) ->
     event.preventDefault()
     oldScale = content.css 'scale'
@@ -43,7 +44,7 @@ $ ->
     tooSmall = newScale < screenFitScale()/2 # zoom out
     tooBig = newScale > 1/window.minScale # zoom in
 
-    if !tooBig && !tooSmall
+    if not tooBig and not tooSmall
       viewOffsetX += (event.clientX / 100 / newScale) * event.deltaY
       viewOffsetY += (event.clientY / 100 / newScale) * event.deltaY
 

@@ -19,7 +19,7 @@ module.exports =
     query += " \"name\"=:name"
     query += " WHERE \"spaceKey\"=:spaceKey RETURNING *"
 
-    #new space to be filled in by update
+    # new space to be filled in by update
     space = models.Space.build()
     
     models.sequelize.query(query, space, null, { name, spaceKey }).complete (err, res) ->

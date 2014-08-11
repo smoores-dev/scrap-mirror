@@ -4,7 +4,7 @@ webshot  = require 'webshot'
 fs       = require 'fs'
 Uploader = require('s3-streaming-upload').Uploader
 
-myAwesomeCache =
+memCache =
   'https://www.google.com/': 'https://s3.amazonaws.com/scrap_images/zf08d73.png'
 
 module.exports =
@@ -31,8 +31,8 @@ module.exports =
     createThumbNail = (callback) ->
       if data.contentType isnt 'website'
         return callback null, null
-      if data.content of myAwesomeCache
-        return callback null, myAwesomeCache[data.content]
+      if data.content of memCache
+        return callback null, memCache[data.content]
 
       url = randString() + '.jpg'
       options =
@@ -53,11 +53,11 @@ module.exports =
             ContentType: 'image/png'
         }
         upload.on 'completed', (err, res) ->
-          console.log('upload completed')
+          console.log 'upload completed'
           callback null, 'https://s3.amazonaws.com/scrap_images/' +url
 
         upload.on 'failed', (err) ->
-          console.log('upload failed with error', err)
+          console.log 'upload failed with error', err
           callback err
 
     models.Space.find(where: { spaceKey }).complete (err, space) =>
@@ -69,8 +69,7 @@ module.exports =
         sio.to(spaceKey).emit 'newElement', { element, loaded: false }
   
         createThumbNail (err, thumbnail) =>
-          console.log 'thumbnail:', thumbnail
-          myAwesomeCache[data.content] = thumbnail
+          memCache[data.content] = thumbnail
           return callback err if err?
           # if it was a website and we made a thumbnail, then emit the updated
           # element to the room

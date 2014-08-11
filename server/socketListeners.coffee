@@ -10,7 +10,6 @@ clean = (data) ->
     data[k] = (validator.escape v).replace /\n/g, '</p><p>'
   data
 
-
 module.exports = (io)->
   io.sockets.on 'connection', (socket) ->
 
