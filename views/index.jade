@@ -6,16 +6,14 @@ block scripts
 block content
   main
     h1.welcome Welcome to Scrap
-    form.add-space
-      input(type="text", name="name", placeholder="Add new space!")
-      input(type="submit", style="visibility: hidden;")
-    h3.register Login
-    form.register
+    h3.login Login
+    form.login(action="/login")
       input(type="text", name="username", placeholder="Enter username")
-      input(type="text", name="password", placeholder="Enter password")
-      input(type="submit", style="visibility: hidden;")
+      input(type="password", name="password", placeholder="Enter password")
+      input(type="submit", value="Login", method="post")
     h3.register Register
-    form.register
+    form.register(action="/register", method="post")
       input(type="text", name="username", placeholder="Enter new username")
-      input(type="text", name="password", placeholder="Enter new password")
-      input(type="submit", style="visibility: hidden;")
+      input(type="text", name="email", placeholder="Enter new email")
+      input(type="password", name="password", placeholder="Enter new password")
+      input(type="submit", value="Register")
