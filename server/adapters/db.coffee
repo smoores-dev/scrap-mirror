@@ -28,6 +28,6 @@ exports.getConnection = (callback) ->
 
 String.prototype.insert = (index, string) ->
   if index > 0
-    this.substring(0, index) + string + this.substring index, this.length
+    @substring(0, index) + string + @substring index, @length
   else
     string + this
