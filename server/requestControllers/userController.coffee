@@ -20,8 +20,9 @@ module.exports =
 
         return callback err
 
-      req.session.currentUser = user
-      req.body.space.name = "Welcome"
+      req.session.currentUserId = user.id
+      req.body.space =
+        name: "Welcome"
       spaceController.newSpace req, res, callback
 
   # verify login creds, redirect to first space
@@ -40,11 +41,18 @@ module.exports =
 
           # render first space on success
           if result
-            req.session.currentUser = user
-            user.getSpaces().complete (err, spaces) ->
-              return callback err if err?
-              # redirect to new page
-              res.redirect "/s/" + spaces[0].spaceKey
-          else res.redirect "/"
+            req.session.currentUserId = user.id
+            res.redirect "/s/" + user.spaces[0].spaceKey
+            callback()
+          else
+            res.redirect "/"
+            callback()
+      else
+        res.redirect "/"
+        callback()
 
-      else res.redirect "/"
+  logout : (req, res, callback) ->
+    req.session.destroy (err) ->
+      return callback err if err?
+      res.redirect "/"
+      callback()

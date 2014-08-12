@@ -20,6 +20,9 @@ module.exports = (server) ->
   server.post '/login', (req, res) ->
     userController.login req, res, errorHandler
 
+  server.get '/logout', (req, res) ->
+    userController.logout req, res, errorHandler
+
   server.post '/register', (req, res) ->
     userController.newUser req, res, errorHandler
 

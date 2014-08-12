@@ -5,34 +5,48 @@ module.exports =
   newSpace : (req, res, callback) ->
     spaceKey = @generateUUID()
     name = req.body.space.name
-    user = req.session.currentUser
+    currentUserId = req.session.currentUserId
     
-    models.Space.create( { name, spaceKey } ).complete (err, space) ->
+    models.User.find(
+      where: { id: currentUserId }
+      include: [ models.Space ]
+    ).complete (err, user) ->
       return callback err if err?
-      space.setUsers [user]
-      req.session.currentUser.spaces.push space
-
-      # redirect to new page
-      res.redirect "/s/" + spaceKey
-
+      models.Space.create( { name, spaceKey } ).complete (err, space) ->
+        return callback err if err?
+        space.addUser(user).complete (err) ->
+          return callback err if err?
+          space.setCreator(user).complete (err) ->
+            return callback err if err?
+            # redirect to new page
+            res.redirect "/s/" + spaceKey
+            callback()
+            
   showSpace : (req, res, callback) ->
-    currentUser = req.session.currentUser
+    currentUserId = req.session.currentUserId
     models.Space.find(
       where: { spaceKey: req.params.spaceKey }
-      include: [ models.Element, models.User ]
+      include: [ models.Element, models.User, { model: models.User, as: 'Creator' } ]
     ).complete (err, space) ->
       return callback err if err?
-      if space? and currentUser?
-        space.hasUser(currentUser).complete (err, result) ->
+      if space? and currentUserId?
+        models.User.find(
+          where: { id: currentUserId }
+          include: [ models.Space ]
+        ).complete (err, user) ->
           return callback err if err?
-          if result
-            res.render 'space.jade',
-              title : space.name
-              space : space
-              user : currentUser
+          space.hasUser(user).complete (err, result) ->
+            return callback err if err?
+            if result
+              res.render 'space.jade',
+                title : space.name
+                space: space
+                user: user
+            callback()
       else
         res.status 404
         res.render '404', { url: req.url }
+        callback()
 
   generateUUID : () ->
     text = ""

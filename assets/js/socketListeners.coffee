@@ -7,6 +7,14 @@ $ ->
     $('h1').text(name)
     document.title = name
 
+  socket.on 'addUserToSpace', (data) ->
+    if data?
+      $('li', '.user-list').first().before "<li>#{data.name}</li>"
+
+  socket.on 'removeUserFromSpace', (data) ->
+    $('li[data-id="' + data.id + '"]').fadeOut -> 
+      $(this).remove()
+
   socket.on 'newElement', (data) ->
     element = data.element
     content = element.content
