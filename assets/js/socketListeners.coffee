@@ -9,10 +9,10 @@ $ ->
 
   socket.on 'addUserToSpace', (data) ->
     if data?
-      $('.add-user').before "<li>#{data.name}</li>"
+      $('li', '.user-list').first().before "<li>#{data.name}</li>"
 
   socket.on 'removeUserFromSpace', (data) ->
-    $('.user-list[data-id=' + data.id + ']').fadeOut -> 
+    $('li[data-id="' + data.id + '"]').fadeOut -> 
       $(this).remove()
 
   socket.on 'newElement', (data) ->
