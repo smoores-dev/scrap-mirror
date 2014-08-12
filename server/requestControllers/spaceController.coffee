@@ -2,14 +2,16 @@ models = require '../../models'
 module.exports =
   
   # create a new space and save it to the db
-  newSpace : (name, res) ->
+  newSpace : (name, res, user) ->
     spaceKey = @generateUUID()
     
     models.Space.create( { name, spaceKey } ).complete (err, space) ->
       return console.error err if err?
-      res.render 'space.jade',
-        title : space.name
-        space : space
+      space.setUsers [user]
+      user.setSpaces [space]
+
+      # redirect to new page
+      res.redirect "/s/" + spaceKey
 
   showSpace : (req, res) ->
     models.Space.find({

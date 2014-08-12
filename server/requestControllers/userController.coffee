@@ -4,13 +4,15 @@ module.exports =
   
   # create a new user and save them to the db
   newUser : (req, res) ->
-    username = req.body.username
-    email = req.body.email
-    password = req.body.password
+    console.log req.body
+    attributes =
+      username: req.body.username
+      email: req.body.email
+      password: req.body.password
     
-    models.User.create( { username, email, password } ).complete (err, user) ->
+    models.User.create(attributes).complete (err, user) ->
       return console.error err if err?
-      spaceController.newSpace "My Beans", res
+      spaceController.newSpace "My Beans", res, user
 
   # verify login creds
   login : (req, res) ->

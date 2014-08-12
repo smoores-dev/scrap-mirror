@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) ->
       set: (password) ->
         salt = bcrypt.genSaltSync 10
         encrypted = bcrypt.hashSync password, salt
-        @setDataValue = encrypted
+        @setDataValue "password", encrypted
     username: 
       type: DataTypes.TEXT
       allowNull: false
