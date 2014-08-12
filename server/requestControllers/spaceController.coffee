@@ -16,15 +16,17 @@ module.exports =
         return callback err if err?
         space.addUser(user).complete (err) ->
           return callback err if err?
-          # redirect to new page
-          res.redirect "/s/" + spaceKey
-          callback()
+          space.setCreator(user).complete (err) ->
+            return callback err if err?
+            # redirect to new page
+            res.redirect "/s/" + spaceKey
+            callback()
 
   showSpace : (req, res, callback) ->
     currentUserId = req.session.currentUserId
     models.Space.find(
       where: { spaceKey: req.params.spaceKey }
-      include: [ models.Element, models.User ]
+      include: [ models.Element, models.User, { model: models.User, as: 'Creator' } ]
     ).complete (err, space) ->
       return callback err if err?
       if space? and currentUserId?

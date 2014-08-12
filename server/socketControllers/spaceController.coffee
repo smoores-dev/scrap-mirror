@@ -34,3 +34,16 @@ module.exports =
                 return callback()
         return sio.to(spaceKey).emit 'addUserToSpace', null
 
+  removeUserFromSpace : (sio, socket, data, spaceKey, callback) ->
+    id = data.id
+
+    models.Space.find( where: { spaceKey }).complete (err, space) ->
+      return callback err if err?
+      models.User.find( where: { id }).complete (err, user) ->
+        return callback err if err?
+        if user?
+          space.removeUser(user).complete (err) ->
+            return callback err if err?
+            sio.to(spaceKey).emit 'removeUserFromSpace', { id }
+            callback()
+
