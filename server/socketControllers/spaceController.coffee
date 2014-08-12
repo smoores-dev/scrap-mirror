@@ -25,11 +25,12 @@ module.exports =
       models.User.find( where: { email }).complete (err, user) ->
         return callback err if err?
         if user?
-          console.log "USER", user
-          space.addUser(user).complete (err) ->
-            return callback err if err?
-            sio.to(spaceKey).emit 'addUserToSpace', { name: user.name }
-            callback()
-        else
-          sio.to(spaceKey).emit 'addUserToSpace', null
+          # make sure we don't add the user twice
+          space.hasUser(user).complete (err, hasUser) ->
+            if not hasUser
+              space.addUser(user).complete (err) ->
+                return callback err if err?
+                sio.to(spaceKey).emit 'addUserToSpace', { name: user.name }
+                return callback()
+        return sio.to(spaceKey).emit 'addUserToSpace', null
 
