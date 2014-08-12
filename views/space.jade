@@ -4,6 +4,18 @@ block scripts
   include partials/spaceScripts
 
 block content
+  ul.space-list
+    each space in user.spaces
+      li= space.name
+    li
+      form.add-space(action="/s/new", method="post")
+        input(type="text", name="space[name]", placeholder="New space name")
+        input(type="submit", style="visibility: hidden;")
+
+  ul.user-list
+    each user in space.users
+      li= user.name
+
   section.space
 
     h1.name=space.name

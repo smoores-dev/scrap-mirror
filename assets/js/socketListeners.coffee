@@ -1,12 +1,5 @@
 $ ->  
   socket = io.connect()
-  
-  socket.on 'newSpace', (data) ->
-    space = data.space
-    spaceKey = space.spaceKey
-
-    # redirect to new page
-    window.location.href = "/s/" + spaceKey
 
   socket.on 'updateSpace', (data) ->
     name = data.name

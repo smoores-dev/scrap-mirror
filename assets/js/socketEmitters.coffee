@@ -2,12 +2,6 @@ $ ->
 
   socket = io.connect()
 
-  # adding a new space
-  $('.add-space').submit (event) ->
-    event.preventDefault()
-    name = $('input[name=name]', this).val()
-    socket.emit 'newSpace', { name }
-
   # updating a space name
   $('.name').on 'dblclick', (event) ->
     editing = !!$('form', this).length

@@ -3,11 +3,11 @@ spaceController = require './spaceController'
 module.exports =
   
   # create a new user and save them to the db
-  newUser : (req, res) ->
+  newUser : (req, res, callback) ->
     attributes =
-      username: req.body.username
-      email: req.body.email
-      password: req.body.password
+      name: req.body.user.name
+      email: req.body.user.email
+      password: req.body.user.password
     
     models.User.create(attributes).complete (err, user) ->
       if err?
@@ -16,25 +16,33 @@ module.exports =
         if err.code == '23505' # not a unique email
           return res.redirect "/"
 
-        return console.error err
-      spaceController.newSpace "My Beans", res, user
+        return callback err
+
+      req.session.currentUser = user
+      req.body.space.name = "Welcome"
+      spaceController.newSpace req, res, callback
 
   # verify login creds
-  login : (req, res) ->
-    email = req.body.email
-    password = req.body.password
+  login : (req, res, callback) ->
+    email = req.body.user.email
+    password = req.body.user.password
 
-    models.User.find(where: { email } ).complete (err, user) ->
-      return console.error err if err?
+    models.User.find(
+      where: { email }
+      include: [ models.Space ]
+    ).complete (err, user) ->
+      return callback err if err?
       if user?
         user.verifyPassword password, (err, result) ->
-          return console.error err if err?
+          return callback err if err?
 
           # render first space on success
           if result
+            req.session.currentUser = user
             user.getSpaces().complete (err, spaces) ->
-              return console.error err if err?
+              return callback err if err?
               # redirect to new page
-              return res.redirect "/s/" + spaces[0].spaceKey
+              res.redirect "/s/" + spaces[0].spaceKey
+          else res.redirect "/"
 
-      res.redirect "/"
+      else res.redirect "/"
