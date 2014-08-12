@@ -15,11 +15,13 @@ module.exports = (server) ->
     spaceController.newSpace req, res, errorHandler
 
   server.get '/s/:spaceKey', (req, res) ->
-    console.log "SPACES2", req.session.currentUser.spaces
     spaceController.showSpace req, res, errorHandler
 
   server.post '/login', (req, res) ->
     userController.login req, res, errorHandler
+
+  server.get '/logout', (req, res) ->
+    userController.logout req, res, errorHandler
 
   server.post '/register', (req, res) ->
     userController.newUser req, res, errorHandler

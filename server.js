@@ -6,7 +6,8 @@ var express = require('express')
     , io = require('socket.io')(server)
     , port = (process.env.PORT || 9001)
     , db = require('./models')
-    , coffeeMiddleware = require('coffee-middleware');
+    , coffeeMiddleware = require('coffee-middleware')
+    , SequelizeStore = require('connect-session-sequelize')(express.session.Store);
 //Setup Express
 server.listen(port);
 
@@ -17,7 +18,12 @@ app.configure(function(){
     app.use(express.static(__dirname + '/assets'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: "club_sexdungeon"}));
+    app.use(express.session({
+        secret: "club_sexdungeon",
+        store: new SequelizeStore({
+            db: db.sequelize
+        })
+    }));
     // app.use(app.router);
     app.use(coffeeMiddleware({
         src: __dirname + '/assets',
