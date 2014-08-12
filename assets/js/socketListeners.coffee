@@ -1,18 +1,21 @@
 $ ->  
   socket = io.connect()
-  
-  socket.on 'newSpace', (data) ->
-    space = data.space
-    spaceKey = space.spaceKey
-
-    # redirect to new page
-    window.location.href = "/s/" + spaceKey
 
   socket.on 'updateSpace', (data) ->
     name = data.name
+    spaceKey = data.spaceKey
 
     $('h1').text(name)
     document.title = name
+    $("a[href='/s/#{spaceKey}']").text(name)
+
+  socket.on 'addUserToSpace', (data) ->
+    if data?
+      $('li', '.user-list').first().before "<li>#{data.name}</li>"
+
+  socket.on 'removeUserFromSpace', (data) ->
+    $('li[data-id="' + data.id + '"]').fadeOut -> 
+      $(this).remove()
 
   socket.on 'newElement', (data) ->
     element = data.element

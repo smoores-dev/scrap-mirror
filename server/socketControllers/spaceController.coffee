@@ -1,16 +1,6 @@
 models = require '../../models'
 module.exports =
   
-  # create a new space and save it to the db
-  newSpace : (sio, socket, data, callback) ->
-    name = data.name
-    spaceKey = @generateUUID()
-    
-    models.Space.create( { name, spaceKey } ).complete (err, space) ->
-      return callback err if err?
-      socket.emit 'newSpace', { space }
-      callback()
-
   # update the space name and save it to the db
   updateSpace : (sio, socket, data, spaceKey, callback) ->
     name = data.name
@@ -24,12 +14,36 @@ module.exports =
     
     models.sequelize.query(query, space, null, { name, spaceKey }).complete (err, res) ->
       return callback err if err?
-      sio.to("#{spaceKey}").emit 'updateSpace', { name: res.name }
+      sio.to(spaceKey).emit 'updateSpace', { name: res.name, spaceKey }
       callback()
 
-  generateUUID : () ->
-    text = ""
-    possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for i in [0..6]
-      text += possible.charAt(Math.floor(Math.random() * possible.length))
-    text
+  addUserToSpace : (sio, socket, data, spaceKey, callback) ->
+    email = data.email
+
+    models.Space.find( where: { spaceKey }).complete (err, space) ->
+      return callback err if err?
+      models.User.find( where: { email }).complete (err, user) ->
+        return callback err if err?
+        if user?
+          # make sure we don't add the user twice
+          space.hasUser(user).complete (err, hasUser) ->
+            if not hasUser
+              space.addUser(user).complete (err) ->
+                return callback err if err?
+                sio.to(spaceKey).emit 'addUserToSpace', { name: user.name }
+                return callback()
+        return sio.to(spaceKey).emit 'addUserToSpace', null
+
+  removeUserFromSpace : (sio, socket, data, spaceKey, callback) ->
+    id = data.id
+
+    models.Space.find( where: { spaceKey }).complete (err, space) ->
+      return callback err if err?
+      models.User.find( where: { id }).complete (err, user) ->
+        return callback err if err?
+        if user?
+          space.removeUser(user).complete (err) ->
+            return callback err if err?
+            sio.to(spaceKey).emit 'removeUserFromSpace', { id }
+            callback()
+

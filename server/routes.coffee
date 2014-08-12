@@ -1,4 +1,7 @@
-db = require '../models'
+models = require '../models'
+errorHandler = require './errorHandler'
+spaceController = require './requestControllers/spaceController'
+userController = require './requestControllers/userController'
 
 module.exports = (server) ->
   server.get '/', (req,res) ->
@@ -8,19 +11,20 @@ module.exports = (server) ->
       author: 'scrap'
       analyticssiteid: 'XXXXXXX' 
 
+  server.post '/s/new', (req, res) ->
+    spaceController.newSpace req, res, errorHandler
+
   server.get '/s/:spaceKey', (req, res) ->
-    space = db.Space.find( {
-      where: { spaceKey: req.params.spaceKey },
-      include: [ db.Element ]
-    } ).complete (err, space) ->
-      return console.error err if err?
-      if not space?
-        res.status 404
-        res.render '404', { url: req.url }
-      else
-        res.render 'space.jade',
-          title : space.name
-          space : space
+    spaceController.showSpace req, res, errorHandler
+
+  server.post '/login', (req, res) ->
+    userController.login req, res, errorHandler
+
+  server.get '/logout', (req, res) ->
+    userController.logout req, res, errorHandler
+
+  server.post '/register', (req, res) ->
+    userController.newUser req, res, errorHandler
 
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'

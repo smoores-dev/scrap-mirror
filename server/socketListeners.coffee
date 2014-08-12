@@ -17,11 +17,12 @@ module.exports = (io)->
     socket.join spaceKey
     console.log 'joined', spaceKey
 
-    socket.on 'newSpace',     (data) -> spaceController.newSpace io, socket, clean(data), errorHandler
     socket.on 'newElement',   (data) -> elementController.newElement io, socket, clean(data), spaceKey, errorHandler
     socket.on 'removeElement',(data) -> elementController.removeElement io, socket, clean(data), spaceKey, errorHandler
     socket.on 'updateElement',(data) -> elementController.updateElement io, socket, clean(data), spaceKey, errorHandler
     socket.on 'updateSpace',(data) -> spaceController.updateSpace io, socket, clean(data), spaceKey, errorHandler
+    socket.on 'addUserToSpace',(data) -> spaceController.addUserToSpace io, socket, clean(data), spaceKey, errorHandler
+    socket.on 'removeUserFromSpace',(data) -> spaceController.removeUserFromSpace io, socket, clean(data), spaceKey, errorHandler
 
     socket.on 'disconnect', ->
       socket.leave(spaceKey)

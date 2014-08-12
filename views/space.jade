@@ -4,6 +4,32 @@ block scripts
   include partials/spaceScripts
 
 block content
+  a.logout(href="/logout") Logout
+
+  ul.space-list
+    each space in user.spaces
+      li
+        a(href='/s/#{space.spaceKey}')=space.name
+    li
+      form.add-space(action="/s/new", method="post")
+        input(type="text", name="space[name]", placeholder="New space name")
+        input(type="submit", style="visibility: hidden;")
+
+  - creator = space.creator
+  - isCreator = false
+  if user.id == creator.id
+    - isCreator = true
+
+  ul.user-list
+    each user in space.users
+      if user.id != creator.id && isCreator
+        li.deletable-user(data-id=user.id)=user.name
+      else
+        li(data-id=user.id)=user.name
+    form.add-user
+      input(type="text", name="user[email]", placeholder="User's email address")
+      input(type="submit", style="visibility: hidden;")
+
   section.space
 
     h1.name=space.name

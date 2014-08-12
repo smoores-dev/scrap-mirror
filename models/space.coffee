@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) ->
   }, {
     classMethods:
       associate: (models) ->
-        Space.hasMany models.User, through: models.UserSpace
+        Space.hasMany models.User
         Space.hasMany models.Element
+        Space.belongsTo models.User, {as: 'Creator'}
   }

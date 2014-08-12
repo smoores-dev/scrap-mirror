@@ -31,13 +31,23 @@ randInt = (n) -> Math.floor(Math.random()*n)
 exports.populate = (callback) ->
   models.sequelize.sync({ force: true }).complete (err) ->
     return callback err if err?
-    models.Space.create({ name: 'Test Space', spaceKey: '12345a' }).complete (err, space) ->
+    models.User.create(
+      name: "Test User"
+      email: "test@test.test"
+      password: "password"
+    ).complete (err, user) ->
       return callback err if err?
-      async.whilst (() -> n > 0), createTextElement, (err) ->
+      models.Space.create(
+        name: 'Test Space'
+        spaceKey: '12345a'
+      ).complete (err, space) ->
         return callback err if err?
-        async.whilst (() -> m > 0), createImageElement, (err) ->
+        space.setUsers [user]
+        async.whilst (() -> n > 0), createTextElement, (err) ->
           return callback err if err?
-          callback null
+          async.whilst (() -> m > 0), createImageElement, (err) ->
+            return callback err if err?
+            callback null
 
 createTextElement = (cb) ->
   options =
