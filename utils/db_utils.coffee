@@ -42,12 +42,15 @@ exports.populate = (callback) ->
         spaceKey: '12345a'
       ).complete (err, space) ->
         return callback err if err?
-        space.setUsers [user]
-        async.whilst (() -> n > 0), createTextElement, (err) ->
+        space.setCreator(user).complete (err) ->
           return callback err if err?
-          async.whilst (() -> m > 0), createImageElement, (err) ->
+          space.addUser(user).complete (err) ->
             return callback err if err?
-            callback null
+            async.whilst (() -> n > 0), createTextElement, (err) ->
+              return callback err if err?
+              async.whilst (() -> m > 0), createImageElement, (err) ->
+                return callback err if err?
+                callback null
 
 createTextElement = (cb) ->
   options =
