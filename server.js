@@ -15,7 +15,7 @@ app.configure(function(){
     app.set('views', __dirname + '/views');
     app.set("view engine", "jade");
     app.set('view options', { layout: false });
-    app.use(express.static(__dirname + '/assets'));
+    app.use(express.static(__dirname + '/client'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({
@@ -26,7 +26,7 @@ app.configure(function(){
     }));
     // app.use(app.router);
     app.use(coffeeMiddleware({
-        src: __dirname + '/assets',
+        src: __dirname + '/client',
         compress: true,
         encodeSrc: false,
         force: true,
