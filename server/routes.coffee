@@ -1,30 +1,32 @@
 models = require '../models'
 errorHandler = require './errorHandler'
-spaceController = require './requestControllers/spaceController'
-userController = require './requestControllers/userController'
+fs = require 'fs'
+path = require 'path'
+
+controllers = {}
+fs.readdirSync(__dirname + '/requestControllers').forEach (fileName) ->
+  controllerName = fileName.slice(0, -7)
+  pathName = path.join __dirname, '/requestControllers', controllerName
+  controllers[controllerName] = require(pathName)
 
 module.exports = (server) ->
   server.get '/', (req,res) ->
-    res.render 'index.jade', 
-      title : 'Welcome to Scrap!'
-      description: ''
-      author: 'scrap'
-      analyticssiteid: 'XXXXXXX' 
+    controllers.indexController.index req, res, errorHandler
 
   server.post '/s/new', (req, res) ->
-    spaceController.newSpace req, res, errorHandler
+    controllers.spaceController.newSpace req, res, errorHandler
 
   server.get '/s/:spaceKey', (req, res) ->
-    spaceController.showSpace req, res, errorHandler
+    controllers.spaceController.showSpace req, res, errorHandler
 
   server.post '/login', (req, res) ->
-    userController.login req, res, errorHandler
+    controllers.userController.login req, res, errorHandler
 
   server.get '/logout', (req, res) ->
-    userController.logout req, res, errorHandler
+    controllers.userController.logout req, res, errorHandler
 
   server.post '/register', (req, res) ->
-    userController.newUser req, res, errorHandler
+    controllers.userController.newUser req, res, errorHandler
 
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'
