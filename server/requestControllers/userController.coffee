@@ -2,7 +2,7 @@ models = require '../../models'
 spaceController = require './spaceController'
 module.exports =
   
-  # create a new user and save them to the db
+  # create a new user and default space, redirect to space
   newUser : (req, res, callback) ->
     attributes =
       name: req.body.user.name
@@ -22,7 +22,7 @@ module.exports =
       req.body.space.name = "Welcome"
       spaceController.newSpace req, res, callback
 
-  # verify login creds
+  # verify login creds, redirect to first space
   login : (req, res, callback) ->
     email = req.body.user.email
     password = req.body.user.password
