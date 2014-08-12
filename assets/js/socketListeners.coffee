@@ -9,7 +9,7 @@ $ ->
 
   socket.on 'addUserToSpace', (data) ->
     if data?
-      $('.user-list').append "<li>#{data.name}</li>"
+      $('.add-user').before "<li>#{data.name}</li>"
 
   socket.on 'newElement', (data) ->
     element = data.element
