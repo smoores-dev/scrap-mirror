@@ -3,9 +3,11 @@ $ ->
 
   socket.on 'updateSpace', (data) ->
     name = data.name
+    spaceKey = data.spaceKey
 
     $('h1').text(name)
     document.title = name
+    $("a[href='/s/#{spaceKey}']").text(name)
 
   socket.on 'addUserToSpace', (data) ->
     if data?

@@ -14,7 +14,7 @@ module.exports =
     
     models.sequelize.query(query, space, null, { name, spaceKey }).complete (err, res) ->
       return callback err if err?
-      sio.to(spaceKey).emit 'updateSpace', { name: res.name }
+      sio.to(spaceKey).emit 'updateSpace', { name: res.name, spaceKey }
       callback()
 
   addUserToSpace : (sio, socket, data, spaceKey, callback) ->
