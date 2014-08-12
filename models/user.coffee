@@ -1,16 +1,29 @@
+bcrypt = require 'bcrypt-nodejs'
+
 module.exports = (sequelize, DataTypes) ->
   User = sequelize.define 'User', {
-    fbId:
-      type: DataTypes.INTEGER
-      unique: true
     email:
       type: DataTypes.TEXT
+      allowNull: false
       unique: true
       validate:
         isEmail: true
-    name: DataTypes.TEXT
+    password: 
+      type: DataTypes.STRING
+      allowNull: false
+      set: (password) ->
+        salt = bcrypt.genSaltSync 10
+        encrypted = bcrypt.hashSync password, salt
+        @setDataValue = encrypted
+    username: 
+      type: DataTypes.TEXT
+      allowNull: false
   }, {
     classMethods:
       associate: (models) ->
-        User.hasMany models.Space, through: models.UserSpace
+        User.hasMany models.Space
+    instanceMethods:
+      verifyPassword: (password, done) ->
+        bcrypt.compare password, this.password, (err, res) ->
+          done(err, res)
   }
