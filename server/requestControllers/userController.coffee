@@ -28,10 +28,8 @@ module.exports =
         if result
           user.getSpaces().complete (err, spaces) ->
             return console.error err if err?
-            space = spaces[0]
-            res.render 'space.jade',
-              title : space.name
-              space : space
+            # redirect to new page
+            res.redirect "/s/" + spaces[0].spaceKey
         else
           # go back to index on failure
-          res.render 'index.jade'
+          res.redirect "/"
