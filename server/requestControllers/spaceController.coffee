@@ -1,7 +1,7 @@
 models = require '../../models'
 module.exports =
   
-  # create a new space and save it to the db
+  # create a new space and redirect to it
   newSpace : (req, res, callback) ->
     spaceKey = @generateUUID()
     name = req.body.space.name
@@ -10,6 +10,7 @@ module.exports =
     models.Space.create( { name, spaceKey } ).complete (err, space) ->
       return callback err if err?
       space.setUsers [user]
+      req.session.currentUser.spaces.push space
 
       # redirect to new page
       res.redirect "/s/" + spaceKey

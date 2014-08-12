@@ -6,7 +6,8 @@ block scripts
 block content
   ul.space-list
     each space in user.spaces
-      li= space.name
+      li
+        a(href='/s/#{space.spaceKey}')=space.name
     li
       form.add-space(action="/s/new", method="post")
         input(type="text", name="space[name]", placeholder="New space name")

@@ -12,8 +12,10 @@ module.exports =
     models.User.create(attributes).complete (err, user) ->
       if err?
         if 'email' of err # not a valid email
+          console.log 'LOGIN FAILED: not a valid email'
           return res.redirect "/"
         if err.code == '23505' # not a unique email
+          console.log 'LOGIN FAILED: not a unique email'
           return res.redirect "/"
 
         return callback err
