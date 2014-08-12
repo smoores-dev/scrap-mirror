@@ -7,6 +7,10 @@ $ ->
     $('h1').text(name)
     document.title = name
 
+  socket.on 'addUserToSpace', (data) ->
+    if data?
+      $('.user-list').append "<li>#{data.name}</li>"
+
   socket.on 'newElement', (data) ->
     element = data.element
     content = element.content

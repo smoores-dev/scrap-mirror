@@ -9,10 +9,15 @@ module.exports =
     
     models.Space.create( { name, spaceKey } ).complete (err, space) ->
       return callback err if err?
-      space.setUsers [user]
-
-      # redirect to new page
-      res.redirect "/s/" + spaceKey
+      user.addSpace(space).complete (err) ->
+        return callback err if err?
+        user.getSpaces().complete (err, spaces) ->
+          return callback err if err?
+          req.session.currentUser.spaces = spaces
+          console.log "Update currentUser 2"
+          # redirect to new page
+          res.redirect "/s/" + spaceKey
+          callback()
 
   showSpace : (req, res, callback) ->
     currentUser = req.session.currentUser

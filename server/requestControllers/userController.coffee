@@ -19,7 +19,9 @@ module.exports =
         return callback err
 
       req.session.currentUser = user
-      req.body.space.name = "Welcome"
+      console.log "Update currentUser 1"
+      req.body.space =
+        name: "Welcome"
       spaceController.newSpace req, res, callback
 
   # verify login creds
