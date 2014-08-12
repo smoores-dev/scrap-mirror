@@ -8,7 +8,6 @@ module.exports =
     models.Space.create( { name, spaceKey } ).complete (err, space) ->
       return console.error err if err?
       space.setUsers [user]
-      user.setSpaces [space]
 
       # redirect to new page
       res.redirect "/s/" + spaceKey
