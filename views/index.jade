@@ -4,18 +4,23 @@ block scripts
   include partials/baseScripts
 
 block content
-  main
-    header
-      h1.welcome Welcome to Scrap
-    div.card
-      h3.login Login
-      form.login(action="/login",  method="post")
-        input(type="text", name="user[email]", placeholder="Enter email")
-        input(type="password", name="user[password]", placeholder="Enter password")
+  div.card.login
+    p
+      input(type="checkbox", id="toggle-login")
+      label(for="toggle-login") Make a new account
+    form.login(action="/login",  method="post")
+      p
+        input(type="text", name="user[email]", placeholder="Mail")
+      p
+        input(type="password", name="user[password]", placeholder="Password")
+      p
         input(type="submit", value="Login", method="post")
-      h3.register Register
-      form.register(action="/register", method="post")
-        input(type="text", name="user[name]", placeholder="Enter new username")
-        input(type="text", name="user[email]", placeholder="Enter new email")
-        input(type="password", name="user[password]", placeholder="Enter new password")
+    form.register(action="/register", method="post")
+      p
+        input(type="text", name="user[name]", placeholder="Name")
+      p
+        input(type="text", name="user[email]", placeholder="Mail")
+      p
+        input(type="password", name="user[password]", placeholder="Password")
+      p
         input(type="submit", value="Register")

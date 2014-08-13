@@ -1,0 +1,12 @@
+.login {
+    input#toggle-login {
+        &:checked {
+            &+ form {
+                background: red;
+            }
+        }
+    }
+
+    form {
+    }
+}

@@ -349,3 +349,8 @@ section.container section.space .delete:after {
   font-weight: 100;
   color: red;
 }
+
+/* line 4, ../sass/layout/_login.scss */
+.login input#toggle-login:checked + form {
+  background: red;
+}
