@@ -89,12 +89,12 @@ html a {
   border-bottom: 1px #aaaaaa solid;
 }
 
-/* line 20, ../sass/globals/_controls.scss */
+/* line 19, ../sass/globals/_controls.scss */
 form {
   position: relative;
 }
 
-/* line 24, ../sass/globals/_controls.scss */
+/* line 23, ../sass/globals/_controls.scss */
 input {
   outline: 0;
   padding: 0;
@@ -108,14 +108,13 @@ input {
   font-family: "Futura-MediumItalic";
   border-bottom: 1px #aaaaaa solid;
 }
-/* line 31, ../sass/globals/_controls.scss */
+/* line 30, ../sass/globals/_controls.scss */
 input:focus {
   border-color: #444444;
 }
-/* line 35, ../sass/globals/_controls.scss */
+/* line 34, ../sass/globals/_controls.scss */
 input.offset {
   background-color: rgba(255, 255, 255, 0.925);
-  border-top: 8pt solid transparent;
   -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
@@ -134,7 +133,7 @@ input.offset {
   left: 100%;
   float: left;
 }
-/* line 44, ../sass/globals/_controls.scss */
+/* line 43, ../sass/globals/_controls.scss */
 input.offset:hover, input.offset:focus {
   -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
@@ -150,7 +149,7 @@ input.offset:hover, input.offset:focus {
   -o-transform: scale(1.125);
   transform: scale(1.125);
 }
-/* line 49, ../sass/globals/_controls.scss */
+/* line 48, ../sass/globals/_controls.scss */
 input.offset:active {
   -webkit-transform: scale(0.925);
   -moz-transform: scale(0.925);
@@ -161,7 +160,7 @@ input.offset:active {
   -moz-box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
 }
-/* line 55, ../sass/globals/_controls.scss */
+/* line 54, ../sass/globals/_controls.scss */
 input[type=submit], input[type=button] {
   font-size: .666em;
   font-weight: bold;
@@ -170,13 +169,13 @@ input[type=submit], input[type=button] {
   border: 0;
   cursor: pointer;
 }
-/* line 61, ../sass/globals/_controls.scss */
+/* line 60, ../sass/globals/_controls.scss */
 input[type=checkbox] {
   width: 1em;
   margin-left: -1.5em;
   margin-right: .5em;
 }
-/* line 66, ../sass/globals/_controls.scss */
+/* line 65, ../sass/globals/_controls.scss */
 input[type=checkbox] + label {
   font-size: .666em;
   font-weight: bold;
@@ -184,10 +183,9 @@ input[type=checkbox] + label {
   text-transform: uppercase !important;
 }
 
-/* line 73, ../sass/globals/_controls.scss */
+/* line 72, ../sass/globals/_controls.scss */
 ul.menu {
   background-color: rgba(255, 255, 255, 0.925);
-  border-top: 8pt solid transparent;
   -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
@@ -201,25 +199,33 @@ ul.menu {
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   width: 8rem;
   position: relative;
-  max-height: 0.75rem;
+  max-height: 2.25rem;
   overflow: hidden;
   vertical-align: top;
-  padding: 0 0.5rem 1rem 0.5rem;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
 }
 /* line 82, ../sass/globals/_controls.scss */
 ul.menu:hover {
-  max-height: 100%;
+  max-height: none;
+  opacity: 1;
 }
-/* line 85, ../sass/globals/_controls.scss */
+/* line 86, ../sass/globals/_controls.scss */
 ul.menu:hover:after {
   opacity: 1;
 }
-/* line 90, ../sass/globals/_controls.scss */
+/* line 91, ../sass/globals/_controls.scss */
 ul.menu:after {
   content: "▴";
   font-size: 1.25em;
   position: absolute;
-  top: 0;
+  top: 0.6rem;
   right: 0.375rem;
   opacity: .25;
   -webkit-transform: rotate(180deg);
@@ -227,9 +233,46 @@ ul.menu:after {
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 103, ../sass/globals/_controls.scss */
+ul.menu li {
+  height: 1.5rem;
+  position: relative;
+  padding: 0.375rem;
+}
+/* line 108, ../sass/globals/_controls.scss */
+ul.menu li a {
+  border: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 116, ../sass/globals/_controls.scss */
+ul.menu li a:hover {
+  padding-left: 1rem;
+}
+/* line 121, ../sass/globals/_controls.scss */
+ul.menu li input {
+  max-width: 100% !important;
+}
+/* line 124, ../sass/globals/_controls.scss */
+ul.menu li input[type=submit] {
+  display: none;
 }
 
-/* line 101, ../sass/globals/_controls.scss */
+/* line 131, ../sass/globals/_controls.scss */
 textarea {
   outline: 0;
   padding: 0;
@@ -276,39 +319,6 @@ header ul.menu {
   margin-right: 0.5rem;
   width: 12rem;
   opacity: .75;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear;
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-}
-/* line 23, ../sass/layout/_header.scss */
-header ul.menu:hover {
-  opacity: 1;
-}
-/* line 31, ../sass/layout/_header.scss */
-header ul.menu li {
-  height: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-/* line 35, ../sass/layout/_header.scss */
-header ul.menu li:last-child {
-  margin-bottom: 0;
-}
-/* line 39, ../sass/layout/_header.scss */
-header ul.menu li a {
-  border: 0;
-}
-/* line 43, ../sass/layout/_header.scss */
-header ul.menu li input {
-  max-width: 100% !important;
-}
-/* line 46, ../sass/layout/_header.scss */
-header ul.menu li input[type=submit] {
-  display: none;
 }
 
 /* line 1, ../sass/layout/_container.scss */
@@ -462,7 +472,6 @@ section.container section.space section.content article.draggable .card:active .
 section.container section.space section.content article .card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.925);
-  border-top: 8pt solid transparent;
   -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);

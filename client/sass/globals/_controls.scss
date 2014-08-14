@@ -1,6 +1,5 @@
 @mixin cardStyle {
     background-color: $colorWashLightTrans;
-    border-top: 8pt solid transparent;
     @include box-shadow(0 $gutter/6 $gutter rgba(0,0,0,.125));
     @include transition(.125s $bouncyCurve);
     @include transition-property(   transform,
@@ -74,13 +73,15 @@ ul.menu {
     @include cardStyle;
     width: $col;
     position: relative;
-    max-height: $baseline/2;
+    max-height: $baseline * 1.5;
     overflow: hidden;
     vertical-align: top;
-    padding: 0 $gutter/2 $gutter $gutter/2;
+    @include basicTransition;
+    @include transition-property(opacity);
     
     &:hover {
-        max-height: 100%;
+        max-height: none;
+        opacity: 1;
         
         &:after {
             opacity: 1;
@@ -91,10 +92,39 @@ ul.menu {
         content: "▴";
         font-size: 1.25em;
         position: absolute;
-        top: 0;
+        top: $baseline/2.5;
         right: $baseline/4;
         opacity: .25;
         @include transform(rotate(180deg));
+        @include basicTransition;
+        @include transition-property(opacity);
+    }
+    
+    li {
+        height: $baseline;
+        position: relative;
+        padding: $baseline * .25;
+        
+        a {
+            border: none;
+            display: block;
+            height: 100%;
+            width: 100%;
+            @include transition(padding-left .25s $defaultCurve);
+
+            
+            &:hover {
+                padding-left: $gutter;
+            }
+        }
+        
+        input {
+            max-width: 100% !important;
+            
+            &[type=submit] {
+                display: none;
+            }
+        }
     }
 }
 

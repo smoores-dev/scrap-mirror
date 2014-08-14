@@ -17,36 +17,10 @@ header {
 		margin-right: $gutter/2;
 		width: 1.5 * $col;
 		opacity: .75;
-		@include basicTransition;
-		@include transition-property(opacity);
-		
-		&:hover {
-			opacity: 1;
-		}
 		
 		input {
 			
 		}
 		
-		li {
-			height: $baseline;
-			margin-bottom: $baseline * .5;
-			
-			&:last-child {
-				margin-bottom: 0;
-			}
-			
-			a {
-				border: 0;
-			}
-			
-			input {
-				max-width: 100% !important;
-				
-				&[type=submit] {
-					display: none;
-				}
-			}
-		}
 	}
 }
