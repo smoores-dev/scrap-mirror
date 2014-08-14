@@ -68,10 +68,11 @@ input {
         }
     }
     
-    textarea {
-      @include resetInput;
-      @include typeBody;   
-      width: 100%;
-      height: $baseline * 6;
-    }
+}
+
+textarea {
+  @include resetInput;
+  @include typeBody;   
+  width: 100%;
+  height: $baseline * 6;
 }
