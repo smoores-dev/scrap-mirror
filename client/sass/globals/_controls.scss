@@ -19,7 +19,6 @@
 
 form {
     position: relative;
-    margin-top: $baseline;
 }
 
 input {
@@ -36,9 +35,9 @@ input {
     &.offset {
         @include cardStyle;
         padding: 1em;
-        position: absolute;
-        margin-left: -$gutter;
-        margin-top: -.5em;
+        position: relative;
+        margin-left: -$gutter*1.5;
+        margin-top: -.666em;
         left: 100%;
         float: left;
         

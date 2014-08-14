@@ -86,10 +86,9 @@ html {
 /* line 20, ../sass/globals/_controls.scss */
 form {
   position: relative;
-  margin-top: 1.5rem;
 }
 
-/* line 25, ../sass/globals/_controls.scss */
+/* line 24, ../sass/globals/_controls.scss */
 input {
   outline: 0;
   padding: 0;
@@ -103,11 +102,11 @@ input {
   margin-top: 0.75rem;
   border-bottom: 1px #aaaaaa solid;
 }
-/* line 32, ../sass/globals/_controls.scss */
+/* line 31, ../sass/globals/_controls.scss */
 input:focus {
   border-color: #444444;
 }
-/* line 36, ../sass/globals/_controls.scss */
+/* line 35, ../sass/globals/_controls.scss */
 input.offset {
   background-color: rgba(255, 255, 255, 0.925);
   border-top: 8pt solid transparent;
@@ -123,13 +122,13 @@ input.offset {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   padding: 1em;
-  position: absolute;
-  margin-left: -1rem;
-  margin-top: -.5em;
+  position: relative;
+  margin-left: -1.5rem;
+  margin-top: -.666em;
   left: 100%;
   float: left;
 }
-/* line 45, ../sass/globals/_controls.scss */
+/* line 44, ../sass/globals/_controls.scss */
 input.offset:hover, input.offset:focus {
   -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
@@ -145,7 +144,7 @@ input.offset:hover, input.offset:focus {
   -o-transform: scale(1.125);
   transform: scale(1.125);
 }
-/* line 50, ../sass/globals/_controls.scss */
+/* line 49, ../sass/globals/_controls.scss */
 input.offset:active {
   -webkit-transform: scale(0.925);
   -moz-transform: scale(0.925);
@@ -156,7 +155,7 @@ input.offset:active {
   -moz-box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
 }
-/* line 56, ../sass/globals/_controls.scss */
+/* line 55, ../sass/globals/_controls.scss */
 input[type=submit], input[type=button] {
   font-size: .666em;
   font-weight: bold;
@@ -165,20 +164,20 @@ input[type=submit], input[type=button] {
   border: 0;
   cursor: pointer;
 }
-/* line 62, ../sass/globals/_controls.scss */
+/* line 61, ../sass/globals/_controls.scss */
 input[type=checkbox] {
   width: 1em;
   margin-left: -1.5em;
   margin-right: .5em;
 }
-/* line 67, ../sass/globals/_controls.scss */
+/* line 66, ../sass/globals/_controls.scss */
 input[type=checkbox] + label {
   font-size: .666em;
   font-weight: bold;
   letter-spacing: .125em;
   text-transform: uppercase !important;
 }
-/* line 72, ../sass/globals/_controls.scss */
+/* line 71, ../sass/globals/_controls.scss */
 input textarea {
   outline: 0;
   padding: 0;
