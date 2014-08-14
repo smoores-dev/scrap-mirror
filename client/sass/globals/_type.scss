@@ -10,7 +10,7 @@ $fontBoldItalic:"FuturaStd-BoldItalic";
 }
 
 @mixin smallCaps {
-    font-size: .75em;
+    font-size: .666em;
     font-weight: bold;
     letter-spacing: .125em;
     text-transform: uppercase !important;

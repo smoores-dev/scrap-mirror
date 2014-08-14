@@ -1,4 +1,10 @@
-.login {
+.card.login {
+    position: relative;
+    margin-top: 50%;
+    left: 33%;
+    padding-left: $gutter * 2 !important;
+    padding-bottom: $gutter !important;
+    
     input#toggle-login {
         &:checked {
             &+ form {
@@ -7,6 +13,10 @@
         }
     }
 
-    form {
+    form {        
+        input {
+            text-transform: lowercase;
+            font-family: $fontItalic;
+        }
     }
 }

@@ -4,23 +4,26 @@ block scripts
   include partials/baseScripts
 
 block content
-  div.card.login
-    p
-      input(type="checkbox", id="toggle-login")
-      label(for="toggle-login") Make a new account
-    form.login(action="/login",  method="post")
-      p
-        input(type="text", name="user[email]", placeholder="Mail")
-      p
-        input(type="password", name="user[password]", placeholder="Password")
-      p
-        input(type="submit", value="Login", method="post")
-    form.register(action="/register", method="post")
-      p
-        input(type="text", name="user[name]", placeholder="Name")
-      p
-        input(type="text", name="user[email]", placeholder="Mail")
-      p
-        input(type="password", name="user[password]", placeholder="Password")
-      p
-        input(type="submit", value="Register")
+  section.space
+    section.content
+      article
+        .card.login.text.nondraggable
+          p
+            input(type="checkbox", id="toggle-login")
+            label(for="toggle-login") Make a new account
+          form.login(action="/login",  method="post")
+            p
+              input(type="text", name="user[email]", placeholder="Mail")
+            p
+              input(type="password", name="user[password]", placeholder="Password")
+            p
+              input.offset(type="submit", value="Login", method="post")
+          form.register(action="/register", method="post")
+            p
+              input(type="text", name="user[name]", placeholder="Name")
+            p
+              input(type="text", name="user[email]", placeholder="Mail")
+            p
+              input(type="password", name="user[password]", placeholder="Password")
+            p
+              input.offset(type="submit", value="Register")

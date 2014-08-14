@@ -1,0 +1,78 @@
+@mixin cardStyle {
+    background-color: $colorWashLightTrans;
+    border-top: 8pt solid transparent;
+    @include box-shadow(0 $gutter/6 $gutter rgba(0,0,0,.125));
+    @include transition(.125s $bouncyCurve);
+    @include transition-property(   transform,
+                            -webkit-transform,
+                               -moz-transform,
+                                    box-shadow,
+                            -webkit-box-shadow,
+                               -moz-box-shadow,
+                                    background-color);
+}
+
+@mixin cardHover {
+    @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
+    @include transform(scale(1.0625));
+}
+
+form {
+    position: relative;
+    margin-top: $baseline;
+}
+
+input {
+    @include resetInput;
+    @include typeBody;
+    line-height: 1.5em;
+    margin-top: $baseline/2;
+    border-bottom: 1px $colorWashMedium solid;
+    
+    &:focus {
+        border-color: $colorWashDark;
+    }
+    
+    &.offset {
+        @include cardStyle;
+        padding: 1em;
+        position: absolute;
+        margin-left: -$gutter;
+        margin-top: -.5em;
+        left: 100%;
+        float: left;
+        
+        &:hover, &:focus {
+            @include cardHover;
+            @include transform(scale(1.125));
+        }
+        
+        &:active {
+            @include transform(scale(.925));
+            @include box-shadow(0 $gutter/6 $gutter/2 rgba(0,0,0,.125));
+        }
+    }
+    
+    &[type=submit], &[type=button] {
+        @include smallCaps;
+        border: 0;
+        cursor: pointer;
+    }
+    
+    &[type=checkbox] {
+        width: 1em;
+        margin-left: -1.5em;
+        margin-right: .5em;
+        
+        & + label {
+            @include smallCaps;
+        }
+    }
+    
+    textarea {
+      @include resetInput;
+      @include typeBody;   
+      width: 100%;
+      height: $baseline * 6;
+    }
+}

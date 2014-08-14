@@ -72,26 +72,53 @@ section.container {
         background-color: transparent !important;
         
         textarea {
-          @include resetInput;
-          @include typeBody;   
           width: 100%;
           height: $baseline * 6;
-                   
+        }
+        
+        &.draggable {
+          
+          .card {
+            
+            &:hover, &.rollover {
+              cursor: move;
+              
+              .card {
+                @include cardHover;
+                
+                &.text {
+                  background-color: $colorWashLightTransHalf;
+                }
+                
+                img {
+                  opacity: 1;
+                }
+              }
+            
+            }
+            
+            &:active, &.dragging {
+              cursor: move;
+              
+              .card {
+                @include transform(scale(1.0625) rotate(-3deg));
+                @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
+                
+                &.text {
+                  background-color: $colorWashLightTransHalf;
+                }
+                
+                img {
+                  opacity: 1;
+                }
+              }       
+            }
+          }
         }
         
         .card {
-          background-color: $colorWashLightTrans;
-          border-top: 8pt solid transparent;
           position: relative;
-          @include box-shadow(0 $gutter/4 $gutter rgba(0,0,0,.0625));
-          @include transition(.125s $bouncyCurve);
-          @include transition-property(transform,
-                               -webkit-transform,
-                                  -moz-transform,
-                                       box-shadow,
-                               -webkit-box-shadow,
-                                  -moz-box-shadow,
-                                       background-color);
+          @include cardStyle;
 
           &.text {
             padding: $cardPadding;
@@ -124,42 +151,6 @@ section.container {
               margin-top: $baseline / 2;
             }
           }
-        }
-        
-        &:hover, &.rollover {
-          cursor: move;
-          
-          .card {
-            @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
-            @include transform(scale(1.0625));
-            
-            &.text {
-              background-color: $colorWashLightTransHalf;
-            }
-            
-            img {
-              opacity: 1;
-            }
-          }
-        
-        }
-
-        &:active, &.dragging {
-          cursor: move;
-          
-          .card {
-            @include transform(scale(1.0625) rotate(-3deg));
-            @include transition-timing-function($defaultCurve);
-            @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
-            
-            &.text {
-              background-color: $colorWashLightTransHalf;
-            }
-            
-            img {
-              opacity: 1;
-            }
-          }       
         }
       }
     }
