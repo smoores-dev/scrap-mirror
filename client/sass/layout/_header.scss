@@ -1,14 +1,52 @@
 header {
 	position: float;
 	top: 0;
+	margin: $gutter/2 0 0 $gutter/2;
 	height: $headerHeight;
+	width: $col * 3.5;
+	opacity: .5;
+	@include basicTransition;
+	@include transition-property(opacity);
 	
-	ul.nav {
-	
-		li.zoom {
-		
-		}
-		
+	&:hover {
+		opacity: 1;
 	}
 	
+	ul.menu {
+		display: inline-block;
+		margin-right: $gutter/2;
+		width: 1.5 * $col;
+		opacity: .75;
+		@include basicTransition;
+		@include transition-property(opacity);
+		
+		&:hover {
+			opacity: 1;
+		}
+		
+		input {
+			
+		}
+		
+		li {
+			height: $baseline;
+			margin-bottom: $baseline * .5;
+			
+			&:last-child {
+				margin-bottom: 0;
+			}
+			
+			a {
+				border: 0;
+			}
+			
+			input {
+				max-width: 100% !important;
+				
+				&[type=submit] {
+					display: none;
+				}
+			}
+		}
+	}
 }

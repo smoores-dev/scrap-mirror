@@ -25,7 +25,7 @@ input {
     @include resetInput;
     @include typeBody;
     line-height: 1.5em;
-    margin-top: $baseline/2;
+    font-family: $fontItalic;
     border-bottom: 1px $colorWashMedium solid;
     
     &:focus {
@@ -68,6 +68,34 @@ input {
         }
     }
     
+}
+
+ul.menu {
+    @include cardStyle;
+    width: $col;
+    position: relative;
+    max-height: $baseline/2;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 $gutter/2 $gutter $gutter/2;
+    
+    &:hover {
+        max-height: 100%;
+        
+        &:after {
+            opacity: 1;
+        }
+    }
+    
+    &:after {
+        content: "▴";
+        font-size: 1.25em;
+        position: absolute;
+        top: 0;
+        right: $baseline/4;
+        opacity: .25;
+        @include transform(rotate(180deg));
+    }
 }
 
 textarea {

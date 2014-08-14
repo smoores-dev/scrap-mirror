@@ -12,7 +12,7 @@ block content
       li
         form.add-space(action="/s/new", method="post")
           input(type="text", name="space[name]", placeholder="Create a new space")
-          input(type="submit", style="visibility: hidden;")
+          input(type="submit")
   
     - creator = space.creator
     - isCreator = false

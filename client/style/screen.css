@@ -82,6 +82,12 @@ html {
   font-size: 12pt;
   line-height: 1.5em;
 }
+/* line 33, ../sass/globals/_type.scss */
+html a {
+  color: #333333;
+  text-decoration: none;
+  border-bottom: 1px #aaaaaa solid;
+}
 
 /* line 20, ../sass/globals/_controls.scss */
 form {
@@ -99,7 +105,7 @@ input {
   font-size: 12pt;
   line-height: 1.5em;
   line-height: 1.5em;
-  margin-top: 0.75rem;
+  font-family: "Futura-MediumItalic";
   border-bottom: 1px #aaaaaa solid;
 }
 /* line 31, ../sass/globals/_controls.scss */
@@ -179,6 +185,51 @@ input[type=checkbox] + label {
 }
 
 /* line 73, ../sass/globals/_controls.scss */
+ul.menu {
+  background-color: rgba(255, 255, 255, 0.925);
+  border-top: 8pt solid transparent;
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  width: 8rem;
+  position: relative;
+  max-height: 0.75rem;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.5rem 1rem 0.5rem;
+}
+/* line 82, ../sass/globals/_controls.scss */
+ul.menu:hover {
+  max-height: 100%;
+}
+/* line 85, ../sass/globals/_controls.scss */
+ul.menu:hover:after {
+  opacity: 1;
+}
+/* line 90, ../sass/globals/_controls.scss */
+ul.menu:after {
+  content: "▴";
+  font-size: 1.25em;
+  position: absolute;
+  top: 0;
+  right: 0.375rem;
+  opacity: .25;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 101, ../sass/globals/_controls.scss */
 textarea {
   outline: 0;
   padding: 0;
@@ -202,7 +253,62 @@ body {
 header {
   position: float;
   top: 0;
+  margin: 0.5rem 0 0 0.5rem;
   height: 25vh;
+  width: 28rem;
+  opacity: .5;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 11, ../sass/layout/_header.scss */
+header:hover {
+  opacity: 1;
+}
+/* line 15, ../sass/layout/_header.scss */
+header ul.menu {
+  display: inline-block;
+  margin-right: 0.5rem;
+  width: 12rem;
+  opacity: .75;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 23, ../sass/layout/_header.scss */
+header ul.menu:hover {
+  opacity: 1;
+}
+/* line 31, ../sass/layout/_header.scss */
+header ul.menu li {
+  height: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+/* line 35, ../sass/layout/_header.scss */
+header ul.menu li:last-child {
+  margin-bottom: 0;
+}
+/* line 39, ../sass/layout/_header.scss */
+header ul.menu li a {
+  border: 0;
+}
+/* line 43, ../sass/layout/_header.scss */
+header ul.menu li input {
+  max-width: 100% !important;
+}
+/* line 46, ../sass/layout/_header.scss */
+header ul.menu li input[type=submit] {
+  display: none;
 }
 
 /* line 1, ../sass/layout/_container.scss */
@@ -462,5 +568,4 @@ section.container section.space .delete:after {
 /* line 17, ../sass/layout/_login.scss */
 .card.login form input {
   text-transform: lowercase;
-  font-family: "Futura-MediumItalic";
 }

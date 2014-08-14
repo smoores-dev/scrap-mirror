@@ -29,5 +29,10 @@ $fontBoldItalic:"FuturaStd-BoldItalic";
 
 html {
     @include typeBody;
+    
+    a {
+        color: $colorTypeDark;
+        text-decoration: none;
+        border-bottom: 1px $colorWashMedium solid;
+    }
 }
-
