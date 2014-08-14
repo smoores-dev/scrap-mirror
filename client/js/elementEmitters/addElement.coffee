@@ -1,4 +1,7 @@
 $ ->
+
+  socket = io.connect()
+
   # adding a new element
   emitElement = (x, y, scale, content, contentType) ->
     caption = $('textarea[name=caption]').val()
