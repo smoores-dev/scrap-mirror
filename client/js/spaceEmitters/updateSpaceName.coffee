@@ -1,5 +1,7 @@
 $ ->
 
+  socket = io.connect()
+
   # updating a space name
   $('.name').on 'dblclick', (event) ->
     editing = !!$('.edit-name', this).length
