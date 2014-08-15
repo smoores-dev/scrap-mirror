@@ -24,7 +24,7 @@ app.configure(function(){
             db: db.sequelize
         })
     }));
-    // app.use(app.router);
+    
     app.use(coffeeMiddleware({
         src: __dirname + '/client',
         compress: true,
@@ -34,6 +34,10 @@ app.configure(function(){
         bare: true
     }));
 });
+
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET = process.env.S3_BUCKET;
 
 db.sequelize.sync({ force: false }).complete(function(err) {
     if (err) {

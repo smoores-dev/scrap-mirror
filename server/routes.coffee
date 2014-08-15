@@ -28,6 +28,9 @@ module.exports = (server) ->
   server.post '/register', (req, res) ->
     controllers.userController.newUser req, res, errorHandler
 
+  server.get '/sign_s3', (req, res) ->
+    controllers.spaceController.uploadFile req, res, errorHandler
+    
   server.get '/500', (req, res) ->
     throw new Error 'This is a 500 Error'
 
