@@ -2,9 +2,9 @@ $ ->
 
   $('input:file').change () ->
     fileName = $(this).val()
-    console.log fileName
 
     s3upload = new window.S3Upload {
+      s3_object_name: fileName,
       file_dom_selector: 'files',
       s3_sign_put_url: '/sign_s3',
       onProgress: (percent, message) ->
