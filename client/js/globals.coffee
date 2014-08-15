@@ -2,6 +2,10 @@ totalDelta =
   x: 0
   y: 0
 
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""
+S3_BUCKET = ""
+
 matrixToArray = (str) ->
   str.match(/(-?[0-9\.]+)/g)
 

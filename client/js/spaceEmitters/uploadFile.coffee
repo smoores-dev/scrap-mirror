@@ -1,7 +1,9 @@
 $ ->
 
   $('input:file').change () ->
-    fileName = $(this).val()
+    filePath = $(this).val()
+    lastSlash = filePath.lastIndexOf "\\"
+    fileName = filePath.substring(lastSlash + 1)
 
     s3upload = new window.S3Upload {
       s3_object_name: fileName,

@@ -1,4 +1,5 @@
 models = require '../../models'
+crypto = require 'crypto'
 module.exports =
   
   # create a new space and redirect to it
