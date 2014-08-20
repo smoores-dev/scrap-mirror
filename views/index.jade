@@ -18,12 +18,22 @@ block content
               input(type="password", name="user[password]", placeholder="Password")
             p
               input.offset(type="submit", value="Login", method="post")
-          form.register(action="/register", method="post")
-            p
-              input(type="text", name="user[name]", placeholder="Name")
-            p
-              input(type="text", name="user[email]", placeholder="Mail")
-            p
-              input(type="password", name="user[password]", placeholder="Password")
-            p
-              input.offset(type="submit", value="Register")
+  script
+    $('#toggle-login').change(function() {
+      if($(this).is(":checked")) {
+        console.log("not checked?");
+        var nameInput = "<p><input type='text' name='user[name]' placeholder='Full Name'></p>"
+        $("form").removeClass("login")
+          .addClass("register")
+          .prepend(nameInput)
+          .get(0).setAttribute('action', '/register');
+        $("input[type=submit]").val("Register");
+      }
+      else {
+        $("form").removeClass("register")
+          .addClass("login")
+          .get(0).setAttribute('action', '/login');
+        $("input[name='user[name]']").remove();
+        $("input[type=submit]").val("Login");
+      }
+    })
