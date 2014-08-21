@@ -1,7 +1,19 @@
 models = require '../../models'
 crypto = require 'crypto'
+uuid = require('node-uuid')
+mime = require('mime')
+moment = require('moment')
+
+config = 
+  aws_key:  "AKIAJQ7VP2SMGLIV5JQA" #AWS Key
+  aws_secret:  "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" #AWS Secret
+  aws_bucket:  "scrap_images" #AWS Bucket
+  redirect_host:  "http://ocalhost:3000/" #Host to redirect after uploading
+  host:  "s3.amazonaws.com" #S3 provider host
+  bucket_dir:  "uploads/";
+  max_filesize:  20971520 #Max filesize in bytes (default 20MB)
+
 module.exports =
-  
   # create a new space and redirect to it
   newSpace : (req, res, callback) ->
     spaceKey = @generateUUID()
@@ -50,33 +62,32 @@ module.exports =
         callback()
 
   uploadFile : (req, res, callback) ->
-    object_name = req.query.s3_object_name
-    mime_type = req.query.s3_object_type
+    mime_type = mime.lookup(req.query.title) # Uses node-mime to detect mime-type based on file extension
+    expire = moment().utc().add('hour', 1).toJSON("YYYY-MM-DDTHH:mm:ss Z") # Set policy expire date +30 minutes in UTC
+    file_key = uuid.v4() # Generate uuid for filename
 
-    now = new Date()
-    expires = Math.ceil((now.getTime() + 10000) / 1000) # 10 seconds from now
-    amz_headers = "x-amz-acl:public-read"
+    # Creates the JSON policy according to Amazon S3's CORS uploads specfication (http://aws.amazon.com/articles/1434)
+    policy = JSON.stringify({
+      "expiration": expire
+      "conditions": [
+        {"bucket": config.aws_bucket}
+        ["eq", "$key", config.bucket_dir + file_key + "_" + req.query.title]
+        {"acl": "public-read"}
+        {"success_action_status": "201"}
+        ["starts-with", "$Content-Type", mime_type]
+        ["content-length-range", 0, config.max_filesize]
+      ]
+    });
 
-    put_request = "PUT\n\n#{mime_type}\n#{expires}\n#{amz_headers}\n#{S3_BUCKET}/#{object_name}"
+    base64policy = new Buffer(policy).toString('base64'); # Create base64 policy
+    signature = crypto.createHmac('sha1', config.aws_secret).update(base64policy).digest('base64'); # Create signature
 
-    signature = crypto.createHmac('sha1', AWS_SECRET_KEY).update(put_request).digest 'base64'
-    signature = encodeURIComponent signature.trim()
-    signature = signature.replace '%2B', '+'
-
-    url = "https://#{S3_BUCKET}.s3.amazonaws.com/#{object_name}"
-
-    credentials = {
-        signed_request: "#{url}?AWSAccessKeyId=#{AWS_ACCESS_KEY}&Expires=#{expires}&Signature=#{signature}",
-        url: url
-      }
-
-    res.write JSON.stringify credentials
-    res.end()
+    # Return JSON View
+    res.json {
+      policy: base64policy
+      signature: signature
+      key: (config.bucket_dir + file_key + "_" + req.query.title)
+      success_action_redirect: "/"
+      contentType: mime_type
+    }
     callback()
-
-  generateUUID : () ->
-    text = ""
-    possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for i in [0..6]
-      text += possible.charAt(Math.floor(Math.random() * possible.length))
-    text
