@@ -16,7 +16,7 @@ config =
 module.exports =
   # create a new space and redirect to it
   newSpace : (req, res, callback) ->
-    spaceKey = @generateUUID()
+    spaceKey = uuid.v4().split('-')[0]
     name = req.body.space.name
     currentUserId = req.session.currentUserId
     
