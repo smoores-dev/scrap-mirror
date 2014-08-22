@@ -41,7 +41,7 @@ module.exports =
               res.render 'space.jade',
                 title : space.name
                 space: space
-                user: user
+                current_user: user
             callback()
       else
         res.status 404
