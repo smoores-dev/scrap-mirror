@@ -6,21 +6,25 @@ block scripts
 block content
   header 
     ul.spaces.menu
+      li
+        a(href='/s/#{current_space.spaceKey}')=current_space.name
       each space in current_user.spaces
-        li
-          a(href='/s/#{space.spaceKey}')=space.name
+        if space.id != current_space.id
+          li
+            a(href='/s/#{space.spaceKey}')=space.name
       li
         form.add-space(action="/s/new", method="post")
           input(type="text", name="space[name]", placeholder="Create a new space")
           input(type="submit")
   
-    - isCreator = current_user.id == space.creator.id
+    - var creator = current_space.creator
+    - var isCreator = current_user.id == creator.id
   
     ul.users.menu
-      each user in space.users
-        if user.id != space.creator.id && isCreator
+      each user in current_space.users
+        if user.id != creator.id && isCreator
           li.deletable-user(data-id=user.id)=user.name
-        else if user.id == space.creator.id
+        else if user.id == creator.id
           li(data-id=user.id) #{user.name} (owner)
         else
           li(data-id=user.id)=user.name
@@ -33,11 +37,11 @@ block content
 
   section.space
 
-    h1.name=space.name
+    h1.name=current_space.name
 
     section.content
 
-      each element in space.elements
+      each element in current_space.elements
         if element.z > maxZ
           - maxZ = element.z
 

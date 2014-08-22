@@ -40,7 +40,7 @@ module.exports =
             if result
               res.render 'space.jade',
                 title : space.name
-                space: space
+                current_space: space
                 current_user: user
             callback()
       else
