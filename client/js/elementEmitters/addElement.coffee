@@ -1,5 +1,7 @@
 $ ->
 
+  $(window).on 'click', (event) -> $('.add-element').remove()
+
   socket = io.connect()
 
   # adding a new element
@@ -24,6 +26,7 @@ $ ->
 
   # adds caption and element to DOM
   addCaption = (x, y, scale, contentType, content, innerHTML) ->
+    $('.add-element').remove()
     captionForm = 
       "<div class='card text'>
         <textarea name='caption' placeholder='Add a caption'></textarea>
@@ -82,12 +85,13 @@ $ ->
 
     # add the new element form
     $('.content').append elementForm
-    $('.add-element').css(
-      scale: 1/screenScale
-      "transform-origin": "top left"
-      'z-index': "#{window.maxZ + 1}"
-      top: "#{y}px"
-      left: "#{x}px")
+    $('.add-element').on 'click', (event) -> event.stopPropagation()
+      .css(
+        scale: 1/screenScale
+        "transform-origin": "top left"
+        'z-index': "#{window.maxZ + 1}"
+        top: "#{y}px"
+        left: "#{x}px")
 
     # allow file uploads
     contentType = null
@@ -126,12 +130,10 @@ $ ->
         content = $(data).find('Location').text(); # Find location value from XML response
         console.log 'success', content, contentType
         innerHTML = (content) -> "<img src='#{content}'>"
-        x = Math.floor(x - (150 / screenScale))
         addCaption x, y, 1/screenScale, contentType, content, innerHTML
       }
 
     $('textarea').focus().autoGrow()
-      # .on 'blur', (event) -> $(this).parent().parent().remove()
       .on 'keyup', (event) ->
 
         # on paste of image, submit without hitting enter
