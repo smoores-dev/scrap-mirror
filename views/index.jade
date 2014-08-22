@@ -4,18 +4,18 @@ block scripts
   include partials/baseScripts
 
 block content
-      article
-        .card.login.text.nondraggable
-          p
-            input(type="checkbox", id="toggle-login")
-            label(for="toggle-login") Make a new account
-          form.login(action="/login",  method="post")
-            p
-              input(type="text", name="user[email]", placeholder="Mail")
-            p
-              input(type="password", name="user[password]", placeholder="Password")
-            p
-              input.offset(type="submit", value="Login", method="post")
+  article
+    .card.login.text.nondraggable
+      p
+        input(type="checkbox", id="toggle-login")
+        label(for="toggle-login") Make a new account
+      form.login(action="/login",  method="post")
+        p
+          input(type="text", name="user[email]", placeholder="Mail")
+        p
+          input(type="password", name="user[password]", placeholder="Password")
+        p
+          input.offset(type="submit", value="Login", method="post")
   script
     $('#toggle-login').change(function() {
       if($(this).is(":checked")) {
