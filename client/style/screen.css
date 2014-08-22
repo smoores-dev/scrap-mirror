@@ -88,6 +88,10 @@ html a {
   text-decoration: none;
   border-bottom: 1px #aaaaaa solid;
 }
+/* line 41, ../sass/globals/_type.scss */
+html p + p {
+  margin-top: 0.75rem;
+}
 
 /* line 19, ../sass/globals/_controls.scss */
 form {
@@ -422,53 +426,7 @@ section.container section.space section.content article textarea {
   width: 100%;
   height: 9rem;
 }
-/* line 83, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:hover, section.container section.space section.content article.draggable .card.rollover {
-  cursor: move;
-}
-/* line 86, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:hover .card, section.container section.space section.content article.draggable .card.rollover .card {
-  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-  -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-  -webkit-transform: scale(1.0625);
-  -moz-transform: scale(1.0625);
-  -ms-transform: scale(1.0625);
-  -o-transform: scale(1.0625);
-  transform: scale(1.0625);
-}
-/* line 89, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:hover .card.text, section.container section.space section.content article.draggable .card.rollover .card.text {
-  background-color: rgba(255, 255, 255, 0.96);
-}
-/* line 93, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:hover .card img, section.container section.space section.content article.draggable .card.rollover .card img {
-  opacity: 1;
-}
-/* line 100, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:active, section.container section.space section.content article.draggable .card.dragging {
-  cursor: move;
-}
-/* line 103, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:active .card, section.container section.space section.content article.draggable .card.dragging .card {
-  -webkit-transform: scale(1.0625) rotate(-3deg);
-  -moz-transform: scale(1.0625) rotate(-3deg);
-  -ms-transform: scale(1.0625) rotate(-3deg);
-  -o-transform: scale(1.0625) rotate(-3deg);
-  transform: scale(1.0625) rotate(-3deg);
-  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-  -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
-}
-/* line 107, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:active .card.text, section.container section.space section.content article.draggable .card.dragging .card.text {
-  background-color: rgba(255, 255, 255, 0.96);
-}
-/* line 111, ../sass/layout/_container.scss */
-section.container section.space section.content article.draggable .card:active .card img, section.container section.space section.content article.draggable .card.dragging .card img {
-  opacity: 1;
-}
-/* line 119, ../sass/layout/_container.scss */
+/* line 79, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.925);
@@ -484,34 +442,70 @@ section.container section.space section.content article .card {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 123, ../sass/layout/_container.scss */
+/* line 83, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover, section.container section.space section.content article .card.rollover {
+  cursor: move;
+  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  -webkit-transform: scale(1.0625);
+  -moz-transform: scale(1.0625);
+  -ms-transform: scale(1.0625);
+  -o-transform: scale(1.0625);
+  transform: scale(1.0625);
+}
+/* line 88, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover.text, section.container section.space section.content article .card.rollover.text {
+  background-color: rgba(255, 255, 255, 0.96);
+}
+/* line 92, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover img, section.container section.space section.content article .card.rollover img {
+  opacity: 1;
+}
+/* line 97, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active, section.container section.space section.content article .card.dragging {
+  cursor: move;
+  -webkit-transform: scale(1.0625) rotate(-3deg);
+  -moz-transform: scale(1.0625) rotate(-3deg);
+  -ms-transform: scale(1.0625) rotate(-3deg);
+  -o-transform: scale(1.0625) rotate(-3deg);
+  transform: scale(1.0625) rotate(-3deg);
+  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+}
+/* line 102, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active.text, section.container section.space section.content article .card.dragging.text {
+  background-color: rgba(255, 255, 255, 0.96);
+}
+/* line 106, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active img, section.container section.space section.content article .card.dragging img {
+  opacity: 1;
+}
+/* line 111, ../sass/layout/_container.scss */
 section.container section.space section.content article .card.text {
   padding: 0.33333rem 1rem 0.33333rem 0.5rem;
 }
-/* line 127, ../sass/layout/_container.scss */
+/* line 115, ../sass/layout/_container.scss */
 section.container section.space section.content article .card.image {
   background-color: transparent;
 }
-/* line 132, ../sass/layout/_container.scss */
+/* line 120, ../sass/layout/_container.scss */
 section.container section.space section.content article .card.website p a {
   word-break: break-all;
 }
-/* line 137, ../sass/layout/_container.scss */
+/* line 125, ../sass/layout/_container.scss */
 section.container section.space section.content article .card.caption {
   left: 1rem;
   top: -1.5rem;
 }
-/* line 142, ../sass/layout/_container.scss */
+/* line 130, ../sass/layout/_container.scss */
 section.container section.space section.content article .card img {
   width: 100%;
   opacity: .9;
   margin-bottom: -12pt;
 }
-/* line 150, ../sass/layout/_container.scss */
-section.container section.space section.content article .card p + p {
-  margin-top: 0.75rem;
-}
-/* line 158, ../sass/layout/_container.scss */
+/* line 139, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -531,12 +525,12 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 170, ../sass/layout/_container.scss */
+/* line 151, ../sass/layout/_container.scss */
 section.container section.space .delete.visible {
   bottom: 0;
   opacity: 1;
 }
-/* line 175, ../sass/layout/_container.scss */
+/* line 156, ../sass/layout/_container.scss */
 section.container section.space .delete.rollover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
@@ -546,7 +540,7 @@ section.container section.space .delete.rollover {
   opacity: 1;
   bottom: 0;
 }
-/* line 181, ../sass/layout/_container.scss */
+/* line 162, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
@@ -569,12 +563,25 @@ section.container section.space .delete:after {
   left: 33%;
   padding-left: 2rem !important;
   padding-bottom: 1rem !important;
+  background-color: rgba(255, 255, 255, 0.925);
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  width: 16rem;
 }
-/* line 10, ../sass/layout/_login.scss */
+/* line 12, ../sass/layout/_login.scss */
 .card.login input#toggle-login:checked + form {
   background: red;
 }
-/* line 17, ../sass/layout/_login.scss */
+/* line 19, ../sass/layout/_login.scss */
 .card.login form input {
   text-transform: lowercase;
 }

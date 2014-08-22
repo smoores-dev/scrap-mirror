@@ -4,6 +4,8 @@
     left: 33%;
     padding-left: $gutter * 2 !important;
     padding-bottom: $gutter !important;
+    @include cardStyle;
+    width: $col* 2;
     
     input#toggle-login {
         &:checked {

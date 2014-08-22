@@ -35,4 +35,11 @@ html {
         text-decoration: none;
         border-bottom: 1px $colorWashMedium solid;
     }
+    
+    p {
+    
+      & + p {
+        margin-top: $baseline / 2;
+      }
+    }
 }

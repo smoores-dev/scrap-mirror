@@ -75,51 +75,39 @@ section.container {
           width: 100%;
           height: $baseline * 6;
         }
-        
-        &.draggable {
-          
-          .card {
-            
-            &:hover, &.rollover {
-              cursor: move;
-              
-              .card {
-                @include cardHover;
                 
-                &.text {
-                  background-color: $colorWashLightTransHalf;
-                }
-                
-                img {
-                  opacity: 1;
-                }
-              }
-            
-            }
-            
-            &:active, &.dragging {
-              cursor: move;
-              
-              .card {
-                @include transform(scale(1.0625) rotate(-3deg));
-                @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
-                
-                &.text {
-                  background-color: $colorWashLightTransHalf;
-                }
-                
-                img {
-                  opacity: 1;
-                }
-              }       
-            }
-          }
-        }
-        
         .card {
           position: relative;
           @include cardStyle;
-
+          
+          &:hover, &.rollover {
+            cursor: move;
+            
+            @include cardHover;
+            
+            &.text {
+              background-color: $colorWashLightTransHalf;
+            }
+            
+            img {
+              opacity: 1;
+            }          
+          }
+          
+          &:active, &.dragging {
+            cursor: move;
+            @include transform(scale(1.0625) rotate(-3deg));
+            @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
+            
+            &.text {
+              background-color: $colorWashLightTransHalf;
+            }
+            
+            img {
+              opacity: 1;
+            }
+          }
+          
           &.text {
             padding: $cardPadding;
           }
@@ -127,7 +115,7 @@ section.container {
           &.image {
             background-color: transparent;
           }
-
+          
           &.website {
             p a {
               word-break: break-all;
@@ -138,18 +126,11 @@ section.container {
             left: $gutter;
             top: -$baseline;
           }
-
+          
           img {
             width: 100%;
             opacity: .9;
             margin-bottom: -12pt;
-          }
-          
-          p {
-          
-            & + p {
-              margin-top: $baseline / 2;
-            }
           }
         }
       }
