@@ -62,7 +62,21 @@ $ ->
     elementForm =
       "<article class='add-element'>
         <div class='card text'>
-          <textarea name='content' placeholder='Add something new'></textarea>
+          <p>
+            <textarea name='content' placeholder='Add something new'></textarea>
+          </p>
+          <p>
+            <form action='http://scrap_images.s3.amazonaws.com' method='post' enctype='multipart/form-data' class='direct-upload'>
+              <input type='hidden' name='key'>
+              <input type='hidden' name='AWSAccessKeyId' value='AKIAJQ7VP2SMGLIV5JQA'>
+              <input type='hidden' name='acl' value='public-read'>
+              <input type='hidden' name='policy'>
+              <input type='hidden' name='signature'>
+              <input type='hidden' name='success_action_status' value='201'>
+              <input type='hidden' name='Content-Type'>
+              <input type='file' class='file-input' name='file'>
+            </form>
+          </p>
         </div>
       </article>"
 
@@ -75,8 +89,49 @@ $ ->
       top: "#{y}px"
       left: "#{x}px")
 
+    # allow file uploads
+    contentType = null
+    $('.direct-upload').fileupload {
+      url: $(this).attr 'action' # Grabs form's action src
+      type: 'POST'
+      autoUpload: true
+      dataType: 'xml' # S3's XML response
+      add: (event, data) ->      
+        $.ajax {
+          url: "/sign_s3"
+          type: 'GET'
+          dataType: 'json'
+          data: {title: data.files[0].name} # Send filename to /signed for the signed response 
+          async: false
+          success: (data) ->
+            # Now that we have our data, we update the form so it contains all
+            # the needed data to sign the request
+            contentType = data.contentType.split('/')[0]
+
+            $('input[name=key]', '.direct-upload').val data.key
+            $('input[name=policy]', '.direct-upload').val data.policy
+            $('input[name=signature]', '.direct-upload').val data.signature
+            $('input[name=Content-Type]', '.direct-upload').val data.contentType
+        }
+        data.submit()
+
+      progress: (e, data)->
+        percent = Math.round((e.loaded / e.total) * 100)
+        console.log 'progress', percent
+
+      fail: (e, data) ->
+        console.log 'fail', data
+
+      success: (data) ->
+        content = $(data).find('Location').text(); # Find location value from XML response
+        console.log 'success', content, contentType
+        innerHTML = (content) -> "<img src='#{content}'>"
+        x = Math.floor(x - (150 / screenScale))
+        addCaption x, y, 1/screenScale, contentType, content, innerHTML
+      }
+
     $('textarea').focus().autoGrow()
-      .on 'blur', (event) -> $(this).parent().remove()
+      # .on 'blur', (event) -> $(this).parent().parent().remove()
       .on 'keyup', (event) ->
 
         # on paste of image, submit without hitting enter
