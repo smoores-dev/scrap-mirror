@@ -1,8 +1,74 @@
 $ ->
 
+  socket = io.connect()
+
+  mouse = { x: 0, y: 0 }
+
+  # On document so that it doesn't get messed up by screenDrag
+  $(document).on 'mousemove', (event) ->
+    mouse.x = event.clientX
+    mouse.y = event.clientY
+
   $(window).on 'click', (event) -> $('.add-element').remove()
 
-  socket = io.connect()
+  # The options for s3-streamed file uploads, used later
+  fileuploadOptions = (x, y, contentType, scale) ->
+    multipart = false
+    url: "http://scrap_images.s3.amazonaws.com" # Grabs form's action src
+    type: 'POST'
+    autoUpload: true
+    dataType: 'xml' # S3's XML response
+    add: (event, data) ->      
+      $.ajax "/sign_s3", {
+        type: 'GET'
+        dataType: 'json'
+        data: {title: data.files[0].name} # Send filename to /signed for the signed response 
+        async: false
+        success: (data) ->
+          # Now that we have our data, we update the form so it contains all
+          # the needed data to sign the request
+          contentType = data.contentType.split('/')[0]
+
+          $('input[name=key]').val data.key
+          $('input[name=policy]').val data.policy
+          $('input[name=signature]').val data.signature
+          $('input[name=Content-Type]').val data.contentType
+      }
+      data.submit()
+
+    send: (e, data) ->
+      # Determine if this was a multiple upload
+      if data.originalFiles.length > 1
+        multipart = true
+
+    progress: (e, data)->
+      percent = Math.round((e.loaded / e.total) * 100)
+      console.log 'progress', percent
+
+    fail: (e, data) ->
+      console.log 'fail', data
+
+    success: (data) ->
+      # On drag-to-upload, these variables won't have been set yet, so let's set them
+      scale ||= $('.content').css 'scale'
+      x ||= Math.round((mouse.x - 128 - $('.content').offset().left) / scale)
+      y ||= Math.round((mouse.y - $('.content').offset().top) / scale)
+
+      content = $(data).find('Location').text(); # Find location value from XML response
+      console.log 'success', content, contentType
+
+      # If multiple files were uploaded, don't add caption boxes for all of them
+      if multipart
+        emitElement x, y, 1/scale, content, contentType
+      else
+        innerHTML = (content) -> "<img src='#{content}'>"
+        addCaption x, y, 1/scale, contentType, content, innerHTML
+
+      # Reset variables for next drag-upload
+      x = y = scale = null
+
+  # Initialize file uploads by dragging
+  $('.drag-upload').fileupload fileuploadOptions null
 
   # adding a new element
   emitElement = (x, y, scale, content, contentType) ->
@@ -59,8 +125,8 @@ $ ->
   # on double-click, append new element form, then process the new element if one is submitted
   $(window).on 'dblclick', (event) ->
     screenScale = $('.content').css('scale')
-    x = Math.floor((event.clientX - $('.content').offset().left) / screenScale)
-    y = Math.floor((event.clientY - $('.content').offset().top) / screenScale)
+    x = Math.round((event.clientX - $('.content').offset().left) / screenScale)
+    y = Math.round((event.clientY - $('.content').offset().top) / screenScale)
 
     elementForm =
       "<article class='add-element'>
@@ -69,7 +135,7 @@ $ ->
             <textarea name='content' placeholder='Add something new'></textarea>
           </p>
           <p>
-            <form action='http://scrap_images.s3.amazonaws.com' method='post' enctype='multipart/form-data' class='direct-upload'>
+            <form enctype='multipart/form-data' class='direct-upload'>
               <input type='hidden' name='key'>
               <input type='hidden' name='AWSAccessKeyId' value='AKIAJQ7VP2SMGLIV5JQA'>
               <input type='hidden' name='acl' value='public-read'>
@@ -94,44 +160,7 @@ $ ->
         left: "#{x}px")
 
     # allow file uploads
-    contentType = null
-    $('.direct-upload').fileupload {
-      url: $(this).attr 'action' # Grabs form's action src
-      type: 'POST'
-      autoUpload: true
-      dataType: 'xml' # S3's XML response
-      add: (event, data) ->      
-        $.ajax {
-          url: "/sign_s3"
-          type: 'GET'
-          dataType: 'json'
-          data: {title: data.files[0].name} # Send filename to /signed for the signed response 
-          async: false
-          success: (data) ->
-            # Now that we have our data, we update the form so it contains all
-            # the needed data to sign the request
-            contentType = data.contentType.split('/')[0]
-
-            $('input[name=key]', '.direct-upload').val data.key
-            $('input[name=policy]', '.direct-upload').val data.policy
-            $('input[name=signature]', '.direct-upload').val data.signature
-            $('input[name=Content-Type]', '.direct-upload').val data.contentType
-        }
-        data.submit()
-
-      progress: (e, data)->
-        percent = Math.round((e.loaded / e.total) * 100)
-        console.log 'progress', percent
-
-      fail: (e, data) ->
-        console.log 'fail', data
-
-      success: (data) ->
-        content = $(data).find('Location').text(); # Find location value from XML response
-        console.log 'success', content, contentType
-        innerHTML = (content) -> "<img src='#{content}'>"
-        addCaption x, y, 1/screenScale, contentType, content, innerHTML
-      }
+    $('.direct-upload').fileupload fileuploadOptions x, y, null, screenScale
 
     $('textarea').focus().autoGrow()
       .on 'keyup', (event) ->

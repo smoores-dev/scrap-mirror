@@ -32,16 +32,15 @@ block content
       input(type="text", name="user[email]", placeholder="User's email address")
       input(type="submit", style="visibility: hidden;")
 
-  #drop.panel
-    form(action="http://scrap_images.s3.amazonaws.com",method="post",enctype="multipart/form-data",class="direct-upload")
-      input(type="hidden",name="key")
-      input(type="hidden",name="AWSAccessKeyId",value="AKIAJQ7VP2SMGLIV5JQA")
-      input(type="hidden",name="acl",value="public-read")
-      input(type="hidden",name="policy")
-      input(type="hidden",name="signature")
-      input(type="hidden",name="success_action_status",value="201")
-      input(type="hidden",name="Content-Type")
-      input(class="file-input",name="file",type="file")
+  form(enctype="multipart/form-data",class="drag-upload")
+    input(type="hidden",name="key")
+    input(type="hidden",name="AWSAccessKeyId",value="AKIAJQ7VP2SMGLIV5JQA")
+    input(type="hidden",name="acl",value="public-read")
+    input(type="hidden",name="policy")
+    input(type="hidden",name="signature")
+    input(type="hidden",name="success_action_status",value="201")
+    input(type="hidden",name="Content-Type")
+    input(type="file", style="visibility:hidden;",name="file")
 
   section.space
 
