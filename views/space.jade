@@ -9,6 +9,16 @@ block content
   
     include partials/userMenu
 
+  form(enctype="multipart/form-data",class="drag-upload")
+    input(type="hidden",name="key")
+    input(type="hidden",name="AWSAccessKeyId",value="AKIAJQ7VP2SMGLIV5JQA")
+    input(type="hidden",name="acl",value="public-read")
+    input(type="hidden",name="policy")
+    input(type="hidden",name="signature")
+    input(type="hidden",name="success_action_status",value="201")
+    input(type="hidden",name="Content-Type")
+    input(type="file", style="visibility:hidden;",name="file")
+
   section.space
 
     h1.name=current_space.name

@@ -5,12 +5,14 @@
   "version": "0.0.1",
   "dependencies": {
     "async": "~0.9.0",
-    "aws-sdk": "~2.0.11",
+    "aws-sdk": "^2.0.14",
     "bcrypt-nodejs": "0.0.3",
     "coffee-middleware": "~0.2.1",
     "coffee-script": "latest",
     "coffeelint": "~1.5.2",
     "connect": "1.8.5",
+    "connect-session-sequelize": "~1.0.0",
+    "crypto": "0.0.3",
     "express": "~3.4.8",
     "jade": "0.20.0",
     "lodash": "~2.4.1",
@@ -18,11 +20,14 @@
     "s3-streaming-upload": "~0.1.14",
     "sequelize": "~1.7.9",
     "socket.io": "1.0.6",
+    "sqlite3": "~2.2.7",
     "url": "~0.10.1",
     "validator": "~3.16.1",
     "webshot": "0.15.2",
-    "connect-session-sequelize": "~1.0.0",
-    "sqlite3": "~2.2.7"
+    "node-uuid": "~1.4.1",
+    "node-mime": "~1.0.0",
+    "moment": "~2.8.2",
+    "mime": "~1.2.11"
   },
   "devDependencies": {
     "vows": "0.5.x",
