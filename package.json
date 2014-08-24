@@ -23,7 +23,11 @@
     "sqlite3": "~2.2.7",
     "url": "~0.10.1",
     "validator": "~3.16.1",
-    "webshot": "0.15.2"
+    "webshot": "0.15.2",
+    "node-uuid": "~1.4.1",
+    "node-mime": "~1.0.0",
+    "moment": "~2.8.2",
+    "mime": "~1.2.11"
   },
   "devDependencies": {
     "vows": "0.5.x",
