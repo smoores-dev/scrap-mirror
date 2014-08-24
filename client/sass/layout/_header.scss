@@ -1,14 +1,26 @@
 header {
 	position: float;
 	top: 0;
+	margin: $gutter/2 0 0 $gutter/2;
 	height: $headerHeight;
+	width: $col * 3.5;
+	opacity: .5;
+	@include basicTransition;
+	@include transition-property(opacity);
 	
-	ul.nav {
+	&:hover {
+		opacity: 1;
+	}
 	
-		li.zoom {
+	ul.menu {
+		display: inline-block;
+		margin-right: $gutter/2;
+		width: 1.5 * $col;
+		opacity: .75;
 		
+		input {
+			
 		}
 		
 	}
-	
 }

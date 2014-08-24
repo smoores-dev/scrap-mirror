@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* line 17, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +21,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -82,6 +82,213 @@ html {
   font-size: 12pt;
   line-height: 1.5em;
 }
+/* line 33, ../sass/globals/_type.scss */
+html a {
+  color: #333333;
+  text-decoration: none;
+  border-bottom: 1px #aaaaaa solid;
+}
+/* line 41, ../sass/globals/_type.scss */
+html p + p {
+  margin-top: 0.75rem;
+}
+
+/* line 19, ../sass/globals/_controls.scss */
+form {
+  position: relative;
+}
+
+/* line 23, ../sass/globals/_controls.scss */
+input {
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-family: "Futura", serif;
+  font-size: 12pt;
+  line-height: 1.5em;
+  line-height: 1.5em;
+  font-family: "Futura-MediumItalic";
+  border-bottom: 1px #aaaaaa solid;
+}
+/* line 30, ../sass/globals/_controls.scss */
+input:focus {
+  border-color: #444444;
+}
+/* line 34, ../sass/globals/_controls.scss */
+input.offset {
+  background-color: rgba(255, 255, 255, 0.925);
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  padding: 1em;
+  position: relative;
+  margin-left: -1.5rem;
+  margin-top: -.666em;
+  left: 100%;
+  float: left;
+}
+/* line 43, ../sass/globals/_controls.scss */
+input.offset:hover, input.offset:focus {
+  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
+  -webkit-transform: scale(1.0625);
+  -moz-transform: scale(1.0625);
+  -ms-transform: scale(1.0625);
+  -o-transform: scale(1.0625);
+  transform: scale(1.0625);
+  -webkit-transform: scale(1.125);
+  -moz-transform: scale(1.125);
+  -ms-transform: scale(1.125);
+  -o-transform: scale(1.125);
+  transform: scale(1.125);
+}
+/* line 48, ../sass/globals/_controls.scss */
+input.offset:active {
+  -webkit-transform: scale(0.925);
+  -moz-transform: scale(0.925);
+  -ms-transform: scale(0.925);
+  -o-transform: scale(0.925);
+  transform: scale(0.925);
+  -webkit-box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 0.5rem rgba(0, 0, 0, 0.125);
+}
+/* line 54, ../sass/globals/_controls.scss */
+input[type=submit], input[type=button] {
+  font-size: .666em;
+  font-weight: bold;
+  letter-spacing: .125em;
+  text-transform: uppercase !important;
+  border: 0;
+  cursor: pointer;
+}
+/* line 60, ../sass/globals/_controls.scss */
+input[type=checkbox] {
+  width: 1em;
+  margin-left: -1.5em;
+  margin-right: .5em;
+}
+/* line 65, ../sass/globals/_controls.scss */
+input[type=checkbox] + label {
+  font-size: .666em;
+  font-weight: bold;
+  letter-spacing: .125em;
+  text-transform: uppercase !important;
+}
+
+/* line 72, ../sass/globals/_controls.scss */
+ul.menu {
+  background-color: rgba(255, 255, 255, 0.925);
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  width: 8rem;
+  position: relative;
+  max-height: 2.25rem;
+  overflow: hidden;
+  vertical-align: top;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 82, ../sass/globals/_controls.scss */
+ul.menu:hover {
+  max-height: none;
+  opacity: 1;
+}
+/* line 86, ../sass/globals/_controls.scss */
+ul.menu:hover:after {
+  opacity: 1;
+}
+/* line 91, ../sass/globals/_controls.scss */
+ul.menu:after {
+  content: "▴";
+  font-size: 1.25em;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.375rem;
+  opacity: .25;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 103, ../sass/globals/_controls.scss */
+ul.menu li {
+  height: 1.5rem;
+  position: relative;
+  padding: 0.375rem;
+}
+/* line 108, ../sass/globals/_controls.scss */
+ul.menu li a {
+  border: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: padding-left 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 116, ../sass/globals/_controls.scss */
+ul.menu li a:hover {
+  padding-left: 1rem;
+}
+/* line 121, ../sass/globals/_controls.scss */
+ul.menu li input {
+  max-width: 100% !important;
+}
+/* line 124, ../sass/globals/_controls.scss */
+ul.menu li input[type=submit] {
+  display: none;
+}
+
+/* line 131, ../sass/globals/_controls.scss */
+textarea {
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-family: "Futura", serif;
+  font-size: 12pt;
+  line-height: 1.5em;
+  width: 100%;
+  height: 9rem;
+}
 
 /* line 1, ../sass/layout/_body.scss */
 body {
@@ -93,7 +300,29 @@ body {
 header {
   position: float;
   top: 0;
+  margin: 0.5rem 0 0 0.5rem;
   height: 25vh;
+  width: 28rem;
+  opacity: .5;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+/* line 11, ../sass/layout/_header.scss */
+header:hover {
+  opacity: 1;
+}
+/* line 15, ../sass/layout/_header.scss */
+header ul.menu {
+  display: inline-block;
+  margin-right: 0.5rem;
+  width: 12rem;
+  opacity: .75;
 }
 
 /* line 1, ../sass/layout/_container.scss */
@@ -102,26 +331,11 @@ section.container {
   height: 100%;
 }
 /* line 5, ../sass/layout/_container.scss */
-section.container main {
-  margin-top: 200px;
-  text-align: center;
-}
-/* line 8, ../sass/layout/_container.scss */
-section.container main h1.welcome {
-  display: block;
-  font-size: 500%;
-  margin-bottom: 50px;
-}
-/* line 13, ../sass/layout/_container.scss */
-section.container main form {
-  display: block;
-}
-/* line 18, ../sass/layout/_container.scss */
 section.container section.space {
   width: 100%;
   height: 100%;
 }
-/* line 22, ../sass/layout/_container.scss */
+/* line 9, ../sass/layout/_container.scss */
 section.container section.space h1 {
   position: fixed;
   text-align: right;
@@ -135,7 +349,7 @@ section.container section.space h1 {
   width: 16rem;
   height: 1.5em;
   z-index: 2;
-  font-size: .75em;
+  font-size: .666em;
   font-weight: bold;
   letter-spacing: .125em;
   text-transform: uppercase !important;
@@ -143,14 +357,14 @@ section.container section.space h1 {
   font-size: .75rem;
   line-height: 1.5em;
 }
-/* line 35, ../sass/layout/_container.scss */
+/* line 22, ../sass/layout/_container.scss */
 section.container section.space h1 form input {
   outline: 0;
   padding: 0;
   margin: 0;
   border: 0;
   background: transparent;
-  font-size: .75em;
+  font-size: .666em;
   font-weight: bold;
   letter-spacing: .125em;
   text-transform: uppercase !important;
@@ -163,32 +377,32 @@ section.container section.space h1 form input {
   width: 16rem;
   height: 1.5em;
 }
-/* line 48, ../sass/layout/_container.scss */
+/* line 35, ../sass/layout/_container.scss */
 section.container section.space:active {
   cursor: move;
 }
-/* line 52, ../sass/layout/_container.scss */
+/* line 39, ../sass/layout/_container.scss */
 section.container section.space ul.users {
   position: fixed;
   z-index: 2;
   top: 0;
   right: 0;
 }
-/* line 58, ../sass/layout/_container.scss */
+/* line 45, ../sass/layout/_container.scss */
 section.container section.space ul.users li {
   display: block;
   height: 3rem;
   width: 3rem;
   margin: .5em;
 }
-/* line 64, ../sass/layout/_container.scss */
+/* line 51, ../sass/layout/_container.scss */
 section.container section.space ul.users li img {
   height: 100%;
   width: 100%;
   border-radius: 100%;
   background-color: red;
 }
-/* line 74, ../sass/layout/_container.scss */
+/* line 61, ../sass/layout/_container.scss */
 section.container section.space section.content {
   transform-origin: 0 0;
   -webkit-transform: scale(1);
@@ -199,7 +413,7 @@ section.container section.space section.content {
   position: relative;
   z-index: 1;
 }
-/* line 80, ../sass/layout/_container.scss */
+/* line 67, ../sass/layout/_container.scss */
 section.container section.space section.content article {
   width: 16rem;
   color: #333333;
@@ -207,27 +421,18 @@ section.container section.space section.content article {
   backface-visibility: hidden;
   background-color: transparent !important;
 }
-/* line 87, ../sass/layout/_container.scss */
+/* line 74, ../sass/layout/_container.scss */
 section.container section.space section.content article textarea {
-  outline: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background: transparent;
-  font-family: "Futura", serif;
-  font-size: 12pt;
-  line-height: 1.5em;
   width: 100%;
   height: 9rem;
 }
-/* line 95, ../sass/layout/_container.scss */
+/* line 79, ../sass/layout/_container.scss */
 section.container section.space section.content article .card {
-  background-color: rgba(255, 255, 255, 0.925);
-  border-top: 8pt solid transparent;
   position: relative;
-  -webkit-box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.0625);
-  -moz-box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.0625);
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.0625);
+  background-color: rgba(255, 255, 255, 0.925);
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
   -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
   -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
   -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
@@ -237,39 +442,9 @@ section.container section.space section.content article .card {
   -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
   transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
 }
-/* line 109, ../sass/layout/_container.scss */
-section.container section.space section.content article .card.text {
-  padding: 0.33333rem 1rem 0.33333rem 0.5rem;
-}
-/* line 113, ../sass/layout/_container.scss */
-section.container section.space section.content article .card.image {
-  background-color: transparent;
-}
-/* line 118, ../sass/layout/_container.scss */
-section.container section.space section.content article .card.website p a {
-  word-break: break-all;
-}
-/* line 123, ../sass/layout/_container.scss */
-section.container section.space section.content article .card.caption {
-  left: 1rem;
-  top: -1.5rem;
-}
-/* line 128, ../sass/layout/_container.scss */
-section.container section.space section.content article .card img {
-  width: 100%;
-  opacity: .9;
-  margin-bottom: -12pt;
-}
-/* line 136, ../sass/layout/_container.scss */
-section.container section.space section.content article .card p + p {
-  margin-top: 0.75rem;
-}
-/* line 142, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover, section.container section.space section.content article.rollover {
+/* line 83, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover, section.container section.space section.content article .card.rollover {
   cursor: move;
-}
-/* line 145, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover .card, section.container section.space section.content article.rollover .card {
   -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
@@ -279,42 +454,58 @@ section.container section.space section.content article:hover .card, section.con
   -o-transform: scale(1.0625);
   transform: scale(1.0625);
 }
-/* line 149, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover .card.text, section.container section.space section.content article.rollover .card.text {
+/* line 88, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover.text, section.container section.space section.content article .card.rollover.text {
   background-color: rgba(255, 255, 255, 0.96);
 }
-/* line 153, ../sass/layout/_container.scss */
-section.container section.space section.content article:hover .card img, section.container section.space section.content article.rollover .card img {
+/* line 92, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:hover img, section.container section.space section.content article .card.rollover img {
   opacity: 1;
 }
-/* line 160, ../sass/layout/_container.scss */
-section.container section.space section.content article:active, section.container section.space section.content article.dragging {
+/* line 97, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active, section.container section.space section.content article .card.dragging {
   cursor: move;
-}
-/* line 163, ../sass/layout/_container.scss */
-section.container section.space section.content article:active .card, section.container section.space section.content article.dragging .card {
   -webkit-transform: scale(1.0625) rotate(-3deg);
   -moz-transform: scale(1.0625) rotate(-3deg);
   -ms-transform: scale(1.0625) rotate(-3deg);
   -o-transform: scale(1.0625) rotate(-3deg);
   transform: scale(1.0625) rotate(-3deg);
-  -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  -moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   -moz-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.125);
 }
-/* line 168, ../sass/layout/_container.scss */
-section.container section.space section.content article:active .card.text, section.container section.space section.content article.dragging .card.text {
+/* line 102, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active.text, section.container section.space section.content article .card.dragging.text {
   background-color: rgba(255, 255, 255, 0.96);
 }
-/* line 172, ../sass/layout/_container.scss */
-section.container section.space section.content article:active .card img, section.container section.space section.content article.dragging .card img {
+/* line 106, ../sass/layout/_container.scss */
+section.container section.space section.content article .card:active img, section.container section.space section.content article .card.dragging img {
   opacity: 1;
 }
-/* line 180, ../sass/layout/_container.scss */
+/* line 111, ../sass/layout/_container.scss */
+section.container section.space section.content article .card.text {
+  padding: 0.33333rem 1rem 0.33333rem 0.5rem;
+}
+/* line 115, ../sass/layout/_container.scss */
+section.container section.space section.content article .card.image {
+  background-color: transparent;
+}
+/* line 120, ../sass/layout/_container.scss */
+section.container section.space section.content article .card.website p a {
+  word-break: break-all;
+}
+/* line 125, ../sass/layout/_container.scss */
+section.container section.space section.content article .card.caption {
+  left: 1rem;
+  top: -1.5rem;
+}
+/* line 130, ../sass/layout/_container.scss */
+section.container section.space section.content article .card img {
+  width: 100%;
+  opacity: .9;
+  margin-bottom: -12pt;
+}
+/* line 139, ../sass/layout/_container.scss */
 section.container section.space .delete {
   text-align: center;
   position: fixed;
@@ -334,12 +525,12 @@ section.container section.space .delete {
   -o-transform: scale(0.5);
   transform: scale(0.5);
 }
-/* line 192, ../sass/layout/_container.scss */
+/* line 151, ../sass/layout/_container.scss */
 section.container section.space .delete.visible {
   bottom: 0;
   opacity: 1;
 }
-/* line 197, ../sass/layout/_container.scss */
+/* line 156, ../sass/layout/_container.scss */
 section.container section.space .delete.rollover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
@@ -349,7 +540,7 @@ section.container section.space .delete.rollover {
   opacity: 1;
   bottom: 0;
 }
-/* line 203, ../sass/layout/_container.scss */
+/* line 162, ../sass/layout/_container.scss */
 section.container section.space .delete:after {
   text-align: center;
   content: "×";
@@ -363,4 +554,34 @@ section.container section.space .delete:after {
   margin-top: 2em;
   font-weight: 100;
   color: red;
+}
+
+/* line 1, ../sass/layout/_login.scss */
+.card.login {
+  position: relative;
+  margin-top: 50%;
+  left: 33%;
+  padding-left: 2rem !important;
+  padding-bottom: 1rem !important;
+  background-color: rgba(255, 255, 255, 0.925);
+  -webkit-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.16667rem 1rem rgba(0, 0, 0, 0.125);
+  -webkit-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -moz-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -o-transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  transition: 0.125s cubic-bezier(0.19, 1.75, 0.22, 1.75);
+  -webkit-transition-property: -webkit-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -moz-transition-property: -moz-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  -o-transition-property: -o-transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  transition-property: transform, -webkit-transform, -moz-transform, box-shadow, -webkit-box-shadow, -moz-box-shadow, background-color;
+  width: 16rem;
+}
+/* line 12, ../sass/layout/_login.scss */
+.card.login input#toggle-login:checked + form {
+  background: red;
+}
+/* line 19, ../sass/layout/_login.scss */
+.card.login form input {
+  text-transform: lowercase;
 }

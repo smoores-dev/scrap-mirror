@@ -1,0 +1,136 @@
+@mixin cardStyle {
+    background-color: $colorWashLightTrans;
+    @include box-shadow(0 $gutter/6 $gutter rgba(0,0,0,.125));
+    @include transition(.125s $bouncyCurve);
+    @include transition-property(   transform,
+                            -webkit-transform,
+                               -moz-transform,
+                                    box-shadow,
+                            -webkit-box-shadow,
+                               -moz-box-shadow,
+                                    background-color);
+}
+
+@mixin cardHover {
+    @include box-shadow(0 $gutter/2 $gutter*2 rgba(0,0,0,.125));
+    @include transform(scale(1.0625));
+}
+
+form {
+    position: relative;
+}
+
+input {
+    @include resetInput;
+    @include typeBody;
+    line-height: 1.5em;
+    font-family: $fontItalic;
+    border-bottom: 1px $colorWashMedium solid;
+    
+    &:focus {
+        border-color: $colorWashDark;
+    }
+    
+    &.offset {
+        @include cardStyle;
+        padding: 1em;
+        position: relative;
+        margin-left: -$gutter*1.5;
+        margin-top: -.666em;
+        left: 100%;
+        float: left;
+        
+        &:hover, &:focus {
+            @include cardHover;
+            @include transform(scale(1.125));
+        }
+        
+        &:active {
+            @include transform(scale(.925));
+            @include box-shadow(0 $gutter/6 $gutter/2 rgba(0,0,0,.125));
+        }
+    }
+    
+    &[type=submit], &[type=button] {
+        @include smallCaps;
+        border: 0;
+        cursor: pointer;
+    }
+    
+    &[type=checkbox] {
+        width: 1em;
+        margin-left: -1.5em;
+        margin-right: .5em;
+        
+        & + label {
+            @include smallCaps;
+        }
+    }
+    
+}
+
+ul.menu {
+    @include cardStyle;
+    width: $col;
+    position: relative;
+    max-height: $baseline * 1.5;
+    overflow: hidden;
+    vertical-align: top;
+    @include basicTransition;
+    @include transition-property(opacity);
+    
+    &:hover {
+        max-height: none;
+        opacity: 1;
+        
+        &:after {
+            opacity: 1;
+        }
+    }
+    
+    &:after {
+        content: "▴";
+        font-size: 1.25em;
+        position: absolute;
+        top: $baseline/2.5;
+        right: $baseline/4;
+        opacity: .25;
+        @include transform(rotate(180deg));
+        @include basicTransition;
+        @include transition-property(opacity);
+    }
+    
+    li {
+        height: $baseline;
+        position: relative;
+        padding: $baseline * .25;
+        
+        a {
+            border: none;
+            display: block;
+            height: 100%;
+            width: 100%;
+            @include transition(padding-left .25s $defaultCurve);
+
+            
+            &:hover {
+                padding-left: $gutter;
+            }
+        }
+        
+        input {
+            max-width: 100% !important;
+            
+            &[type=submit] {
+                display: none;
+            }
+        }
+    }
+}
+
+textarea {
+  @include resetInput;
+  @include typeBody;   
+  width: 100%;
+  height: $baseline * 6;
+}

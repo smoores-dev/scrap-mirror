@@ -11,7 +11,7 @@ $ ->
 
   socket.on 'addUserToSpace', (data) ->
     if data?
-      $('li', '.user-list').first().before "<li>#{data.name}</li>"
+      $('li', '.users').first().before "<li>#{data.name}</li>"
 
   socket.on 'removeUserFromSpace', (data) ->
     $('li[data-id="' + data.id + '"]').fadeOut -> 

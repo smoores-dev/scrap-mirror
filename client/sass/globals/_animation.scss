@@ -1,2 +1,6 @@
 $defaultCurve: cubic-bezier(0.19, 1, 0.22, 1);
 $bouncyCurve: cubic-bezier(0.19, 1.75, 0.22, 1.75);
+
+@mixin basicTransition {
+    @include transition(all .25s linear);
+}

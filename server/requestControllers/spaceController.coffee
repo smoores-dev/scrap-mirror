@@ -40,8 +40,8 @@ module.exports =
             if result
               res.render 'space.jade',
                 title : space.name
-                space: space
-                user: user
+                current_space: space
+                current_user: user
             callback()
       else
         res.status 404

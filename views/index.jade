@@ -4,16 +4,34 @@ block scripts
   include partials/baseScripts
 
 block content
-  main
-    h1.welcome Welcome to Scrap
-    h3.login Login
-    form.login(action="/login",  method="post")
-      input(type="text", name="user[email]", placeholder="Enter email")
-      input(type="password", name="user[password]", placeholder="Enter password")
-      input(type="submit", value="Login", method="post")
-    h3.register Register
-    form.register(action="/register", method="post")
-      input(type="text", name="user[name]", placeholder="Enter new username")
-      input(type="text", name="user[email]", placeholder="Enter new email")
-      input(type="password", name="user[password]", placeholder="Enter new password")
-      input(type="submit", value="Register")
+  article
+    .card.login.text.nondraggable
+      p
+        input(type="checkbox", id="toggle-login")
+        label(for="toggle-login") Make a new account
+      form.login(action="/login",  method="post")
+        p
+          input(type="text", name="user[email]", placeholder="Mail")
+        p
+          input(type="password", name="user[password]", placeholder="Password")
+        p
+          input.offset(type="submit", value="Login", method="post")
+  script
+    $('#toggle-login').change(function() {
+      if($(this).is(":checked")) {
+        console.log("not checked?");
+        var nameInput = "<p><input type='text' name='user[name]' placeholder='Full Name'></p>"
+        $("form").removeClass("login")
+          .addClass("register")
+          .prepend(nameInput)
+          .get(0).setAttribute('action', '/register');
+        $("input[type=submit]").val("Register");
+      }
+      else {
+        $("form").removeClass("register")
+          .addClass("login")
+          .get(0).setAttribute('action', '/login');
+        $("input[name='user[name]']").remove();
+        $("input[type=submit]").val("Login");
+      }
+    })

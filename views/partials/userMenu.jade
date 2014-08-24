@@ -1,0 +1,22 @@
+- var creator = current_space.creator
+- var isCreator = current_user.id == creator.id
+
+ul.users.menu
+  if isCreator
+    li(data-id=current_user.id) #{current_user.name} (owner)
+  else
+    li(data-id=current_user.id)=current_user.name
+  each user in current_space.users
+    if user.id != current_user.id
+      if user.id != creator.id && isCreator
+        li.deletable-user(data-id=user.id)=user.name
+      else if user.id == creator.id
+        li(data-id=user.id) #{user.name} (owner)
+      else
+        li(data-id=user.id)=user.name
+  li
+    form.add-user
+      input(type="text", name="user[email]", placeholder="Add someone to this space")
+      input(type="submit", style="visibility: hidden;")
+  li
+    a.logout(href="/logout") Logout
