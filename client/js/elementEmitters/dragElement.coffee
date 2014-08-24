@@ -40,8 +40,9 @@ draggableOptions = (socket) ->
     $('.delete').removeClass 'visible'
     getIdsInCluster( this.id ).forEach (id) ->
       elem = $('#'+id)
-      x = parseInt(elem.css('left')) - parseInt(totalDelta.x)
-      y = parseInt(elem.css('top')) - parseInt(totalDelta.y)
+      # Make sure to account for screen drag (totalDelta)
+      x = Math.round(parseInt(elem.css('left')) - totalDelta.x)
+      y = Math.round(parseInt(elem.css('top')) - totalDelta.y)
       z = elem.zIndex()
       elementId = id
       

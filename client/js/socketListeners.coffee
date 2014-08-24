@@ -25,8 +25,8 @@ $ ->
     thumbnail = element.thumbnail
 
     id = element.id
-    x = element.x
-    y = element.y
+    x = element.x + totalDelta.x
+    y = element.y + totalDelta.y
     z = element.z
     scale = element.scale
 
@@ -84,6 +84,7 @@ $ ->
   socket.on 'updateElement', (data) ->
     element = data.element
     id = element.id
+    # Make sure to account for screen drag
     x = element.x + totalDelta.x
     y = element.y + totalDelta.y
     z = element.z

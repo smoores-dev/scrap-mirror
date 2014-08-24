@@ -4,6 +4,9 @@ $ ->
 
   # adding a new element
   emitElement = (x, y, scale, content, contentType) ->
+    # Make sure to account for screen drag (totalDelta)
+    x = Math.round(x - totalDelta.x)
+    y = Math.round(y - totalDelta.y)
     caption = $('textarea[name=caption]').val()
     caption = if caption? then caption.slice(0, -1) else caption # remove last newline 
     window.maxZ += 1
@@ -56,8 +59,8 @@ $ ->
   # on double-click, append new element form, then process the new element if one is submitted
   $(window).on 'dblclick', (event) ->
     screenScale = $('.content').css('scale')
-    x = Math.floor((event.clientX - $('.content').offset().left) / screenScale)
-    y = Math.floor((event.clientY - $('.content').offset().top) / screenScale)
+    x = (event.clientX - $('.content').offset().left) / screenScale
+    y = (event.clientY - $('.content').offset().top) / screenScale
 
     elementForm =
       "<article class='add-element'>
