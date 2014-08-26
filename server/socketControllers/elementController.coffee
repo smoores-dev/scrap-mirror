@@ -4,8 +4,7 @@ webshot  = require 'webshot'
 fs       = require 'fs'
 Uploader = require('s3-streaming-upload').Uploader
 
-memCache =
-  'https://www.google.com/': 'https://s3.amazonaws.com/scrap_images/zf08d73.png'
+memCache = {}
 
 module.exports =
   # create a new element and save it to db
@@ -34,9 +33,9 @@ module.exports =
       if data.content of memCache
         return callback null, memCache[data.content]
 
-      url = randString() + '.jpg'
+      url = "websites/#{randString()}_#{data.content}.png"
       options =
-        windowSize: { width: 900, height: 2400 }
+        windowSize: { width: 900, height: 1200 }
         shotSize:   { width: 'window', height: 'window' }
 
       webshot data.content, '', options, (err, renderStream) ->
@@ -47,7 +46,7 @@ module.exports =
           bucket:     'scrap_images'
           objectName: url
           stream:     renderStream
-          streamType: 'jpg'
+          streamType: 'png'
           objectParams:
             ACL: 'public-read'
             ContentType: 'image/png'
