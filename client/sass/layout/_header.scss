@@ -1,5 +1,6 @@
 header {
-	position: float;
+	position: absolute;
+	z-index: 2;
 	top: 0;
 	margin: $gutter/2 0 0 $gutter/2;
 	height: $headerHeight;
